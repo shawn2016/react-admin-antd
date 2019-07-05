@@ -56,10 +56,6 @@ export default class LoginContainer extends React.Component {
     };
   }
 
-  componentWillMount() {
-
-  }
-
   componentDidMount() {
     // 进入登陆页时，判断之前是否保存了用户名和密码
       const form = this.props.form;

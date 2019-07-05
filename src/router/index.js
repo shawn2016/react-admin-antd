@@ -40,7 +40,7 @@ export default class RootContainer extends React.Component {
     super(props);
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
       const userinfo = sessionStorage.getItem('userinfo');
       /**
        * sessionStorage中有user信息，但store中没有

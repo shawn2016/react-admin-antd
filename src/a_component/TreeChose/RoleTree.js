@@ -30,7 +30,7 @@ export default class RoleTreeComponent extends React.PureComponent {
         this.makeSourceData(this.props.data);
     }
 
-    componentWillReceiveProps(nextP) {
+    UNSAFE_componentWillReceiveProps(nextP) {
         if (this.props.data !== nextP.data) {
             this.makeSourceData(nextP.data);
         }

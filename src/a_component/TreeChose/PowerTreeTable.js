@@ -31,7 +31,7 @@ export default class TreeTable extends React.PureComponent {
         this.makeSourceData(this.props.data || [], {});
     }
 
-    componentWillReceiveProps(nextProps) {
+    UNSAFE_componentWillReceiveProps(nextProps) {
         // allMenu变化后，重新处理原始数据; 所选择的项变化，需要隐藏所选择的项
         if (nextProps.data !== this.props.data || nextProps.defaultChecked !== this.props.defaultChecked) {
             this.makeSourceData(nextProps.data, nextProps.defaultChecked);
