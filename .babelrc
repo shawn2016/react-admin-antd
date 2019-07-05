@@ -1,25 +1,29 @@
 {
-  "presets": [
-    "babel-preset-react",
-    [
-      "babel-preset-env",
-      {
-        "modules": false,
-        "targets": {
-          "ie": 9
-        }
-      }
-    ]
-  ],
+  "presets": ["react", "env", "stage-0", "es2015"],
   "plugins": [
-	"transform-runtime",
+    [
+      "transform-runtime",
+      { "helpers": false, "polyfill": true, "regenerator": true }
+    ],
     "transform-decorators-legacy",
     "transform-class-properties",
     [
+        "react-transform",
+        {
+            "transforms": [
+                {
+                    "transform": "react-transform-hmr",
+                    "imports": ["react"],
+                    "locals": ["module"]
+                }
+            ]
+        }
+    ],
+    [
       "import",
       {
-	      "libraryName": "antd",
-	      "style": true
+        "libraryName": "antd",
+        "style": true
       }
     ]
   ]
