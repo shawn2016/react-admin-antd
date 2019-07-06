@@ -2640,6 +2640,10 @@ event-emitter@~0.3.5:
     d "1"
     es5-ext "~0.10.14"
 
+eventemitter3@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.npm.taobao.org/eventemitter3/download/eventemitter3-4.0.0.tgz?cache=0&sync_timestamp=1560950873670&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Feventemitter3%2Fdownload%2Feventemitter3-4.0.0.tgz#d65176163887ee59f386d64c82610b696a4a74eb"
+
 eventlistener@0.0.1:
   version "0.0.1"
   resolved "https://registry.npm.taobao.org/eventlistener/download/eventlistener-0.0.1.tgz#ed2baabb852227af2bcf889152c72c63ca532eb8"
@@ -3772,6 +3776,10 @@ jsesc@^2.5.1:
 jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.npm.taobao.org/jsesc/download/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
+
+json-editor@^0.7.28:
+  version "0.7.28"
+  resolved "https://registry.npm.taobao.org/json-editor/download/json-editor-0.7.28.tgz#2aa5b0990a2b5076789158e7dd8a2d2108ce9cc5"
 
 json-loader@^0.5.4:
   version "0.5.7"
@@ -5458,7 +5466,7 @@ rc-editor-mention@^1.1.13:
     rc-animate "^2.3.0"
     rc-editor-core "~0.8.3"
 
-rc-form@^2.4.5:
+rc-form@^2.4.5, rc-form@^2.4.8:
   version "2.4.8"
   resolved "https://registry.npm.taobao.org/rc-form/download/rc-form-2.4.8.tgz#79a1f124d4fa81dff2af2992e94aa3e58cad683c"
   dependencies:
@@ -5757,6 +5765,13 @@ react-dom@^16.2.0:
     prop-types "^15.6.2"
     scheduler "^0.13.6"
 
+react-draggable@^3.0.3:
+  version "3.3.0"
+  resolved "https://registry.npm.taobao.org/react-draggable/download/react-draggable-3.3.0.tgz#2ed7ea3f92e7d742d747f9e6324860606cd4d997"
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+
 react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1:
   version "16.8.6"
   resolved "https://registry.npm.taobao.org/react-is/download/react-is-16.8.6.tgz#5bbc1e2d29141c9fbdfed456343fe2bc430a6a16"
@@ -5798,6 +5813,13 @@ react-redux@^5.0.7:
     prop-types "^15.6.1"
     react-is "^16.6.0"
     react-lifecycles-compat "^3.0.0"
+
+react-resizable@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.npm.taobao.org/react-resizable/download/react-resizable-1.8.0.tgz#a6dd8c90826f1e54244141b770318e0320663a43"
+  dependencies:
+    prop-types "15.x"
+    react-draggable "^3.0.3"
 
 react-router-dom@^4.2.2:
   version "4.3.1"

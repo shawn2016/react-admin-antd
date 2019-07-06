@@ -1,4 +1,6 @@
 const Mock = require("mockjs");
+const apiPagesJson = require("./apiPages.json");
+const apiComponentsJson = require("./apiComponents.json");
 //
 // Mock.setup({
 //     timeout: '0-500',
@@ -160,12 +162,42 @@ const menus = [
     conditions: 1
   },
   {
+    id: 8,
+    title: "活动管理",
+    icon: "setting",
+    url: "/activity",
+    parent: null,
+    desc: "活动管理目录分支",
+    sorts: 1,
+    conditions: 1
+  },
+  {
     id: 7,
-    title: "页面管理",
+    title: "活动编辑",
     icon: "appstore",
-    url: "/pageadmin",
-    parent: 2,
-    desc: "系统管理/页面管理",
+    url: "/editactive",
+    parent: 8,
+    desc: "活动管理/活动编辑",
+    sorts: 4,
+    conditions: 1
+  },
+  {
+    id: 10,
+    title: "页面嵌套",
+    icon: "appstore",
+    url: "/iframe",
+    parent: null,
+    desc: "页面嵌套目录分支",
+    sorts: 4,
+    conditions: 1
+  },
+  {
+    id: 9,
+    title: "活动预览",
+    icon: "appstore",
+    url: "/previewactive",
+    parent: 10,
+    desc: "页面嵌套/活动预览",
     sorts: 4,
     conditions: 1
   }
@@ -344,7 +376,7 @@ const powers = [
     menu: 7,
     title: "新增",
     code: "page:add",
-    desc: "页面管理 - 添加权限",
+    desc: "活动编辑 - 添加权限",
     sorts: 1,
     conditions: 1
   },
@@ -353,7 +385,7 @@ const powers = [
     menu: 7,
     title: "修改",
     code: "page:up",
-    desc: "页面管理 - 修改权限",
+    desc: "活动编辑 - 修改权限",
     sorts: 2,
     conditions: 1
   },
@@ -362,7 +394,7 @@ const powers = [
     menu: 7,
     title: "查看",
     code: "page:query",
-    desc: "页面管理 - 查看权限",
+    desc: "活动编辑 - 查看权限",
     sorts: 3,
     conditions: 1
   },
@@ -371,7 +403,44 @@ const powers = [
     menu: 7,
     title: "删除",
     code: "page:del",
-    desc: "页面管理 - 删除权限",
+    desc: "活动编辑 - 删除权限",
+    sorts: 2,
+    conditions: 1
+  },
+
+  {
+    id: 23,
+    menu: 9,
+    title: "新增",
+    code: "page:add",
+    desc: "活动预览 - 添加权限",
+    sorts: 1,
+    conditions: 1
+  },
+  {
+    id: 24,
+    menu: 9,
+    title: "修改",
+    code: "page:up",
+    desc: "活动预览 - 修改权限",
+    sorts: 2,
+    conditions: 1
+  },
+  {
+    id: 25,
+    menu: 9,
+    title: "查看",
+    code: "page:query",
+    desc: "活动预览 - 查看权限",
+    sorts: 3,
+    conditions: 1
+  },
+  {
+    id: 26,
+    menu: 9,
+    title: "删除",
+    code: "page:del",
+    desc: "活动预览 - 删除权限",
     sorts: 2,
     conditions: 1
   }
@@ -391,7 +460,10 @@ const roles = [
       { menuId: 4, powers: [6, 7, 8, 9, 18] },
       { menuId: 5, powers: [10, 11, 12, 13] },
       { menuId: 6, powers: [14, 15, 16, 17] },
-      { menuId: 7, powers: [19, 20, 21, 22] }
+      { menuId: 7, powers: [19, 20, 21, 22] },
+      { menuId: 9, powers: [23, 24, 25, 26] },
+      { menuId: 8, powers: [] },
+      { menuId: 10, powers: [] }
     ]
   },
   {
@@ -471,7 +543,7 @@ const getMenus = p => {
 };
 // 获取菜单（根据ID）
 const getMenusById = p => {
-    console.log('==============')
+  console.log("==============");
   // const p = JSON.parse(request.body);
   let res = [];
   if (p.id instanceof Array) {
@@ -774,6 +846,13 @@ const setUserRoles = p => {
   }
 };
 
+const getPages = () => {
+  return { status: 200, data: apiPagesJson, message: "success" };
+};
+const getComponents = () => {
+  return { status: 200, data: apiComponentsJson, message: "success" };
+};
+
 exports.mockApi = (url, params) => {
   console.log("传来的是什么：", url, params);
   switch (url) {
@@ -795,6 +874,10 @@ exports.mockApi = (url, params) => {
         data: msg.notice.length + msg.message.length + msg.work.length,
         message: "success"
       };
+    case "/api/getcomponents":
+      return getComponents(params);
+    case "/api/getpages":
+      return getPages(params);
     case "/api/getmenus":
       return getMenus(params);
     case "/api/getMenusById":

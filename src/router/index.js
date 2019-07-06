@@ -16,7 +16,9 @@ import tools from "../util/tools";
 
 /** 本页面所需页面级组件 **/
 import BasicLayout from "../layouts/BasicLayout";
+import ActivityLayout from "../layouts/ActivityLayout";
 import UserLayout from "../layouts/UserLayout";
+import IframeLayout from "../layouts/IframeLayout";
 
 /** 普通组件 **/
 import { message } from "antd";
@@ -78,6 +80,14 @@ export default class RootContainer extends React.Component {
             return (
               <Switch>
                 <Route path="/user" component={UserLayout} />
+                <Route
+                  path="/activity"
+                  render={props => this.onEnter(ActivityLayout, props)}
+                />
+                <Route
+                  path="/iframe"
+                  render={props => this.onEnter(IframeLayout, props)}
+                />
                 <Route
                   path="/"
                   render={props => this.onEnter(BasicLayout, props)}

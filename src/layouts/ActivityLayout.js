@@ -41,40 +41,24 @@ const Home = Loadable({
   LoadingComponent,
   delay: 300
 });
-const MenuAdmin = Loadable({
-  loader: () => import("../a_container/System/MenuAdmin"),
-  loading: Loading,
-  LoadingComponent,
-  delay: 300
-});
-const PowerAdmin = Loadable({
-  loader: () => import("../a_container/System/PowerAdmin"),
+
+const EditActive = Loadable({
+  loader: () => import("../a_container/Activity/EditActive"),
   loading: Loading,
   LoadingComponent,
   delay: 300
 });
 
-const RoleAdmin = Loadable({
-  loader: () => import("../a_container/System/RoleAdmin"),
-  loading: Loading,
-  LoadingComponent,
-  delay: 300
-});
-const UserAdmin = Loadable({
-  loader: () => import("../a_container/System/UserAdmin"),
-  loading: Loading,
-  LoadingComponent,
-  delay: 300
-});
+
 // ==================
 // 所需的所有组件
 // ==================
 import { Layout, message } from "antd";
-import Header from "../a_component/Header";
-import Menu from "../a_component/Menu";
+import AcHeader from "../a_component/AcHeader";
+import ActMenu from "../a_component/ActMenu";
 import Footer from "../a_component/Footer";
 import Bread from "../a_component/Bread";
-import css from "./BasicLayout.scss";
+import css from "./ActivityLayout.scss";
 
 // ==================
 // 本页面所需action
@@ -106,14 +90,14 @@ const { Content } = Layout;
   })
 )
 export default class AppContainer extends React.Component {
-//   static propTypes = {
-//     location: P.any,
-//     history: P.any,
-//     actions: P.any,
-//     powers: P.array,
-//     userinfo: P.any,
-//     menus: P.array
-//   };
+  //   static propTypes = {
+  //     location: P.any,
+  //     history: P.any,
+  //     actions: P.any,
+  //     powers: P.array,
+  //     userinfo: P.any,
+  //     menus: P.array
+  //   };
 
   constructor(props) {
     super(props);
@@ -249,13 +233,13 @@ export default class AppContainer extends React.Component {
 
     return (
       <Layout className={css.page}>
-        <Menu
+        <ActMenu
           data={this.props.menus}
           collapsed={this.state.collapsed}
           location={this.props.location}
         />
         <Layout>
-          <Header
+          <AcHeader
             collapsed={this.state.collapsed}
             userinfo={this.props.userinfo}
             onToggle={this.onToggle}
@@ -267,7 +251,6 @@ export default class AppContainer extends React.Component {
             popLoading={this.state.popLoading}
             clearLoading={this.state.clearLoading}
           />
-          <Bread menus={this.props.menus} location={this.props.location} />
           <Content className={css.content}>
             <Switch>
               <Redirect exact from="/" to="/home" />
@@ -278,29 +261,14 @@ export default class AppContainer extends React.Component {
               />
               <Route
                 exact
-                path="/system/menuadmin"
-                render={props => this.onEnter(MenuAdmin, props)}
-              />
-              <Route
-                exact
-                path="/system/poweradmin"
-                render={props => this.onEnter(PowerAdmin, props)}
-              />
-              <Route
-                exact
-                path="/system/roleadmin"
-                render={props => this.onEnter(RoleAdmin, props)}
-              />
-              <Route
-                exact
-                path="/system/useradmin"
-                render={props => this.onEnter(UserAdmin, props)}
+                path="/activity/editactive"
+                render={props => this.onEnter(EditActive, props)}
               />
               <Route exact path="/nopower" component={NoPower} />
               <Route render={NotFound} />
             </Switch>
           </Content>
-          <Footer />
+          {/* <Footer /> */}
         </Layout>
       </Layout>
     );
