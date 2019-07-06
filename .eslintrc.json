@@ -21,7 +21,7 @@
   "rules": {
     "semi": "warn",
     "no-cond-assign": "error",
-    "no-debugger": "error",
+    "no-debugger": 0,
     "no-dupe-args": "error",
     "no-caller": "error",
     "no-unmodified-loop-condition": "error",

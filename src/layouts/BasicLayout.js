@@ -14,22 +14,6 @@ import { Link, Route, Switch, Redirect } from "react-router-dom";
 // ==================
 // 路由子页面
 // ==================
-// import Bundle from '../a_component/bundle';
-// import lazeNotFound from 'bundle-loader?lazy&name=notfound!../a_container/ErrorPages/404';
-// import lazeNoPower from 'bundle-loader?lazy&name=notfound!../a_container/ErrorPages/401';
-// import lazeHome from 'bundle-loader?lazy&name=home!../a_container/home';
-// import lazeMenuAdmin from 'bundle-loader?lazy&name=menuadmin!../a_container/System/MenuAdmin';
-// import lazePowerAdmin from 'bundle-loader?lazy&name=poweradmin!../a_container/System/PowerAdmin';
-// import lazeRoleAdmin from 'bundle-loader?lazy&name=roleadmin!../a_container/System/RoleAdmin';
-// import lazeUserAdmin from 'bundle-loader?lazy&name=useradmin!../a_container/System/UserAdmin';
-// const NotFound = (props) => (<Bundle load={lazeNotFound}>{(Com) => <Com {...props} />}</Bundle>);
-// const NoPower = (props) => (<Bundle load={lazeNoPower}>{(Com) => <Com {...props} />}</Bundle>);
-// const Home = (props) => (<Bundle load={lazeHome}>{(Com) => <Com {...props} />}</Bundle>);
-// const MenuAdmin = (props) => (<Bundle load={lazeMenuAdmin}>{(Com) => <Com {...props} />}</Bundle>);
-// const PowerAdmin = (props) => (<Bundle load={lazePowerAdmin}>{(Com) => <Com {...props} />}</Bundle>);
-// const RoleAdmin = (props) => (<Bundle load={lazeRoleAdmin}>{(Com) => <Com {...props} />}</Bundle>);
-// const UserAdmin = (props) => (<Bundle load={lazeUserAdmin}>{(Com) => <Com {...props} />}</Bundle>);
-
 const Loading = ({ error }) => {
   if (error) {
     return <div>错误</div>;
@@ -82,6 +66,12 @@ const UserAdmin = Loadable({
   LoadingComponent,
   delay: 300
 });
+const PagePage = Loadable({
+    loader: () => import("../a_container/System/PageAdmin"),
+    loading: Loading,
+    LoadingComponent,
+    delay: 300
+  });
 
 // ==================
 // 所需的所有组件
@@ -312,6 +302,11 @@ export default class AppContainer extends React.Component {
                 exact
                 path="/system/useradmin"
                 render={props => this.onEnter(UserAdmin, props)}
+              />
+              <Route
+                exact
+                path="/system/pageadmin"
+                render={props => this.onEnter(PagePage, props)}
               />
               <Route exact path="/nopower" component={NoPower} />
               <Route render={NotFound} />

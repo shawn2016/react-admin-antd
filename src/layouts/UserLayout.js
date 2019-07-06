@@ -7,6 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import c from 'classnames';
+import Loadable from "react-loadable";
 import { bindActionCreators } from 'redux';
 import P from 'prop-types';
 
@@ -15,13 +16,27 @@ import { Link, Route, Switch, Redirect} from 'react-router-dom';
 // ==================
 // 路由子页面
 // ==================
-import Bundle from '../a_component/bundle';
-import lazeNotFound from 'bundle-loader?lazy&name=notfound!../a_container/ErrorPages/404';
-import lazeLogin from 'bundle-loader?lazy&name=login!../a_container/Login';
-
-const NotFound = (props) => (<Bundle load={lazeNotFound}>{(NotFound) => <NotFound {...props} />}</Bundle>);
-const Login = (props) => (<Bundle load={lazeLogin}>{(Login) => <Login {...props} />}</Bundle>);
-
+const Loading = ({ error }) => {
+    if (error) {
+      return <div>错误</div>;
+    }
+    return null;
+  };
+  function LoadingComponent() {
+    return <div>loading页面</div>;
+  }
+  const NotFound = Loadable({
+    loader: () => import("../a_container/ErrorPages/404"),
+    loading: Loading,
+    LoadingComponent,
+    delay: 300
+  });
+  const Login = Loadable({
+    loader: () => import("../a_container/Login"),
+    loading: Loading,
+    LoadingComponent,
+    delay: 300
+  });
 // ==================
 // 所需的所有组件
 // ==================
