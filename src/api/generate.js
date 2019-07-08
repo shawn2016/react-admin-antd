@@ -1,17 +1,16 @@
-const React = require("react");
-const ReactDOM = require("react-dom/server");
-const { Router } = require("express");
-// const Page = require("../models/page");
-const Html = require("../util/html");
-const fs = require("../util/fs");
-const { compileTemplate } = require("../utils/compile");
+import React from "react";
+import ReactDOM from "react-dom/server";
+import { Router } from "express";
+// import Page from "../models/page";
+import Html from "../PublishPage/html";
+import fs from "../util/fs";
+import PageData from "../../mock/apiPages.json";
+import  compile from "../util/compile";
 const router = new Router();
 
 const findOnePage = pageId =>
   new Promise((resolve, reject) => {
-    Page.findOne({ _id: pageId }).then(page => {
-      resolve(page);
-    });
+    resolve(PageData.page);
   });
 
 router.post("/", async (req, res, next) => {
@@ -33,7 +32,7 @@ router.post("/", async (req, res, next) => {
     // todo felix
     // props.body = ReactDOM.renderToStaticMarkup(<Body page={page} serverRendering={true} />);
 
-    const data = await compileTemplate(page);
+    const data = await compile.compileTemplate(page);
     props.script = data.fileContent.toString();
 
     const htmlString = ReactDOM.renderToStaticMarkup(<Html {...props} />);

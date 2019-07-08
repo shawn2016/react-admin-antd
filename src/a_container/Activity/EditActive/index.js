@@ -367,14 +367,14 @@ export default class PageAdminContainer extends React.Component {
       });
       const json = await res.json();
       if (json.retcode === 0) {
-        this.showSnackbar("生成成功");
+        message.success("生成成功");
         // window.open(`/${page.project}/pages/${page.name}/`);
       } else {
-        this.showSnackbar("生成失败");
+        message.error("生成失败");
       }
     } catch (error) {
       console.error(error);
-      this.showSnackbar("生成失败");
+      message.error("生成失败");
     }
   };
 

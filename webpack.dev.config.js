@@ -31,11 +31,32 @@ module.exports = {
         loader: "eslint-loader",
         include: path.resolve(__dirname, "src")
       },
+      //   {
+      //     // .js .jsx用babel解析
+      //     test: /\.js?$/,
+      //     loader: "happypack/loader?id=happybabel",
+      //     include: path.resolve(__dirname, "src")
+      //   },
       {
-        // .js .jsx用babel解析
-        test: /\.js?$/,
-        loader: "happypack/loader?id=happybabel",
-        include: path.resolve(__dirname, "src")
+        test: /\.(js|jsx)$/,
+        loader: "babel-loader",
+        include: path.join(__dirname, "src"),
+        query: {
+          plugins: [
+            [
+              "react-transform",
+              {
+                transforms: [
+                  {
+                    transform: "react-transform-hmr",
+                    imports: ["react"],
+                    locals: ["module"]
+                  }
+                ]
+              }
+            ]
+          ]
+        }
       },
       {
         test: /\.json$/,
