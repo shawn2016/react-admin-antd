@@ -29,3 +29,15 @@ export const getPages = (params = {}) => async dispatch => {
       message.error("网络错误，请重试");
     }
   };
+
+    /**
+   * 保存页面组件信息
+   * **/
+  export const saveActive = (params = {}) => async dispatch => {
+    try {
+      const res = await Fetchapi.newFetch("api/saveactive", params);
+      return res.data;
+    } catch (err) {
+      message.error("网络错误，请重试");
+    }
+  };

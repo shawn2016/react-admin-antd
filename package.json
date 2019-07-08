@@ -31,6 +31,7 @@
     "immutable": "^3.8.2",
     "json-editor": "^0.7.28",
     "lodash": "^4.17.5",
+    "ncp": "^2.0.0",
     "prop-types": "^15.6.0",
     "rc-form": "^2.4.8",
     "react": "^16.2.0",

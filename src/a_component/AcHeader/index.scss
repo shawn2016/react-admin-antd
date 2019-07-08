@@ -2,7 +2,9 @@ $backColor: #d1e3fa;
 .header {
   background-color: #fff;
   padding: 0;
-  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+
+  border-bottom: solid 1px #dadada;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -20,18 +22,8 @@ $backColor: #d1e3fa;
     }
   }
   .rightBox {
-    .userhead {
-      padding: 0 20px;
-      margin-right: 4px;
-      cursor: pointer;
-      font-size: 20px;
-      .username {
-        font-size: 14px;
-        margin-left: 4px;
-      }
-      &:hover {
-        background-color: $backColor;
-      }
+    .editButton {
+      margin-right: 10px;
     }
   }
   .full {

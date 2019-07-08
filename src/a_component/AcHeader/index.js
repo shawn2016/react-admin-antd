@@ -94,6 +94,20 @@ export default class Com extends React.PureComponent {
     }
   };
 
+  updatePage = () => {
+    const page = this.state.page;
+    this._updatePage(page, (err, data) => {
+      if (err) {
+        this.showSnackbar("修改失败");
+      }
+      if (data.retcode === 0) {
+        this.showSnackbar("修改成功");
+      } else {
+        this.showSnackbar("修改失败");
+      }
+    });
+  };
+
   /**
    * 消息窗口显示与隐藏时触发
    * **/
@@ -114,7 +128,7 @@ export default class Com extends React.PureComponent {
     const { notice, message, work } = this.props.newsData;
     console.log("notice:", this.props.newsData);
     return (
-      <Header className={css.header}>
+      <Header className={(css.header)}>
         <Tooltip
           placement="bottom"
           title={this.props.collapsed ? "展开菜单" : "收起菜单"}
@@ -146,227 +160,21 @@ export default class Com extends React.PureComponent {
               />
             </div>
           </Tooltip>
-          <Popover
-            placement="bottomRight"
-            popupClassName={css.headerPopover}
-            onVisibleChange={this.onPopVisible}
-            arrowPointAtCenter={true}
-            content={
-              <Spin spinning={this.props.popLoading} delay={0}>
-                <Tabs className={css.headerTabs}>
-                  <TabPane
-                    tab={
-                      <span>
-                        <Icon type="notification" />
-                        通知({notice.length})
-                      </span>
-                    }
-                    key="1"
-                  >
-                    {notice.length ? (
-                      [
-                        <List
-                          itemLayout="horizontal"
-                          key={0}
-                          dataSource={notice}
-                          renderItem={item => (
-                            <Link to={"/"} className={css.link}>
-                              <List.Item>
-                                <List.Item.Meta
-                                  avatar={
-                                    <Avatar
-                                      icon={item.icon}
-                                      style={{ backgroundColor: item.color }}
-                                    />
-                                  }
-                                  title={item.title}
-                                  description={item.time}
-                                />
-                              </List.Item>
-                            </Link>
-                          )}
-                        />,
-                        <Button
-                          className={css.clear}
-                          size={"large"}
-                          key={1}
-                          loading={this.props.clearLoading}
-                          onClick={() => this.clearNews("notice")}
-                        >
-                          清空通知
-                        </Button>
-                      ]
-                    ) : this.props.popLoading ? null : (
-                      <Nothing />
-                    )}
-                  </TabPane>
-                  <TabPane
-                    tab={
-                      <span>
-                        <Icon type="message" />
-                        消息({message.length})
-                      </span>
-                    }
-                    key="2"
-                  >
-                    {message.length ? (
-                      [
-                        <List
-                          itemLayout="horizontal"
-                          dataSource={message}
-                          key={0}
-                          renderItem={item => (
-                            <Link to={"/"} className={css.link}>
-                              <List.Item>
-                                <List.Item.Meta
-                                  avatar={
-                                    <Avatar
-                                      icon={item.icon}
-                                      style={{ backgroundColor: item.color }}
-                                    />
-                                  }
-                                  title={item.title}
-                                  description={
-                                    <div>
-                                      <div>{item.info}</div>
-                                      <div>{item.time}</div>
-                                    </div>
-                                  }
-                                />
-                              </List.Item>
-                            </Link>
-                          )}
-                        />,
-                        <Button
-                          className={css.clear}
-                          size={"large"}
-                          loading={this.props.clearLoading}
-                          key={1}
-                          onClick={() => this.clearNews("message")}
-                        >
-                          清空消息
-                        </Button>
-                      ]
-                    ) : this.props.popLoading ? null : (
-                      <Nothing />
-                    )}
-                  </TabPane>
-                  <TabPane
-                    tab={
-                      <span>
-                        <Icon type="coffee" />
-                        待办({work.length})
-                      </span>
-                    }
-                    key="3"
-                  >
-                    {work.length ? (
-                      [
-                        <List
-                          itemLayout="horizontal"
-                          key={0}
-                          dataSource={work}
-                          renderItem={item => (
-                            <Link to={"/"} className={css.link}>
-                              <List.Item>
-                                <List.Item.Meta
-                                  title={
-                                    <div
-                                      className={"flex-row flex-jsb flex-ac"}
-                                    >
-                                      <div>{item.title}</div>
-                                      <div>
-                                        <Tag color={item.color}>
-                                          {item.type}
-                                        </Tag>
-                                      </div>
-                                    </div>
-                                  }
-                                  description={item.info}
-                                />
-                              </List.Item>
-                            </Link>
-                          )}
-                        />,
-                        <Button
-                          className={css.clear}
-                          size={"large"}
-                          loading={this.props.clearLoading}
-                          key={1}
-                          onClick={() => this.clearNews("work")}
-                        >
-                          清空待办
-                        </Button>
-                      ]
-                    ) : this.props.popLoading ? null : (
-                      <Nothing />
-                    )}
-                  </TabPane>
-                </Tabs>
-              </Spin>
-            }
-            trigger="click"
-          >
-            <Tooltip
-              placement="bottom"
-              title={`${this.props.newsTotal}条新信息`}
-            >
-              <div className={css.full}>
-                <Badge count={this.props.newsTotal}>
-                  <Icon className={c(css.icon, "flex-none")} type="bell" />
-                </Badge>
-              </div>
-            </Tooltip>
-          </Popover>
-          {u ? (
-            <Dropdown
-              overlay={
-                <Menu
-                  className={css.menu}
-                  selectedKeys={[]}
-                  onClick={this.onMenuClick}
-                >
-                  <Menu.Item>
-                    <a
-                      href="http://nodedai.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon type="global" />
-                      nodedai.com
-                    </a>
-                  </Menu.Item>
-                  <Menu.Item>
-                    <a
-                      href="https://github.com/shawn2016/react-admin-antd"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon type="github" />
-                      GitHub
-                    </a>
-                  </Menu.Item>
-                  <Menu.Divider />
-                  <Menu.Item key="logout">
-                    <Icon type="logout" />
-                    退出登录
-                  </Menu.Item>
-                </Menu>
-              }
-              placement="bottomRight"
-            >
-              <div className={c(css.userhead, "flex-row flex-ac")}>
-                <Icon type="smile-o" />
-                <span className={css.username}>{u.username}</span>
-              </div>
-            </Dropdown>
-          ) : (
-            <Tooltip placement="bottom" title="点击登录">
-              <div className={css.full}>
-                <Link to="/user/login">未登录</Link>
-              </div>
-            </Tooltip>
-          )}
+          <Tooltip placement="bottom" title="预览并保存">
+            <Button className={c(css.editButton, "flex-none")} type="primary">
+              预览
+            </Button>
+          </Tooltip>
+          <Button className={c(css.editButton, "flex-none")} type="primary">
+            保存
+          </Button>
+          <Tooltip placement="bottom" title="退出编辑">
+            <Button
+              className={c(css.editButton, "flex-none")}
+              type="primary"
+              icon="logout"
+            />
+          </Tooltip>
         </div>
       </Header>
     );

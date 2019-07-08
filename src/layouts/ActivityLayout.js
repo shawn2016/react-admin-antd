@@ -49,7 +49,6 @@ const EditActive = Loadable({
   delay: 300
 });
 
-
 // ==================
 // 所需的所有组件
 // ==================
@@ -101,105 +100,7 @@ export default class AppContainer extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      collapsed: false, // 侧边栏是否收起
-      newsData: {
-        // 用户消息数据
-        notice: [],
-        message: [],
-        work: []
-      },
-      newsTotal: 0,
-      popLoading: false, // 用户消息是否正在加载
-      clearLoading: false // 用户消息是否正在清楚
-    };
   }
-
-  componentDidMount() {
-    // 获取当前共有多少条新消息
-    this.props.actions.getNewsTotal().then(res => {
-      if (res.status === 200) {
-        this.setState({
-          newsTotal: res.data
-        });
-      }
-    });
-  }
-  /** 点击切换菜单状态 **/
-  onToggle = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
-  };
-
-  /**
-   * 退出登录
-   * **/
-  onLogout = () => {
-    console.log("触发0？");
-    this.props.actions.onLogout().then(() => {
-      message.success("退出成功");
-      this.props.history.push("/user/login");
-    });
-  };
-
-  /**
-   * 获取用户消息数据
-   * **/
-  getNews = () => {
-    this.setState({
-      popLoading: true
-    });
-    this.props.actions
-      .getNews()
-      .then(res => {
-        if (res.status === 200) {
-          console.log("AAAA:", res, res.data.notice.length);
-          this.setState({
-            newsData: res.data,
-            newsTotal: res.total
-          });
-        }
-        this.setState({
-          popLoading: false
-        });
-      })
-      .catch(() => {
-        this.setState({
-          popLoading: false
-        });
-      });
-  };
-
-  /**
-   * 删除用户消息数据
-   * **/
-  clearNews = type => {
-    this.setState({
-      clearLoading: true
-    });
-    this.props.actions
-      .clearNews({ type })
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({
-            newsData: res.data,
-            newsTotal: res.total
-          });
-          message.success("删除成功");
-        } else {
-          message.success("删除失败");
-        }
-        this.setState({
-          clearLoading: false
-        });
-      })
-      .catch(() => {
-        this.setState({
-          clearLoading: false
-        });
-      });
-  };
 
   /**
    * 工具 - 判断当前用户是否有该路由权限，如果没有就跳转至401页
@@ -232,45 +133,17 @@ export default class AppContainer extends React.Component {
     const u = this.props.userinfo;
 
     return (
-      <Layout className={css.page}>
-        <ActMenu
-          data={this.props.menus}
-          collapsed={this.state.collapsed}
-          location={this.props.location}
+      <Switch>
+        <Redirect exact from="/" to="/home" />
+        <Route exact path="/home" render={props => this.onEnter(Home, props)} />
+        <Route
+          exact
+          path="/activity/editactive"
+          render={props => this.onEnter(EditActive, props)}
         />
-        <Layout>
-          <AcHeader
-            collapsed={this.state.collapsed}
-            userinfo={this.props.userinfo}
-            onToggle={this.onToggle}
-            onLogout={this.onLogout}
-            getNews={this.getNews}
-            clearNews={this.clearNews}
-            newsData={this.state.newsData}
-            newsTotal={this.state.newsTotal}
-            popLoading={this.state.popLoading}
-            clearLoading={this.state.clearLoading}
-          />
-          <Content className={css.content}>
-            <Switch>
-              <Redirect exact from="/" to="/home" />
-              <Route
-                exact
-                path="/home"
-                render={props => this.onEnter(Home, props)}
-              />
-              <Route
-                exact
-                path="/activity/editactive"
-                render={props => this.onEnter(EditActive, props)}
-              />
-              <Route exact path="/nopower" component={NoPower} />
-              <Route render={NotFound} />
-            </Switch>
-          </Content>
-          {/* <Footer /> */}
-        </Layout>
-      </Layout>
+        <Route exact path="/nopower" component={NoPower} />
+        <Route render={NotFound} />
+      </Switch>
     );
   }
 }

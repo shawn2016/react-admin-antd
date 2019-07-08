@@ -12,7 +12,6 @@ const app = express();                      // 实例化express服务
 const DIST_DIR = webpackConfig.output.path;	// webpack配置中设置的文件输出路径，所有文件存放在内存中
 const PORT = 8888;                          // 服务启动端口号
 const compiler = webpack(webpackConfig);	// 实例化webpack
-
 if (env === 'production') {                 // 如果是生产环境，则运行build文件夹中的代码
     app.use(express.static('build'));
     app.get('*', (req, res) => {
@@ -46,6 +45,7 @@ if (env === 'production') {                 // 如果是生产环境，则运行
         });
     });
 }
+// app.use('/api/generate', require('./src/api/generate'));
 
 /** 监听POST请求，返回MOCK模拟数据 **/
 app.post("*", (req, res, next) => {

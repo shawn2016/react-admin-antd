@@ -1,6 +1,6 @@
 const Mock = require("mockjs");
-const apiPagesJson = require("./apiPages.json");
-const apiComponentsJson = require("./apiComponents.json");
+let apiPagesJson = require("./apiPages.json");
+let apiComponentsJson = require("./apiComponents.json");
 //
 // Mock.setup({
 //     timeout: '0-500',
@@ -811,6 +811,11 @@ const addUser = p => {
   users.push(p);
   return { status: 200, data: null, message: "success" };
 };
+// 保存活动
+const saveActive = p => {
+    apiComponentsJson = p
+    return { status: 200, data: null, message: "success" };
+  };
 // 修改用户
 const upUser = p => {
   // const p = JSON.parse(request.body);
@@ -876,6 +881,8 @@ exports.mockApi = (url, params) => {
       };
     case "/api/getcomponents":
       return getComponents(params);
+      case "/api/saveactive":
+      return saveActive(params);
     case "/api/getpages":
       return getPages(params);
     case "/api/getmenus":

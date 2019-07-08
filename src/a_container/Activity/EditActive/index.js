@@ -10,10 +10,36 @@ import classNames from "classnames";
 import { Resizable, ResizableBox } from "react-resizable";
 import { bindActionCreators } from "redux";
 import P from "prop-types";
+import { Link } from "react-router-dom";
 import { createForm } from "rc-form";
-import { Select, Drawer, Button, Tabs, Divider, Form, Input } from "antd";
+import {
+  Select,
+  Drawer,
+  Button,
+  Divider,
+  Form,
+  Input,
+  Row,
+  Col,
+  Layout,
+  Icon,
+  Tooltip,
+  Avatar,
+  Menu,
+  Dropdown,
+  Badge,
+  Popover,
+  Tabs,
+  List,
+  Tag,
+  Spin,
+  message
+} from "antd";
+
+const { Header, Content, Sider } = Layout;
 const { TabPane } = Tabs;
 const { Option } = Select;
+const { SubMenu, Item } = Menu;
 const postPageMessage = page => {
   document.getElementById("pagePreviewIframe").contentWindow.postMessage(
     {
@@ -51,13 +77,20 @@ import ImgLogo from "../../../assets/react-logo.jpg";
 // 本页面所需action
 // ==================
 
-import { getPages, getComponents } from "../../../a_action/act-action";
+import {
+  getPages,
+  getComponents,
+  saveActive
+} from "../../../a_action/act-action";
 import withViewport from "../../../decorators/withViewport";
 @createForm()
 @connect(
   state => ({}),
   dispatch => ({
-    actions: bindActionCreators({ getPages, getComponents }, dispatch)
+    actions: bindActionCreators(
+      { getPages, getComponents, saveActive },
+      dispatch
+    )
   })
 )
 @withViewport
@@ -67,10 +100,13 @@ export default class PageAdminContainer extends React.Component {
     history: P.any,
     actions: P.any
   };
-
   constructor(props) {
     super(props);
     this.state = {
+      sourceData: [], // 菜单数据（层级）
+      treeDom: [], // 生成的菜单结构
+      chosedKey: [], // 当前选中
+      openKeys: [], // 当前需要被展开的项
       deviceWidth: 320,
       deviceHeight: 568,
       page: {
@@ -96,7 +132,8 @@ export default class PageAdminContainer extends React.Component {
       editorValues: null,
 
       publishUrl: "",
-      config: null
+      config: null,
+      collapsed: false
     };
     // props.params.id
     this.getPage(1);
@@ -113,7 +150,98 @@ export default class PageAdminContainer extends React.Component {
       },
       false
     );
+    // this.makeSourceData(this.props.data);
+    // this.nowChosed(this.props.location);
   };
+
+  UNSAFE_componentWillReceiveProps(nextP) {
+    // if (this.props.data !== nextP.data) {
+    //   this.makeSourceData(nextP.data);
+    // }
+    // if (this.props.location !== nextP.location) {
+    //   this.nowChosed(nextP.location);
+    // }
+  }
+
+  /** 处理当前选中 **/
+  nowChosed(location) {
+    const paths = location.pathname.split("/").filter(item => !!item);
+    this.setState({
+      chosedKey: [location.pathname],
+      openKeys: paths.map(item => `/${item}`)
+    });
+  }
+
+  /** 菜单展开和关闭时触发 **/
+  onOpenChange(keys) {
+    this.setState({
+      openKeys: keys
+    });
+  }
+
+  /** 处理原始数据，将原始数据处理为层级关系 **/
+  makeSourceData(data) {
+    const d = _.cloneDeep(data);
+    // 按照sort排序
+    d.sort((a, b) => {
+      return a.sorts - b.sorts;
+    });
+    const sourceData = this.dataToJson(null, d) || [];
+    const treeDom = this.makeTreeDom(sourceData, "");
+    this.setState({
+      sourceData,
+      treeDom
+    });
+  }
+
+  /** 工具 - 递归将扁平数据转换为层级数据 **/
+  dataToJson(one, data) {
+    let kids;
+    if (!one) {
+      // 第1次递归
+      kids = data.filter(item => !item.parent);
+    } else {
+      kids = data.filter(item => item.parent === one.id);
+    }
+    kids.forEach(item => (item.children = this.dataToJson(item, data)));
+    return kids.length ? kids : null;
+  }
+
+  /** 构建树结构 **/
+  makeTreeDom(data, key) {
+    return data.map((item, index) => {
+      const newKey = `${key}/${item.url.replace(/\//, "")}`;
+      console.log("都是些什么啊：", newKey);
+      if (item.children) {
+        return (
+          <SubMenu
+            key={newKey}
+            title={
+              !item.parent && item.icon ? (
+                <span>
+                  <Icon type={item.icon} />
+                  <span>{item.title}</span>
+                </span>
+              ) : (
+                item.title
+              )
+            }
+          >
+            {this.makeTreeDom(item.children, newKey)}
+          </SubMenu>
+        );
+      } else {
+        return (
+          <Item key={newKey}>
+            <Link to={newKey}>
+              {!item.parent && item.icon ? <Icon type={item.icon} /> : null}
+              <span>{item.title}</span>
+            </Link>
+          </Item>
+        );
+      }
+    });
+  }
   getComponents = async () => {
     this.props.actions
       .getComponents()
@@ -140,7 +268,7 @@ export default class PageAdminContainer extends React.Component {
       .catch(() => {});
   };
 
-  showEditComponentDialog = (componentIndex) => {
+  showEditComponentDialog = componentIndex => {
     const component = this.state.page.components[componentIndex];
     this.setState({
       componentIndex: componentIndex,
@@ -170,14 +298,143 @@ export default class PageAdminContainer extends React.Component {
   callback = key => {
     console.log(key);
   };
+  /** 点击切换菜单状态 **/
+  onToggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  };
   inputChange = (event, item, key) => {
     console.log(event.target.value, item, key);
     const component = this.state.page.components[this.state.componentIndex];
     component.config.properties[key].default = event.target.value;
     component.config.props[key] = event.target.value;
-    console.log(component)
+    console.log(component);
     postComponentMessage(this.state.componentIndex, component);
   };
+  updatePage = () => {
+    const page = this.state.page;
+    this._updatePage(page, (err, data) => {
+      if (err) {
+        message.error("修改失败");
+      }
+      if (data.retcode === 0) {
+        message.success("修改成功");
+      } else {
+        message.error("修改失败");
+      }
+    });
+  };
+
+  _updatePage = async (page, callback) => {
+    console.log("updating page: ", page);
+    let clonePage = _.cloneDeep(page);
+    const _id = clonePage._id;
+    // reset component's fileContent to reduce request size
+    clonePage.components.forEach(item => {
+      delete item.fileContent;
+    });
+    this.props.actions.saveActive(clonePage).then(res => {
+      console.log("添加用户返回数据：", res);
+      if (res.status === 200) {
+        message.success("保存成功");
+      } else {
+        message.error(res.message);
+      }
+    });
+  };
+
+  generatePage = async () => {
+    const page = this.state.page;
+    const _id = page._id;
+    const data = {
+      pageId: _id
+    };
+    this.setState({
+      pageGenerating: true
+    });
+    try {
+      const res = await fetch(`/api/generate/`, {
+        method: "post",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      this.setState({
+        pageGenerating: false
+      });
+      const json = await res.json();
+      if (json.retcode === 0) {
+        this.showSnackbar("生成成功");
+        // window.open(`/${page.project}/pages/${page.name}/`);
+      } else {
+        this.showSnackbar("生成失败");
+      }
+    } catch (error) {
+      console.error(error);
+      this.showSnackbar("生成失败");
+    }
+  };
+
+  downloadPage = () => {
+    const id = this.state.page._id;
+    window.open(`/api/download/${id}`);
+  };
+
+  previewPage = () => {
+    this.generatePage();
+    // const page = this.state.page;
+    // window.open(`${page.project}/pages/${page.name}`);
+  };
+  /**
+   * 退出全屏
+   */
+  exitFullScreen = () => {
+    // 判断各种浏览器，找到正确的方法
+    const exitMethod =
+      document.exitFullscreen || //W3C
+      document.mozCancelFullScreen || //Chrome等
+      document.webkitExitFullscreen;
+    if (exitMethod) {
+      exitMethod.call(document);
+    } else if (typeof window.ActiveXObject !== "undefined") {
+      //for Internet Explorer
+      const wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+        wscript.SendKeys("{F11}");
+      }
+    }
+    this.setState({
+      fullScreen: false
+    });
+  };
+  /**
+   * 进入全屏
+   * **/
+  requestFullScreen = () => {
+    const element = document.documentElement;
+    // 判断各种浏览器，找到正确的方法
+    const requestMethod =
+      element.requestFullScreen || //W3C
+      element.webkitRequestFullScreen || //Chrome等
+      element.mozRequestFullScreen || //FireFox
+      element.msRequestFullScreen; //IE11
+    if (requestMethod) {
+      requestMethod.call(element);
+    } else if (typeof window.ActiveXObject !== "undefined") {
+      //for Internet Explorer
+      const wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+        wscript.SendKeys("{F11}");
+      }
+    }
+    this.setState({
+      fullScreen: true
+    });
+  };
+
   render() {
     const {
       deviceHeight,
@@ -185,71 +442,185 @@ export default class PageAdminContainer extends React.Component {
       page,
       showComponentSettings,
       editorSliderValue,
-      config
+      config,
+      pageGenerating
     } = this.state;
     console.log(config);
     const { getFieldDecorator } = this.props.form;
     return (
-      <div className={classNames(css.home)}>
-        <div className={classNames(css.leftActivity)}>
-          <Select
-            defaultValue="320*568"
-            style={{ width: 120 }}
-            onChange={this.handleChangeDevice}
+      <Spin
+        size="large"
+        spinning={pageGenerating}
+        tip="页面生成中..."
+        delay={500}
+      >
+        <Layout className={css.page}>
+          {/* <ActMenu
+          data={this.props.menus}
+          collapsed={this.state.collapsed}
+          location={this.props.location}
+        /> */}
+          <Sider
+            theme="light"
+            width={120}
+            className={css.sider}
+            trigger={null}
+            collapsible
+            collapsed={this.state.collapsed}
           >
-            <Option value="320*480">iPhone4</Option>
-            <Option value="320*568">iPhone5</Option>
-            <Option value="375*627">iPhone6</Option>
-            <Option value="414*736">iPhone6S</Option>
-          </Select>
-          <div>
-            {deviceWidth}*{deviceHeight}
-          </div>
-          <Resizable
-            onResize={this.handleResize}
-            height={deviceHeight}
-            width={deviceWidth}
-          >
-            <div
-              style={{
-                height: deviceHeight,
-                width: deviceWidth
-              }}
+            {/* <div
+          className={
+            this.props.collapsed ? c(css.menuLogo, css.hide) : css.menuLogo
+          }
+        >
+          <Link to="/">
+            <img src={ImgLogo} />
+            <div>React-Admin</div>
+          </Link>
+        </div> */}
+            <Menu
+              theme="light"
+              mode="inline"
+              selectedKeys={this.state.chosedKey}
+              {...(this.props.collapsed
+                ? {}
+                : { openKeys: this.state.openKeys })}
+              onOpenChange={e => this.onOpenChange(e)}
             >
-              <iframe
-                id="pagePreviewIframe"
-                className={css.previewIframe}
-                style={{
-                  width: deviceWidth - 20,
-                  height: deviceHeight - 20
-                }}
-                src={`/#/iframe/previewactive/${page._id}`}
-                frameBorder="0"
-              />
-            </div>
-          </Resizable>
-        </div>
-        <div className={classNames(css.rightActivity)}>
-          <Tabs onChange={this.callback} type="card">
-            <TabPane tab="基础设置" key="1">
-              <div className={classNames(css.TabPaneItem)}>
-                <Divider orientation="left">基本选项</Divider>
-                <Form>
-                  {config &&
-                    Object.keys(config).map((key, index) => {
-                      return (
-                        <Form.Item key={index} label={config[key].title}>
-                          <Input
-                            onChange={e => {
-                              this.inputChange(e, config[key], key);
-                            }}
-                            defaultValue={config[key].default}
-                          />
-                        </Form.Item>
-                      );
-                    })}
+              {this.state.treeDom}
+            </Menu>
+          </Sider>
+          <Layout>
+            <Header className={classNames(css.header)}>
+              <Tooltip
+                placement="bottom"
+                title={this.state.collapsed ? "展开菜单" : "收起菜单"}
+              >
+                <Icon
+                  className={classNames(
+                    css.trigger,
+                    { [css.fold]: !this.state.collapsed },
+                    "flex-none"
+                  )}
+                  type={"menu-unfold"}
+                  onClick={this.onToggle}
+                />
+              </Tooltip>
+              <div
+                className={classNames(
+                  css.rightBox,
+                  "flex-auto flex-row flex-je flex-ac"
+                )}
+              >
+                <Tooltip
+                  placement="bottom"
+                  title={this.state.fullScreen ? "退出全屏" : "全屏"}
+                >
+                  <div className={css.full}>
+                    <Icon
+                      className={classNames(css.icon, "flex-none")}
+                      type={this.state.fullScreen ? "shrink" : "arrows-alt"}
+                      onClick={
+                        this.state.fullScreen
+                          ? this.exitFullScreen
+                          : this.requestFullScreen
+                      }
+                    />
+                  </div>
+                </Tooltip>
+                <Tooltip placement="bottom" title="预览并保存">
+                  <Button
+                    onClick={this.previewPage}
+                    className={classNames(css.editButton, "flex-none")}
+                    type="primary"
+                  >
+                    预览
+                  </Button>
+                </Tooltip>
+                <Button
+                  onClick={this.updatePage}
+                  className={classNames(css.editButton, "flex-none")}
+                  type="primary"
+                >
+                  保存
+                </Button>
+                <Tooltip placement="bottom" title="退出编辑">
+                  <Button
+                    className={classNames(css.editButton, "flex-none")}
+                    type="primary"
+                    icon="logout"
+                  />
+                </Tooltip>
+              </div>
+            </Header>
+            <Content className={css.content}>
+              <div className={classNames(css.home)}>
+                <div className={classNames(css.leftActivity)}>
+                  <Row>
+                    <Col span={8}>
+                      <Select
+                        defaultValue="320*568"
+                        style={{ width: 120 }}
+                        onChange={this.handleChangeDevice}
+                      >
+                        <Option value="320*480">iPhone4</Option>
+                        <Option value="320*568">iPhone5</Option>
+                        <Option value="375*627">iPhone6</Option>
+                        <Option value="414*736">iPhone6S</Option>
+                      </Select>
+                    </Col>
+                    <Col span={8} style={{ lineHeight: 2.4 }}>
+                      {deviceWidth}*{deviceHeight}
+                    </Col>
+                  </Row>
+                  <Resizable
+                    onResize={this.handleResize}
+                    height={deviceHeight}
+                    width={deviceWidth}
+                  >
+                    <div
+                      style={{
+                        height: deviceHeight,
+                        width: deviceWidth
+                      }}
+                    >
+                      <iframe
+                        id="pagePreviewIframe"
+                        className={css.previewIframe}
+                        style={{
+                          width: deviceWidth - 20,
+                          height: deviceHeight - 20
+                        }}
+                        src={`/#/iframe/previewactive/${page._id}`}
+                        frameBorder="0"
+                      />
+                    </div>
+                  </Resizable>
+                </div>
+                <div className={classNames(css.rightActivity)}>
+                  <Tabs tabBarGutter={3} onChange={this.callback}>
+                    <TabPane tab="基础设置" key="1">
+                      <div className={classNames(css.TabPaneItem)}>
+                        <Divider orientation="left">基本选项</Divider>
+                        <Form>
+                          {config &&
+                            Object.keys(config).map((key, index) => {
+                              return (
+                                <Form.Item
+                                  key={index}
+                                  label={config[key].title}
+                                >
+                                  <Input
+                                    onChange={e => {
+                                      this.inputChange(e, config[key], key);
+                                    }}
+                                    defaultValue={config[key].default}
+                                  />
+                                </Form.Item>
+                              );
+                            })}
 
-                  {/* <Form.Item
+                          {/* <Form.Item
                     wrapperCol={{
                       xs: { span: 24, offset: 0 },
                       sm: { span: 16, offset: 8 }
@@ -259,21 +630,26 @@ export default class PageAdminContainer extends React.Component {
                       Submit
                     </Button>
                   </Form.Item> */}
-                </Form>
+                        </Form>
+                      </div>
+                    </TabPane>
+                    <TabPane tab="派奖方式" key="2">
+                      Content of Tab Pane 2
+                    </TabPane>
+                    <TabPane tab="奖项设置" key="3">
+                      Content of Tab Pane 3
+                    </TabPane>
+                    <TabPane tab="高级设置" key="4">
+                      Content of Tab Pane 4
+                    </TabPane>
+                  </Tabs>
+                </div>
               </div>
-            </TabPane>
-            <TabPane tab="派奖方式" key="2">
-              Content of Tab Pane 2
-            </TabPane>
-            <TabPane tab="奖项设置" key="3">
-              Content of Tab Pane 3
-            </TabPane>
-            <TabPane tab="高级设置" key="4">
-              Content of Tab Pane 4
-            </TabPane>
-          </Tabs>
-        </div>
-      </div>
+            </Content>
+            {/* <Footer /> */}
+          </Layout>
+        </Layout>
+      </Spin>
     );
   }
 }
