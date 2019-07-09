@@ -49,12 +49,11 @@ const EditActive = Loadable({
   delay: 300
 });
 
+
 // ==================
 // 所需的所有组件
 // ==================
 import { Layout, message } from "antd";
-import AcHeader from "../a_component/AcHeader";
-import ActMenu from "../a_component/ActMenu";
 import Footer from "../a_component/Footer";
 import Bread from "../a_component/Bread";
 import css from "./ActivityLayout.scss";
@@ -138,8 +137,8 @@ export default class AppContainer extends React.Component {
         <Route exact path="/home" render={props => this.onEnter(Home, props)} />
         <Route
           exact
-          path="/activity/editactive"
-          render={props => this.onEnter(EditActive, props)}
+          path="/activity/editactive/:id"
+          component={EditActive}
         />
         <Route exact path="/nopower" component={NoPower} />
         <Route render={NotFound} />

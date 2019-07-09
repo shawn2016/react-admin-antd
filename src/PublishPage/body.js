@@ -5,7 +5,6 @@ const newKey = () => {
   return key;
 };
 
-
 class Page extends Component {
   render() {
     const components = this.props.page.components;

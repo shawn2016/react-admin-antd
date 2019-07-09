@@ -6,6 +6,7 @@
       "_id": "5d1d4261efb17605f11bb0cb",
       "project": "buluo",
       "name": "DownloadPage",
+      "desc": "下载页面",
       "config": {
         "properties": {
           "iOSUrl": { "title": "iOS 下载文案", "type": "string" },

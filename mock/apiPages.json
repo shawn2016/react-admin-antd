@@ -53,6 +53,17 @@
           }
         },
         "script": { "type": "string", "title": "内联脚本" }
+      },
+      "props": {
+        "title": "",
+        "description": "",
+        "keywords": [],
+        "author": "",
+        "metas": [{ "name": "name", "type": "", "content": "" }],
+        "links": [],
+        "style": "",
+        "scripts": [],
+        "script": ""
       }
     },
     "components": [

@@ -4,7 +4,7 @@ import { Router } from "express";
 // import Page from "../models/page";
 import Html from "../PublishPage/html";
 import fs from "../util/fs";
-import PageData from "../../mock/apiPages.json";
+import PageData from "../../mock/pages.json";
 import  compile from "../util/compile";
 const router = new Router();
 
@@ -39,7 +39,8 @@ router.post("/", async (req, res, next) => {
     const destHtml = data.outputPath + "/index.html";
     await fs.writeFile(destHtml, htmlString);
     res.status(200).send({
-      retcode: 0
+      retcode: 0,
+      page,
     });
   } catch (err) {
     next(err);

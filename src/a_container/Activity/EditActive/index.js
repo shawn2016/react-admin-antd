@@ -135,8 +135,8 @@ export default class PageAdminContainer extends React.Component {
       config: null,
       collapsed: false
     };
-    // props.params.id
-    this.getPage(1);
+    console.log(props, "----------");
+    this.getPage(props.match.params.id);
     this.getComponents();
   }
   componentDidMount = () => {
@@ -248,8 +248,8 @@ export default class PageAdminContainer extends React.Component {
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            components: json.data.components,
-            component: json.data.components[0]
+            components: res.data.components,
+            component: res.data.components[0]
           });
         }
       })
@@ -434,6 +434,9 @@ export default class PageAdminContainer extends React.Component {
       fullScreen: true
     });
   };
+  exit = () => {
+    this.props.history.goBack();
+  };
 
   render() {
     const {
@@ -546,9 +549,10 @@ export default class PageAdminContainer extends React.Component {
                 </Button>
                 <Tooltip placement="bottom" title="退出编辑">
                   <Button
+                    onClick={this.exit}
                     className={classNames(css.editButton, "flex-none")}
                     type="primary"
-                    icon="logout"
+                    icon="poweroff"
                   />
                 </Tooltip>
               </div>

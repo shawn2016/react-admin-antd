@@ -66,6 +66,12 @@ const UserAdmin = Loadable({
   LoadingComponent,
   delay: 300
 });
+const TemplateActive = Loadable({
+  loader: () => import("../a_container/Activity/TemplateActive"),
+  loading: Loading,
+  LoadingComponent,
+  delay: 300
+});
 // ==================
 // 所需的所有组件
 // ==================
@@ -106,14 +112,14 @@ const { Content } = Layout;
   })
 )
 export default class AppContainer extends React.Component {
-//   static propTypes = {
-//     location: P.any,
-//     history: P.any,
-//     actions: P.any,
-//     powers: P.array,
-//     userinfo: P.any,
-//     menus: P.array
-//   };
+  //   static propTypes = {
+  //     location: P.any,
+  //     history: P.any,
+  //     actions: P.any,
+  //     powers: P.array,
+  //     userinfo: P.any,
+  //     menus: P.array
+  //   };
 
   constructor(props) {
     super(props);
@@ -285,6 +291,11 @@ export default class AppContainer extends React.Component {
                 exact
                 path="/system/poweradmin"
                 render={props => this.onEnter(PowerAdmin, props)}
+              />
+              <Route
+                exact
+                path="/system/templateactive"
+                render={props => this.onEnter(TemplateActive, props)}
               />
               <Route
                 exact

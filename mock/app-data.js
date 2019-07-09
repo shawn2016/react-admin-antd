@@ -1,6 +1,7 @@
 const Mock = require("mockjs");
 let apiPagesJson = require("./apiPages.json");
 let apiComponentsJson = require("./apiComponents.json");
+let comlist = require("./comlist.json");
 //
 // Mock.setup({
 //     timeout: '0-500',
@@ -178,6 +179,16 @@ const menus = [
     url: "/editactive",
     parent: 8,
     desc: "活动管理/活动编辑",
+    sorts: 4,
+    conditions: 1
+  },
+  {
+    id: 11,
+    title: "活动模板",
+    icon: "appstore",
+    url: "/templateactive",
+    parent: 2,
+    desc: "活动管理/活动模板",
     sorts: 4,
     conditions: 1
   },
@@ -462,6 +473,7 @@ const roles = [
       { menuId: 6, powers: [14, 15, 16, 17] },
       { menuId: 7, powers: [19, 20, 21, 22] },
       { menuId: 9, powers: [23, 24, 25, 26] },
+      { menuId: 11, powers: [] },
       { menuId: 8, powers: [] },
       { menuId: 10, powers: [] }
     ]
@@ -813,9 +825,9 @@ const addUser = p => {
 };
 // 保存活动
 const saveActive = p => {
-    apiComponentsJson = p
-    return { status: 200, data: null, message: "success" };
-  };
+  apiComponentsJson = p;
+  return { status: 200, data: null, message: "success" };
+};
 // 修改用户
 const upUser = p => {
   // const p = JSON.parse(request.body);
@@ -881,7 +893,7 @@ exports.mockApi = (url, params) => {
       };
     case "/api/getcomponents":
       return getComponents(params);
-      case "/api/saveactive":
+    case "/api/saveactive":
       return saveActive(params);
     case "/api/getpages":
       return getPages(params);

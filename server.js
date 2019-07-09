@@ -47,7 +47,7 @@ if (env === 'production') {                 // 如果是生产环境，则运行
     });
 }
 app.use('/api/generate', require('./src/api/generate'));
-
+server.use('/api/sync', require('./src/api/sync'));
 /** 监听POST请求，返回MOCK模拟数据 **/
 app.post("*", (req, res, next) => {
     const result = mock.mockApi(req.originalUrl, req.body);

@@ -1,0 +1,178 @@
+{
+  "retcode": 0,
+  "title": "组件列表",
+  "components": [
+    {
+      "_id": "5d1d4261efb17605f11bb0cb",
+      "project": "buluo",
+      "name": "DownloadPage",
+      "config": {
+        "properties": {
+          "iOSUrl": { "title": "iOS 下载文案", "type": "string" },
+          "iOSText": { "title": "iOS 下载文案", "type": "string" },
+          "androidUrl": { "title": "Android 下载地址", "type": "string" },
+          "androidText": { "title": "Android 下载文案", "type": "string" },
+          "btnBackgroundColor": { "title": "按钮背景颜色", "type": "string" },
+          "backgroundColor": { "title": "页面背景颜色", "type": "string" },
+          "logo": { "title": "Logo 地址", "type": "string" }
+        },
+        "props": {
+          "iOSUrl": "http://laispace.com",
+          "iOSText": "iPhone 下载",
+          "androidUrl": "http://laispace.com",
+          "androidText": "Android 下载",
+          "btnBackgroundColor": "#000",
+          "backgroundColor": "#fae100",
+          "logo": "http://pub.idqqimg.com/qqun/xiaoqu/mobile/img/app-logo-with-text.png"
+        },
+        "main": "./Main.js",
+        "private": true,
+        "version": "0.0.0",
+        "description": "下载页面"
+      },
+      "__v": 0
+    },
+    {
+      "_id": "5d22adc032d4387291267479",
+      "project": "buluo",
+      "name": "Collection",
+      "config": {
+        "properties": {
+          "collections": {
+            "items": {
+              "properties": {
+                "bids": {
+                  "items": {
+                    "properties": {
+                      "pic_url": {
+                        "default": "http://p.qlogo.cn/gbar_heads/Q3auHgzwzM7tURZN9nM1jR8GUTmj1gicic7rqrKJoJnjqjGysKPnVHiaQ/",
+                        "description": "头像地址",
+                        "type": "string"
+                      },
+                      "bid": {
+                        "default": 206624,
+                        "description": "部落 id",
+                        "type": "number"
+                      },
+                      "name": {
+                        "default": "萌娘百科",
+                        "description": "名字",
+                        "type": "string"
+                      }
+                    },
+                    "title": "部落",
+                    "type": "object"
+                  },
+                  "format": "table",
+                  "title": "部落列表",
+                  "type": "array"
+                },
+                "title": {
+                  "default": "收藏集",
+                  "description": "名字",
+                  "type": "string"
+                }
+              },
+              "title": "收藏集",
+              "type": "object"
+            },
+            "title": "收藏集列表",
+            "type": "array"
+          }
+        },
+        "props": {
+          "collections": [
+            {
+              "bids": [
+                {
+                  "pic_url": "http://p.qlogo.cn/gbar_heads/Q3auHgzwzM7tURZN9nM1jR8GUTmj1gicic7rqrKJoJnjqjGysKPnVHiaQ/",
+                  "bid": 206624,
+                  "name": "萌娘百科"
+                },
+                {
+                  "pic_url": "http://p.qlogo.cn/gbar_heads/Q3auHgzwzM6DpULhv75miaCJGoWbiadsuWu3Bic6SjrUkNuSLMticDib4Pg/",
+                  "bid": 211754,
+                  "name": "诱宵美九"
+                },
+                {
+                  "pic_url": "http://p.qlogo.cn/gbar_heads/Q3auHgzwzM4mlxIicO46qqRa7icb3I4XYnWvPSypYH73p3mMmMXJaBSg/",
+                  "bid": 11464,
+                  "name": "爱漫画"
+                },
+                {
+                  "pic_url": "http://p.qpic.cn/qqconadmin/0/9a6bc9325c864c72a4c7bc4c8dd75838/0",
+                  "bid": 10196,
+                  "name": "柯南"
+                },
+                {
+                  "pic_url": "http://p.qpic.cn/qqconadmin/0/a6ee75a998d6488fae657dc5c6ad6f4c/0",
+                  "bid": 16569,
+                  "name": "ACG绘画"
+                },
+                {
+                  "pic_url": "http://p.qlogo.cn/gbar_heads/Q3auHgzwzM7b4MAe2CG1opb4PeYOS6GysLF38NZD1vXlw9BZn4NolA/",
+                  "bid": 272114,
+                  "name": "二次元马戏团"
+                }
+              ],
+              "title": "二次元空间"
+            }
+          ]
+        },
+        "main": "./Main.js",
+        "private": true,
+        "version": "0.0.0",
+        "description": "横向轮播"
+      },
+      "__v": 0
+    },
+    {
+      "_id": "5d22b7d032d438729126747a",
+      "project": "common",
+      "name": "Carousel",
+      "config": {
+        "license": "MIT",
+        "author": "laispace",
+        "keywords": ["react", "pager", "carousel", "slide", "slick"],
+        "scripts": { "test": "echo \"Error: no test specified\" && exit 1" },
+        "properties": {
+          "imgs": {
+            "items": {
+              "properties": {
+                "src": {
+                  "default": "http://pub.idqqimg.com/qqun/xiaoqu/mobile/huodong/buluo/bls11/img/5ELSGRDyF9CEn0sEE497SwD2.jpg",
+                  "description": "图片地址",
+                  "type": "string"
+                },
+                "link": {
+                  "default": "http://qq.com/",
+                  "description": "点击图片的跳转链接",
+                  "type": "string"
+                }
+              },
+              "title": "图片",
+              "type": "object"
+            },
+            "format": "table",
+            "title": "图片列表",
+            "type": "array"
+          }
+        },
+        "props": {
+          "imgs": [
+            {
+              "src": "http://pub.idqqimg.com/qqun/xiaoqu/mobile/huodong/buluo/bls11/img/5ELSGRDyF9CEn0sEE497SwD2.jpg",
+              "link": "http://11.332.com"
+            }
+          ]
+        },
+        "main": "./Main.js",
+        "private": true,
+        "version": "0.0.0",
+        "description": "图片跳转",
+        "name": "pager-common-carousel"
+      },
+      "__v": 0
+    }
+  ]
+}
