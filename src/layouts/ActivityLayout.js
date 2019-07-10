@@ -36,7 +36,7 @@ const NoPower = Loadable({
   delay: 300
 });
 const Home = Loadable({
-  loader: () => import("../a_container/home"),
+  loader: () => import("../a_container/home/home_page"),
   loading: Loading,
   LoadingComponent,
   delay: 300

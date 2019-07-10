@@ -8,7 +8,7 @@ import React from "react";
 import P from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import tools from "../../util/tools";
+import tools from "../../../util/tools";
 import c from "classnames";
 import css from "./index.scss";
 // ==================
@@ -16,19 +16,19 @@ import css from "./index.scss";
 // ==================
 import Vcode from "react-vcode";
 import { Form, Input, Button, Icon, Checkbox, message } from "antd";
-import CanvasBack from "../../a_component/CanvasBack";
-import LogoImg from "../../assets/logo.png";
+import CanvasBack from "../../../a_component/CanvasBack";
+import LogoImg from "../../../assets/logo.png";
 
 // ==================
 // 本页面所需action
 // ==================
 
-import { onLogin, setUserInfo } from "../../a_action/app-action";
+import { onLogin, setUserInfo } from "../../../a_action/app-action";
 import {
   getRoleById,
   getPowerById,
   getMenusById
-} from "../../a_action/sys-action";
+} from "../../../a_action/sys-action";
 // ==================
 // Definition
 // ==================
@@ -116,7 +116,7 @@ export default class LoginContainer extends React.Component {
               tools.compile(JSON.stringify(res.data))
             );
             this.props.actions.setUserInfo(res.data);
-            setTimeout(() => this.props.history.replace("/")); // 跳转到主页,用setTimeout是为了等待上一句设置用户信息完成
+            setTimeout(() => this.props.history.replace("/home/home_page")); // 跳转到主页,用setTimeout是为了等待上一句设置用户信息完成
           } else {
             message.error(res.message);
             this.setState({ loading: false });

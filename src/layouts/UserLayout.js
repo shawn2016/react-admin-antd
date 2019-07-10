@@ -32,7 +32,7 @@ const Loading = ({ error }) => {
     delay: 300
   });
   const Login = Loadable({
-    loader: () => import("../a_container/Login"),
+    loader: () => import("../a_container/Login/Login"),
     loading: Loading,
     LoadingComponent,
     delay: 300

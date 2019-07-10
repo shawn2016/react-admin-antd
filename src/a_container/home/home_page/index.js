@@ -7,7 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import tools from '../../util/tools';
+import tools from '../../../util/tools';
 import { bindActionCreators } from 'redux';
 import P from 'prop-types';
 
@@ -16,13 +16,13 @@ import P from 'prop-types';
 // ==================
 
 import css from './index.scss';
-import ImgLogo from '../../assets/react-logo.jpg';
+import ImgLogo from '../../../assets/react-logo.jpg';
 
 // ==================
 // 本页面所需action
 // ==================
 
-import { test } from '../../a_action/app-action';
+import { test } from '../../../a_action/app-action';
 
 
 @connect(
