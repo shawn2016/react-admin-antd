@@ -6,10 +6,10 @@ import { connect } from "react-redux";
 // 所需的所有组件
 // ==================
 import { Layout, message } from "antd";
-// import Header from "../../../a_component/Header";
-// import Menu from "../../../a_component/Menu";
-// import Footer from "../../../a_component/Footer";
-// import Bread from "../../../a_component/Bread";
+import Header from "../../../a_component/Header";
+import Menu from "../../../a_component/Menu";
+import Footer from "../../../a_component/Footer";
+import Bread from "../../../a_component/Bread";
 import ErrPage from "../err_page";
 import css from "./index.scss";
 
@@ -77,11 +77,13 @@ export default class router_Page extends PureComponent {
           route = Routers[i];
         }
       }
+
       if (route) {
         let component = await route.component();
+        console.log(route, "route");
         this.setState({
           showPage: true,
-          route: { ...route },
+          route,
           component: React.createElement(component.default, {
             match,
             history,
@@ -138,7 +140,7 @@ export default class router_Page extends PureComponent {
     console.log("触发0？");
     this.props.actions.onLogout().then(() => {
       message.success("退出成功");
-      this.props.history.push("/user/login");
+      this.props.history.push("/");
     });
   };
 
@@ -200,32 +202,37 @@ export default class router_Page extends PureComponent {
       });
   };
   render() {
-    const { showPage = false, component } = this.state;
+    const { showPage = false, component, route } = this.state;
+    const { menuChild } = route;
     return showPage ? (
-      <Layout className={css.page}>
-        {/* <Menu
-          data={this.props.menus}
-          collapsed={this.state.collapsed}
-          location={this.props.location}
-        /> */}
-        <Layout>
-          {/* <Header
+      menuChild ? (
+        <div>{component}</div>
+      ) : (
+        <Layout className={css.page}>
+          <Menu
+            data={this.props.menus}
             collapsed={this.state.collapsed}
-            userinfo={this.props.userinfo}
-            onToggle={this.onToggle}
-            onLogout={this.onLogout}
-            getNews={this.getNews}
-            clearNews={this.clearNews}
-            newsData={this.state.newsData}
-            newsTotal={this.state.newsTotal}
-            popLoading={this.state.popLoading}
-            clearLoading={this.state.clearLoading}
-          /> */}
-          {/* <Bread menus={this.props.menus} location={this.props.location} /> */}
-          <Content className={css.content}>{component}</Content>
-          {/* <Footer /> */}
+            location={this.props.location}
+          />
+          <Layout>
+            <Header
+              collapsed={this.state.collapsed}
+              userinfo={this.props.userinfo}
+              onToggle={this.onToggle}
+              onLogout={this.onLogout}
+              getNews={this.getNews}
+              clearNews={this.clearNews}
+              newsData={this.state.newsData}
+              newsTotal={this.state.newsTotal}
+              popLoading={this.state.popLoading}
+              clearLoading={this.state.clearLoading}
+            />
+            <Bread menus={this.props.menus} location={this.props.location} />
+            <Content className={css.content}>{component}</Content>
+            <Footer />
+          </Layout>
         </Layout>
-      </Layout>
+      )
     ) : null;
   }
 }

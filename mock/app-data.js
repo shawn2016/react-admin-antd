@@ -108,7 +108,7 @@ const menus = [
     icon: "home",
     url: "/home/home_page",
     parent: null,
-    desc: "首页",
+    desc: "首页概览",
     sorts: 0,
     conditions: 1
   },
@@ -116,122 +116,142 @@ const menus = [
     id: 2,
     title: "活动模板",
     icon: "home",
-    url: "/activity/templateactive_page",
+    url: "/activity/templateactivity_page",
     parent: null,
-    desc: "活动模板",
+    desc: "活动管理/活动模板",
     sorts: 0,
     conditions: 1
   },
-//   {
-//     id: 2,
-//     title: "系统管理",
-//     icon: "setting",
-//     url: "/system",
-//     parent: null,
-//     desc: "系统管理目录分支",
-//     sorts: 1,
-//     conditions: 1
-//   },
-//   {
-//     id: 3,
-//     title: "用户管理",
-//     icon: "user",
-//     url: "/useradmin",
-//     parent: 2,
-//     desc: "系统管理/用户管理",
-//     sorts: 0,
-//     conditions: 1
-//   },
-//   {
-//     id: 4,
-//     title: "角色管理",
-//     icon: "team",
-//     url: "/roleadmin",
-//     parent: 2,
-//     desc: "系统管理/角色管理",
-//     sorts: 1,
-//     conditions: 1
-//   },
-//   {
-//     id: 5,
-//     title: "权限管理",
-//     icon: "coffee",
-//     url: "/poweradmin",
-//     parent: 2,
-//     desc: "系统管理/权限管理",
-//     sorts: 2,
-//     conditions: 1
-//   },
-//   {
-//     id: 6,
-//     title: "菜单管理",
-//     icon: "appstore",
-//     url: "/menuadmin",
-//     parent: 2,
-//     desc: "系统管理/菜单管理",
-//     sorts: 3,
-//     conditions: 1
-//   },
-//   {
-//     id: 8,
-//     title: "活动管理",
-//     icon: "setting",
-//     url: "/activity",
-//     parent: null,
-//     desc: "活动管理目录分支",
-//     sorts: 1,
-//     conditions: 1
-//   },
-//   {
-//     id: 7,
-//     title: "活动编辑",
-//     icon: "appstore",
-//     url: "/editactive_page",
-//     parent: 8,
-//     desc: "活动管理/活动编辑",
-//     sorts: 4,
-//     conditions: 1
-//   },
-//   {
-//     id: 11,
-//     title: "活动模板",
-//     icon: "appstore",
-//     url: "/templateactive_page",
-//     parent: 2,
-//     desc: "活动管理/活动模板",
-//     sorts: 4,
-//     conditions: 1
-//   },
-//   {
-//     id: 12,
-//     title: "项目管理",
-//     icon: "appstore",
-//     url: "/projectmng_page",
-//     parent: 2,
-//     desc: "活动管理/项目",
-//     sorts: 4,
-//     conditions: 1
-//   },
-//   {
-//     id: 10,
-//     title: "页面嵌套",
-//     icon: "appstore",
-//     url: "/iframe",
-//     parent: null,
-//     desc: "页面嵌套目录分支",
-//     sorts: 4,
-//     conditions: 1
-//   },
-//   {
-//     id: 9,
-//     title: "活动预览",
-//     icon: "appstore",
-//     url: "/previewactive_page",
-//     parent: 10,
-//     desc: "页面嵌套/活动预览",
-//     sorts: 4,
-//     conditions: 1
-//   }
+  {
+    id: 3,
+    title: "活动编辑",
+    icon: "appstore",
+    url: "/activity/editactivity_page",
+    parent: null,
+    desc: "活动管理/活动编辑",
+    sorts: 4,
+    conditions: 1
+  },
+  {
+    id: 4,
+    title: "我的活动",
+    icon: "appstore",
+    url: "/activity/myactivity_page",
+    parent: null,
+    desc: "活动管理/我的活动",
+    sorts: 4,
+    conditions: 1
+  },
+  {
+    id: 5,
+    title: "活动预览",
+    icon: "appstore",
+    url: "/activity/previewactivity_page",
+    parent: null,
+    desc: "活动管理/活动预览",
+    sorts: 4,
+    conditions: 1
+  }
+  //   {
+  //     id: 2,
+  //     title: "系统管理",
+  //     icon: "setting",
+  //     url: "/system",
+  //     parent: null,
+  //     desc: "系统管理目录分支",
+  //     sorts: 1,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "用户管理",
+  //     icon: "user",
+  //     url: "/useradmin",
+  //     parent: 2,
+  //     desc: "系统管理/用户管理",
+  //     sorts: 0,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 4,
+  //     title: "角色管理",
+  //     icon: "team",
+  //     url: "/roleadmin",
+  //     parent: 2,
+  //     desc: "系统管理/角色管理",
+  //     sorts: 1,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 5,
+  //     title: "权限管理",
+  //     icon: "coffee",
+  //     url: "/poweradmin",
+  //     parent: 2,
+  //     desc: "系统管理/权限管理",
+  //     sorts: 2,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 6,
+  //     title: "菜单管理",
+  //     icon: "appstore",
+  //     url: "/menuadmin",
+  //     parent: 2,
+  //     desc: "系统管理/菜单管理",
+  //     sorts: 3,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 8,
+  //     title: "活动管理",
+  //     icon: "setting",
+  //     url: "/activity",
+  //     parent: null,
+  //     desc: "活动管理目录分支",
+  //     sorts: 1,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 11,
+  //     title: "活动模板",
+  //     icon: "appstore",
+  //     url: "/templateactivity_page",
+  //     parent: 2,
+  //     desc: "活动管理/活动模板",
+  //     sorts: 4,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 12,
+  //     title: "项目管理",
+  //     icon: "appstore",
+  //     url: "/projectmng_page",
+  //     parent: 2,
+  //     desc: "活动管理/项目",
+  //     sorts: 4,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 10,
+  //     title: "页面嵌套",
+  //     icon: "appstore",
+  //     url: "/iframe",
+  //     parent: null,
+  //     desc: "页面嵌套目录分支",
+  //     sorts: 4,
+  //     conditions: 1
+  //   },
+  //   {
+  //     id: 9,
+  //     title: "活动预览",
+  //     icon: "appstore",
+  //     url: "/previewactivity_page",
+  //     parent: 10,
+  //     desc: "页面嵌套/活动预览",
+  //     sorts: 4,
+  //     conditions: 1
+  //   }
 ];
 
 // 所有的权限数据
@@ -486,17 +506,17 @@ const roles = [
     conditions: 1,
     powers: [
       { menuId: 1, powers: [] },
-      { menuId: 2, powers: [] },
-    //   { menuId: 3, powers: [1, 2, 3, 4, 5] },
-    //   { menuId: 4, powers: [6, 7, 8, 9, 18] },
-    //   { menuId: 5, powers: [10, 11, 12, 13] },
-    //   { menuId: 6, powers: [14, 15, 16, 17] },
-    //   { menuId: 7, powers: [19, 20, 21, 22] },
-    //   { menuId: 9, powers: [23, 24, 25, 26] },
-    //   { menuId: 11, powers: [] },
-    //   { menuId: 8, powers: [] },
-    //   { menuId: 10, powers: [] },
-    //   { menuId: 12, powers: [] }
+      { menuId: 2, powers: [] }
+      //   { menuId: 3, powers: [1, 2, 3, 4, 5] },
+      //   { menuId: 4, powers: [6, 7, 8, 9, 18] },
+      //   { menuId: 5, powers: [10, 11, 12, 13] },
+      //   { menuId: 6, powers: [14, 15, 16, 17] },
+      //   { menuId: 7, powers: [19, 20, 21, 22] },
+      //   { menuId: 9, powers: [23, 24, 25, 26] },
+      //   { menuId: 11, powers: [] },
+      //   { menuId: 8, powers: [] },
+      //   { menuId: 10, powers: [] },
+      //   { menuId: 12, powers: [] }
     ]
   },
   {
@@ -845,7 +865,7 @@ const addUser = p => {
   return { status: 200, data: null, message: "success" };
 };
 // 保存活动
-const saveActive = p => {
+const saveactivity = p => {
   apiComponentsJson = p;
   return { status: 200, data: null, message: "success" };
 };
@@ -914,8 +934,8 @@ exports.mockApi = (url, params) => {
       };
     case "/api/getcomponents":
       return getComponents(params);
-    case "/api/saveactive":
-      return saveActive(params);
+    case "/api/saveactivity":
+      return saveactivity(params);
     case "/api/getpages":
       return getPages(params);
     case "/api/getmenus":

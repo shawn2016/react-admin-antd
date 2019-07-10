@@ -281,7 +281,7 @@ export default class Com extends React.PureComponent {
                                 title="点击登录"
                             >
                                 <div className={css.full}>
-                                    <Link to="/user/login">未登录</Link>
+                                    <Link to="/">未登录</Link>
                                 </div>
                             </Tooltip>
                         )

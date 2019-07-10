@@ -7,7 +7,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import tools from '../../../util/tools';
+// import tools from '../../../util/tools';
 import { bindActionCreators } from 'redux';
 import P from 'prop-types';
 
