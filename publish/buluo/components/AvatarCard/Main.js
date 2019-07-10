@@ -762,10 +762,35 @@ var Com = (_dec = (0, _withStyles2.default)(_style2.default), _dec(_class = func
   _createClass(Com, [{
     key: 'render',
     value: function render() {
+      var imgs = this.props.imgs;
+      var imgStyle = {
+        width: this.props.imgWidth,
+        height: this.props.imgHeight,
+        borderRadius: parseInt(this.props.imgWidth, 10) / 2
+      };
+      var cardStyle = {
+        display: 'inline-block',
+        width: 100 / this.props.imgCountsPerLine + '%',
+        textAlign: 'center'
+      };
+      var titleStyle = {
+        width: this.props.imgWidth
+      };
       return _react2.default.createElement(
         'div',
-        { className: 'common-Carousel' },
-        'fuck'
+        { className: 'buluo-AvatarCard' },
+        imgs.map(function (item) {
+          return _react2.default.createElement(
+            'a',
+            { style: cardStyle, key: window.performance.now(), href: item.link },
+            _react2.default.createElement('img', { style: imgStyle, src: item.src }),
+            _react2.default.createElement(
+              'p',
+              { style: titleStyle, className: 'title' },
+              item.title
+            )
+          );
+        })
       );
     }
   }]);
@@ -3323,7 +3348,7 @@ exports = module.exports = __webpack_require__(62)(false);
 
 
 // module
-exports.push([module.i, ".buluo-Image img {\n  max-width: 100%; }\n", ""]);
+exports.push([module.i, ".buluo-AvatarCard a {\n  text-decoration: none;\n  color: inherit; }\n\n.buluo-AvatarCard img {\n  max-width: 100%; }\n\n.buluo-AvatarCard .title {\n  margin: 5px auto 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap; }\n", ""]);
 
 // exports
 

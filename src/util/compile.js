@@ -39,7 +39,7 @@ const plugins = [
 
 async function compileComponent(project, name, optimize) {
   console.log("start to compile component: ", project, name);
-  const projectPrefix = 'proTest' + "/components";
+  const projectPrefix = project + "/components";
   const outputFileName = "Main.js";
   const entryPath = path.join(
     __dirname,
@@ -81,7 +81,7 @@ async function compileComponent(project, name, optimize) {
             outputPath: outputPath,
             outputFileName: outputFileName
           });
-          console.log("end compile component: ", 'proTest', name);
+          console.log("end compile component: ", project, name);
         });
       }
     });
@@ -98,7 +98,7 @@ const compileTemplate = async page => {
   const outputPath = path.join(
     __dirname,
     "../../publish/",
-    "proTest",
+    project,
     "pages/" + pageName
   );
   const outputFileName = "app.bundle.js";

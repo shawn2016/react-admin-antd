@@ -55,7 +55,7 @@ router.post("/", async (req, res, next) => {
         component: component,
         exists: exists
       };
-      res.status(200).send(data);
+      res.status(200).send(dataFifter.success(component));
     } else {
       // insert
       const component = new Component({
@@ -65,11 +65,7 @@ router.post("/", async (req, res, next) => {
         // fileContent: data.fileContent.toString()
       });
       const savedComponent = await component.save();
-      res.status(200).send({
-        retcode: 0,
-        component: savedComponent,
-        exists: exists
-      });
+      res.status(200).send(dataFifter.success(savedComponent));
     }
   } catch (err) {
     next(err);

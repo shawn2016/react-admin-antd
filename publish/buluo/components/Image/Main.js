@@ -762,10 +762,17 @@ var Com = (_dec = (0, _withStyles2.default)(_style2.default), _dec(_class = func
   _createClass(Com, [{
     key: 'render',
     value: function render() {
+      var imgs = this.props.imgs;
       return _react2.default.createElement(
         'div',
-        { className: 'common-Carousel' },
-        'fuck'
+        { className: 'buluo-Image' },
+        imgs.map(function (item) {
+          return _react2.default.createElement(
+            'a',
+            { key: window.performance.now(), href: item.link },
+            _react2.default.createElement('img', { src: item.src })
+          );
+        })
       );
     }
   }]);

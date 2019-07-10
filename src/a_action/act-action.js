@@ -23,8 +23,8 @@ export const getPages = (params = {}) => async dispatch => {
  * **/
 export const getComponents = (params = {}) => async dispatch => {
   try {
-    const res = await Fetchapi.newFetch("api/components", params,{
-        method:'get'
+    const res = await Fetchapi.newFetch("api/components", params, {
+      method: "get"
     });
     return res.data;
   } catch (err) {
@@ -32,21 +32,31 @@ export const getComponents = (params = {}) => async dispatch => {
   }
 };
 
-
 /**
  * 获取本地组件
  * **/
 export const getLocalComponents = (params = {}) => async dispatch => {
-    try {
-      const res = await Fetchapi.newFetch("api/sync/components", params,{
-          method:'get'
-      });
-      return res.data;
-    } catch (err) {
-      message.error("网络错误，请重试");
-    }
-  };
-  
+  try {
+    const res = await Fetchapi.newFetch("api/sync/components", params, {
+      method: "get"
+    });
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
+/**
+ * 同步组件
+ * **/
+export const syncLocalComponent = (params = {}) => async dispatch => {
+  try {
+    const res = await Fetchapi.newFetch("api/components", params);
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
+
 /**
  * 获取项目
  * **/
@@ -65,15 +75,15 @@ export const getProjects = (params = {}) => async dispatch => {
  * 删除项目
  * **/
 export const delProjects = (params = {}) => async dispatch => {
-    try {
-      const res = await Fetchapi.newFetch(`api/projects/${params.id}`, null, {
-        method: "delete"
-      });
-      return res.data;
-    } catch (err) {
-      message.error("网络错误，请重试");
-    }
-  };
+  try {
+    const res = await Fetchapi.newFetch(`api/projects/${params.id}`, null, {
+      method: "delete"
+    });
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
 
 /**
  * 保存页面组件信息

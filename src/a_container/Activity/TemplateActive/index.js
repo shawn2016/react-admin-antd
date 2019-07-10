@@ -40,7 +40,11 @@ import TreeTable from "../../../a_component/TreeChose/PowerTreeTable";
 // 本页面所需action
 // ==================
 
-import { getComponents,getLocalComponents } from "../../../a_action/act-action";
+import {
+  getComponents,
+  getLocalComponents,
+  syncLocalComponent
+} from "../../../a_action/act-action";
 // ==================
 // Definition
 // ==================
@@ -57,7 +61,8 @@ const { Option } = Select;
     actions: bindActionCreators(
       {
         getComponents,
-        getLocalComponents
+        getLocalComponents,
+        syncLocalComponent
       },
       dispatch
     )
@@ -81,7 +86,7 @@ export default class RoleAdminContainer extends React.Component {
       fixedFooter: true,
       stripedRows: false,
       showRowHover: false,
-      loading: false,
+      componentsLoading: false,
       selectable: true,
       multiSelectable: false,
       enableSelectAll: false,
@@ -94,7 +99,8 @@ export default class RoleAdminContainer extends React.Component {
       components: [],
       pageNum: 0,
       pageSize: 10,
-      visible: false
+      visible: false,
+      localComponentsLoading: false
     };
     this.getComponents();
     this.getLocalComponents();
@@ -105,7 +111,7 @@ export default class RoleAdminContainer extends React.Component {
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            components: res.data
+            localComponents: res.data
           });
         }
       })
@@ -252,19 +258,66 @@ export default class RoleAdminContainer extends React.Component {
     ];
     return columns;
   };
-
+  syncLocalComponent = index => {
+    this.props.actions
+      .syncLocalComponent(this.state.localComponents[index])
+      .then(res => {
+        if (res.status === 200) {
+          message.success("同步成功");
+          this.setState({
+            visible: false
+          });
+          setTimeout(() => {
+            this.getComponents();
+          }, 2000);
+        }
+      })
+      .catch(() => {});
+  };
   // 构建字段
   makeLocalColumns = () => {
     const columns = [
+      {
+        title: "项目",
+        dataIndex: "project",
+        key: "project"
+      },
       {
         title: "名称",
         dataIndex: "name",
         key: "name"
       },
       {
-        title: "描述",
-        dataIndex: "desc",
-        key: "desc"
+        title: "操作",
+        key: "control",
+        width: 200,
+        render: (text, record) => {
+          const controls = [];
+          controls.push(
+            <Popconfirm
+              key="3"
+              title="确定同步吗?"
+              onConfirm={() => this.syncLocalComponent(record.key)}
+              okText="确定"
+              cancelText="取消"
+            >
+              <span className="control-btn blue">
+                <Tooltip placement="top" title="同步">
+                  <Icon type="cloud-upload" />
+                </Tooltip>
+              </span>
+            </Popconfirm>
+          );
+
+          const result = [];
+          controls.forEach((item, index) => {
+            if (index) {
+              result.push(<Divider key={`line${index}`} type="vertical" />);
+            }
+            result.push(item);
+          });
+          return result;
+        }
       }
     ];
     return columns;
@@ -292,11 +345,9 @@ export default class RoleAdminContainer extends React.Component {
     return data.map((item, index) => {
       return {
         key: index,
-        id: item._id,
-        serial: index + 1 + this.state.pageNum * this.state.pageSize,
+        _id: item._id,
         name: item.name,
-        desc: item.desc,
-        control: item.id
+        project: item.project
       };
     });
   };
@@ -347,7 +398,7 @@ export default class RoleAdminContainer extends React.Component {
         <div className="diy-table">
           <Table
             columns={this.makeColumns()}
-            loading={this.state.loading}
+            loading={this.state.componentsLoading}
             dataSource={this.makeData(this.state.components)}
           />
         </div>
@@ -360,7 +411,7 @@ export default class RoleAdminContainer extends React.Component {
           <div className="diy-table">
             <Table
               columns={this.makeLocalColumns()}
-              loading={this.state.loading}
+              loading={this.state.localComponentsLoading}
               dataSource={this.makeLocalData(this.state.localComponents)}
             />
           </div>
