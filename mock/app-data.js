@@ -193,6 +193,16 @@ const menus = [
     conditions: 1
   },
   {
+    id: 12,
+    title: "项目管理",
+    icon: "appstore",
+    url: "/projectmng",
+    parent: 2,
+    desc: "活动管理/项目",
+    sorts: 4,
+    conditions: 1
+  },
+  {
     id: 10,
     title: "页面嵌套",
     icon: "appstore",
@@ -475,7 +485,8 @@ const roles = [
       { menuId: 9, powers: [23, 24, 25, 26] },
       { menuId: 11, powers: [] },
       { menuId: 8, powers: [] },
-      { menuId: 10, powers: [] }
+      { menuId: 10, powers: [] },
+      { menuId: 12, powers: [] }
     ]
   },
   {

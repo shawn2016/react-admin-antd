@@ -1,16 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/server";
 import { Router } from "express";
-// import Page from "../models/page";
+import Page from "../models/page";
 import Html from "../PublishPage/html";
 import fs from "../util/fs";
 import PageData from "../../mock/pages.json";
-import  compile from "../util/compile";
+import compile from "../util/compile";
 const router = new Router();
+
+// const findOnePage = pageId =>
+//   new Promise((resolve, reject) => {
+//     resolve(PageData.page);
+//   });
 
 const findOnePage = pageId =>
   new Promise((resolve, reject) => {
-    resolve(PageData.page);
+    Page.findOne({ _id: pageId }).then(page => {
+      console.log(page, "--------------------");
+      resolve(page);
+    });
   });
 
 router.post("/", async (req, res, next) => {
@@ -40,7 +48,7 @@ router.post("/", async (req, res, next) => {
     await fs.writeFile(destHtml, htmlString);
     res.status(200).send({
       retcode: 0,
-      page,
+      page
     });
   } catch (err) {
     next(err);

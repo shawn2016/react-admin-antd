@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 import styles from './style.scss';
 
-// import withStyles from '../../../../decorators/withStyles';
+import withStyles from '../../../../decorators/withStyles';
 import withViewport from '../../../../decorators/withViewport';
 
 @withViewport
-// @withStyles(styles)
+@withStyles(styles)
 class Com extends Component {
   constructor (props) {
     super(props);

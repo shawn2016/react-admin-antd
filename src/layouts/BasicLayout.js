@@ -72,6 +72,12 @@ const TemplateActive = Loadable({
   LoadingComponent,
   delay: 300
 });
+const projectMng = Loadable({
+    loader: () => import("../a_container/Activity/projectMng"),
+    loading: Loading,
+    LoadingComponent,
+    delay: 300
+  });
 // ==================
 // 所需的所有组件
 // ==================
@@ -296,6 +302,11 @@ export default class AppContainer extends React.Component {
                 exact
                 path="/system/templateactive"
                 render={props => this.onEnter(TemplateActive, props)}
+              />
+                <Route
+                exact
+                path="/system/projectmng"
+                render={props => this.onEnter(projectMng, props)}
               />
               <Route
                 exact

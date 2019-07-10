@@ -40,7 +40,7 @@ import TreeTable from "../../../a_component/TreeChose/PowerTreeTable";
 // 本页面所需action
 // ==================
 
-import { getComponents,getLocalComponents } from "../../../a_action/act-action";
+import { getProjects, delProjects } from "../../../a_action/act-action";
 // ==================
 // Definition
 // ==================
@@ -56,8 +56,8 @@ const { Option } = Select;
   dispatch => ({
     actions: bindActionCreators(
       {
-        getComponents,
-        getLocalComponents
+        getProjects,
+        delProjects
       },
       dispatch
     )
@@ -91,33 +91,34 @@ export default class RoleAdminContainer extends React.Component {
 
       localComponents: [],
       selectedLocalComponentIndex: -1,
-      components: [],
+      projects: [],
       pageNum: 0,
       pageSize: 10,
       visible: false
     };
-    this.getComponents();
-    this.getLocalComponents();
+    this.getProjects();
+    // this.getLocalComponents();
   }
-  getLocalComponents = () => {
-    this.props.actions
-      .getLocalComponents()
-      .then(res => {
-        if (res.status === 200) {
-          this.setState({
-            components: res.data
-          });
-        }
-      })
-      .catch(() => {});
+  getLocalComponents = async () => {
+    try {
+      const res = await fetch("/api/sync/components");
+      const json = await res.json();
+      if (json.retcode === 0) {
+        this.setState({
+          localComponents: json.components
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
-  getComponents = async () => {
+  getProjects = async () => {
     this.props.actions
-      .getComponents()
+      .getProjects()
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            components: res.data
+            projects: res.data
           });
         }
       })
@@ -128,6 +129,19 @@ export default class RoleAdminContainer extends React.Component {
     this.props.history.push(`/activity/editactive/${id}`);
   };
   onModalShow = type => {};
+  onDel = id => {
+      debugger
+    this.props.actions
+      .delProjects({ id })
+      .then(res => {
+        if (res.status === 200) {
+          message.success("删除成功");
+        }
+      })
+      .catch(() => {
+        message.error("删除失败");
+      });
+  };
   // 构建字段
   makeColumns = () => {
     const columns = [
@@ -162,6 +176,7 @@ export default class RoleAdminContainer extends React.Component {
         key: "control",
         width: 200,
         render: (text, record) => {
+            console.log(record)
           const controls = [];
           const p = this.props.powers;
           p.includes("role:query") &&
@@ -227,7 +242,7 @@ export default class RoleAdminContainer extends React.Component {
               <Popconfirm
                 key="4"
                 title="确定删除吗?"
-                onConfirm={() => this.onDel(record.id)}
+                onConfirm={() => this.onDel(record._id)}
                 okText="确定"
                 cancelText="取消"
               >
@@ -275,7 +290,7 @@ export default class RoleAdminContainer extends React.Component {
     return data.map((item, index) => {
       return {
         key: index,
-        id: item._id,
+        _id: item._id,
         serial: index + 1 + this.state.pageNum * this.state.pageSize,
         name: item.name,
         desc: item.desc,
@@ -339,7 +354,7 @@ export default class RoleAdminContainer extends React.Component {
                 onClick={() => this.showDrawer(null, "add")}
               >
                 <Icon type="plus-circle-o" />
-                同步模板
+                新增项目
               </Button>
             </li>
           </ul>
@@ -348,7 +363,7 @@ export default class RoleAdminContainer extends React.Component {
           <Table
             columns={this.makeColumns()}
             loading={this.state.loading}
-            dataSource={this.makeData(this.state.components)}
+            dataSource={this.makeData(this.state.projects)}
           />
         </div>
         <Drawer
