@@ -114,11 +114,11 @@ const menus = [
   },
   {
     id: 2,
-    title: "活动模板",
+    title: "组件列表",
     icon: "home",
     url: "/activity/templateactivity_page",
     parent: null,
-    desc: "活动管理/活动模板",
+    desc: "活动管理/组件列表",
     sorts: 0,
     conditions: 1
   },
@@ -134,11 +134,11 @@ const menus = [
   },
   {
     id: 4,
-    title: "我的活动",
+    title: "页面列表",
     icon: "appstore",
     url: "/activity/myactivity_page",
     parent: null,
-    desc: "活动管理/我的活动",
+    desc: "活动管理/页面列表",
     sorts: 4,
     conditions: 1
   },
@@ -149,6 +149,16 @@ const menus = [
     url: "/activity/previewactivity_page",
     parent: null,
     desc: "活动管理/活动预览",
+    sorts: 4,
+    conditions: 1
+  },
+  {
+    id: 6,
+    title: "项目列表",
+    icon: "appstore",
+    url: "/activity/projectmng_page",
+    parent: null,
+    desc: "活动管理/项目列表",
     sorts: 4,
     conditions: 1
   }

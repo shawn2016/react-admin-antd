@@ -130,7 +130,6 @@ export default class RoleAdminContainer extends React.Component {
   };
   onModalShow = type => {};
   onDel = id => {
-      debugger
     this.props.actions
       .delProjects({ id })
       .then(res => {

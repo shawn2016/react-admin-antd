@@ -706,10 +706,6 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _defineProperty = __webpack_require__(12);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
@@ -797,7 +793,9 @@ var Com = (_dec = (0, _withStyles2.default)(_style2.default), _dec(_class = func
 
   return Com;
 }(_react.Component)) || _class);
-exports.default = Com;
+
+
+module.exports = Com;
 
 /***/ }),
 /* 28 */
@@ -3964,9 +3962,7 @@ var count = 0;
 
 function withStyles(styles) {
   return function (ComposedComponent) {
-    var _class, _temp;
-
-    return _temp = _class = function (_Component) {
+    return function (_Component) {
       _inherits(WithStyles, _Component);
 
       function WithStyles() {
@@ -4037,9 +4033,7 @@ function withStyles(styles) {
       }]);
 
       return WithStyles;
-    }(_react.Component), _class.contextTypes = {
-      onInsertCss: _react.PropTypes.func
-    }, _temp;
+    }(_react.Component);
   };
 }
 

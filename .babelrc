@@ -4,13 +4,13 @@
     // only enable it when process.env.NODE_ENV is 'development' or undefined
     "development": {
       "plugins": [
-        "transform-decorators-legacy",
-        "transform-class-properties",
         [
           "transform-runtime",
           { "helpers": false, "polyfill": true, "regenerator": true }
         ],
         ["import", { "style": true, "libraryName": "antd" }],
+        "transform-decorators-legacy",
+        "transform-class-properties"
       ]
     },
     "production": {

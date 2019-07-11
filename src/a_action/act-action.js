@@ -11,7 +11,58 @@ import { message } from "antd";
  * **/
 export const getPages = (params = {}) => async dispatch => {
   try {
-    const res = await Fetchapi.newFetch("api/getpages", params);
+    const res = await Fetchapi.newFetch(
+      `api/pages/${params._id}?withFileContent=1`,
+      params,
+      {
+        method: "get"
+      }
+    );
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
+/**
+ * 保存配置
+ * **/
+export const putPages = (params = {}) => async dispatch => {
+  try {
+    const res = await Fetchapi.newFetch(
+      `api/pages/${params._id}`,
+      params.clonePage,
+      {
+        method: "put"
+      }
+    );
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
+
+/**
+ * 保存配置
+ * **/
+export const createPage = (params = {}) => async dispatch => {
+  try {
+    const res = await Fetchapi.newFetch(`api/pages`, params, {
+      method: "post"
+    });
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
+
+/**
+ * 获取页面信息
+ * **/
+export const getPagesList = (params = {}) => async dispatch => {
+  try {
+    const res = await Fetchapi.newFetch(`api/pages`, params, {
+      method: "get"
+    });
     return res.data;
   } catch (err) {
     message.error("网络错误，请重试");
@@ -21,11 +72,15 @@ export const getPages = (params = {}) => async dispatch => {
 /**
  * 获取页面组件信息
  * **/
-export const getComponents = (params = {}) => async dispatch => {
+export const getComponents = (params = {}, options) => async dispatch => {
   try {
-    const res = await Fetchapi.newFetch("api/components", params, {
-      method: "get"
-    });
+    const res = await Fetchapi.newFetch(
+      options ? `api/components?withFileContent=1` : "api/components",
+      params,
+      {
+        method: "get"
+      }
+    );
     return res.data;
   } catch (err) {
     message.error("网络错误，请重试");
@@ -79,18 +134,6 @@ export const delProjects = (params = {}) => async dispatch => {
     const res = await Fetchapi.newFetch(`api/projects/${params.id}`, null, {
       method: "delete"
     });
-    return res.data;
-  } catch (err) {
-    message.error("网络错误，请重试");
-  }
-};
-
-/**
- * 保存页面组件信息
- * **/
-export const saveActive = (params = {}) => async dispatch => {
-  try {
-    const res = await Fetchapi.newFetch("api/saveactive", params);
     return res.data;
   } catch (err) {
     message.error("网络错误，请重试");

@@ -26,7 +26,6 @@ const emptyComponent = {
 // ==================
 
 import { getPages, getComponents } from "../../../a_action/act-action";
-import withViewport from "../../../decorators/withViewport";
 
 @connect(
   state => ({}),
@@ -34,7 +33,6 @@ import withViewport from "../../../decorators/withViewport";
     actions: bindActionCreators({ getPages, getComponents }, dispatch)
   })
 )
-@withViewport
 export default class PreviewActiveContainer extends React.Component {
   static propTypes = {
     location: P.any,
@@ -50,8 +48,8 @@ export default class PreviewActiveContainer extends React.Component {
       },
       componentIndex: 0
     };
-    const query = qs.parse(location.search, { ignoreQueryPrefix: true });
-    this.getPage(query.pageId);
+    const query = qs.parse(location.href.split('?')[1], { ignoreQueryPrefix: true });
+    this.getPages(query.pageId);
   }
 
   componentDidMount = () => {
@@ -94,13 +92,13 @@ export default class PreviewActiveContainer extends React.Component {
     );
   };
 
-  getPage = id => {
+  getPages = _id => {
     this.props.actions
-      .getPages({ id })
+      .getPages({ _id })
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            page: res.data.page
+            page: res.data
           });
         }
       })
@@ -108,6 +106,7 @@ export default class PreviewActiveContainer extends React.Component {
   };
   render() {
     const page = this.state.page;
+    console.log(page)
     page.components = page.components ? page.components : [];
     const componentIndex = this.state.componentIndex;
     const pageComponents = page.components.map((component, index) => {

@@ -7,10 +7,6 @@ let count = 0;
 function withStyles(styles) {
   return (ComposedComponent) => class WithStyles extends Component {
 
-    static contextTypes = {
-      onInsertCss: PropTypes.func,
-    };
-
     constructor() {
       super();
       this.refCount = 0;

@@ -50,18 +50,13 @@ router.post("/", async (req, res, next) => {
         }
       );
       const component = await Component.findById(affectedComponent._id);
-      let data = {
-        retcode: 0,
-        component: component,
-        exists: exists
-      };
       res.status(200).send(dataFifter.success(component));
     } else {
       // insert
       const component = new Component({
         project: req.body.project,
         name: req.body.name,
-        config: req.body.config
+        config: req.body.config,
         // fileContent: data.fileContent.toString()
       });
       const savedComponent = await component.save();

@@ -7,39 +7,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import classNames from "classnames";
-import { Resizable, ResizableBox } from "react-resizable";
 import { bindActionCreators } from "redux";
 import P from "prop-types";
-import { Select, Drawer, Button, Tabs, Divider, Form, Input } from "antd";
-const { TabPane } = Tabs;
-const { Option } = Select;
-const postPageMessage = page => {
-  document.getElementById("pagePreviewIframe").contentWindow.postMessage(
-    {
-      type: "page",
-      page: page
-    },
-    "*"
-  );
-};
 
-const postComponentMessage = (componentIndex, component) => {
-  document.getElementById("pagePreviewIframe").contentWindow.postMessage(
-    {
-      type: "component",
-      componentIndex: componentIndex,
-      component: component
-    },
-    "*"
-  );
-};
-
-const emptyComponent = {
-  name: "",
-  config: {
-    props: null
-  }
-};
 // ==================
 // 所需的所有组件
 // ==================
@@ -119,13 +89,13 @@ export default class PreviewActiveContainer extends React.Component {
     );
   };
 
-  getPage = id => {
+  getPage = _id => {
     this.props.actions
-      .getPages({ id })
+      .getPages({ _id })
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            page: res.data.page
+            page: res.data
           });
         }
       })

@@ -16,4 +16,4 @@ class Com extends Component {
   }
 }
 
-export default Com;
+module.exports = Com;

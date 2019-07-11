@@ -24,7 +24,10 @@ import {
   Select,
   InputNumber,
   Drawer,
-  Popover
+  Popover,
+  DatePicker,
+  TimePicker,
+  Cascader
 } from "antd";
 import css from "./index.scss";
 import c from "classnames";
@@ -41,9 +44,9 @@ import TreeTable from "../../../a_component/TreeChose/PowerTreeTable";
 // ==================
 
 import {
-  getComponents,
-  getLocalComponents,
-  syncLocalComponent
+  getPagesList,
+  getProjects,
+  createPage
 } from "../../../a_action/act-action";
 // ==================
 // Definition
@@ -60,9 +63,9 @@ const { Option } = Select;
   dispatch => ({
     actions: bindActionCreators(
       {
-        getComponents,
-        getLocalComponents,
-        syncLocalComponent
+        getPagesList,
+        getProjects,
+        createPage
       },
       dispatch
     )
@@ -82,56 +85,48 @@ export default class RoleAdminContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fixedHeader: true,
-      fixedFooter: true,
-      stripedRows: false,
-      showRowHover: false,
-      componentsLoading: false,
-      selectable: true,
-      multiSelectable: false,
-      enableSelectAll: false,
-      deselectOnClickaway: false,
-
-      selectedComponentIndex: -1,
-
-      localComponents: [],
-      selectedLocalComponentIndex: -1,
-      components: [],
-      pageNum: 0,
-      pageSize: 10,
-      visible: false,
-      localComponentsLoading: false
+      page: [],
+      project: [],
+      pagePro: {
+        name: "",
+        description: "",
+        project: "",
+        owner: ""
+      }
     };
-    this.getComponents();
-    this.getLocalComponents();
+
+    this.getProjects();
+    this.getPagesList();
   }
-  getLocalComponents = () => {
+  getProjects = async () => {
     this.props.actions
-      .getLocalComponents()
+      .getProjects()
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            localComponents: res.data
+            projects: res.data
           });
         }
       })
       .catch(() => {});
   };
-  getComponents = async () => {
+
+  getPagesList = () => {
     this.props.actions
-      .getComponents()
+      .getPagesList()
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            components: res.data
+            page: res.data
           });
         }
       })
       .catch(() => {});
   };
+
   // 编辑
   editactive = id => {
-    this.props.history.push(`/activity/editactive/${id}`);
+    this.props.history.push(`/activity/editactivity_page?pageId=${id}`);
   };
   onModalShow = type => {};
   // 构建字段
@@ -205,7 +200,7 @@ export default class RoleAdminContainer extends React.Component {
               <span
                 key="2"
                 className="control-btn blue"
-                onClick={() => this.editactive(1)}
+                onClick={() => this.editactive(record._id)}
               >
                 <Tooltip placement="top" title="编辑">
                   <Icon type="edit" />
@@ -328,7 +323,7 @@ export default class RoleAdminContainer extends React.Component {
     return data.map((item, index) => {
       return {
         key: index,
-        id: item._id,
+        _id: item._id,
         serial: index + 1 + this.state.pageNum * this.state.pageSize,
         name: item.name,
         desc: item.desc,
@@ -363,22 +358,56 @@ export default class RoleAdminContainer extends React.Component {
       visible: false
     });
   };
+  createPage = async () => {
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values);
+        this.props.actions
+          .createPage({ ...values, owner: "5d26dcbb54581b3ca5b09958" })
+          .then(res => {
+            if (res.status === 200) {
+              message.success("新增成功");
+              this.setState({
+                visible: false
+              });
+              setTimeout(() => {
+                this.getPagesList();
+              }, 2000);
+            }
+          });
+      }
+    });
+  };
+  showCreatePageDialog = () => {
+    this.setState({
+      visible: true
+    });
+  };
+  handleCancel = e => {
+    this.setState({
+      visible: false
+    });
+  };
   render() {
-    const me = this;
-    const { form } = me.props;
-    const p = this.props.powers;
-    const { getFieldDecorator } = form;
+    const { Option } = Select;
+
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 4 }
+        sm: { span: 5 }
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 19 }
+        sm: { span: 12 }
       }
     };
-
+    const p = this.props.powers;
+    const {
+      getFieldDecorator,
+      getFieldsError,
+      getFieldError,
+      isFieldTouched
+    } = this.props.form;
     return (
       <div>
         <div className="g-search">
@@ -387,10 +416,10 @@ export default class RoleAdminContainer extends React.Component {
               <Button
                 type="primary"
                 disabled={!p.includes("role:add")}
-                onClick={() => this.showDrawer(null, "add")}
+                onClick={() => this.showCreatePageDialog("add")}
               >
                 <Icon type="plus-circle-o" />
-                同步模板
+                新增页面
               </Button>
             </li>
           </ul>
@@ -399,23 +428,47 @@ export default class RoleAdminContainer extends React.Component {
           <Table
             columns={this.makeColumns()}
             loading={this.state.componentsLoading}
-            dataSource={this.makeData(this.state.components)}
+            dataSource={this.makeData(this.state.page)}
           />
         </div>
-        <Drawer
-          title="本地组件列表"
-          width={500}
-          onClose={this.onClose}
+        <Modal
+          title="新增页面"
           visible={this.state.visible}
+          onOk={this.createPage}
+          onCancel={this.handleCancel}
         >
-          <div className="diy-table">
-            <Table
-              columns={this.makeLocalColumns()}
-              loading={this.state.localComponentsLoading}
-              dataSource={this.makeLocalData(this.state.localComponents)}
-            />
-          </div>
-        </Drawer>
+          <Form {...formItemLayout}>
+            <Form.Item>
+              {getFieldDecorator("name", {
+                rules: [
+                  { required: true, message: "Please input your username!" }
+                ]
+              })(<Input placeholder="页面名称" />)}
+            </Form.Item>
+
+            <Form.Item>
+              {getFieldDecorator("description", {
+                rules: [
+                  { required: true, message: "Please input your username!" }
+                ]
+              })(<Input placeholder="页面简介" />)}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator("project", {
+                rules: [
+                  { required: true, message: "Please input your username!" }
+                ]
+              })(<Input placeholder="project" />)}
+            </Form.Item>
+            <Form.Item>
+              {getFieldDecorator("owner", {
+                rules: [
+                  { required: true, message: "Please input your username!" }
+                ]
+              })(<Input placeholder="owner" />)}
+            </Form.Item>
+          </Form>
+        </Modal>
       </div>
     );
   }

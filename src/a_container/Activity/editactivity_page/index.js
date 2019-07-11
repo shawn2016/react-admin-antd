@@ -12,6 +12,7 @@ import { bindActionCreators } from "redux";
 import P from "prop-types";
 import { Link } from "react-router-dom";
 import { createForm } from "rc-form";
+import qs from "qs";
 import {
   Select,
   Drawer,
@@ -27,12 +28,14 @@ import {
   Avatar,
   Menu,
   Dropdown,
+  Popconfirm,
   Badge,
   Popover,
   Tabs,
   List,
   Tag,
   Spin,
+  Table,
   message
 } from "antd";
 
@@ -40,15 +43,6 @@ const { Header, Content, Sider } = Layout;
 const { TabPane } = Tabs;
 const { Option } = Select;
 const { SubMenu, Item } = Menu;
-const postPageMessage = page => {
-  document.getElementById("pagePreviewIframe").contentWindow.postMessage(
-    {
-      type: "page",
-      page: page
-    },
-    "*"
-  );
-};
 const postComponentMessage = (componentIndex, component) => {
   document.getElementById("pagePreviewIframe").contentWindow.postMessage(
     {
@@ -71,7 +65,6 @@ const emptyComponent = {
 // ==================
 
 import css from "./index.scss";
-import ImgLogo from "../../../assets/react-logo.jpg";
 
 // ==================
 // 本页面所需action
@@ -80,17 +73,14 @@ import ImgLogo from "../../../assets/react-logo.jpg";
 import {
   getPages,
   getComponents,
-  saveActive
+  putPages
 } from "../../../a_action/act-action";
 import withViewport from "../../../decorators/withViewport";
 @createForm()
 @connect(
   state => ({}),
   dispatch => ({
-    actions: bindActionCreators(
-      { getPages, getComponents, saveActive },
-      dispatch
-    )
+    actions: bindActionCreators({ getPages, getComponents, putPages }, dispatch)
   })
 )
 @withViewport
@@ -133,10 +123,13 @@ export default class PageAdminContainer extends React.Component {
 
       publishUrl: "",
       config: null,
-      collapsed: false
+      collapsed: false,
+      visible: false
     };
-    console.log(props, "----------");
-    this.getPage(props.match.params.id);
+    const query = qs.parse(location.href.split("?")[1], {
+      ignoreQueryPrefix: true
+    });
+    this.getPage(query.pageId);
     this.getComponents();
   }
   componentDidMount = () => {
@@ -162,7 +155,17 @@ export default class PageAdminContainer extends React.Component {
     //   this.nowChosed(nextP.location);
     // }
   }
+  showDrawer = () => {
+    this.setState({
+      visible: true
+    });
+  };
 
+  onClose = () => {
+    this.setState({
+      visible: false
+    });
+  };
   /** 处理当前选中 **/
   nowChosed(location) {
     const paths = location.pathname.split("/").filter(item => !!item);
@@ -206,7 +209,66 @@ export default class PageAdminContainer extends React.Component {
     kids.forEach(item => (item.children = this.dataToJson(item, data)));
     return kids.length ? kids : null;
   }
+  addComponentToPage = component => {
+    let page = this.state.page;
+    const componentIndex = page.components.length;
+    const cloneComponent = _.cloneDeep(component);
+    page.components.push(cloneComponent);
+    this.setState({
+      page: page
+    });
+    postComponentMessage(componentIndex, cloneComponent);
+    this.showEditComponentDialog(componentIndex);
+    message.success("添加成功");
+  };
+  // 构建字段
+  makeLocalColumns = () => {
+    const columns = [
+      {
+        title: "项目",
+        dataIndex: "project",
+        key: "project"
+      },
+      {
+        title: "名称",
+        dataIndex: "name",
+        key: "name"
+      },
+      {
+        title: "操作",
+        key: "control",
+        width: 200,
+        render: (text, record) => {
+          const controls = [];
+          controls.push(
+            <Popconfirm
+              key="3"
+              title="确定添加吗?"
+              onConfirm={() => this.addComponentToPage(record)}
+              okText="确定"
+              cancelText="取消"
+            >
+              <span className="control-btn blue">
+                <Tooltip placement="top" title="添加">
+                  <Icon type="cloud-upload" />
+                </Tooltip>
+              </span>
+            </Popconfirm>
+          );
 
+          const result = [];
+          controls.forEach((item, index) => {
+            if (index) {
+              result.push(<Divider key={`line${index}`} type="vertical" />);
+            }
+            result.push(item);
+          });
+          return result;
+        }
+      }
+    ];
+    return columns;
+  };
   /** 构建树结构 **/
   makeTreeDom(data, key) {
     return data.map((item, index) => {
@@ -244,24 +306,23 @@ export default class PageAdminContainer extends React.Component {
   }
   getComponents = async () => {
     this.props.actions
-      .getComponents()
+      .getComponents(null, { withFileContent: 1 })
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            components: res.data.components,
-            component: res.data.components[0]
+            components: res.data
           });
         }
       })
       .catch(() => {});
   };
-  getPage = id => {
+  getPage = _id => {
     this.props.actions
-      .getPages({ id })
+      .getPages({ _id })
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            page: res.data.page
+            page: res.data
           });
         }
       })
@@ -334,14 +395,19 @@ export default class PageAdminContainer extends React.Component {
     clonePage.components.forEach(item => {
       delete item.fileContent;
     });
-    this.props.actions.saveActive(clonePage).then(res => {
-      console.log("添加用户返回数据：", res);
-      if (res.status === 200) {
-        message.success("保存成功");
-      } else {
-        message.error(res.message);
-      }
-    });
+    this.props.actions
+      .putPages({
+        clonePage,
+        _id
+      })
+      .then(res => {
+        console.log("添加用户返回数据：", res);
+        if (res.status === 200) {
+          message.success("保存成功");
+        } else {
+          message.error(res.message);
+        }
+      });
   };
 
   generatePage = async () => {
@@ -437,7 +503,19 @@ export default class PageAdminContainer extends React.Component {
   exit = () => {
     this.props.history.goBack();
   };
-
+  // 构建table所需数据
+  makeLocalData = data => {
+    return data.map((item, index) => {
+      return {
+        key: index,
+        _id: item._id,
+        name: item.name,
+        fileContent: item.fileContent,
+        config: item.config,
+        project: item.project
+      };
+    });
+  };
   render() {
     const {
       deviceHeight,
@@ -457,6 +535,20 @@ export default class PageAdminContainer extends React.Component {
         tip="页面生成中..."
         delay={500}
       >
+        <Drawer
+          title="本地组件列表"
+          width={500}
+          onClose={this.onClose}
+          visible={this.state.visible}
+        >
+          <div className="diy-table">
+            <Table
+              columns={this.makeLocalColumns()}
+              loading={this.state.localComponentsLoading}
+              dataSource={this.makeLocalData(this.state.components)}
+            />
+          </div>
+        </Drawer>
         <Layout className={css.page}>
           {/* <ActMenu
           data={this.props.menus}
@@ -540,6 +632,13 @@ export default class PageAdminContainer extends React.Component {
                     预览
                   </Button>
                 </Tooltip>
+                <Button
+                  onClick={this.showDrawer}
+                  className={classNames(css.editButton, "flex-none")}
+                  type="primary"
+                >
+                  添加组件
+                </Button>
                 <Button
                   onClick={this.updatePage}
                   className={classNames(css.editButton, "flex-none")}

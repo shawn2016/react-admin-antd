@@ -14,29 +14,30 @@ const AUTOPREFIXER_BROWSERS = [
   "Safari >= 7.1"
 ];
 
-const rules = [
-    {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
-    {test: /\.json$/, loader: 'json-loader',},
-    {test: /\.txt$/, loader: 'raw-loader',},
-    {test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/, loader: 'url-loader?limit=1024',},
-    {test: /\.(eot|ttf|wav|mp3)$/, loader: 'file-loader',},
-    {test: /\.scss$/, loader: 'style-loader/useable!css-loader!sass-loader!postcss-loader',},
-    {test: /\.css$/, loader: 'style-loader/useable!css-loader!postcss-loader',},
-];
-
-const plugins = [
-  // Uglify 加密压缩源代码
-  new webpack.optimize.UglifyJsPlugin({
-    output: {
-      comments: true // 删除代码中所有注释
-    },
-    compress: {
-      warnings: false, // 删除没有用的代码时是否发出警告
-      drop_console: true // 是否删除所有的console
+const loaders = [
+  {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: "babel-loader",
+    options: {
+      plugins: ["transform-decorators-legacy", "transform-class-properties"]
     }
-  })
+  },
+  { test: /\.json$/, loader: "json-loader" },
+  { test: /\.txt$/, loader: "raw-loader" },
+  {
+    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+    loader: "url-loader?limit=1024"
+  },
+  { test: /\.(eot|ttf|wav|mp3)$/, loader: "file-loader" },
+  {
+    test: /\.scss$/,
+    loader: "style-loader/useable!css-loader!sass-loader!postcss-loader"
+  },
+  { test: /\.css$/, loader: "style-loader/useable!css-loader!postcss-loader" }
 ];
 
+const plugins = [new webpack.optimize.UglifyJsPlugin({})];
 async function compileComponent(project, name, optimize) {
   console.log("start to compile component: ", project, name);
   const projectPrefix = project + "/components";
@@ -48,7 +49,12 @@ async function compileComponent(project, name, optimize) {
     name,
     outputFileName
   );
-  const outputPath = path.join(__dirname, "../../publish/", projectPrefix, name);
+  const outputPath = path.join(
+    __dirname,
+    "../../publish/",
+    projectPrefix,
+    name
+  );
   var config = {
     entry: entryPath,
     output: {
@@ -56,7 +62,7 @@ async function compileComponent(project, name, optimize) {
       filename: outputFileName
     },
     module: {
-      rules
+      loaders: loaders
     },
     plugins: optimize ? plugins : []
   };
@@ -71,10 +77,12 @@ async function compileComponent(project, name, optimize) {
           path.join(outputPath, outputFileName)
         );
         // todo 这么写太丑了
-        ncp(outputPath, path.join(__dirname, "./public"), function(err) {
+        ncp(outputPath, path.join(__dirname, "../public"), function(err) {
           if (err) {
+              console.log('失败了，================')
             reject(err);
           }
+          console.log('成功了，================')
           resolve({
             stats: stats,
             fileContent: fileContent,
@@ -109,7 +117,7 @@ const compileTemplate = async page => {
       filename: outputFileName
     },
     module: {
-      rules
+      loaders: loaders
     },
     plugins: plugins
   };
@@ -118,7 +126,7 @@ const compileTemplate = async page => {
   page.components.forEach(component => {
     const componentPath =
       "../resources/" +
-      "buluo" +
+      component.project +
       "/components/" +
       component.name +
       "/Main.js";

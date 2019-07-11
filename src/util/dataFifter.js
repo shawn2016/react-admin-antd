@@ -1,15 +1,15 @@
-const success = obj => {
+const success = (obj, options) => {
   return {
     data: obj,
     status: 200,
-    message: "请求成功"
+    message: (options && options.message) || "请求成功"
   };
 };
-const fail = obj => {
+const fail = (obj, options) => {
   return {
     data: obj,
     status: 200,
-    message: "请求失败"
+    message: (options && options.message) || "请求失败"
   };
 };
 export default { success, fail };

@@ -23,7 +23,7 @@ module.exports = {
   devtool: "#source-map", // 报错的时候正确的输出哪一行报错
 
   module: {
-    rules: [
+    loaders: [
       {
         // 编译前通过eslint检查代码 (注释掉即可取消eslint检测)
         test: /\.js?$/,

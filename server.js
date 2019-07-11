@@ -39,7 +39,7 @@ dbConnection.once("open", () => {
 //
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
-// server.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './src/public')));
 app.use(express.static(path.join(__dirname, "./publish")));
 app.use(bodyParser.json({ limit: "10000 kB" }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -83,14 +83,15 @@ if (env === "production") {
 app.use('/api/projects',require('./src/api/projects'));
 app.use("/api/generate", require("./src/api/generate"));
 app.use("/api/components", require("./src/api/components"));
-server.use("/api/sync", require("./src/api/sync"));
-
+app.use("/api/sync", require("./src/api/sync"));
+app.use('/api/pages', require('./src/api/pages'));
+app.use('/api/preview', require('./src/api/pages'));
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
 app.get('*', async (req, res, next) => {
     try {
-      const html = await fs.readFile(path.join(__dirname, 'index.html'));
+      const html = await fs.readFile(path.join(__dirname, './src/index.html'));
       res.status(200).type('html').send(html);
     } catch (err) {
       next(err);
