@@ -340,6 +340,7 @@ export default class PageAdminContainer extends React.Component {
       editorProperties: component.config.properties,
       editorValues: component.config.props
     });
+    console.log(component)
     this.setState({
       config: component.config.properties
     });

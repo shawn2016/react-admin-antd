@@ -4002,11 +4002,7 @@ json-editor@^0.7.28:
   version "0.7.28"
   resolved "https://registry.npm.taobao.org/json-editor/download/json-editor-0.7.28.tgz#2aa5b0990a2b5076789158e7dd8a2d2108ce9cc5"
 
-json-loader@^0.5.4:
-  version "0.5.7"
-  resolved "https://registry.npm.taobao.org/json-loader/download/json-loader-0.5.7.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fjson-loader%2Fdownload%2Fjson-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
-
-json-loader@^0.5.7:
+json-loader@^0.5.4, json-loader@^0.5.7:
   version "0.5.7"
   resolved "https://registry.npm.taobao.org/json-loader/download/json-loader-0.5.7.tgz#dca14a70235ff82f0ac9a3abeb60d337a365185d"
 
