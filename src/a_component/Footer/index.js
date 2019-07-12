@@ -15,7 +15,7 @@ export default class Com extends React.PureComponent {
     render() {
         return (
             <Footer className={css.footer}>
-                © 2018 <a href="http://nodedai.com" target="_blank" rel="noopener noreferrer">nodedai.com</a>, Inc.
+                © 2019 随行付金科, Inc.
             </Footer>
         );
     }

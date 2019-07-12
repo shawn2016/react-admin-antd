@@ -2,7 +2,7 @@
 const path = require("path"); // 获取绝对路径有用
 const express = require("express"); // express服务器端框架
 const webpack = require("webpack"); // webpack核心
-import fs from './src/util/fs';
+import fs from "./src/util/fs";
 const env = process.env.NODE_ENV; // 模式（dev开发环境，production生产环境）
 const webpackDevMiddleware = require("webpack-dev-middleware"); // webpack服务器
 const webpackHotMiddleware = require("webpack-hot-middleware"); // HMR热更新中间件
@@ -16,7 +16,7 @@ const compiler = webpack(webpackConfig); // 实例化webpack
 import mongoose from "mongoose";
 app.set("port", PORT);
 //重点在这一句，赋值一个全局Promise
-mongoose.Promise = global.Promise
+mongoose.Promise = global.Promise;
 // todo: move to config/database.js
 const dbHost = process.env["MONGODB_PORT_27017_TCP_ADDR"] || "localhost";
 const dbPort = process.env["MONGODB_PORT_27017_TCP_PORT"] || 27017;
@@ -39,7 +39,7 @@ dbConnection.once("open", () => {
 //
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
-app.use(express.static(path.join(__dirname, './src/public')));
+app.use(express.static(path.join(__dirname, "./src/public")));
 app.use(express.static(path.join(__dirname, "./publish")));
 app.use(bodyParser.json({ limit: "10000 kB" }));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -51,7 +51,6 @@ if (env === "production") {
     res.sendFile(path.join(__dirname, "build", "index.html"));
   });
 } else {
-
   app.use(
     webpackDevMiddleware(compiler, {
       // 挂载webpack小型服务器
@@ -64,40 +63,44 @@ if (env === "production") {
     })
   );
   app.use(webpackHotMiddleware(compiler)); // 挂载HMR热更新中间件
+  app.get("*", (req, res, next) => {
+    // 所有GET请求都返回index.html
+    const filename = path.join(DIST_DIR, "index.html");
 
-//   app.get("*", (req, res, next) => {
-//     // 所有GET请求都返回index.html
-//     const filename = path.join(DIST_DIR, "index.html");
+    // 由于index.html是由html-webpack-plugin生成到内存中的，所以使用下面的方式获取
+    compiler.outputFileSystem.readFile(filename, (err, result) => {
+      if (err) {
+        return next(err);
+      }
+      res.set("content-type", "text/html");
+      res.send(result);
+      res.end();
+    });
+  });
+  app.use("/api/projects", require("./src/api/projects"));
+  app.use("/api/generate", require("./src/api/generate"));
+  app.use("/api/components", require("./src/api/components"));
+  app.use("/api/sync", require("./src/api/sync"));
+  app.use("/api/pages", require("./src/api/pages"));
+  app.use("/api/preview", require("./src/api/pages"));
 
-//     // 由于index.html是由html-webpack-plugin生成到内存中的，所以使用下面的方式获取
-//     compiler.outputFileSystem.readFile(filename, (err, result) => {
-//       if (err) {
-//         return next(err);
-//       }
-//       res.set("content-type", "text/html");
-//       res.send(result);
-//       res.end();
-//     });
-//   });
 }
-app.use('/api/projects',require('./src/api/projects'));
-app.use("/api/generate", require("./src/api/generate"));
-app.use("/api/components", require("./src/api/components"));
-app.use("/api/sync", require("./src/api/sync"));
-app.use('/api/pages', require('./src/api/pages'));
-app.use('/api/preview', require('./src/api/pages'));
+
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
-app.get('*', async (req, res, next) => {
-    try {
-      const html = await fs.readFile(path.join(__dirname, './src/index.html'));
-      res.status(200).type('html').send(html);
-    } catch (err) {
-      next(err);
-    }
-  });
-  
+// app.get("*", async (req, res, next) => {
+//   try {
+//     const html = await fs.readFile(path.join(__dirname, "./src/index.html"));
+//     res
+//       .status(200)
+//       .type("html")
+//       .send(html);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
+
 /** 监听POST请求，返回MOCK模拟数据 **/
 app.post("*", (req, res, next) => {
   const result = mock.mockApi(req.originalUrl, req.body);

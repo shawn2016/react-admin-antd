@@ -167,6 +167,7 @@ export default class RoleAdminContainer extends React.Component {
         title: "操作",
         key: "control",
         width: 200,
+        fixed:'right',
         render: (text, record) => {
           const controls = [];
           const p = this.props.powers;
@@ -390,7 +391,7 @@ export default class RoleAdminContainer extends React.Component {
                 onClick={() => this.showDrawer(null, "add")}
               >
                 <Icon type="plus-circle-o" />
-                同步模板
+                同步模板00000
               </Button>
             </li>
           </ul>

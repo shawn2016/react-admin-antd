@@ -136,8 +136,9 @@ export default class Com extends React.PureComponent {
           }
         >
           <Link to="/">
-            <img src={ImgLogo} />
-            <div>React-Admin</div>
+            {/* <img src={ImgLogo} /> */}
+            <Icon className={css.logo} type="slack" />
+            <div>活动管理系统</div>
           </Link>
         </div>
         <Menu

@@ -262,9 +262,6 @@ export default class Com extends React.PureComponent {
                             <Dropdown
                                 overlay={
                                     <Menu className={css.menu} selectedKeys={[]} onClick={this.onMenuClick}>
-                                        <Menu.Item><a href="http://nodedai.com" target="_blank" rel="noopener noreferrer"><Icon type="global" />nodedai.com</a></Menu.Item>
-                                        <Menu.Item><a href="https://github.com/shawn2016/react-admin-antd" target="_blank" rel="noopener noreferrer"><Icon type="github" />GitHub</a></Menu.Item>
-                                        <Menu.Divider />
                                         <Menu.Item key="logout" ><Icon type="logout" />退出登录</Menu.Item>
                                     </Menu>
                                 }
