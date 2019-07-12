@@ -3,6 +3,7 @@
   "env": {
     // only enable it when process.env.NODE_ENV is 'development' or undefined
     "development": {
+      "presets": ["react-hmre"],
       "plugins": [
         [
           "transform-runtime",
@@ -11,6 +12,18 @@
         ["import", { "style": true, "libraryName": "antd" }],
         "transform-decorators-legacy",
         "transform-class-properties",
+        [
+          "react-transform",
+          {
+            "transforms": [
+              {
+                "transform": "react-transform-hmr",
+                "imports": ["react"],
+                "locals": ["module"]
+              }
+            ]
+          }
+        ]
       ]
     },
     "production": {

@@ -14,14 +14,10 @@ const AUTOPREFIXER_BROWSERS = [
   "Safari >= 7.1"
 ];
 
-const loaders = [
+const rules = [
   {
     test: /\.js$/,
-    exclude: /node_modules/,
-    loader: "babel-loader",
-    options: {
-      plugins: ["transform-decorators-legacy", "transform-class-properties"]
-    }
+    loader: "babel-loader"
   },
   { test: /\.json$/, loader: "json-loader" },
   { test: /\.txt$/, loader: "raw-loader" },
@@ -37,7 +33,7 @@ const loaders = [
   { test: /\.css$/, loader: "style-loader/useable!css-loader!postcss-loader" }
 ];
 
-const plugins = [new webpack.optimize.UglifyJsPlugin({})];
+const plugins = [];
 async function compileComponent(project, name, optimize) {
   console.log("start to compile component: ", project, name);
   const projectPrefix = project + "/components";
@@ -62,7 +58,7 @@ async function compileComponent(project, name, optimize) {
       filename: outputFileName
     },
     module: {
-      loaders: loaders
+      rules: rules
     },
     plugins: optimize ? plugins : []
   };
@@ -117,7 +113,7 @@ const compileTemplate = async page => {
       filename: outputFileName
     },
     module: {
-      loaders: loaders
+      rules: rules
     },
     plugins: plugins
   };

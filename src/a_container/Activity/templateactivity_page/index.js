@@ -391,7 +391,7 @@ export default class RoleAdminContainer extends React.Component {
                 onClick={() => this.showDrawer(null, "add")}
               >
                 <Icon type="plus-circle-o" />
-                同步模板00000
+                同步模板
               </Button>
             </li>
           </ul>
