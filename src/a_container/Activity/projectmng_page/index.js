@@ -175,7 +175,7 @@ export default class RoleAdminContainer extends React.Component {
         key: "control",
         width: 200,
         render: (text, record) => {
-            console.log(record)
+          console.log(record);
           const controls = [];
           const p = this.props.powers;
           p.includes("role:query") &&

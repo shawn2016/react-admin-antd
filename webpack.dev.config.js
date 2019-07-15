@@ -40,7 +40,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         loader: "babel-loader",
-        include: path.join(__dirname, "src"),
+        include: path.join(__dirname, "./src"),
         options: {
           plugins: [
             [

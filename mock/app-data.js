@@ -113,6 +113,26 @@ const menus = [
     conditions: 1
   },
   {
+    id: 6,
+    title: "项目列表",
+    icon: "appstore",
+    url: "/activity/projectmng_page",
+    parent: null,
+    desc: "活动管理/项目列表",
+    sorts: 1,
+    conditions: 1
+  },
+  {
+    id: 4,
+    title: "页面列表",
+    icon: "appstore",
+    url: "/activity/myactivity_page",
+    parent: null,
+    desc: "活动管理/页面列表",
+    sorts: 4,
+    conditions: 1
+  },
+  {
     id: 2,
     title: "组件列表",
     icon: "home",
@@ -128,40 +148,24 @@ const menus = [
     icon: "appstore",
     url: "/activity/editactivity_page",
     parent: null,
+    hideMenu: true,
     desc: "活动管理/活动编辑",
     sorts: 4,
     conditions: 1
   },
-  {
-    id: 4,
-    title: "页面列表",
-    icon: "appstore",
-    url: "/activity/myactivity_page",
-    parent: null,
-    desc: "活动管理/页面列表",
-    sorts: 4,
-    conditions: 1
-  },
+
   {
     id: 5,
     title: "活动预览",
     icon: "appstore",
     url: "/activity/previewactivity_page",
     parent: null,
+    hideMenu: true,
     desc: "活动管理/活动预览",
     sorts: 4,
     conditions: 1
-  },
-  {
-    id: 6,
-    title: "项目列表",
-    icon: "appstore",
-    url: "/activity/projectmng_page",
-    parent: null,
-    desc: "活动管理/项目列表",
-    sorts: 4,
-    conditions: 1
   }
+
   //   {
   //     id: 2,
   //     title: "系统管理",

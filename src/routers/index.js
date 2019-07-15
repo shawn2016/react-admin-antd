@@ -25,7 +25,7 @@ const Loading = ({ error, pastDelay }) => {
   return null;
 };
 function LoadingComponent() {
-  return <div>33333333</div>;
+  return <div>999999999999</div>;
 }
 const RouterPage = Loadable({
   loader: () => import("../a_container/common/routerPage"),

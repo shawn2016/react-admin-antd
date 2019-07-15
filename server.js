@@ -51,40 +51,38 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //     res.sendFile(path.join(__dirname, "build", "index.html"));
 //   });
 // } else {}
-  app.use(
-    webpackDevMiddleware(compiler, {
-      // 挂载webpack小型服务器
-      publicPath: webpackConfig.output.publicPath, // 对应webpack配置中的publicPath
-      quiet: true, // 是否不输出启动时的相关信息
-      stats: {
-        colors: true, // 不同信息不同颜色
-        timings: true // 输出各步骤消耗的时间
-      }
-    })
-  );
-  app.use(webpackHotMiddleware(compiler)); // 挂载HMR热更新中间件
+app.use(
+  webpackDevMiddleware(compiler, {
+    // 挂载webpack小型服务器
+    publicPath: webpackConfig.output.publicPath, // 对应webpack配置中的publicPath
+    quiet: true, // 是否不输出启动时的相关信息
+    stats: {
+      colors: true, // 不同信息不同颜色
+      timings: true // 输出各步骤消耗的时间
+    }
+  })
+);
+app.use(webpackHotMiddleware(compiler)); // 挂载HMR热更新中间件
+app.use("/api/projects", require("./src/api/projects"));
+app.use("/api/generate", require("./src/api/generate"));
+app.use("/api/components", require("./src/api/components"));
+app.use("/api/sync", require("./src/api/sync"));
+app.use("/api/pages", require("./src/api/pages"));
+app.use("/api/preview", require("./src/api/pages"));
+app.get("*", (req, res, next) => {
+  // 所有GET请求都返回index.html
+  const filename = path.join(DIST_DIR, "index.html");
 
-  app.get("*", (req, res, next) => {
-    // 所有GET请求都返回index.html
-    const filename = path.join(DIST_DIR, "index.html");
-
-    // 由于index.html是由html-webpack-plugin生成到内存中的，所以使用下面的方式获取
-    compiler.outputFileSystem.readFile(filename, (err, result) => {
-      if (err) {
-        return next(err);
-      }
-      res.set("content-type", "text/html");
-      res.send(result);
-      res.end();
-    });
+  // 由于index.html是由html-webpack-plugin生成到内存中的，所以使用下面的方式获取
+  compiler.outputFileSystem.readFile(filename, (err, result) => {
+    if (err) {
+      return next(err);
+    }
+    res.set("content-type", "text/html");
+    res.send(result);
+    res.end();
   });
-
-  app.use("/api/projects", require("./src/api/projects"));
-  app.use("/api/generate", require("./src/api/generate"));
-  app.use("/api/components", require("./src/api/components"));
-  app.use("/api/sync", require("./src/api/sync"));
-  app.use("/api/pages", require("./src/api/pages"));
-  app.use("/api/preview", require("./src/api/pages"));
+});
 
 //
 // Register server-side rendering middleware

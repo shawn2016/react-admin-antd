@@ -48,7 +48,9 @@ export default class PreviewActiveContainer extends React.Component {
       },
       componentIndex: 0
     };
-    const query = qs.parse(location.href.split('?')[1], { ignoreQueryPrefix: true });
+    const query = qs.parse(location.href.split("?")[1], {
+      ignoreQueryPrefix: true
+    });
     this.getPages(query.pageId);
   }
 
@@ -106,7 +108,7 @@ export default class PreviewActiveContainer extends React.Component {
   };
   render() {
     const page = this.state.page;
-    console.log(page)
+    console.log(page);
     page.components = page.components ? page.components : [];
     const componentIndex = this.state.componentIndex;
     const pageComponents = page.components.map((component, index) => {

@@ -213,8 +213,9 @@ export default class LoginContainer extends React.Component {
         >
           <Form>
             <div className={css.title}>
-              <img src={LogoImg} alt="logo" />
-              <span>React-Admin</span>
+              {/* <img src={LogoImg} alt="logo" /> */}
+              <Icon className={css.logo} type="slack" />
+              <span>活动管理系统</span>
             </div>
             <div>
               <FormItem>
