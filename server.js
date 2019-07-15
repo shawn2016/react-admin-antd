@@ -44,13 +44,13 @@ app.use(express.static(path.join(__dirname, "./publish")));
 app.use(bodyParser.json({ limit: "10000 kB" }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
-if (env === "production") {
-  // 如果是生产环境，则运行build文件夹中的代码
-  app.use(express.static("build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "build", "index.html"));
-  });
-} else {
+// if (env === "production") {
+//   // 如果是生产环境，则运行build文件夹中的代码
+//   app.use(express.static("build"));
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "build", "index.html"));
+//   });
+// } else {}
   app.use(
     webpackDevMiddleware(compiler, {
       // 挂载webpack小型服务器
@@ -63,12 +63,7 @@ if (env === "production") {
     })
   );
   app.use(webpackHotMiddleware(compiler)); // 挂载HMR热更新中间件
-  app.use("/api/projects", require("./src/api/projects"));
-  app.use("/api/generate", require("./src/api/generate"));
-  app.use("/api/components", require("./src/api/components"));
-  app.use("/api/sync", require("./src/api/sync"));
-  app.use("/api/pages", require("./src/api/pages"));
-  app.use("/api/preview", require("./src/api/pages"));
+
   app.get("*", (req, res, next) => {
     // 所有GET请求都返回index.html
     const filename = path.join(DIST_DIR, "index.html");
@@ -83,22 +78,28 @@ if (env === "production") {
       res.end();
     });
   });
-}
+
+  app.use("/api/projects", require("./src/api/projects"));
+  app.use("/api/generate", require("./src/api/generate"));
+  app.use("/api/components", require("./src/api/components"));
+  app.use("/api/sync", require("./src/api/sync"));
+  app.use("/api/pages", require("./src/api/pages"));
+  app.use("/api/preview", require("./src/api/pages"));
 
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
-app.get("*", async (req, res, next) => {
-  try {
-    const html = await fs.readFile(path.join(__dirname, "./src/index.html"));
-    res
-      .status(200)
-      .type("html")
-      .send(html);
-  } catch (err) {
-    next(err);
-  }
-});
+// app.get("*", async (req, res, next) => {
+//   try {
+//     const html = await fs.readFile(path.join(__dirname, "./src/index.html"));
+//     res
+//       .status(200)
+//       .type("html")
+//       .send(html);
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 /** 监听POST请求，返回MOCK模拟数据 **/
 app.post("*", (req, res, next) => {
