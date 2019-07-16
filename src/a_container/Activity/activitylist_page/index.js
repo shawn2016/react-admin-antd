@@ -47,7 +47,8 @@ import {
   getPagesList,
   getProjects,
   createPage,
-  delPages
+  delPages,
+  updatePage
 } from "../../../a_action/act-action";
 // ==================
 // Definition
@@ -67,7 +68,8 @@ const { Option } = Select;
         getPagesList,
         getProjects,
         createPage,
-        delPages
+        delPages,
+        updatePage
       },
       dispatch
     )
@@ -96,7 +98,9 @@ export default class RoleAdminContainer extends React.Component {
         owner: ""
       },
       pageNum: 0,
-      pageSize: 1
+      pageSize: 1,
+      dialogType: "",
+      selectId: ""
     };
     this.getPagesList();
   }
@@ -208,7 +212,7 @@ export default class RoleAdminContainer extends React.Component {
               <span
                 key="1"
                 className="control-btn green"
-                onClick={() => this.onModalShow(record, "see")}
+                onClick={() => this.editactive(record._id)}
               >
                 <Tooltip placement="top" title="查看">
                   <Icon type="eye" />
@@ -220,7 +224,7 @@ export default class RoleAdminContainer extends React.Component {
               <span
                 key="2"
                 className="control-btn blue"
-                onClick={() => this.editactive(record._id)}
+                onClick={() => this.showCreatePageDialog("edit", record)}
               >
                 <Tooltip placement="top" title="编辑">
                   <Icon type="edit" />
@@ -315,7 +319,37 @@ export default class RoleAdminContainer extends React.Component {
       visible: false
     });
   };
-  createPage = async () => {
+
+  updatePage = item => {
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values);
+        this.props.actions
+          .updatePage({
+            _id: this.state.selectId,
+            data: {
+              name: values.name,
+              description: values.description,
+              project: values.project
+            }
+          })
+          .then(res => {
+            if (res.msgCode === "PTM0000") {
+              message.success("编辑模板成功");
+              this.setState({
+                visible: false
+              });
+              setTimeout(() => {
+                this.getPagesList();
+              }, 2000);
+            } else {
+              message.error(res.msgInfo);
+            }
+          });
+      }
+    });
+  };
+  createPage = () => {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log(values);
@@ -335,15 +369,43 @@ export default class RoleAdminContainer extends React.Component {
       }
     });
   };
-  showCreatePageDialog = () => {
+  showCreatePageDialog = (type, item) => {
+    if (type === "edit") {
+      this.props.form.setFieldsValue({
+        project: item.project,
+        description: item.description,
+        name: item.name
+      });
+    } else if (type === "add") {
+      this.props.form.setFieldsValue({
+        project: "",
+        description: "",
+        name: ""
+      });
+    }
     this.setState({
-      visible: true
+      visible: true,
+      dialogType: type,
+      selectId: (item && item._id) || ""
     });
   };
   handleCancel = e => {
     this.setState({
       visible: false
     });
+  };
+  dialogOk = () => {
+    switch (this.state.dialogType) {
+      case "add":
+        this.createPage();
+        break;
+      case "edit":
+        this.updatePage();
+        break;
+
+      default:
+        break;
+    }
   };
   render() {
     const { Option } = Select;
@@ -389,7 +451,7 @@ export default class RoleAdminContainer extends React.Component {
           cancelText="取消"
           okText="确定"
           visible={this.state.visible}
-          onOk={this.createPage}
+          onOk={this.dialogOk}
           onCancel={this.handleCancel}
         >
           <Form {...formItemLayout}>

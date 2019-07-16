@@ -17,10 +17,10 @@ message.config({
 
 const Loading = ({ error, pastDelay }) => {
   if (pastDelay) {
-    return <div>111111111</div>;
+    return <div>loading</div>;
   } else if (error) {
     console.log(error);
-    return <div>2222222</div>;
+    return <div>页面加载失败</div>;
   }
   return null;
 };

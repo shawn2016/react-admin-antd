@@ -57,6 +57,24 @@ export const putPages = (params = {}) => async dispatch => {
 /**
  * 保存配置
  * **/
+export const updatePage = (params = {}) => async dispatch => {
+  try {
+    const res = await Fetchapi.newFetch(
+      `api/pages/${params._id}`,
+      params.data,
+      {
+        method: "put"
+      }
+    );
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
+
+/**
+ * 保存配置
+ * **/
 export const createPage = (params = {}) => async dispatch => {
   try {
     const res = await Fetchapi.newFetch(`api/pages`, params, {
@@ -152,3 +170,16 @@ export const delProjects = (params = {}) => async dispatch => {
     message.error("网络错误，请重试");
   }
 };
+/**
+ * 删除组件
+ * **/
+export const delComponents = (params = {}) => async dispatch => {
+    try {
+      const res = await Fetchapi.newFetch(`api/components/${params._id}`, params, {
+        method: "delete"
+      });
+      return res.data;
+    } catch (err) {
+      message.error("网络错误，请重试");
+    }
+  };

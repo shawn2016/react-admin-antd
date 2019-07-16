@@ -137,7 +137,6 @@ export default class router_Page extends PureComponent {
    * 退出登录
    * **/
   onLogout = () => {
-    console.log("触发0？");
     this.props.actions.onLogout().then(() => {
       message.success("退出成功");
       this.props.history.push("/");

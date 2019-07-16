@@ -56,7 +56,7 @@ router.post("/", async (req, res, next) => {
       const component = new Component({
         project: req.body.project,
         name: req.body.name,
-        config: req.body.config,
+        config: req.body.config
         // fileContent: data.fileContent.toString()
       });
       const savedComponent = await component.save();
@@ -71,10 +71,7 @@ router.delete("/:_id", async (req, res, next) => {
   try {
     const _id = req.params._id;
     const component = await Component.findOneAndRemove({ _id: _id });
-    res.status(200).send({
-      retcode: 0,
-      component: component
-    });
+    res.status(200).send(dataFifter.success(component));
   } catch (err) {
     next(err);
   }
