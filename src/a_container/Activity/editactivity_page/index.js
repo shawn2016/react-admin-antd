@@ -445,8 +445,8 @@ export default class PageAdminContainer extends React.Component {
 
   previewPage = () => {
     this.generatePage();
-    const page = this.state.page;
-    window.open(`${page.project}/pages/${page.name}`);
+    // const page = this.state.page;
+    // window.open(`${page.project}/pages/${page.name}`);
   };
   /**
    * 退出全屏
