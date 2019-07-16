@@ -203,9 +203,9 @@ export default class router_Page extends PureComponent {
   };
   render() {
     const { showPage = false, component, route } = this.state;
-    const { menuChild } = route;
+    const { hideMenu } = route;
     return showPage ? (
-      menuChild ? (
+      hideMenu ? (
         <div>{component}</div>
       ) : (
         <Layout className={css.page}>

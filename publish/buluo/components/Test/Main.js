@@ -11688,6 +11688,7 @@ var _sxFetch2 = _interopRequireDefault(_sxFetch);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var baseURL = 'https://lns-wap-test.vbillbank.com';
 var fetchInit = function fetchInit() {
   _sxFetch2.default.init({
     timeout: 10000, // 默认超时

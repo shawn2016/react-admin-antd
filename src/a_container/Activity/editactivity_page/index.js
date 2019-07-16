@@ -111,15 +111,9 @@ export default class PageAdminContainer extends React.Component {
       pagePublishing: false,
 
       showComponents: false,
-      showComponentSettings: false,
 
       deviceWidth: 320,
       deviceHeight: 568,
-
-      editorSliderValue: 0.5,
-
-      editorProperties: null,
-      editorValues: null,
 
       publishUrl: "",
       config: null,
@@ -334,13 +328,10 @@ export default class PageAdminContainer extends React.Component {
     this.setState({
       componentIndex: componentIndex,
       component: component,
-      showComponentSettings: true,
-      showComponents: false,
-
-      editorProperties: component.config.properties,
-      editorValues: component.config.props
+      showComponents: false
     });
     console.log(component);
+    debugger;
     this.setState({
       config: component.config.properties
     });
@@ -522,8 +513,6 @@ export default class PageAdminContainer extends React.Component {
       deviceHeight,
       deviceWidth,
       page,
-      showComponentSettings,
-      editorSliderValue,
       config,
       pageGenerating
     } = this.state;
@@ -551,11 +540,6 @@ export default class PageAdminContainer extends React.Component {
           </div>
         </Drawer>
         <Layout className={css.page}>
-          {/* <ActMenu
-          data={this.props.menus}
-          collapsed={this.state.collapsed}
-          location={this.props.location}
-        /> */}
           <Sider
             theme="light"
             width={120}

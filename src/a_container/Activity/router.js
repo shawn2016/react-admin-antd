@@ -2,7 +2,7 @@ export default [
   {
     path: "/activity/editactivity_page",
     title: "编辑活动",
-    menuChild: true,
+    hideMenu: true,
     component: () => import("./editactivity_page")
   },
   {
@@ -23,7 +23,7 @@ export default [
   {
     path: "/activity/previewactivity_page",
     title: "活动预览",
-    menuChild: true,
+    hideMenu: true,
     component: () => import("./previewactivity_page")
   }
 ];

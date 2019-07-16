@@ -35,6 +35,7 @@
     "eventemitter3": "^4.0.0",
     "fbjs": "^1.0.0",
     "history": "^4.7.2",
+    "http-proxy-middleware": "^0.19.1",
     "immutable": "^3.8.2",
     "json-editor": "^0.7.28",
     "json-loader": "^0.5.7",

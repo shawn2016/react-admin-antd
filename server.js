@@ -13,6 +13,7 @@ const app = (global.server = express()); // 实例化express服务
 const DIST_DIR = webpackConfig.output.path; // webpack配置中设置的文件输出路径，所有文件存放在内存中
 const PORT = process.env.PORT || 8888; // 服务启动端口号
 const compiler = webpack(webpackConfig); // 实例化webpack
+const proxy = require("http-proxy-middleware");
 import mongoose from "mongoose";
 app.set("port", PORT);
 //重点在这一句，赋值一个全局Promise
@@ -69,6 +70,13 @@ app.use("/api/components", require("./src/api/components"));
 app.use("/api/sync", require("./src/api/sync"));
 app.use("/api/pages", require("./src/api/pages"));
 app.use("/api/preview", require("./src/api/pages"));
+app.use(
+  proxy("/wap", {
+    target: "https://lns-wap-test.vbillbank.com/wap", //跨域地址
+    pathRewrite: { "^/wap": "" }, //重写接口
+    changeOrigin: true
+  })
+);
 app.get("*", (req, res, next) => {
   // 所有GET请求都返回index.html
   const filename = path.join(DIST_DIR, "index.html");
