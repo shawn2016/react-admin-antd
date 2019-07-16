@@ -113,29 +113,29 @@ const menus = [
     conditions: 1
   },
   {
-    id: 2,
-    title: "项目列表",
-    icon: "appstore",
-    url: "/activity/projectmng_page",
-    parent: null,
-    desc: "活动管理/项目列表",
-    sorts: 1,
-    conditions: 1
-  },
-  {
     id: 3,
-    title: "页面列表",
-    icon: "appstore",
-    url: "/activity/myactivity_page",
+    title: "活动模板",
+    icon: "fire",
+    url: "/activity/activitylist_page",
     parent: null,
-    desc: "活动管理/页面列表",
+    desc: "活动管理/活动模板",
     sorts: 2,
     conditions: 1
   },
   {
     id: 4,
+    title: "我的活动",
+    icon: "profile",
+    url: "/activity/myactivity_page",
+    parent: null,
+    desc: "活动管理/我的活动",
+    sorts: 2,
+    conditions: 1
+  },
+  {
+    id: 5,
     title: "组件列表",
-    icon: "home",
+    icon: "apartment",
     url: "/activity/templateactivity_page",
     parent: null,
     desc: "活动管理/组件列表",
@@ -143,9 +143,9 @@ const menus = [
     conditions: 1
   },
   {
-    id: 5,
+    id: 6,
     title: "活动编辑",
-    icon: "appstore",
+    icon: null,
     url: "/activity/editactivity_page",
     parent: null,
     hideMenu: true,
@@ -155,9 +155,9 @@ const menus = [
   },
 
   {
-    id: 6,
+    id: 7,
     title: "活动预览",
-    icon: "appstore",
+    icon: null,
     url: "/activity/previewactivity_page",
     parent: null,
     hideMenu: true,

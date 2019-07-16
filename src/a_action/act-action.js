@@ -24,6 +24,19 @@ export const getPages = (params = {}) => async dispatch => {
   }
 };
 /**
+ * 删除
+ * **/
+export const delPages = (params = {}) => async dispatch => {
+  try {
+    const res = await Fetchapi.newFetch(`api/pages/${params._id}`, params, {
+      method: "delete"
+    });
+    return res.data;
+  } catch (err) {
+    message.error("网络错误，请重试");
+  }
+};
+/**
  * 保存配置
  * **/
 export const putPages = (params = {}) => async dispatch => {

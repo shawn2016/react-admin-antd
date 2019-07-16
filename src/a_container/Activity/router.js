@@ -6,11 +6,6 @@ export default [
     component: () => import("./editactivity_page")
   },
   {
-    path: "/activity/projectmng_page",
-    title: "项目管理",
-    component: () => import("./projectmng_page")
-  },
-  {
     path: "/activity/myactivity_page",
     title: "我的活动",
     component: () => import("./myactivity_page")
@@ -19,6 +14,11 @@ export default [
     path: "/activity/templateactivity_page",
     title: "活动模板",
     component: () => import("./templateactivity_page")
+  },
+  {
+    path: "/activity/activitylist_page",
+    title: "活动模板",
+    component: () => import("./activitylist_page")
   },
   {
     path: "/activity/previewactivity_page",

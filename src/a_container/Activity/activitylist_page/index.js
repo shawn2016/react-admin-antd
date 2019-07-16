@@ -24,7 +24,10 @@ import {
   Select,
   InputNumber,
   Drawer,
-  Popover
+  Popover,
+  DatePicker,
+  TimePicker,
+  Cascader
 } from "antd";
 import css from "./index.scss";
 import c from "classnames";
@@ -40,7 +43,12 @@ import TreeTable from "../../../a_component/TreeChose/PowerTreeTable";
 // 本页面所需action
 // ==================
 
-import { getProjects, delProjects } from "../../../a_action/act-action";
+import {
+  getPagesList,
+  getProjects,
+  createPage,
+  delPages
+} from "../../../a_action/act-action";
 // ==================
 // Definition
 // ==================
@@ -56,8 +64,10 @@ const { Option } = Select;
   dispatch => ({
     actions: bindActionCreators(
       {
+        getPagesList,
         getProjects,
-        delProjects
+        createPage,
+        delPages
       },
       dispatch
     )
@@ -77,70 +87,74 @@ export default class RoleAdminContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      fixedHeader: true,
-      fixedFooter: true,
-      stripedRows: false,
-      showRowHover: false,
-      loading: false,
-      selectable: true,
-      multiSelectable: false,
-      enableSelectAll: false,
-      deselectOnClickaway: false,
-
-      selectedComponentIndex: -1,
-
-      localComponents: [],
-      selectedLocalComponentIndex: -1,
-      projects: [],
+      page: [],
+      project: [],
+      pagePro: {
+        name: "",
+        description: "",
+        project: "",
+        owner: ""
+      },
       pageNum: 0,
-      pageSize: 10,
-      visible: false
+      pageSize: 1
     };
-    this.getProjects();
-    // this.getLocalComponents();
+    this.getPagesList();
   }
-  getLocalComponents = async () => {
-    try {
-      const res = await fetch("/api/sync/components");
-      const json = await res.json();
-      if (json.retcode === 0) {
-        this.setState({
-          localComponents: json.components
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  getProjects = async () => {
+
+  getPagesList = () => {
     this.props.actions
-      .getProjects()
+      .getPagesList()
       .then(res => {
         if (res.status === 200) {
           this.setState({
-            projects: res.data
+            page: res.data
           });
         }
       })
       .catch(() => {});
   };
+
   // 编辑
   editactive = id => {
-    this.props.history.push(`/activity/editactive/${id}`);
+    this.props.history.push(`/activity/editactivity_page?pageId=${id}`);
   };
-  onModalShow = type => {};
-  onDel = id => {
+  removePage = _id => {
     this.props.actions
-      .delProjects({ id })
+      .delPages({ _id })
       .then(res => {
         if (res.status === 200) {
-          message.success("删除成功");
+          message.success("删除模板成功");
+          setTimeout(() => {
+            this.getPagesList();
+          }, 2000);
         }
       })
-      .catch(() => {
-        message.error("删除失败");
+      .catch(() => {});
+  };
+  copyactive = item => {
+    this.props.actions
+      .createPage({
+        description: item.description,
+        project: item.project,
+        components: item.components,
+        config: item.config,
+        name: item.name + new Date().getTime()
+      })
+      .then(res => {
+        if (res.msgCode === "PTM0000") {
+          message.success("复制模板成功");
+          this.setState({
+            visible: false
+          });
+          setTimeout(() => {
+            this.getPagesList();
+          }, 2000);
+        } else {
+          message.error(res.msgInfo);
+        }
       });
   };
+  onModalShow = type => {};
   // 构建字段
   makeColumns = () => {
     const columns = [
@@ -155,27 +169,20 @@ export default class RoleAdminContainer extends React.Component {
         key: "name"
       },
       {
-        title: "描述",
-        dataIndex: "desc",
-        key: "desc"
+        title: "简介",
+        dataIndex: "description",
+        key: "description"
       },
       {
-        title: "状态",
-        dataIndex: "conditions",
-        key: "conditions",
-        render: (text, record) =>
-          text === 1 ? (
-            <span style={{ color: "green" }}>启用</span>
-          ) : (
-            <span style={{ color: "red" }}>禁用</span>
-          )
+        title: "文件夹",
+        dataIndex: "project",
+        key: "project"
       },
       {
         title: "操作",
         key: "control",
         width: 200,
         render: (text, record) => {
-          console.log(record);
           const controls = [];
           const p = this.props.powers;
           p.includes("role:query") &&
@@ -213,45 +220,39 @@ export default class RoleAdminContainer extends React.Component {
               <span
                 key="2"
                 className="control-btn blue"
-                onClick={() => this.editactive(1)}
+                onClick={() => this.editactive(record._id)}
               >
                 <Tooltip placement="top" title="编辑">
                   <Icon type="edit" />
                 </Tooltip>
               </span>
             );
-          p.includes("role:power") &&
-            controls.push(
-              <Popconfirm
-                key="3"
-                title="确定发布吗?"
-                onConfirm={() => this.onDel(record.id)}
-                okText="确定"
-                cancelText="取消"
-              >
-                <span className="control-btn blue">
-                  <Tooltip placement="top" title="发布">
-                    <Icon type="cloud-upload" />
-                  </Tooltip>
-                </span>
-              </Popconfirm>
-            );
-          p.includes("role:del") &&
-            controls.push(
-              <Popconfirm
-                key="4"
-                title="确定删除吗?"
-                onConfirm={() => this.onDel(record._id)}
-                okText="确定"
-                cancelText="取消"
-              >
-                <span className="control-btn red">
-                  <Tooltip placement="top" title="删除">
-                    <Icon type="delete" />
-                  </Tooltip>
-                </span>
-              </Popconfirm>
-            );
+          controls.push(
+            <span
+              key="3"
+              className="control-btn blue"
+              onClick={() => this.copyactive(record)}
+            >
+              <Tooltip placement="top" title="复制模板">
+                <Icon type="copy" />
+              </Tooltip>
+            </span>
+          );
+          controls.push(
+            <Popconfirm
+              key="4"
+              title="确定删除吗?"
+              onConfirm={() => this.removePage(record._id)}
+              okText="确定"
+              cancelText="取消"
+            >
+              <span className="control-btn red">
+                <Tooltip placement="top" title="删除">
+                  <Icon type="delete" />
+                </Tooltip>
+              </span>
+            </Popconfirm>
+          );
 
           const result = [];
           controls.forEach((item, index) => {
@@ -266,51 +267,39 @@ export default class RoleAdminContainer extends React.Component {
     ];
     return columns;
   };
-
-  // 构建字段
-  makeLocalColumns = () => {
-    const columns = [
-      {
-        title: "名称",
-        dataIndex: "name",
-        key: "name"
-      },
-      {
-        title: "描述",
-        dataIndex: "desc",
-        key: "desc"
-      }
-    ];
-    return columns;
+  syncLocalComponent = index => {
+    this.props.actions
+      .syncLocalComponent(this.state.localComponents[index])
+      .then(res => {
+        if (res.status === 200) {
+          message.success("同步成功");
+          this.setState({
+            visible: false
+          });
+          setTimeout(() => {
+            this.getComponents();
+          }, 2000);
+        }
+      })
+      .catch(() => {});
   };
 
   // 构建table所需数据
   makeData = data => {
     return data.map((item, index) => {
       return {
-        key: index,
+        key: item._id,
         _id: item._id,
         serial: index + 1 + this.state.pageNum * this.state.pageSize,
         name: item.name,
-        desc: item.desc,
+        components: item.components,
+        config: item.config,
+        description: item.description,
         sorts: item.sorts,
+        project: item.project,
         conditions: item.conditions,
         control: item.id,
         powers: item.powers
-      };
-    });
-  };
-
-  // 构建table所需数据
-  makeLocalData = data => {
-    return data.map((item, index) => {
-      return {
-        key: index,
-        id: item._id,
-        serial: index + 1 + this.state.pageNum * this.state.pageSize,
-        name: item.name,
-        desc: item.desc,
-        control: item.id
       };
     });
   };
@@ -326,22 +315,51 @@ export default class RoleAdminContainer extends React.Component {
       visible: false
     });
   };
+  createPage = async () => {
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log(values);
+        this.props.actions.createPage({ ...values }).then(res => {
+          if (res.msgCode === "PTM0000") {
+            message.success("新增模板成功");
+            this.setState({
+              visible: false
+            });
+            setTimeout(() => {
+              this.getPagesList();
+            }, 2000);
+          } else {
+            message.error(res.msgInfo);
+          }
+        });
+      }
+    });
+  };
+  showCreatePageDialog = () => {
+    this.setState({
+      visible: true
+    });
+  };
+  handleCancel = e => {
+    this.setState({
+      visible: false
+    });
+  };
   render() {
-    const me = this;
-    const { form } = me.props;
-    const p = this.props.powers;
-    const { getFieldDecorator } = form;
+    const { Option } = Select;
+
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
-        sm: { span: 4 }
+        sm: { span: 5 }
       },
       wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 19 }
+        sm: { span: 12 }
       }
     };
-
+    const p = this.props.powers;
+    const { getFieldDecorator } = this.props.form;
     return (
       <div>
         <div className="g-search">
@@ -350,35 +368,48 @@ export default class RoleAdminContainer extends React.Component {
               <Button
                 type="primary"
                 disabled={!p.includes("role:add")}
-                onClick={() => this.showDrawer(null, "add")}
+                onClick={() => this.showCreatePageDialog("add")}
               >
                 <Icon type="plus-circle-o" />
-                新增项目
+                新增模板
               </Button>
             </li>
           </ul>
         </div>
         <div className="diy-table">
           <Table
+            pagination={false}
             columns={this.makeColumns()}
-            loading={this.state.loading}
-            dataSource={this.makeData(this.state.projects)}
+            loading={this.state.componentsLoading}
+            dataSource={this.makeData(this.state.page)}
           />
         </div>
-        <Drawer
-          title="本地组件列表"
-          width={500}
-          onClose={this.onClose}
+        <Modal
+          title="新增模板"
+          cancelText="取消"
+          okText="确定"
           visible={this.state.visible}
+          onOk={this.createPage}
+          onCancel={this.handleCancel}
         >
-          <div className="diy-table">
-            <Table
-              columns={this.makeLocalColumns()}
-              loading={this.state.loading}
-              dataSource={this.makeLocalData(this.state.localComponents)}
-            />
-          </div>
-        </Drawer>
+          <Form {...formItemLayout}>
+            <Form.Item label="模板名称">
+              {getFieldDecorator("name", {
+                rules: [{ required: true, message: "请输入模板名称" }]
+              })(<Input placeholder="请输入模板名称" />)}
+            </Form.Item>
+            <Form.Item label="文件夹名">
+              {getFieldDecorator("project", {
+                rules: [{ required: true, message: "请输入文件夹名" }]
+              })(<Input placeholder="请输入文件夹名" />)}
+            </Form.Item>
+            <Form.Item label="模板简介">
+              {getFieldDecorator("description", {
+                rules: [{ required: true, message: "请输入模板简介" }]
+              })(<Input.TextArea placeholder="请输入模板简介" />)}
+            </Form.Item>
+          </Form>
+        </Modal>
       </div>
     );
   }

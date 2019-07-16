@@ -746,47 +746,70 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = (0, _create2.default)(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var newKey = function newKey() {
+  var key = ((Math.random() + 1) * 100000).toString(16);
+  return key;
+};
+
 var Com = (_dec = (0, _withStyles2.default)(_style2.default), _dec(_class = function (_Component) {
   _inherits(Com, _Component);
 
-  function Com(props) {
+  function Com() {
+    var _ref;
+
+    var _temp, _this, _ret;
+
     _classCallCheck(this, Com);
 
-    return _possibleConstructorReturn(this, (Com.__proto__ || (0, _getPrototypeOf2.default)(Com)).call(this, props));
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Com.__proto__ || (0, _getPrototypeOf2.default)(Com)).call.apply(_ref, [this].concat(args))), _this), _this.goToBarindex = function (bid) {
+      var url = 'http://buluo.qq.com/mobile/barindex.html?&bid=' + bid + '}';
+      // Util.openUrl(url, true);
+      // for demo, just replace location.href
+      window.location.href = url;
+    }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Com, [{
     key: 'render',
     value: function render() {
-      var imgs = this.props.imgs;
-      var imgStyle = {
-        width: this.props.imgWidth,
-        height: this.props.imgHeight,
-        borderRadius: parseInt(this.props.imgWidth, 10) / 2
-      };
-      var cardStyle = {
-        display: 'inline-block',
-        width: 100 / this.props.imgCountsPerLine + '%',
-        textAlign: 'center'
-      };
-      var titleStyle = {
-        width: this.props.imgWidth
-      };
+      var _this2 = this;
+
+      console.log(this.props.collections);
+      var $collections = this.props.collections.map(function (collection) {
+        return _react2.default.createElement(
+          'div',
+          { key: collection.title + newKey(), className: 'collection' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            collection.title
+          ),
+          _react2.default.createElement(
+            'ul',
+            null,
+            collection.bids.map(function (bar) {
+              return _react2.default.createElement(
+                'li',
+                { key: bar.bid + newKey(), onTouchTap: _this2.goToBarindex.bind(_this2, bar.bid) },
+                _react2.default.createElement('img', { src: bar.pic_url, alt: bar.name }),
+                _react2.default.createElement(
+                  'p',
+                  null,
+                  bar.name
+                )
+              );
+            })
+          )
+        );
+      });
       return _react2.default.createElement(
         'div',
-        { className: 'buluo-AvatarCard' },
-        imgs.map(function (item) {
-          return _react2.default.createElement(
-            'a',
-            { style: cardStyle, key: window.performance.now(), href: item.link },
-            _react2.default.createElement('img', { style: imgStyle, src: item.src }),
-            _react2.default.createElement(
-              'p',
-              { style: titleStyle, className: 'title' },
-              item.title
-            )
-          );
-        })
+        { className: 'buluo-Collection' },
+        $collections
       );
     }
   }]);
@@ -3346,7 +3369,7 @@ exports = module.exports = __webpack_require__(62)(false);
 
 
 // module
-exports.push([module.i, ".buluo-AvatarCard a {\n  text-decoration: none;\n  color: inherit; }\n\n.buluo-AvatarCard img {\n  max-width: 100%; }\n\n.buluo-AvatarCard .title {\n  margin: 5px auto 10px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap; }\n", ""]);
+exports.push([module.i, ".buluo-Collection .collection {\n  position: relative;\n  background-color: #fff;\n  margin: 25px 0; }\n  .buluo-Collection .collection ul {\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    margin-left: 15px;\n    display: -webkit-box;\n    overflow-x: scroll;\n    -webkit-overflow-scrolling: touch; }\n    .buluo-Collection .collection ul::-webkit-scrollbar {\n      display: none; }\n  .buluo-Collection .collection li {\n    margin-right: 15px; }\n  .buluo-Collection .collection h2 {\n    margin-left: 15px;\n    font-size: 16px;\n    margin-bottom: 16px;\n    -webkit-box-flex: 1;\n    position: relative; }\n    .buluo-Collection .collection h2:before {\n      position: absolute;\n      top: 0;\n      left: -15px;\n      content: '';\n      width: 4px;\n      height: 16px;\n      background-color: #f48175; }\n  .buluo-Collection .collection img {\n    width: 80px;\n    height: 80px;\n    border-radius: 10px;\n    background-color: #efece9;\n    -webkit-tap-highlight-color: transparent;\n    border: 1px solid #c8c7cc; }\n  .buluo-Collection .collection p {\n    overflow: hidden;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n    font-size: 12px;\n    margin-top: 12px;\n    text-align: center;\n    width: 80px; }\n", ""]);
 
 // exports
 

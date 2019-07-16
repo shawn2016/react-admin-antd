@@ -213,6 +213,9 @@ export default class PageAdminContainer extends React.Component {
     });
     postComponentMessage(componentIndex, cloneComponent);
     this.showEditComponentDialog(componentIndex);
+    this.setState({
+      visible: false
+    });
     message.success("添加成功");
   };
   // 构建字段
@@ -244,7 +247,7 @@ export default class PageAdminContainer extends React.Component {
             >
               <span className="control-btn blue">
                 <Tooltip placement="top" title="添加">
-                  <Icon type="cloud-upload" />
+                  <Icon type="sync" />
                 </Tooltip>
               </span>
             </Popconfirm>
@@ -442,8 +445,8 @@ export default class PageAdminContainer extends React.Component {
 
   previewPage = () => {
     this.generatePage();
-    // const page = this.state.page;
-    // window.open(`${page.project}/pages/${page.name}`);
+    const page = this.state.page;
+    window.open(`${page.project}/pages/${page.name}`);
   };
   /**
    * 退出全屏

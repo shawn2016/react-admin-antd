@@ -297,14 +297,14 @@ export default class RoleAdminContainer extends React.Component {
           controls.push(
             <Popconfirm
               key="3"
-              title="确定同步吗?"
+              title="确定同步到数据库吗?"
               onConfirm={() => this.syncLocalComponent(record.key)}
               okText="确定"
               cancelText="取消"
             >
               <span className="control-btn blue">
-                <Tooltip placement="top" title="同步">
-                  <Icon type="cloud-upload" />
+                <Tooltip placement="top" title="同步到数据库">
+                  <Icon type="sync" />
                 </Tooltip>
               </span>
             </Popconfirm>
