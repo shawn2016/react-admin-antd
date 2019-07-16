@@ -331,7 +331,6 @@ export default class PageAdminContainer extends React.Component {
       showComponents: false
     });
     console.log(component);
-    debugger;
     this.setState({
       config: component.config.properties
     });
