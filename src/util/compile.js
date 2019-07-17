@@ -79,10 +79,10 @@ async function compileComponent(project, name, optimize) {
         // todo 这么写太丑了
         ncp(outputPath, path.join(__dirname, "../public"), function(err) {
           if (err) {
-              console.log('失败了，================')
+            console.log("失败了，================");
             reject(err);
           }
-          console.log('成功了，================')
+          console.log("成功了，================");
           resolve({
             stats: stats,
             fileContent: fileContent,

@@ -1,16 +1,30 @@
 import React, { Component } from "react";
-
+import {
+  initAnalytics,
+  buriedPointEvent,
+  pageView
+} from "../../../../util/analytins";
+import { login } from "../../../../util/analytinsType";
 import styles from "./style.scss";
 
 import withStyles from "../../../../decorators/withStyles";
-import withViewport from "../../../../decorators/withViewport";
 
+import withViewport from "../../../../decorators/withViewport";
+var sa = require("sa-sdk-javascript/sensorsdata.min.js");
+if (!window.sa) {
+  window.sa = sa;
+}
+initAnalytics();
 @withViewport
 @withStyles(styles)
 class Com extends Component {
   constructor(props) {
     super(props);
+    pageView();
   }
+  getA = () => {
+    buriedPointEvent(login.submit);
+  };
   render() {
     const props = this.props;
     const pageStyles = {
@@ -28,7 +42,7 @@ class Com extends Component {
         <div className="download-btns-wrap">
           <a
             style={btnStyles}
-            href={props.iOSUrl}
+            onClick={this.getA}
             className="download-btn iphone"
           >
             {props.iOSText}

@@ -876,7 +876,6 @@ const getComponents = () => {
 };
 
 exports.mockApi = (url, params) => {
-  console.log("传来的是什么：", url, params);
   switch (url) {
     case "/api/login":
       console.log("难道不应该走这里吗");

@@ -433,7 +433,7 @@ export default class RoleAdminContainer extends React.Component {
                 onClick={() => this.showCreatePageDialog("add")}
               >
                 <Icon type="plus-circle-o" />
-                新增模板
+                新增模板0
               </Button>
             </li>
           </ul>

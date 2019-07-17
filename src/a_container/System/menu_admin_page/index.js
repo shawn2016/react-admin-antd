@@ -159,7 +159,6 @@ export default class MenuAdminContainer extends React.Component {
     getNameByParentId = (id) => {
 
         const p = this.state.data.find((item) => item.id === id);
-        console.log('传来的是什么：', id, p);
         return p ? p.title : undefined;
     };
 

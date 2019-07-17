@@ -29,7 +29,7 @@ module.exports = {
         test: /\.js?$/,
         enforce: "pre",
         loader: "eslint-loader",
-        include: path.resolve(__dirname, "src")
+        include: path.resolve(__dirname, "./src")
       },
       //   {
       //     // .js .jsx用babel解析
@@ -140,7 +140,8 @@ module.exports = {
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("dev") //定义开发环境环境
-      }
+      },
+      saUrl: JSON.stringify("http://10.1.1.81:8106/sa")
     }),
     new HtmlWebpackPlugin({
       //根据模板插入css/js等生成最终HTML
