@@ -20,11 +20,15 @@ const loaders = [
     exclude: /node_modules/,
     loader: "babel-loader",
     options: {
-      plugins: ["transform-decorators-legacy", "transform-class-properties"]
+      plugins: [
+        ["import", { style: true, libraryName: "antd-mobile" }],
+        "transform-decorators-legacy",
+        "transform-class-properties"
+      ]
     }
   },
   { test: /\.json$/, loader: "json-loader" },
-  { test: /\.txt$/, loader: "raw-loader" },
+  //   { test: /\.txt$/, loader: "raw-loader" },
   {
     test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
     loader: "url-loader?limit=1024"
@@ -33,6 +37,11 @@ const loaders = [
   {
     test: /\.scss$/,
     loader: "style-loader/useable!css-loader!sass-loader!postcss-loader"
+  },
+  {
+    test: /\.less$/,
+
+    use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
   },
   { test: /\.css$/, loader: "style-loader/useable!css-loader!postcss-loader" }
 ];
@@ -79,10 +88,8 @@ async function compileComponent(project, name, optimize) {
         // todo 这么写太丑了
         ncp(outputPath, path.join(__dirname, "../public"), function(err) {
           if (err) {
-            console.log("失败了，================");
             reject(err);
           }
-          console.log("成功了，================");
           resolve({
             stats: stats,
             fileContent: fileContent,

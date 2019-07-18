@@ -119,9 +119,9 @@ export default class PreviewActiveContainer extends React.Component {
       return (
         <div
           className={className}
-          onClick={() => {
-            this.handleComponentTap(index);
-          }}
+        //   onClick={() => {
+        //     this.handleComponentTap(index);
+        //   }}
           key={window.performance.now()}
         >
           <Com {...component.config.props} />

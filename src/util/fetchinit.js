@@ -1,5 +1,4 @@
 import fetch from "sx-fetch";
-const baseURL = 'https://lns-wap-test.vbillbank.com'
 const fetchInit = () => {
   fetch.init({
     timeout: 10000, // 默认超时
