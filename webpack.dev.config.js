@@ -6,6 +6,7 @@ var webpack = require("webpack"); // webpack核心
 var HappyPack = require("happypack"); // 多线程构建插件
 var happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length }); // happyPack配置
 var HtmlWebpackPlugin = require("html-webpack-plugin"); // 动态生成html插件
+const webpackbar = require("webpackbar");
 
 module.exports = {
   entry: {
@@ -137,6 +138,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpackbar(),
     // https://doc.webpack-china.org/plugins/define-plugin/
     new webpack.DefinePlugin({
       "process.env": {

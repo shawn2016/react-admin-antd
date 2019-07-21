@@ -11,7 +11,6 @@ import P from "prop-types";
 import QRCode from "qrcode.react";
 import {
   Form,
-  Button,
   Icon,
   Input,
   Table,
@@ -29,6 +28,8 @@ import {
   TimePicker,
   Cascader
 } from "antd";
+import Button from 'antd/lib/button'; // 加载 JS
+import 'antd/lib/button/style/css'; // 加载 CSS
 import css from "./index.scss";
 import c from "classnames";
 import tools from "../../../util/tools"; // 工具
