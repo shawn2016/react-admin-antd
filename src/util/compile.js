@@ -21,7 +21,6 @@ const loaders = [
     loader: "babel-loader",
     options: {
       plugins: [
-        ["import", { style: true, libraryName: "antd-mobile" }],
         "transform-decorators-legacy",
         "transform-class-properties"
       ]

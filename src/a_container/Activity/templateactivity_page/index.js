@@ -158,6 +158,11 @@ export default class RoleAdminContainer extends React.Component {
         key: "serial"
       },
       {
+        title: "文件夹",
+        dataIndex: "project",
+        key: "project"
+      },
+      {
         title: "名称",
         dataIndex: "name",
         key: "name"
@@ -170,9 +175,10 @@ export default class RoleAdminContainer extends React.Component {
         render: (text, record) => {
           const controls = [];
           const p = this.props.powers;
-         
+
           controls.push(
             <span
+              key="0"
               onClick={() => {
                 this.developLocalComponent(record);
               }}
@@ -254,7 +260,7 @@ export default class RoleAdminContainer extends React.Component {
           const controls = [];
           controls.push(
             <Popconfirm
-              key="3"
+              key="0"
               title="确定同步到数据库吗?"
               onConfirm={() => this.syncLocalComponent(record.key)}
               okText="确定"
@@ -269,6 +275,7 @@ export default class RoleAdminContainer extends React.Component {
           );
           controls.push(
             <span
+              key="1"
               onClick={() => {
                 this.developLocalComponent(record);
               }}
@@ -302,6 +309,7 @@ export default class RoleAdminContainer extends React.Component {
         _id: item._id,
         serial: index + 1 + this.state.pageNum * this.state.pageSize,
         name: item.name,
+        project: item.project,
         desc: item.desc,
         sorts: item.sorts,
         conditions: item.conditions,

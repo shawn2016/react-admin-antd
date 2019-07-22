@@ -261,7 +261,7 @@ process.umask = function() { return 0; };
 
 
 var bind = __webpack_require__(75);
-var isBuffer = __webpack_require__(164);
+var isBuffer = __webpack_require__(156);
 
 /*global toString:true*/
 
@@ -599,7 +599,7 @@ module.exports = !__webpack_require__(12)(function () {
 
 var global = __webpack_require__(3);
 var core = __webpack_require__(2);
-var ctx = __webpack_require__(57);
+var ctx = __webpack_require__(58);
 var hide = __webpack_require__(10);
 var has = __webpack_require__(7);
 var PROTOTYPE = 'prototype';
@@ -665,9 +665,9 @@ module.exports = $export;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(18);
-var IE8_DOM_DEFINE = __webpack_require__(58);
-var toPrimitive = __webpack_require__(31);
+var anObject = __webpack_require__(19);
+var IE8_DOM_DEFINE = __webpack_require__(59);
+var toPrimitive = __webpack_require__(33);
 var dP = Object.defineProperty;
 
 exports.f = __webpack_require__(4) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
@@ -807,10 +807,10 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 var _assign = __webpack_require__(8);
 
-var ReactCurrentOwner = __webpack_require__(30);
+var ReactCurrentOwner = __webpack_require__(32);
 
-var warning = __webpack_require__(16);
-var canDefineProperty = __webpack_require__(29);
+var warning = __webpack_require__(17);
+var canDefineProperty = __webpack_require__(31);
 var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 var REACT_ELEMENT_TYPE = __webpack_require__(83);
@@ -1176,8 +1176,8 @@ module.exports = function (exec) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(61);
-var defined = __webpack_require__(33);
+var IObject = __webpack_require__(62);
+var defined = __webpack_require__(34);
 module.exports = function (it) {
   return IObject(defined(it));
 };
@@ -1188,7 +1188,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var store = __webpack_require__(38)('wks');
-var uid = __webpack_require__(27);
+var uid = __webpack_require__(29);
 var Symbol = __webpack_require__(3).Symbol;
 var USE_SYMBOL = typeof Symbol == 'function';
 
@@ -1202,6 +1202,21 @@ $exports.store = store;
 
 /***/ }),
 /* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = __webpack_require__(124);
+} else {
+  module.exports = __webpack_require__(125);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1243,7 +1258,7 @@ function reactProdInvariant(code) {
 module.exports = reactProdInvariant;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1312,7 +1327,7 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1372,7 +1387,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(11);
@@ -1381,21 +1396,6 @@ module.exports = function (it) {
   return it;
 };
 
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(124);
-} else {
-  module.exports = __webpack_require__(125);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 20 */
@@ -1883,17 +1883,29 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 /* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(90), __esModule: true };
+
+/***/ }),
+/* 25 */
 /***/ (function(module, exports) {
 
 exports.f = {}.propertyIsEnumerable;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(93), __esModule: true };
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys = __webpack_require__(63);
+var $keys = __webpack_require__(64);
 var enumBugKeys = __webpack_require__(39);
 
 module.exports = Object.keys || function keys(O) {
@@ -1902,14 +1914,14 @@ module.exports = Object.keys || function keys(O) {
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = true;
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 var id = 0;
@@ -1920,18 +1932,18 @@ module.exports = function (key) {
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(33);
+var defined = __webpack_require__(34);
 module.exports = function (it) {
   return Object(defined(it));
 };
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1961,7 +1973,7 @@ module.exports = canDefineProperty;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1993,7 +2005,7 @@ var ReactCurrentOwner = {
 module.exports = ReactCurrentOwner;
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -2011,13 +2023,7 @@ module.exports = function (it, S) {
 
 
 /***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(90), __esModule: true };
-
-/***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -2028,17 +2034,11 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(93), __esModule: true };
-
-/***/ }),
 /* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject = __webpack_require__(18);
+var anObject = __webpack_require__(19);
 var dPs = __webpack_require__(95);
 var enumBugKeys = __webpack_require__(39);
 var IE_PROTO = __webpack_require__(37)('IE_PROTO');
@@ -2048,7 +2048,7 @@ var PROTOTYPE = 'prototype';
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function () {
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(59)('iframe');
+  var iframe = __webpack_require__(60)('iframe');
   var i = enumBugKeys.length;
   var lt = '<';
   var gt = '>';
@@ -2097,7 +2097,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var shared = __webpack_require__(38)('keys');
-var uid = __webpack_require__(27);
+var uid = __webpack_require__(29);
 module.exports = function (key) {
   return shared[key] || (shared[key] = uid(key));
 };
@@ -2116,7 +2116,7 @@ var store = global[SHARED] || (global[SHARED] = {});
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
   version: core.version,
-  mode: __webpack_require__(26) ? 'pure' : 'global',
+  mode: __webpack_require__(28) ? 'pure' : 'global',
   copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
 });
 
@@ -2140,7 +2140,7 @@ module.exports = (
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(64);
+var _assign = __webpack_require__(65);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -2224,7 +2224,7 @@ exports.default = function () {
 
 exports.__esModule = true;
 
-var _typeof2 = __webpack_require__(65);
+var _typeof2 = __webpack_require__(66);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -2271,7 +2271,7 @@ exports.f = __webpack_require__(14);
 
 var global = __webpack_require__(3);
 var core = __webpack_require__(2);
-var LIBRARY = __webpack_require__(26);
+var LIBRARY = __webpack_require__(28);
 var wksExt = __webpack_require__(47);
 var defineProperty = __webpack_require__(6).f;
 module.exports = function (name) {
@@ -2289,15 +2289,15 @@ module.exports = function (name) {
 
 exports.__esModule = true;
 
-var _setPrototypeOf = __webpack_require__(32);
+var _setPrototypeOf = __webpack_require__(24);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(34);
+var _create = __webpack_require__(26);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _typeof2 = __webpack_require__(65);
+var _typeof2 = __webpack_require__(66);
 
 var _typeof3 = _interopRequireDefault(_typeof2);
 
@@ -2382,6 +2382,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = { "default": __webpack_require__(130), __esModule: true };
+
+/***/ }),
+/* 52 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
@@ -2397,198 +2403,14 @@ module.exports = {
 
 
 /***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.store = undefined;
-
-var _stringify = __webpack_require__(153);
-
-var _stringify2 = _interopRequireDefault(_stringify);
-
-var _storeTypes = __webpack_require__(155);
-
-var _common = __webpack_require__(53);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// 本地存储
-var _window = window,
-    localStorage = _window.localStorage,
-    sessionStorage = _window.sessionStorage;
-// 默认使用sessionstorage
-
-var STORAGE_METHOD = sessionStorage;
-var storageUtil = {
-	// && list.includes(funcName) bug机 全部存入到
-	setItem: function setItem(key, value, funcName) {
-		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
-
-		STORAGE_METHOD.setItem(key, (0, _stringify2.default)(value));
-	},
-	getItem: function getItem(key, funcName) {
-		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
-
-		var value = STORAGE_METHOD.getItem(key);
-		return JSON.parse(value);
-	},
-	clear: function clear(funcName) {
-		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
-
-		STORAGE_METHOD.clear();
-	},
-	removeItem: function removeItem(key, funcName) {
-		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
-
-		STORAGE_METHOD.removeItem(key);
-	},
-	multiGet: function multiGet(keys) {
-		var _this = this;
-
-		var values = {};
-		keys.forEach(function (key) {
-			values[key] = _this.getItem(key);
-		});
-		return values;
-	},
-	multiRemove: function multiRemove(keys) {
-		var _this2 = this;
-
-		keys.forEach(function (key) {
-			return _this2.removeItem(key);
-		});
-	}
-};
-
-// 定义需要特殊处理的浏览器
-var bugBrowserArr = ['vivobrowser', 'oppobrowser', 'safari'];
-
-// 检测是否是某种 bug 浏览器
-var isBugBrowser = function isBugBrowser() {
-	var u = navigator.userAgent.toLowerCase();
-	// Toast.info(u,0)
-	var bugBrowserList = bugBrowserArr.filter(function (item) {
-		return u.indexOf(item) > -1;
-	});
-	return bugBrowserList.length > 0 && u.indexOf('micromessenger') <= -1 && u.indexOf('suixingpay-mpos') <= -1 && !(0, _common.isPhone)();
-};
-
-var store = {};
-// 需要区别对待的存储字段
-var list = ['Token', 'JumpUrl', 'H5Channel', 'billNo'];
-
-// 本地存储工厂函数，生成 set get remove 方法(优先使用sessionstorage)
-var storeFactory = function storeFactory(funcName, key) {
-	store['set' + funcName] = function (data) {
-		storageUtil.setItem(key, data, funcName);
-	};
-	store['get' + funcName] = function () {
-		return storageUtil.getItem(key, funcName);
-	};
-	store['remove' + funcName] = function () {
-		return storageUtil.removeItem(key, funcName);
-	};
-};
-
-// 循环添加存储方法(包括local session)
-for (var funName in _storeTypes.storeTypes) {
-	storeFactory(funName, _storeTypes.storeTypes[funName]);
-}
-
-exports.store = store;
-
-/***/ }),
 /* 53 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.isPhone = exports.setH5Channel = exports.isMPOS = exports.getH5Channel = undefined;
-
-var _qs = __webpack_require__(51);
-
-var _qs2 = _interopRequireDefault(_qs);
-
-var _store = __webpack_require__(52);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// 获取h5Channel
-var getH5Channel = exports.getH5Channel = function getH5Channel() {
-	var queryData = _qs2.default.parse(location.search, { ignoreQueryPrefix: true });
-	var ua = navigator.userAgent;
-	var h5Channel = '';
-	if (queryData.h5Channel) {
-		h5Channel = queryData.h5Channel;
-	} else if (_store.store.getH5Channel()) {
-		h5Channel = _store.store.getH5Channel();
-	} else if (/SuiXingPay-Mpos/i.test(ua)) {
-		h5Channel = 'MPOS';
-	} else {
-		h5Channel = 'OTHER';
-	}
-	return h5Channel;
-};
-
-// 判断是对内mpos还是对外
-var isMPOS = exports.isMPOS = function isMPOS() {
-	var ua = navigator.userAgent;
-	sessionStorage.setItem('isMPOS', /SuiXingPay-Mpos/i.test(ua) ? true : false);
-	return (/SuiXingPay-Mpos/i.test(ua) ? true : false
-	);
-};
-
-// 设置h5Channel
-var setH5Channel = exports.setH5Channel = function setH5Channel(channel) {
-	var queryData = _qs2.default.parse(location.search, { ignoreQueryPrefix: true });
-	var ua = navigator.userAgent;
-	var sessionH5Channel = _store.store.getH5Channel();
-	if (queryData.h5Channel) {
-		_store.store.setH5Channel(queryData.h5Channel);
-	} else if (channel) {
-		_store.store.setH5Channel(channel);
-	} else if (/SuiXingPay-Mpos/i.test(ua)) {
-		_store.store.setH5Channel('MPOS');
-	} else if (sessionH5Channel) {
-		_store.store.setH5Channel(sessionH5Channel);
-	} else {
-		_store.store.setH5Channel('OTHER');
-	}
-};
-
-// 判断是否是手机打开
-var isPhone = exports.isPhone = function isPhone() {
-	var userAgentInfo = navigator.userAgent;
-	var Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'];
-	var flag = false;
-	for (var v = 0; v < Agents.length; v++) {
-		if (userAgentInfo.indexOf(Agents[v]) > 0) {
-			flag = true;
-			break;
-		}
-	}
-	return flag;
-};
-
-/***/ }),
-/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var normalizeHeaderName = __webpack_require__(166);
+var normalizeHeaderName = __webpack_require__(158);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -2681,7 +2503,7 @@ module.exports = defaults;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2750,7 +2572,7 @@ module.exports = lowPriorityWarning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2765,12 +2587,12 @@ module.exports = lowPriorityWarning;
 
 
 
-var _prodInvariant = __webpack_require__(15);
+var _prodInvariant = __webpack_require__(16);
 
-var ReactCurrentOwner = __webpack_require__(30);
+var ReactCurrentOwner = __webpack_require__(32);
 
-var invariant = __webpack_require__(17);
-var warning = __webpack_require__(16);
+var invariant = __webpack_require__(18);
+var warning = __webpack_require__(17);
 
 function isNative(fn) {
   // Based on isNative() from Lodash
@@ -3133,7 +2955,191 @@ module.exports = ReactComponentTreeHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
+/* 56 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.store = undefined;
+
+var _stringify = __webpack_require__(208);
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _storeTypes = __webpack_require__(210);
+
+var _common = __webpack_require__(57);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// 本地存储
+var _window = window,
+    localStorage = _window.localStorage,
+    sessionStorage = _window.sessionStorage;
+// 默认使用sessionstorage
+
+var STORAGE_METHOD = sessionStorage;
+var storageUtil = {
+	// && list.includes(funcName) bug机 全部存入到
+	setItem: function setItem(key, value, funcName) {
+		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
+
+		STORAGE_METHOD.setItem(key, (0, _stringify2.default)(value));
+	},
+	getItem: function getItem(key, funcName) {
+		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
+
+		var value = STORAGE_METHOD.getItem(key);
+		return JSON.parse(value);
+	},
+	clear: function clear(funcName) {
+		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
+
+		STORAGE_METHOD.clear();
+	},
+	removeItem: function removeItem(key, funcName) {
+		STORAGE_METHOD = isBugBrowser() ? localStorage : sessionStorage;
+
+		STORAGE_METHOD.removeItem(key);
+	},
+	multiGet: function multiGet(keys) {
+		var _this = this;
+
+		var values = {};
+		keys.forEach(function (key) {
+			values[key] = _this.getItem(key);
+		});
+		return values;
+	},
+	multiRemove: function multiRemove(keys) {
+		var _this2 = this;
+
+		keys.forEach(function (key) {
+			return _this2.removeItem(key);
+		});
+	}
+};
+
+// 定义需要特殊处理的浏览器
+var bugBrowserArr = ['vivobrowser', 'oppobrowser', 'safari'];
+
+// 检测是否是某种 bug 浏览器
+var isBugBrowser = function isBugBrowser() {
+	var u = navigator.userAgent.toLowerCase();
+	// Toast.info(u,0)
+	var bugBrowserList = bugBrowserArr.filter(function (item) {
+		return u.indexOf(item) > -1;
+	});
+	return bugBrowserList.length > 0 && u.indexOf('micromessenger') <= -1 && u.indexOf('suixingpay-mpos') <= -1 && !(0, _common.isPhone)();
+};
+
+var store = {};
+// 需要区别对待的存储字段
+var list = ['Token', 'JumpUrl', 'H5Channel', 'billNo'];
+
+// 本地存储工厂函数，生成 set get remove 方法(优先使用sessionstorage)
+var storeFactory = function storeFactory(funcName, key) {
+	store['set' + funcName] = function (data) {
+		storageUtil.setItem(key, data, funcName);
+	};
+	store['get' + funcName] = function () {
+		return storageUtil.getItem(key, funcName);
+	};
+	store['remove' + funcName] = function () {
+		return storageUtil.removeItem(key, funcName);
+	};
+};
+
+// 循环添加存储方法(包括local session)
+for (var funName in _storeTypes.storeTypes) {
+	storeFactory(funName, _storeTypes.storeTypes[funName]);
+}
+
+exports.store = store;
+
+/***/ }),
 /* 57 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.isPhone = exports.setH5Channel = exports.isMPOS = exports.getH5Channel = undefined;
+
+var _qs = __webpack_require__(52);
+
+var _qs2 = _interopRequireDefault(_qs);
+
+var _store = __webpack_require__(56);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// 获取h5Channel
+var getH5Channel = exports.getH5Channel = function getH5Channel() {
+	var queryData = _qs2.default.parse(location.search, { ignoreQueryPrefix: true });
+	var ua = navigator.userAgent;
+	var h5Channel = '';
+	if (queryData.h5Channel) {
+		h5Channel = queryData.h5Channel;
+	} else if (_store.store.getH5Channel()) {
+		h5Channel = _store.store.getH5Channel();
+	} else if (/SuiXingPay-Mpos/i.test(ua)) {
+		h5Channel = 'MPOS';
+	} else {
+		h5Channel = 'OTHER';
+	}
+	return h5Channel;
+};
+
+// 判断是对内mpos还是对外
+var isMPOS = exports.isMPOS = function isMPOS() {
+	var ua = navigator.userAgent;
+	sessionStorage.setItem('isMPOS', /SuiXingPay-Mpos/i.test(ua) ? true : false);
+	return (/SuiXingPay-Mpos/i.test(ua) ? true : false
+	);
+};
+
+// 设置h5Channel
+var setH5Channel = exports.setH5Channel = function setH5Channel(channel) {
+	var queryData = _qs2.default.parse(location.search, { ignoreQueryPrefix: true });
+	var ua = navigator.userAgent;
+	var sessionH5Channel = _store.store.getH5Channel();
+	if (queryData.h5Channel) {
+		_store.store.setH5Channel(queryData.h5Channel);
+	} else if (channel) {
+		_store.store.setH5Channel(channel);
+	} else if (/SuiXingPay-Mpos/i.test(ua)) {
+		_store.store.setH5Channel('MPOS');
+	} else if (sessionH5Channel) {
+		_store.store.setH5Channel(sessionH5Channel);
+	} else {
+		_store.store.setH5Channel('OTHER');
+	}
+};
+
+// 判断是否是手机打开
+var isPhone = exports.isPhone = function isPhone() {
+	var userAgentInfo = navigator.userAgent;
+	var Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'];
+	var flag = false;
+	for (var v = 0; v < Agents.length; v++) {
+		if (userAgentInfo.indexOf(Agents[v]) > 0) {
+			flag = true;
+			break;
+		}
+	}
+	return flag;
+};
+
+/***/ }),
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
@@ -3159,16 +3165,16 @@ module.exports = function (fn, that, length) {
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(4) && !__webpack_require__(12)(function () {
-  return Object.defineProperty(__webpack_require__(59)('div'), 'a', { get: function () { return 7; } }).a != 7;
+  return Object.defineProperty(__webpack_require__(60)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(11);
@@ -3181,15 +3187,15 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var pIE = __webpack_require__(24);
+var pIE = __webpack_require__(25);
 var createDesc = __webpack_require__(23);
 var toIObject = __webpack_require__(13);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(33);
 var has = __webpack_require__(7);
-var IE8_DOM_DEFINE = __webpack_require__(58);
+var IE8_DOM_DEFINE = __webpack_require__(59);
 var gOPD = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(4) ? gOPD : function getOwnPropertyDescriptor(O, P) {
@@ -3203,11 +3209,11 @@ exports.f = __webpack_require__(4) ? gOPD : function getOwnPropertyDescriptor(O,
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
-var cof = __webpack_require__(62);
+var cof = __webpack_require__(63);
 // eslint-disable-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
@@ -3215,7 +3221,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 var toString = {}.toString;
@@ -3226,7 +3232,7 @@ module.exports = function (it) {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has = __webpack_require__(7);
@@ -3249,13 +3255,13 @@ module.exports = function (object, names) {
 
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = { "default": __webpack_require__(101), __esModule: true };
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3282,19 +3288,19 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var LIBRARY = __webpack_require__(26);
+var LIBRARY = __webpack_require__(28);
 var $export = __webpack_require__(5);
-var redefine = __webpack_require__(67);
+var redefine = __webpack_require__(68);
 var hide = __webpack_require__(10);
 var Iterators = __webpack_require__(45);
 var $iterCreate = __webpack_require__(109);
 var setToStringTag = __webpack_require__(46);
-var getPrototypeOf = __webpack_require__(68);
+var getPrototypeOf = __webpack_require__(69);
 var ITERATOR = __webpack_require__(14)('iterator');
 var BUGGY = !([].keys && 'next' in [].keys()); // Safari has buggy iterators w/o `next`
 var FF_ITERATOR = '@@iterator';
@@ -3358,19 +3364,19 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(10);
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(7);
-var toObject = __webpack_require__(28);
+var toObject = __webpack_require__(30);
 var IE_PROTO = __webpack_require__(37)('IE_PROTO');
 var ObjectProto = Object.prototype;
 
@@ -3384,11 +3390,11 @@ module.exports = Object.getPrototypeOf || function (O) {
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys = __webpack_require__(63);
+var $keys = __webpack_require__(64);
 var hiddenKeys = __webpack_require__(39).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
@@ -3397,7 +3403,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3413,7 +3419,7 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(71);
+  var ReactPropTypesSecret = __webpack_require__(72);
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -3507,7 +3513,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3524,12 +3530,6 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(130), __esModule: true };
 
 /***/ }),
 /* 73 */
@@ -3819,12 +3819,12 @@ module.exports = function bind(fn, thisArg) {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(1);
-var settle = __webpack_require__(167);
-var buildURL = __webpack_require__(169);
-var parseHeaders = __webpack_require__(170);
-var isURLSameOrigin = __webpack_require__(171);
+var settle = __webpack_require__(159);
+var buildURL = __webpack_require__(161);
+var parseHeaders = __webpack_require__(162);
+var isURLSameOrigin = __webpack_require__(163);
 var createError = __webpack_require__(77);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(172);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(164);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -3921,7 +3921,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(173);
+      var cookies = __webpack_require__(165);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -4006,7 +4006,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(168);
+var enhanceError = __webpack_require__(160);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -4077,15 +4077,15 @@ module.exports = Cancel;
 
 
 
-var _prodInvariant = __webpack_require__(15),
+var _prodInvariant = __webpack_require__(16),
     _assign = __webpack_require__(8);
 
 var ReactNoopUpdateQueue = __webpack_require__(81);
 
-var canDefineProperty = __webpack_require__(29);
-var emptyObject = __webpack_require__(186);
-var invariant = __webpack_require__(17);
-var lowPriorityWarning = __webpack_require__(55);
+var canDefineProperty = __webpack_require__(31);
+var emptyObject = __webpack_require__(178);
+var invariant = __webpack_require__(18);
+var lowPriorityWarning = __webpack_require__(54);
 
 /**
  * Base class helpers for the updating state of a component.
@@ -4224,7 +4224,7 @@ module.exports = {
 
 
 
-var warning = __webpack_require__(16);
+var warning = __webpack_require__(17);
 
 function warnNoop(publicInstance, callerName) {
   if (process.env.NODE_ENV !== 'production') {
@@ -4439,16 +4439,16 @@ module.exports = getIteratorFn;
 
 
 
-var ReactCurrentOwner = __webpack_require__(30);
-var ReactComponentTreeHook = __webpack_require__(56);
+var ReactCurrentOwner = __webpack_require__(32);
+var ReactComponentTreeHook = __webpack_require__(55);
 var ReactElement = __webpack_require__(9);
 
-var checkReactTypeSpec = __webpack_require__(192);
+var checkReactTypeSpec = __webpack_require__(184);
 
-var canDefineProperty = __webpack_require__(29);
+var canDefineProperty = __webpack_require__(31);
 var getIteratorFn = __webpack_require__(84);
-var warning = __webpack_require__(16);
-var lowPriorityWarning = __webpack_require__(55);
+var warning = __webpack_require__(17);
+var lowPriorityWarning = __webpack_require__(54);
 
 function getDeclarationErrorAddendum() {
   if (ReactCurrentOwner.current) {
@@ -4687,11 +4687,11 @@ var _defineProperty = __webpack_require__(22);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
-var _setPrototypeOf = __webpack_require__(32);
+var _setPrototypeOf = __webpack_require__(24);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(34);
+var _create = __webpack_require__(26);
 
 var _create2 = _interopRequireDefault(_create);
 
@@ -4699,24 +4699,21 @@ var _button = __webpack_require__(100);
 
 var _button2 = _interopRequireDefault(_button);
 
-var _getPrototypeOf = __webpack_require__(72);
+var _getPrototypeOf = __webpack_require__(51);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; (0, _defineProperty2.default)(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _class;
-// import SmsAlert from '../components/SmsAlert';
-// import Alert_mpos from 'pages/mpos/mpos_no_realname_alert_page';
-
+var _dec, _class;
 
 __webpack_require__(133);
 
-var _react = __webpack_require__(19);
+var _react = __webpack_require__(15);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _qs = __webpack_require__(51);
+var _qs = __webpack_require__(52);
 
 var _qs2 = _interopRequireDefault(_qs);
 
@@ -4724,41 +4721,33 @@ var _index = __webpack_require__(147);
 
 var _index2 = _interopRequireDefault(_index);
 
-var _activity_bg = __webpack_require__(149);
+var _Activity_temp2 = __webpack_require__(149);
+
+var _Activity_temp3 = _interopRequireDefault(_Activity_temp2);
+
+var _activity_bg = __webpack_require__(204);
 
 var _activity_bg2 = _interopRequireDefault(_activity_bg);
 
-var _ = __webpack_require__(150);
+var _ = __webpack_require__(205);
 
 var _2 = _interopRequireDefault(_);
 
-var _liyou = __webpack_require__(151);
+var _liyou = __webpack_require__(206);
 
 var _liyou2 = _interopRequireDefault(_liyou);
 
-var _analytins = __webpack_require__(152);
+var _analytins = __webpack_require__(207);
 
-var _analytinsType = __webpack_require__(156);
+var _analytinsType = __webpack_require__(211);
 
-var _jsCookie = __webpack_require__(157);
+var _jsCookie = __webpack_require__(212);
 
 var _jsCookie2 = _interopRequireDefault(_jsCookie);
 
-__webpack_require__(158);
+var _store = __webpack_require__(56);
 
-__webpack_require__(159);
-
-var _sxFetch = __webpack_require__(160);
-
-var _sxFetch2 = _interopRequireDefault(_sxFetch);
-
-var _fastclick = __webpack_require__(210);
-
-var _fastclick2 = _interopRequireDefault(_fastclick);
-
-var _store = __webpack_require__(52);
-
-var _withStyles = __webpack_require__(211);
+var _withStyles = __webpack_require__(213);
 
 var _withStyles2 = _interopRequireDefault(_withStyles);
 
@@ -4770,20 +4759,11 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = (0, _create2.default)(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var sa = __webpack_require__(214);
-
-if (!window.sa) {
-  window.sa = sa;
-}
-_fastclick2.default.prototype.focus = function (targetElement) {
-  targetElement.focus();
-};
-_fastclick2.default.attach(document.body);
 var API = {
   saveUserInfoEngaged: "/activeConfig/saveUserInfoEngaged/AC001" // 用户是否参与过免息
 };
-var mianxi418_page = (_dec = (0, _withStyles2.default)(_index2.default), _dec2 = _sxFetch2.default.inject(), _dec(_class = _dec2(_class = function (_PureComponent) {
-  _inherits(mianxi418_page, _PureComponent);
+var mianxi418_page = (_dec = (0, _withStyles2.default)(_index2.default), _dec(_class = function (_Activity_temp) {
+  _inherits(mianxi418_page, _Activity_temp);
 
   function mianxi418_page(props) {
     _classCallCheck(this, mianxi418_page);
@@ -5080,7 +5060,7 @@ var mianxi418_page = (_dec = (0, _withStyles2.default)(_index2.default), _dec2 =
   }]);
 
   return mianxi418_page;
-}(_react.PureComponent)) || _class) || _class);
+}(_Activity_temp3.default)) || _class);
 
 
 module.exports = mianxi418_page;
@@ -5139,7 +5119,7 @@ $export($export.S, 'Object', { setPrototypeOf: __webpack_require__(92).set });
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = __webpack_require__(11);
-var anObject = __webpack_require__(18);
+var anObject = __webpack_require__(19);
 var check = function (O, proto) {
   anObject(O);
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
@@ -5148,7 +5128,7 @@ module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
     function (test, buggy, set) {
       try {
-        set = __webpack_require__(57)(Function.call, __webpack_require__(60).f(Object.prototype, '__proto__').set, 2);
+        set = __webpack_require__(58)(Function.call, __webpack_require__(61).f(Object.prototype, '__proto__').set, 2);
         set(test, []);
         buggy = !(test instanceof Array);
       } catch (e) { buggy = true; }
@@ -5188,8 +5168,8 @@ $export($export.S, 'Object', { create: __webpack_require__(35) });
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP = __webpack_require__(6);
-var anObject = __webpack_require__(18);
-var getKeys = __webpack_require__(25);
+var anObject = __webpack_require__(19);
+var getKeys = __webpack_require__(27);
 
 module.exports = __webpack_require__(4) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
@@ -5303,7 +5283,7 @@ var _classnames2 = __webpack_require__(50);
 
 var _classnames3 = _interopRequireDefault(_classnames2);
 
-var _react = __webpack_require__(19);
+var _react = __webpack_require__(15);
 
 var React = _interopRequireWildcard(_react);
 
@@ -5446,11 +5426,11 @@ $export($export.S + $export.F, 'Object', { assign: __webpack_require__(103) });
 
 // 19.1.2.1 Object.assign(target, source, ...)
 var DESCRIPTORS = __webpack_require__(4);
-var getKeys = __webpack_require__(25);
+var getKeys = __webpack_require__(27);
 var gOPS = __webpack_require__(41);
-var pIE = __webpack_require__(24);
-var toObject = __webpack_require__(28);
-var IObject = __webpack_require__(61);
+var pIE = __webpack_require__(25);
+var toObject = __webpack_require__(30);
+var IObject = __webpack_require__(62);
 var $assign = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
@@ -5537,7 +5517,7 @@ module.exports = __webpack_require__(47).f('iterator');
 var $at = __webpack_require__(108)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(66)(String, 'String', function (iterated) {
+__webpack_require__(67)(String, 'String', function (iterated) {
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -5557,7 +5537,7 @@ __webpack_require__(66)(String, 'String', function (iterated) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(36);
-var defined = __webpack_require__(33);
+var defined = __webpack_require__(34);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function (TO_STRING) {
@@ -5635,7 +5615,7 @@ var toIObject = __webpack_require__(13);
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(66)(Array, 'Array', function (iterated, kind) {
+module.exports = __webpack_require__(67)(Array, 'Array', function (iterated, kind) {
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -5705,29 +5685,29 @@ var global = __webpack_require__(3);
 var has = __webpack_require__(7);
 var DESCRIPTORS = __webpack_require__(4);
 var $export = __webpack_require__(5);
-var redefine = __webpack_require__(67);
+var redefine = __webpack_require__(68);
 var META = __webpack_require__(117).KEY;
 var $fails = __webpack_require__(12);
 var shared = __webpack_require__(38);
 var setToStringTag = __webpack_require__(46);
-var uid = __webpack_require__(27);
+var uid = __webpack_require__(29);
 var wks = __webpack_require__(14);
 var wksExt = __webpack_require__(47);
 var wksDefine = __webpack_require__(48);
 var enumKeys = __webpack_require__(118);
 var isArray = __webpack_require__(119);
-var anObject = __webpack_require__(18);
+var anObject = __webpack_require__(19);
 var isObject = __webpack_require__(11);
-var toObject = __webpack_require__(28);
+var toObject = __webpack_require__(30);
 var toIObject = __webpack_require__(13);
-var toPrimitive = __webpack_require__(31);
+var toPrimitive = __webpack_require__(33);
 var createDesc = __webpack_require__(23);
 var _create = __webpack_require__(35);
 var gOPNExt = __webpack_require__(120);
-var $GOPD = __webpack_require__(60);
+var $GOPD = __webpack_require__(61);
 var $GOPS = __webpack_require__(41);
 var $DP = __webpack_require__(6);
-var $keys = __webpack_require__(25);
+var $keys = __webpack_require__(27);
 var gOPD = $GOPD.f;
 var dP = $DP.f;
 var gOPN = gOPNExt.f;
@@ -5850,11 +5830,11 @@ if (!USE_NATIVE) {
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f = $defineProperty;
-  __webpack_require__(69).f = gOPNExt.f = $getOwnPropertyNames;
-  __webpack_require__(24).f = $propertyIsEnumerable;
+  __webpack_require__(70).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(25).f = $propertyIsEnumerable;
   $GOPS.f = $getOwnPropertySymbols;
 
-  if (DESCRIPTORS && !__webpack_require__(26)) {
+  if (DESCRIPTORS && !__webpack_require__(28)) {
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
   }
 
@@ -5951,7 +5931,7 @@ setToStringTag(global.JSON, 'JSON', true);
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var META = __webpack_require__(27)('meta');
+var META = __webpack_require__(29)('meta');
 var isObject = __webpack_require__(11);
 var has = __webpack_require__(7);
 var setDesc = __webpack_require__(6).f;
@@ -6011,9 +5991,9 @@ var meta = module.exports = {
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(25);
+var getKeys = __webpack_require__(27);
 var gOPS = __webpack_require__(41);
-var pIE = __webpack_require__(24);
+var pIE = __webpack_require__(25);
 module.exports = function (it) {
   var result = getKeys(it);
   var getSymbols = gOPS.f;
@@ -6032,7 +6012,7 @@ module.exports = function (it) {
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
-var cof = __webpack_require__(62);
+var cof = __webpack_require__(63);
 module.exports = Array.isArray || function isArray(arg) {
   return cof(arg) == 'Array';
 };
@@ -6044,7 +6024,7 @@ module.exports = Array.isArray || function isArray(arg) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toIObject = __webpack_require__(13);
-var gOPN = __webpack_require__(69).f;
+var gOPN = __webpack_require__(70).f;
 var toString = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -6138,7 +6118,7 @@ if (process.env.NODE_ENV !== "production") {
 'use strict';
 
 var _assign = __webpack_require__(8);
-var checkPropTypes = __webpack_require__(70);
+var checkPropTypes = __webpack_require__(71);
 
 // TODO: this is special because it gets imported during build.
 
@@ -8049,7 +8029,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_helpers_possibleConstructorReturn__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_babel_runtime_helpers_inherits__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_classnames__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_classnames___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_classnames__);
@@ -8202,7 +8182,7 @@ var _classnames = __webpack_require__(50);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
-var _react = __webpack_require__(19);
+var _react = __webpack_require__(15);
 
 var React = _interopRequireWildcard(_react);
 
@@ -8338,8 +8318,8 @@ module.exports = __webpack_require__(2).Object.getPrototypeOf;
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
-var toObject = __webpack_require__(28);
-var $getPrototypeOf = __webpack_require__(68);
+var toObject = __webpack_require__(30);
+var $getPrototypeOf = __webpack_require__(69);
 
 __webpack_require__(132)('getPrototypeOf', function () {
   return function getPrototypeOf(it) {
@@ -9337,660 +9317,75 @@ exports.push([module.i, "@charset \"UTF-8\";\n.modal .mask {\n  position: fixed;
 /* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "be565dd9084bfa8e458731939dd84c84.png";
-
-/***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "6b3662698101936220884d90f2a1a8eb.png";
-
-/***/ }),
-/* 151 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "29a33439e2f3f1efb95bb7b2053cc9ea.png";
-
-/***/ }),
-/* 152 */
-/***/ (function(module, exports, __webpack_require__) {
-
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.buriedPointEvent = exports.pageView = exports.initAnalytics = undefined;
+exports.default = undefined;
 
-var _assign = __webpack_require__(64);
+var _setPrototypeOf = __webpack_require__(24);
 
-var _assign2 = _interopRequireDefault(_assign);
+var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _qs = __webpack_require__(51);
+var _create = __webpack_require__(26);
 
-var _qs2 = _interopRequireDefault(_qs);
+var _create2 = _interopRequireDefault(_create);
 
-var _store = __webpack_require__(52);
+var _getPrototypeOf = __webpack_require__(51);
 
-var _common = __webpack_require__(53);
+var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
+
+var _dec, _class;
+
+var _react = __webpack_require__(15);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(150);
+
+__webpack_require__(151);
+
+var _sxFetch = __webpack_require__(152);
+
+var _sxFetch2 = _interopRequireDefault(_sxFetch);
+
+var _fastclick = __webpack_require__(202);
+
+var _fastclick2 = _interopRequireDefault(_fastclick);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//初始化神策埋点 及 渠道信息
-var initAnalytics = exports.initAnalytics = function initAnalytics() {
-  window.version = "v1.1";
-  sa.init({
-    server_url: "http://10.1.1.81:8106/sa",
-    sdk_url: "https://static.sensorsdata.cn/sdk/1.7.1.1/sensorsdata.min.js",
-    show_log: true, //是否打印上报日志
-    is_single_page: true
-  });
-  var query = _qs2.default.parse(window.location.search, {
-    ignoreQueryPrefix: true
-  });
-  var ua = window.navigator.userAgent;
-  // if (!store.getH5Channel()) {
-  //   /SuiXingPay-Mpos/i.test(ua)
-  //     ? query.h5Channel
-  //       ? store.setH5Channel(query.h5Channel)
-  //       : store.setH5Channel('MPOS')
-  //     : store.setH5Channel(query.h5Channel ? query.h5Channel : 'other');
-  // }
-  // 解决banner等通过location href在mpos中跳转返回后h5Channel丢失的问题
-  var storeH5Channel = (0, _common.getH5Channel)();
-  (0, _common.setH5Channel)(storeH5Channel);
-  if (!_store.store.getVersion()) {
-    _store.store.setVersion(window.version);
-  }
-  if (/MicroMessenger/i.test(window.navigator.userAgent) && _store.store.getVersion() !== window.version) {
-    _store.store.setVersion(window.version);
-    window.location.reload();
-  }
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-// 定义固定参数
-function getStaticParams() {
-  return {
-    product_line: "还到-余额代偿",
-    project_name: document.title,
-    forward_module: document.referrer,
-    page_category: document.title,
-    channelType: (0, _common.getH5Channel)()
-  };
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = (0, _create2.default)(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) _setPrototypeOf2.default ? (0, _setPrototypeOf2.default)(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var sa = __webpack_require__(203);
+if (!window.sa) {
+  window.sa = sa;
 }
-
-/*
- * PV统计
- *
- * */
-var pageView = exports.pageView = function pageView() {
-  var params = getStaticParams();
-  sa.quick("autoTrackSinglePage", params);
+_fastclick2.default.prototype.focus = function (targetElement) {
+  targetElement.focus();
 };
+_fastclick2.default.attach(document.body);
+var Activity_temp = (_dec = _sxFetch2.default.inject(), _dec(_class = function (_PureComponent) {
+  _inherits(Activity_temp, _PureComponent);
 
-/*
- * 埋点事件
- *
- * */
-var buriedPointEvent = exports.buriedPointEvent = function buriedPointEvent(buriedKey, params) {
-  var staticParams = getStaticParams();
-  var sendParams = (0, _assign2.default)({}, staticParams, params);
-  sa.track(buriedKey, sendParams);
-};
+  function Activity_temp(props) {
+    _classCallCheck(this, Activity_temp);
+
+    return _possibleConstructorReturn(this, (Activity_temp.__proto__ || (0, _getPrototypeOf2.default)(Activity_temp)).call(this, props));
+  }
+
+  return Activity_temp;
+}(_react.PureComponent)) || _class);
+exports.default = Activity_temp;
 
 /***/ }),
-/* 153 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(154), __esModule: true };
-
-/***/ }),
-/* 154 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var core = __webpack_require__(2);
-var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
-module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
-  return $JSON.stringify.apply($JSON, arguments);
-};
-
-
-/***/ }),
-/* 155 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-// 本地local存储 方法名与key值对应表
-var storeTypes = exports.storeTypes = {
-	RepaymentModalData: 'RepaymentModalData', // 保存确认代还信息弹框数据
-	// HomeCardIndexData: 'HomeCardIndexData', // 保存首页信用卡信息
-	BackUrl: 'BackUrl', // 保存跳转的url
-	BackUrl2: 'BackUrl2', // 临时缓存
-	CardData: 'CardData', // 跳转路由中的银行卡信息
-	MoxieBackUrl: 'MoxieBackUrl', // 跳转魔蝎授权页 授权后返回的url
-	MoxieBackUrl2: 'MoxieBackUrl2', // 跳转魔蝎授权页 授权后返回的url
-	AuthFlag: 'AuthFlag', // 是否实名认证的flag
-	UserPhone: 'UserPhone', // 用户手机号
-	UserInfo: 'UserInfo', // 用户信息
-	ParamVip: 'ParamVip', // 会员卡参数
-	VIPInfo: 'VIPInfo', // 会员卡信息
-	VipBackUrl: 'VipBackUrl', // 会员卡入口与出口
-	Position: 'Position', // 定位信息
-	ProtocolFinancialData: 'ProtocolFinancialData',
-	OrderSuccess: 'OrderSuccess', // 付款成功信息
-	BackData: 'BackData', // 订单信息
-	BillNo: 'BillNo',
-	MsgObj: 'MsgObj', // // 消息详情
-	MsgBackData: 'MsgBackData', // 消息详情
-	HistoryRouter: 'HistoryRouter', // 历史路由
-	CheckCardRouter: 'CheckCardRouter', // 保存四项认证进入绑卡页的标识
-	BannerData: 'BannerData', // 保存 banner 信息
-	OutLinkUrl: 'OutLinkUrl', // 去外链标识
-	CouponData: 'CouponData', // 跳转路由中优惠劵的信息
-	LandingPageImgUrl: 'LandingPageImgUrl', // 落地页图片
-	HadShowModal: 'HadShowModal', // 是否开过弹框
-	BackFlag: 'BackFlag', // 是否返回的flag
-	DisableBack: 'DisableBack', // 禁止返回的标识
-	LoginBack: 'LoginBack', // 登录页协议返回
-	QueryUsrSCOpenId: 'QueryUsrSCOpenId', // 用户标识
-	FromPage: 'FromPage', // 页面来源
-	Consoleshow: 'Consoleshow', // 显示console
-	Version: 'Version', // 版本号
-	RewardCount: 'RewardCount', // 抽奖次数
-	Token: 'Token', // local-token
-	JumpUrl: 'JumpUrl', // 调整的url
-	H5Channel: 'H5Channel', // 存储h5Channel
-	Address: 'Address', // 常住地址
-	Linkman: 'Linkman', // 联系人姓名
-	Linkphone: 'Linkphone', // 联系人电话
-	RelationValue: 'RelationValue', // 亲属关系
-	Province: 'Province', // 省份
-	City: 'City', // 城市
-	ShowActivityModal: 'ShowActivityModal', // 是否显示活动弹窗
-	SaveAmt: 'SaveAmt', // 回显代还金额的数据
-	BindCardNo: 'BindCardNo', // 回显绑卡卡号
-	BindCreditCardNo: 'BindCreditCardNo', // 回显绑卡信用卡卡号
-	BindCardPhone: 'BindCardPhone', // 回显绑卡手机号
-	OrderDetailData: 'OrderDetailData', // 账单详情页数据
-	MessageTagError: 'MessageTagError', // 错误不显示
-	MessageTagStep: 'MessageTagStep', // 步骤
-	CouponActivityFlag: 'CouponActivityFlag', // 呈现不同机具页面的标识
-	MposToken: 'MposToken', // mpos token 关闭无效问题
-	NeedNextUrl: 'NeedNextUrl', // 需要调用获取下一步url方法
-	CreditExtensionNot: 'CreditExtensionNot', // 未提交授信用户
-	ToggleMoxieCard: 'ToggleMoxieCard', // 新版流程物理返回  借钱还信用卡 切换卡
-	LoanAspirationHome: 'LoanAspirationHome', // 首页弹窗 填写意愿
-	CarrierMoxie: 'CarrierMoxie', // 运营商直接返回的问题
-	BankMoxie: 'BankMoxie', // 信用卡直接返回的问题
-	GoMoxie: 'GoMoxie', // 魔蝎银行列表去魔蝎再返回的两次退出才退出的问题
-	CreditSuccessBack: 'CreditSuccessBack', // 信用卡绑卡之后立即去提交页需要提示
-	NoLoginUrl: 'NoLoginUrl', // 微信授权失败跳转到那个页面
-	LoginDownloadBtn: 'LoginDownloadBtn', // 登陆页点击立即下载按钮标识
-	MessageTagLimitDate: 'MessageTagLimitDate', // 首页的额度有效期显示标识
-	OverdueInf: 'OverdueInf', // 逾期进度数据
-	SuccessPay: 'SuccessPay', // 418 活动返回
-	IdChkPhotoBack: 'IdChkPhotoBack', // 签约页是否需要补充活体识别标示
-	ChkPhotoBackNew: 'ChkPhotoBackNew', // 活体直接返回
-	RealNameNextStep: 'RealNameNextStep', // 需要下一步
-	CashFenQiStoreData: 'CashFenQiStoreData', //现金分期反显的数据
-	CashFenQiCardArr: 'CashFenQiCardArr', //现金分期收、还卡数组
-	HomeAutId: 'HomeAutId', // 首页的autId
-	AutId: 'AutId', // 接口调用需要的AutId
-	FQActivity: 'FQActivity', // 参与现金分期活动
-	AutId2: 'AutId2', // 进度页物理返回存储的接口调用需要的AutId
-	PercentCount: 'PercentCount', //百分比次数
-	HomeConfirmAgency: 'HomeConfirmAgency', // 首页进入到签约借款页面参数
-	DepositBankName: 'DepositBankName', // 储蓄卡银行名称
-	AC20190618: 'AC20190618', //618
-	PayType: 'PayType', // 还款方式
-	WxPayEnd: 'WxPayEnd', // 微信返回不刷新
-	GotoMoxieFlag: 'GotoMoxieFlag', // 去到魔蝎第三方的标示
-	InsuranceFlag: 'InsuranceFlag', // 标识该次绑卡是否要求绑定支持收取保费的卡
-	NoLoginToken: 'NoLoginToken' // 设置 图片验证码 noLoginToken
-};
-
-/***/ }),
-/* 156 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.other = exports.loan_fenqi = exports.loan_repay_confirm = exports.mpos_ioscontrol_page = exports.moxie_bank_list = exports.activity = exports.mpos_service_authorization = exports.bugLog = exports.membership = exports.order = exports.mine = exports.home = exports.login = undefined;
-
-var _common = __webpack_require__(53);
-
-var prefix = 'DC';
-// dc 多
-// xdc少
-
-// DC 对外
-// XDC mpos入口=>对内
-if ((0, _common.isMPOS)() || JSON.parse(sessionStorage.getItem('isMPOS'))) {
-	prefix = 'XDC';
-}
-// console.log(JSON.parse(sessionStorage.getItem('isMPOS')),'test')
-var login = {
-	getCode: prefix + '_LOGIN_GET_CODE', // 注册登录页-点击获取验证码
-	submit: prefix + '_LOGIN_SUBMIT' // 注册登录页-一键代还
-};
-
-var home = {
-	applyCreditRepayment: prefix + '_HOME_APPLY_CREDIT_REPAYMENT', // 首页-点击申请信用卡代还按钮
-	// homeContinueApply: `${prefix}_HOME_CONTINUE_APPLY`, // 还卡-继续申请  增加属性，继续页面：基本信息认证，银行列表，运营商认证
-	HomeCardRenew: prefix + '_HOME_CARD_RENEW', // 借钱换信用卡  重新更新
-	easyRepay: prefix + '_HOME_EASY_REPAYMENT', // 首页-点击一键还卡（代还）
-	repayOtherCredit: prefix + '_HOME_REPAY_OTHER_CREDIT', // 首页-点击代还其他信用卡
-	viewBill: prefix + '_HOME_VIEW_BILL', // 首页-点击查看代还账单
-	durationDay30: prefix + '_MINE_CREDIT_EXTENSION_DURATION_DAY_30', // 申请期限-30天
-	durationMonth3: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_3', // 申请期限-3个月
-	durationMonth6: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_6', // 申请期限-6个月
-	durationMonth9: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_9', // 申请期限-9个月
-	durationMonth12: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_12', // 申请期限-12个月
-	moneyCreditCardConfirm: prefix + '_MONEY_CREDIT_CARD_CONFIRM', // 借钱还信用卡-提交申请成功
-	moneyCreditCardConfirmBtn: prefix + '_MONEY_CREDIT_CARD_CONFIRM_BTN', // 借钱还信用卡-提交申请按钮
-	// compensationCreditCardConfirm: `${prefix}_COMPENSATION_CREDIT_CARD_CONFIRM`, // 代偿信用卡-确认
-	userRetrieveContinue: prefix + '_USER_RETRIEVE_CONTINUE', // 用户挽回-再等等
-	userRetrieveQuit: prefix + '_USER_RETRIEVE_QUIT', // 用户挽回-放弃
-	repaymentIntentionAll: prefix + '_REPAYMENT_INTENTION_ALL', // 还款意愿-全额还款
-	repaymentIntentionLowest: prefix + '_REPAYMENT_INTENTION_LOWEST', // 还款意愿-最低还款
-	repaymentIntentionPart: prefix + '_REPAYMENT_INTENTION_PART', // 还款意愿-部分还款
-	lenders: prefix + '_HOME_LENDERS', // 放款日期-立即放款
-	lendersOrder: prefix + '_HOME_LENDERS_ORDER', // 放款日期-预约放款
-	borrowingSubmit: prefix + '_HOME_BORROWING_PRE_SUBMIT', // 代还信息确认页-点击确认按钮
-	borrowingSubmitResult: prefix + '_HOME_BORROWING_PRE_SUBMIT_RESULT', // 代还信息确认页-点击确认按钮-结果事件
-	informationMyselfFrontCard: prefix + '_HOME_BASE_INFO_FRONT_CARD', // 实名认证页-点击拍摄身份证正面
-	informationMyselfBackCard: prefix + '_HOME_BASE_INFO_BACK_CARD', // 实名认证页-点击拍摄身份证反面
-	informationTapNameInp: prefix + '_HOME_BASE_INFO_USERNAME', // 实名认证页-点击姓名输入框
-	informationTapIDInp: prefix + '_HOME_BASE_INFO_IDCARD', // 实名认证页-点击身份证号输入框
-	informationConfirm: prefix + '_HOME_BASE_INFO_CONFIRM', // 实名认证页-确定按钮
-	basicInfoBury: prefix + '_HOME_BASE_INFO_BURY', // 基本信息输入框下拉框埋点
-	basicInfoComplete: prefix + '_HOME_BASICINFO_COMPLETE', // 基本信息页-确定按钮
-	landingPage: prefix + '_HOME_LANDING_PAGE', // 落地页
-	bannerClick: prefix + '_HOME_BANNER_CLICK', // 点击banner
-	cardResult: prefix + '_HOME_CARD_RESULT', // 信用卡提交结果埋点
-	operatorResult: prefix + '_HOME_OPERATOR_RESULT', // 运营商提交结果埋点
-	faceAuthResult: prefix + '_HOME_FACEAUTH_RESULT', // 人脸提交结果埋点
-	downloadBtnClick: prefix + '_DOWNLOAD_BTN_CLICK', // 下载页点击按钮事件
-	manualAudit: prefix + '_RETURN_CARD_VIEWING_PROGRESS_MANUALAUDIT', //人工审核
-	machineAudit: prefix + '_RETURN_CARD_VIEWING_PROGRESS_MACHINE', //机器审核
-	quickLoan: prefix + '_RETURN_CARD_VIEWING_PROGRESS_LOAN', //快速放款
-	signedLoan: prefix + '_RETURN_CARD_VIEWING_PROGRESS_BORROWING', //立即签约借款
-	applyLoan: prefix + '_RETURN_CARD_VIEWING_PROGRESS_APPLY', //申请借钱还信用卡
-	billImport: prefix + '_RETURN_CARD_VIEWING_PROGRESS_IMPORT', //账单导入
-	billContinueImport: prefix + '_RETURN_CARD_VIEWING_PROGRESS_CONTINUEIMPORT', //继续导入信用卡账单
-	continueRealInfo: prefix + '_RETURN_CARD_VIEWING_PROGRESS_OPERATOR', //继续确认身份信息
-	selectCreditCardResult: prefix + '_CARD_SELECTION_CARDSELECTION', //选择信用卡_选卡结果
-	addCreditCard: prefix + '_CARD_SELECTION_NEWCARD', //新增需要还款信用卡
-	importOtherCreditCard: prefix + '_ADD_SCHEDULE_CREDIT_CARDS', //选择导入其他信用卡
-	replaceCard: prefix + '_APPLY_LOAN_CARD_REPLACEMENT', //申请借钱还-更换卡
-	gotIt: prefix + '_QUICK_PAY_GOTIT', //快速打款中-我知道了
-	manualAuditFollow: prefix + '_AWAITING_AUDIT_FOLLOW', //等待人工审核-关注
-	assessingBindCard: prefix + '_RAPID_ASSESSMENT_BINDING_CARD', //快速评估中-绑卡
-	protocolSmsFail: prefix + '_HOME_PROTOCOL_SMS_FAIL', // 签约借款页协议绑卡校验失败埋点
-	protocolBindFail: prefix + '_HOME_PROTOCOL_BIND_FAIL', // 签约借款页协议绑卡绑定失败埋点
-	protocolBindBtnClick: prefix + '_HOME_PROTOCOL_MODAL_BTN_CLICK', // 签约借款页协议绑卡短验弹框按钮点击
-
-	dialogInformation: prefix + '_QUESTION_FEEDBACK_BASIC_INFORMATION',
-	dialogInformation_wait: prefix + '_QUESTION_FEEDBACK_BASIC_INFORMATION_CONTINUE',
-	dialogInformation_close: prefix + '_QUESTION_FEEDBACK_BASIC_INFORMATION_CLOSE',
-
-	dialogMoxieBank: prefix + '_QUESTION_FEEDBACK_BANK',
-	dialogMoxieBank_wait: prefix + '_QUESTION_FEEDBACK_BANK_CONTINUE',
-	dialogMoxieBank_close: prefix + '_QUESTION_FEEDBACK_BANK_CLOSE',
-
-	dialogLoanRepay: prefix + '_QUESTION_FEEDBACK_APPLY',
-	dialogLoanRepay_wait: prefix + '_QUESTION_FEEDBACK_APPLY_CONTINUE',
-	dialogLoanRepay_close: prefix + '_QUESTION_FEEDBACK_APPLY_CLOSE',
-
-	feedModalOperator: prefix + '_TIPS_OPERATORS_RETRIEVE', //找回运营商密码
-	feedModalInterbank: prefix + '_TIPS_INTERNETBANK_RETRIEVE', //找回信用卡密码
-	feedModalSubmit: prefix + '_TIPS_OTHERISSUES', //反馈问题提交事件
-	feedModalBtnClick: prefix + '_TIPS_RISSUES' //选择问题按钮点击总事件
-};
-
-var mine = {
-	faq: prefix + '_MINE_FAQ', // 常见问题页
-	saveConfirm: prefix + '_MINE_SAVE_CONFIRM', // 绑定储蓄卡页-确定按钮
-	creditConfirm: prefix + '_MINE_CREDIT_CONFIRM', // 绑定信用卡页-确定按钮
-	creditExtension: prefix + '_MINE_CREDIT_EXTENSION', // 风控授信项页 从哪进入（首页、我的）
-	creditExtensionConfirm: prefix + '_MINE_CREDIT_EXTENSION_CONFIRM', // 风控授信项页-点击提交代还金申请按钮
-	creditExtensionBack: prefix + '_MINE_CREDIT_EXTENSION_BACK', // 风控授信项页
-	creditExtensionRealName: prefix + '_MINE_CREDIT_EXTENSION_REAL_NAME', // 风控授信项页 点击实名认证
-	creditExtensionBaseInfo: prefix + '_MINE_CREDIT_EXTENSION_BASE_INFO', // 风控授信项页 点击基本信息认证
-	creditExtensionOperator: prefix + '_MINE_CREDIT_EXTENSION_OPERATOR', // 风控授信项页 点击运营商认证
-	creditExtensionFaceAuth: prefix + '_MINE_CREDIT_EXTENSION_FACEAUTH', // 风控授信项页 点击人脸识别认证
-	creditExtensionZM: prefix + '_MINE_CREDIT_EXTENSION_ZM', // 风控授信项页 点击芝麻分认证
-	protocolSmsFail: prefix + '_MINE_PROTOCOL_SMS_FAIL', // 绑定储蓄卡页协议绑卡校验失败埋点
-	protocolBindFail: prefix + '_MINE_PROTOCOL_BIND_FAIL' // 绑定储蓄卡页协议绑卡绑定失败埋点
-};
-
-var order = {
-	repayment: prefix + '_ORDER_DETAILS_REPAYMENT', // 账单详情页-主动还款按钮
-	repaymentFirst: prefix + '_ORDER_DETAILS_REPAYMENT_FIRST', // 账单详情页-付款详情-立即还款按钮
-	returnHome: prefix + '_ORDER_BACK_HOME', // 还款完成页-返回首页按钮
-	openNow: prefix + '_ORDER_OPEN_NOW', // 还款完成页-弹框里立即开启按钮
-	closeModal: prefix + '_ORDER_CLOSE_MODAL' // 还款完成页-弹框里关闭按钮
-};
-
-var membership = {
-	confirmBuyPre: prefix + '_MEMBERSHIP_CONFIRM_BUY_PRE', // 会员卡购买页-确认购买按钮
-	bindCardCredit: prefix + '_MEMBERSHIP_BIND_CARD_CREDIT', // 会员卡购买页-绑定银行卡-信用卡页-确认绑定按钮
-	bindCardSave: prefix + '_MEMBERSHIP_BIND_CARD_SAVE', // 会员卡购买页-绑定银行卡-储蓄卡页-确认绑定按钮
-	confirmBuy: prefix + '_MEMBERSHIP_CONFIRM_BUY' // 会员卡购买-确认购买页-确认购买按钮
-};
-
-var bugLog = {
-	apiErrorLog: prefix + '_API_ERROR_LOG', // 接口异常报错日志
-	pageErrorLog: prefix + '_PAGE_ERROR_LOG' // 页面异常报错日志
-};
-
-var mpos_service_authorization = {
-	auth_btn: prefix + '_AUTH_PAGE_AUTH_BTN',
-	auth_page: prefix + '_MPOS_AUTH_PAGE'
-};
-
-var activity = {
-	newUserEntry: prefix + '_NEW_USER_ACTIVITY_ENTRY', // 拉新活动运营入口来源埋点
-	couponEntry: prefix + '_COUPON_ACTIVITY_ENTRY', // 领取优惠券活动运营
-	dazhuanpan_316_entry: prefix + '_DAZHUANPAN_316_ACTIVITY_ENTRY', // 316大转盘入口区分
-	dazhuanpan_316_draw_result: prefix + '_DAZHUANPAN_316_DRAW_RESULT', // 316大转盘中奖情况
-	jupeiEntry: prefix + '_JUPEI_ACTIVITY_ENTRY', //拒就赔活动
-	funsisongEntry: prefix + '_ACTIVITY_FUNSISONG_ENTRY', // 放肆送活动入口
-	couponBtnClick: prefix + '_ACTIVITY_COUPON_GET', // 放肆送活动领取按钮点击
-	redBagBtnClick: prefix + '_ACTIVITY_REDBAG_GET', // 放肆送活动还信用卡赚钱按钮点击
-	joinNowClick: prefix + '_ACTIVITY_CHECK_COUPON', // 放肆送活动弹框立即参与按钮点击
-	checkCouponClick: prefix + '_ACTIVITY_JOIN_NOW', // 放肆送活动弹框查看优惠劵按钮点击
-	homeModalBtnClick: prefix + '_ACTIVITY_HOME_MODAL_CLICK', // 放肆送活动中mpos 还到弹窗 点击
-	mianxi418Entry: prefix + '_ACTIVITY_MIANXI_418_ENTRY', // 最高免息30天 活动入口
-	mianxi418Btn: prefix + '_ACTIVITY_MIANXI_418_BTN', // 最高免息30天 按钮
-	wenjuanEntry: prefix + '_ACTIVITY_WENJUAN_ENTRY', // 问卷入口
-	wenjuanBtn: prefix + '_ACTIVITY_WENJUAN_BTN', // 问卷提交按钮
-	wenjuanShare: prefix + '_ACTIVITY_WENJUAN_SHARE', // 问卷提交分享
-	wenjuanHome: prefix + '_ACTIVITY_WENJUAN_Home', // 问卷去首页
-	jjpEntry: prefix + '_ACTIVITY_JUJIUPEI_ENTRY', //拒就赔活动入口
-	jjpGetBtn: prefix + '_ACTIVITY_JUJIUPEI_GET_BTN', //拒就赔领取按钮点击
-	jjpMposConfirmBtn: prefix + '_ACTIVITY_JUJIUPEI_MPOS_CONFIRM', //拒就赔mpos中弹框确定按钮点击
-	jjpWxConfirmBtn: prefix + '_ACTIVITY_JUJIUPEI_WX_CONFIRM', //拒就赔微信中弹框确定按钮点击
-	jjpHomeModalClick: prefix + '_ACTIVITY_JUJIUPEI_HOME_MODAL_CLICK', //拒就赔首页弹框按钮点击
-	brandEntry: prefix + '_ACTIVITY_BRAND_ENTRY', // 品牌活动入口
-	brandBtnClick: prefix + '_ACTIVITY_BRAND_TIYAN_BTN', // 品牌活动还到体验按钮点击
-	brandHomeModalClick: prefix + '_ACTIVITY_BRAND_HOME_MODAL_CLICK', // 品牌活动首页弹框开启生涯模式按钮点击
-	fenqiHomeModalGoBtn: prefix + '_FENQI_HOME_MODAL_GO_BTN', //现金分期活动弹窗按钮点击
-	fenqiHomeModalClose: prefix + '_FENQI_HOME_MODAL_CLOSE', //现金分期活动弹窗关闭
-	mayReceiveBtn: prefix + '_ACTIVITY_TWO_RECEIVE', // 五月狂欢活动 畅想双重豪礼 领取 按钮
-	mayExtractBtn: prefix + '_ACTIVITY_TWO_EXTRACT', // 五月狂欢活动 畅想双重豪礼 抽奖 按钮
-	mayNewRecBtn: prefix + '_ACTIVITY_NEW_ONEKEYCOLLECTION', // 五月狂欢活动 新用户专享 一键领取 按钮
-	mayNewRulesBtn: prefix + '_ACTIVITY_NEW_ACTIVITYRULES', // 五月狂欢活动 新用户专享 活动规则 按钮
-	mayNewConfirmRecBtn: prefix + '_ACTIVITY_NEW_RECEIVEIMMEDIATELY_CONFIRMRECEIPT', // 五月狂欢活动 新用户专享-马上领取 确认领取 按钮
-	mayNewUseNowBtn: prefix + '_ACTIVITY_NEW_CONGRATULATIONS_USEIMMEDIATELY', // 五月狂欢活动 新用户专享-恭喜您 马上使用 按钮
-	mayNewToOldBtn: prefix + '_ACTIVITY_NEW_SORRY_JUMP', // 五月狂欢活动 新用户专享-抱歉 跳转老用户专享 按钮
-	mayOldDrawBtn: prefix + '_ACTIVITY_OLD_STARTRAFFLE', // 五月狂欢活动 老用户专享-开始抽奖 按钮
-	mayOldToNewBtn: prefix + '_ACTIVITY_OLD_SORRY_JUMP', // 五月狂欢活动 老用户专享-跳转新用户专享 按钮
-	mayOldAuthTipsBtn: prefix + '_ACTIVITY_OLD_TIPS_AUTHENTICATION', // 五月狂欢活动 老用户专享-提示 填写认证资料 按钮
-	mayOldNoPrizeBtn: prefix + '_ACTIVITY_OLD_FRIENDSHIPTIPS_NOPRIZE', // 五月狂欢活动 老用户专享-友情提示-奖品数量-知道了 按钮
-	mayOldNoChanceBtn: prefix + '_ACTIVITY_OLD_FRIENDSHIPTIPS_NOCHANCE', // 五月狂欢活动 老用户专享-友情提示-抽奖机会-知道了 按钮
-	mayOldUseNowBtn: prefix + '_ACTIVITY_OLD_CONGRATULATIONS', // 五月狂欢活动 老用户专享-恭喜你 立即使用 按钮
-	mayOldRulesBtn: prefix + '_ACTIVITY_OLD_ACTIVITYRULES', // 五月狂欢活动 老用户专享 活动规则 按钮
-	mayOldMyPrizeBtn: prefix + '_ACTIVITY_OLD_MYPRIZE', // 五月狂欢活动 老用户专享 我的奖品 按钮
-	mayOldMyPrizeUseBtn: prefix + '_ACTIVITY_OLD_MYPRIZE_IMMEDIATEUSE', // 五月狂欢活动 老用户专享-我的奖品 立即使用 按钮
-	mayJoinSuccess: prefix + '_ACTIVITY_JOIN_SUCCESS', // 五月狂欢活动 成功参与埋点（调用后台接口）
-	koubeiEntry: prefix + '_ACTIVITY_KOUBEI_ENTRY', // 口碑活动入口来源
-	koubeiBtnClick: prefix + '_ACTIVITY_KOUBEI_TIYAN_BTN', // 口碑活动还到体验按钮点击
-	koubeiHomeOldModalClick: prefix + '_ACTIVITY_KOUBEI_HOME_OLDMODAL_CLICK', // 口碑活动首页老用户弹框
-	koubeiHomeNewModalClick: prefix + '_ACTIVITY_KOUBEI_HOME_NEWMODAL_CLICK', // 口碑活动首页新用户弹框
-	jd618Entry: prefix + '_JD618_ENTRY',
-	freebillEntry: prefix + '_FREEBILL_ENTRY',
-	jd618BtnClick: prefix + '_ACTIVITY_JD618_BTN',
-	jd618ModalBtnClick: prefix + '_ACTIVITY_JD618_MODAL_BTN',
-	freeBillBtnClick: prefix + '_ACTIVITY_FREEBILL_BTN',
-	freeBillModalBtnClick: prefix + '_ACTIVITY_FREEBILL_MODAL_BTN',
-	yhq7ModalBtnClick: prefix + '_ACTIVITY_YHQ7_MODAL_BTN',
-	yhq50ModalBtnClick: prefix + '_ACTIVITY_YHQ50_MODAL_BTN',
-	jd618ResultModalClick: prefix + '_JD618_RESULT_MODAL_CLICK',
-	jd618HomeModalClose: prefix + '_JD618HOMEMODALCLOSE',
-	freeBillHomeModalClose: prefix + '_FREEBILLHOMEMODALCLOSE'
-};
-
-var moxie_bank_list = {
-	bankChooes: prefix + '_CREDIT_BANK_CHOOES', // 拉新活动运营入口来源埋点
-	bankRefresh: prefix + '_CREDIT_BANK_REFRESH' // 领取优惠券活动运营
-};
-
-var mpos_ioscontrol_page = {
-	iosControlPageView: prefix + '_MPOS_HD_WECHAT', // mpos 管控页页面/mpos引流微信页面加载完成
-	copySuccess: prefix + '_COPY_SUCCESS' // mpos 管控页页面/mpos引流微信页面复制成功
-};
-
-var loan_repay_confirm = {
-	// back30: `${prefix}_PRODUCT_BACK_30`,
-	// sure30: `${prefix}_PRODUCT_SURE_30`,
-	// cancle30: `${prefix}_PRODUCT_CANCLE_30`,
-	// select30: `${prefix}_PRODUCT_SELECT_30`
-};
-
-var other = {
-	outerDownloadBtnClick: prefix + '_OUTER_DOWNLOAD_BUTTON_CLICK' //外部下载页按钮点击事件
-};
-
-var loan_fenqi = {
-	day30: prefix + '_FENQI_DATE_DAY_30',
-	month3: prefix + '_FENQI_DATE_MONTH_3',
-	month6: prefix + '_FENQI_DATE_MONTH_6',
-	month9: prefix + '_FENQI_DATE_MONTH_9',
-	month12: prefix + '_FENQI_DATE_MONTH_12',
-	moneyBlur: prefix + '_FENQI_MONEY_BLUR',
-	repayPlan: prefix + '_FENQI_REPAY_PLAN',
-	resaveCard: prefix + '_FENQI_RESAVECARD',
-	payCard: prefix + '_FENQI_PAYCARD',
-	contract: prefix + '_FENQI_CONTRACT',
-	clickSubmit: prefix + '_FENQI_CLICK_SUBMIT',
-	submitResult: prefix + '_FENQI_SUBMIT_RESULT',
-	fenqiGoBack: prefix + '_FENQI_GO_BACK',
-	fenqiDownload: prefix + '_FENQI_DOWNLOAD_CLICK',
-	fenqiHomeApplyBtn: prefix + '_FENQI_HOME_APPLY_BTN'
-};
-
-exports.login = login;
-exports.home = home;
-exports.mine = mine;
-exports.order = order;
-exports.membership = membership;
-exports.bugLog = bugLog;
-exports.mpos_service_authorization = mpos_service_authorization;
-exports.activity = activity;
-exports.moxie_bank_list = moxie_bank_list;
-exports.mpos_ioscontrol_page = mpos_ioscontrol_page;
-exports.loan_repay_confirm = loan_repay_confirm;
-exports.loan_fenqi = loan_fenqi;
-exports.other = other;
-
-/***/ }),
-/* 157 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
- * JavaScript Cookie v2.2.0
- * https://github.com/js-cookie/js-cookie
- *
- * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
- * Released under the MIT license
- */
-;(function (factory) {
-	var registeredInModuleLoader = false;
-	if (true) {
-		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
-				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
-				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
-				__WEBPACK_AMD_DEFINE_FACTORY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		registeredInModuleLoader = true;
-	}
-	if (true) {
-		module.exports = factory();
-		registeredInModuleLoader = true;
-	}
-	if (!registeredInModuleLoader) {
-		var OldCookies = window.Cookies;
-		var api = window.Cookies = factory();
-		api.noConflict = function () {
-			window.Cookies = OldCookies;
-			return api;
-		};
-	}
-}(function () {
-	function extend () {
-		var i = 0;
-		var result = {};
-		for (; i < arguments.length; i++) {
-			var attributes = arguments[ i ];
-			for (var key in attributes) {
-				result[key] = attributes[key];
-			}
-		}
-		return result;
-	}
-
-	function init (converter) {
-		function api (key, value, attributes) {
-			var result;
-			if (typeof document === 'undefined') {
-				return;
-			}
-
-			// Write
-
-			if (arguments.length > 1) {
-				attributes = extend({
-					path: '/'
-				}, api.defaults, attributes);
-
-				if (typeof attributes.expires === 'number') {
-					var expires = new Date();
-					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
-					attributes.expires = expires;
-				}
-
-				// We're using "expires" because "max-age" is not supported by IE
-				attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
-
-				try {
-					result = JSON.stringify(value);
-					if (/^[\{\[]/.test(result)) {
-						value = result;
-					}
-				} catch (e) {}
-
-				if (!converter.write) {
-					value = encodeURIComponent(String(value))
-						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
-				} else {
-					value = converter.write(value, key);
-				}
-
-				key = encodeURIComponent(String(key));
-				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
-				key = key.replace(/[\(\)]/g, escape);
-
-				var stringifiedAttributes = '';
-
-				for (var attributeName in attributes) {
-					if (!attributes[attributeName]) {
-						continue;
-					}
-					stringifiedAttributes += '; ' + attributeName;
-					if (attributes[attributeName] === true) {
-						continue;
-					}
-					stringifiedAttributes += '=' + attributes[attributeName];
-				}
-				return (document.cookie = key + '=' + value + stringifiedAttributes);
-			}
-
-			// Read
-
-			if (!key) {
-				result = {};
-			}
-
-			// To prevent the for loop in the first place assign an empty array
-			// in case there are no cookies at all. Also prevents odd result when
-			// calling "get()"
-			var cookies = document.cookie ? document.cookie.split('; ') : [];
-			var rdecode = /(%[0-9A-Z]{2})+/g;
-			var i = 0;
-
-			for (; i < cookies.length; i++) {
-				var parts = cookies[i].split('=');
-				var cookie = parts.slice(1).join('=');
-
-				if (!this.json && cookie.charAt(0) === '"') {
-					cookie = cookie.slice(1, -1);
-				}
-
-				try {
-					var name = parts[0].replace(rdecode, decodeURIComponent);
-					cookie = converter.read ?
-						converter.read(cookie, name) : converter(cookie, name) ||
-						cookie.replace(rdecode, decodeURIComponent);
-
-					if (this.json) {
-						try {
-							cookie = JSON.parse(cookie);
-						} catch (e) {}
-					}
-
-					if (key === name) {
-						result = cookie;
-						break;
-					}
-
-					if (!key) {
-						result[name] = cookie;
-					}
-				} catch (e) {}
-			}
-
-			return result;
-		}
-
-		api.set = api;
-		api.get = function (key) {
-			return api.call(api, key);
-		};
-		api.getJSON = function () {
-			return api.apply({
-				json: true
-			}, [].slice.call(arguments));
-		};
-		api.defaults = {};
-
-		api.remove = function (key, attributes) {
-			api(key, '', extend(attributes, {
-				expires: -1
-			}));
-		};
-
-		api.withConverter = init;
-
-		return api;
-	}
-
-	return init(function () {});
-}));
-
-
-/***/ }),
-/* 158 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10007,7 +9402,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 }();
 
 /***/ }),
-/* 159 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10043,7 +9438,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 }(750, 750);
 
 /***/ }),
-/* 160 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10053,7 +9448,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _fetchClass = __webpack_require__(161);
+var _fetchClass = __webpack_require__(153);
 
 var _fetchClass2 = _interopRequireDefault(_fetchClass);
 
@@ -10062,7 +9457,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = new _fetchClass2.default();
 
 /***/ }),
-/* 161 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10108,15 +9503,15 @@ var _createClass = function () { function defineProperties(target, props) { for 
 // 扩展了 done 和 finally 方法
 
 
-var _axios = __webpack_require__(162);
+var _axios = __webpack_require__(154);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-__webpack_require__(181);
+__webpack_require__(173);
 
-var _urlUtils = __webpack_require__(182);
+var _urlUtils = __webpack_require__(174);
 
-var _fetchDecorator = __webpack_require__(183);
+var _fetchDecorator = __webpack_require__(175);
 
 var _fetchDecorator2 = _interopRequireDefault(_fetchDecorator);
 
@@ -10421,13 +9816,13 @@ var SxFetch = function () {
 exports.default = SxFetch;
 
 /***/ }),
-/* 162 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(163);
+module.exports = __webpack_require__(155);
 
 /***/ }),
-/* 163 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10435,8 +9830,8 @@ module.exports = __webpack_require__(163);
 
 var utils = __webpack_require__(1);
 var bind = __webpack_require__(75);
-var Axios = __webpack_require__(165);
-var defaults = __webpack_require__(54);
+var Axios = __webpack_require__(157);
+var defaults = __webpack_require__(53);
 
 /**
  * Create an instance of Axios
@@ -10470,14 +9865,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(79);
-axios.CancelToken = __webpack_require__(179);
+axios.CancelToken = __webpack_require__(171);
 axios.isCancel = __webpack_require__(78);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(180);
+axios.spread = __webpack_require__(172);
 
 module.exports = axios;
 
@@ -10486,7 +9881,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 164 */
+/* 156 */
 /***/ (function(module, exports) {
 
 /*!
@@ -10513,18 +9908,18 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 165 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var defaults = __webpack_require__(54);
+var defaults = __webpack_require__(53);
 var utils = __webpack_require__(1);
-var InterceptorManager = __webpack_require__(174);
-var dispatchRequest = __webpack_require__(175);
-var isAbsoluteURL = __webpack_require__(177);
-var combineURLs = __webpack_require__(178);
+var InterceptorManager = __webpack_require__(166);
+var dispatchRequest = __webpack_require__(167);
+var isAbsoluteURL = __webpack_require__(169);
+var combineURLs = __webpack_require__(170);
 
 /**
  * Create a new instance of Axios
@@ -10606,7 +10001,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 166 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10625,7 +10020,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 167 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10658,7 +10053,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 168 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10686,7 +10081,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 169 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10761,7 +10156,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 170 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10805,7 +10200,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 171 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10880,7 +10275,7 @@ module.exports = (
 
 
 /***/ }),
-/* 172 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10923,7 +10318,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 173 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10983,7 +10378,7 @@ module.exports = (
 
 
 /***/ }),
-/* 174 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11042,16 +10437,16 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 175 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(1);
-var transformData = __webpack_require__(176);
+var transformData = __webpack_require__(168);
 var isCancel = __webpack_require__(78);
-var defaults = __webpack_require__(54);
+var defaults = __webpack_require__(53);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -11128,7 +10523,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 176 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11155,7 +10550,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 177 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11176,7 +10571,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 178 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11197,7 +10592,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 179 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11261,7 +10656,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 180 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11295,7 +10690,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 181 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11344,7 +10739,7 @@ if (!Promise.prototype.done) {
 }
 
 /***/ }),
-/* 182 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11383,7 +10778,7 @@ function mosaicUrl(url, params) {
 }
 
 /***/ }),
-/* 183 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11397,11 +10792,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(184);
+var _react = __webpack_require__(176);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _hoistNonReactStatics = __webpack_require__(209);
+var _hoistNonReactStatics = __webpack_require__(201);
 
 var _hoistNonReactStatics2 = _interopRequireDefault(_hoistNonReactStatics);
 
@@ -11522,17 +10917,17 @@ function fetchInject() {
 exports.default = fetchInject;
 
 /***/ }),
-/* 184 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(185);
+module.exports = __webpack_require__(177);
 
 
 /***/ }),
-/* 185 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11549,22 +10944,22 @@ module.exports = __webpack_require__(185);
 var _assign = __webpack_require__(8);
 
 var ReactBaseClasses = __webpack_require__(80);
-var ReactChildren = __webpack_require__(187);
-var ReactDOMFactories = __webpack_require__(191);
+var ReactChildren = __webpack_require__(179);
+var ReactDOMFactories = __webpack_require__(183);
 var ReactElement = __webpack_require__(9);
-var ReactPropTypes = __webpack_require__(195);
-var ReactVersion = __webpack_require__(201);
+var ReactPropTypes = __webpack_require__(187);
+var ReactVersion = __webpack_require__(193);
 
-var createReactClass = __webpack_require__(202);
-var onlyChild = __webpack_require__(208);
+var createReactClass = __webpack_require__(194);
+var onlyChild = __webpack_require__(200);
 
 var createElement = ReactElement.createElement;
 var createFactory = ReactElement.createFactory;
 var cloneElement = ReactElement.cloneElement;
 
 if (process.env.NODE_ENV !== 'production') {
-  var lowPriorityWarning = __webpack_require__(55);
-  var canDefineProperty = __webpack_require__(29);
+  var lowPriorityWarning = __webpack_require__(54);
+  var canDefineProperty = __webpack_require__(31);
   var ReactElementValidator = __webpack_require__(85);
   var didWarnPropTypesDeprecated = false;
   createElement = ReactElementValidator.createElement;
@@ -11668,7 +11063,7 @@ module.exports = React;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 186 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11692,7 +11087,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 187 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11706,11 +11101,11 @@ module.exports = emptyObject;
 
 
 
-var PooledClass = __webpack_require__(188);
+var PooledClass = __webpack_require__(180);
 var ReactElement = __webpack_require__(9);
 
 var emptyFunction = __webpack_require__(82);
-var traverseAllChildren = __webpack_require__(189);
+var traverseAllChildren = __webpack_require__(181);
 
 var twoArgumentPooler = PooledClass.twoArgumentPooler;
 var fourArgumentPooler = PooledClass.fourArgumentPooler;
@@ -11886,7 +11281,7 @@ var ReactChildren = {
 module.exports = ReactChildren;
 
 /***/ }),
-/* 188 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11901,9 +11296,9 @@ module.exports = ReactChildren;
 
 
 
-var _prodInvariant = __webpack_require__(15);
+var _prodInvariant = __webpack_require__(16);
 
-var invariant = __webpack_require__(17);
+var invariant = __webpack_require__(18);
 
 /**
  * Static poolers. Several custom versions for each potential number of
@@ -12002,7 +11397,7 @@ module.exports = PooledClass;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 189 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12016,15 +11411,15 @@ module.exports = PooledClass;
 
 
 
-var _prodInvariant = __webpack_require__(15);
+var _prodInvariant = __webpack_require__(16);
 
-var ReactCurrentOwner = __webpack_require__(30);
+var ReactCurrentOwner = __webpack_require__(32);
 var REACT_ELEMENT_TYPE = __webpack_require__(83);
 
 var getIteratorFn = __webpack_require__(84);
-var invariant = __webpack_require__(17);
-var KeyEscapeUtils = __webpack_require__(190);
-var warning = __webpack_require__(16);
+var invariant = __webpack_require__(18);
+var KeyEscapeUtils = __webpack_require__(182);
+var warning = __webpack_require__(17);
 
 var SEPARATOR = '.';
 var SUBSEPARATOR = ':';
@@ -12182,7 +11577,7 @@ module.exports = traverseAllChildren;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 190 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12244,7 +11639,7 @@ var KeyEscapeUtils = {
 module.exports = KeyEscapeUtils;
 
 /***/ }),
-/* 191 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12417,7 +11812,7 @@ module.exports = ReactDOMFactories;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 192 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12431,13 +11826,13 @@ module.exports = ReactDOMFactories;
 
 
 
-var _prodInvariant = __webpack_require__(15);
+var _prodInvariant = __webpack_require__(16);
 
-var ReactPropTypeLocationNames = __webpack_require__(193);
-var ReactPropTypesSecret = __webpack_require__(194);
+var ReactPropTypeLocationNames = __webpack_require__(185);
+var ReactPropTypesSecret = __webpack_require__(186);
 
-var invariant = __webpack_require__(17);
-var warning = __webpack_require__(16);
+var invariant = __webpack_require__(18);
+var warning = __webpack_require__(17);
 
 var ReactComponentTreeHook;
 
@@ -12447,7 +11842,7 @@ if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 't
   // https://github.com/facebook/react/issues/7240
   // Remove the inline requires when we don't need them anymore:
   // https://github.com/facebook/react/pull/7178
-  ReactComponentTreeHook = __webpack_require__(56);
+  ReactComponentTreeHook = __webpack_require__(55);
 }
 
 var loggedTypeFailures = {};
@@ -12489,7 +11884,7 @@ function checkReactTypeSpec(typeSpecs, values, location, componentName, element,
 
         if (process.env.NODE_ENV !== 'production') {
           if (!ReactComponentTreeHook) {
-            ReactComponentTreeHook = __webpack_require__(56);
+            ReactComponentTreeHook = __webpack_require__(55);
           }
           if (debugID !== null) {
             componentStackInfo = ReactComponentTreeHook.getStackAddendumByID(debugID);
@@ -12508,7 +11903,7 @@ module.exports = checkReactTypeSpec;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 193 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12537,7 +11932,7 @@ module.exports = ReactPropTypeLocationNames;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 194 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12557,7 +11952,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 module.exports = ReactPropTypesSecret;
 
 /***/ }),
-/* 195 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12574,12 +11969,12 @@ module.exports = ReactPropTypesSecret;
 var _require = __webpack_require__(9),
     isValidElement = _require.isValidElement;
 
-var factory = __webpack_require__(196);
+var factory = __webpack_require__(188);
 
 module.exports = factory(isValidElement);
 
 /***/ }),
-/* 196 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12596,7 +11991,7 @@ module.exports = factory(isValidElement);
 // Therefore we re-export development-only version with all the PropTypes checks here.
 // However if one is migrating to the `prop-types` npm library, they will go through the
 // `index.js` entry point, and it will branch depending on the environment.
-var factory = __webpack_require__(197);
+var factory = __webpack_require__(189);
 module.exports = function(isValidElement) {
   // It is still allowed in 15.5.
   var throwOnDirectAccess = false;
@@ -12605,7 +12000,7 @@ module.exports = function(isValidElement) {
 
 
 /***/ }),
-/* 197 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12618,11 +12013,11 @@ module.exports = function(isValidElement) {
 
 
 
-var ReactIs = __webpack_require__(198);
+var ReactIs = __webpack_require__(190);
 var assign = __webpack_require__(8);
 
-var ReactPropTypesSecret = __webpack_require__(71);
-var checkPropTypes = __webpack_require__(70);
+var ReactPropTypesSecret = __webpack_require__(72);
+var checkPropTypes = __webpack_require__(71);
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function() {};
@@ -13204,22 +12599,22 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 198 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(199);
+  module.exports = __webpack_require__(191);
 } else {
-  module.exports = __webpack_require__(200);
+  module.exports = __webpack_require__(192);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 199 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13241,7 +12636,7 @@ exports.isSuspense=function(a){return t(a)===p};
 
 
 /***/ }),
-/* 200 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13476,7 +12871,7 @@ exports.isSuspense = isSuspense;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 201 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13493,7 +12888,7 @@ exports.isSuspense = isSuspense;
 module.exports = '15.6.2';
 
 /***/ }),
-/* 202 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13514,12 +12909,12 @@ var _require2 = __webpack_require__(9),
     isValidElement = _require2.isValidElement;
 
 var ReactNoopUpdateQueue = __webpack_require__(81);
-var factory = __webpack_require__(203);
+var factory = __webpack_require__(195);
 
 module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
 
 /***/ }),
-/* 203 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13535,11 +12930,11 @@ module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
 
 var _assign = __webpack_require__(8);
 
-var emptyObject = __webpack_require__(204);
-var _invariant = __webpack_require__(205);
+var emptyObject = __webpack_require__(196);
+var _invariant = __webpack_require__(197);
 
 if (process.env.NODE_ENV !== 'production') {
-  var warning = __webpack_require__(206);
+  var warning = __webpack_require__(198);
 }
 
 var MIXINS_KEY = 'mixins';
@@ -14453,7 +13848,7 @@ module.exports = factory;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 204 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14477,7 +13872,7 @@ module.exports = emptyObject;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 205 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14537,7 +13932,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 206 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14551,7 +13946,7 @@ module.exports = invariant;
 
 
 
-var emptyFunction = __webpack_require__(207);
+var emptyFunction = __webpack_require__(199);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -14606,7 +14001,7 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 207 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14648,7 +14043,7 @@ emptyFunction.thatReturnsArgument = function (arg) {
 module.exports = emptyFunction;
 
 /***/ }),
-/* 208 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14661,11 +14056,11 @@ module.exports = emptyFunction;
  */
 
 
-var _prodInvariant = __webpack_require__(15);
+var _prodInvariant = __webpack_require__(16);
 
 var ReactElement = __webpack_require__(9);
 
-var invariant = __webpack_require__(17);
+var invariant = __webpack_require__(18);
 
 /**
  * Returns the first child in a collection of children and verifies that there
@@ -14690,7 +14085,7 @@ module.exports = onlyChild;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 209 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14765,7 +14160,7 @@ module.exports = hoistNonReactStatics;
 
 
 /***/ }),
-/* 210 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -15613,7 +15008,670 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e){ true?module.exports=e():e()}(function(){function app_js_bridge(){function e(e){n=e,_.isJSONString(n)&&(n=JSON.parse(n)),s&&(s(n),s=null,n=null)}function t(){"object"==typeof window.SensorsData_APP_JS_Bridge&&window.SensorsData_APP_JS_Bridge.sensorsdata_call_app&&(n=SensorsData_APP_JS_Bridge.sensorsdata_call_app(),_.isJSONString(n)&&(n=JSON.parse(n)))}function r(){if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){var e=document.createElement("iframe");e.setAttribute("src","sensorsanalytics://getAppInfo"),document.documentElement.appendChild(e),e.parentNode.removeChild(e),e=null}}var n=null,s=null;window.sensorsdata_app_js_bridge_call_js=function(t){e(t)},sd.getAppStatus=function(e){return r(),t(),e?void(null===n?s=e:(e(n),n=null)):n}}try{var sd=window.sensorsDataAnalytic201505,has_declare;if(sd?(sd=window[sd],has_declare=!0):(sd={},has_declare=!1),"function"!=typeof sd&&"object"!=typeof sd||sd.has_load_sdk)return!1;sd._t=sd._t||1*new Date,sd.has_load_sdk=!0,"object"!=typeof JSON&&(JSON={}),function(){"use strict";function f(e){return e<10?"0"+e:e}function this_value(){return this.valueOf()}function quote(e){return rx_escapable.lastIndex=0,rx_escapable.test(e)?'"'+e.replace(rx_escapable,function(e){var t=meta[e];return"string"==typeof t?t:"\\u"+("0000"+e.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+e+'"'}function str(e,t){var r,n,s,a,i,o=gap,c=t[e];switch(c&&"object"==typeof c&&"function"==typeof c.toJSON&&(c=c.toJSON(e)),"function"==typeof rep&&(c=rep.call(t,e,c)),typeof c){case"string":return quote(c);case"number":return isFinite(c)?String(c):"null";case"boolean":case"null":return String(c);case"object":if(!c)return"null";if(gap+=indent,i=[],"[object Array]"===Object.prototype.toString.apply(c)){for(a=c.length,r=0;r<a;r+=1)i[r]=str(r,c)||"null";return s=0===i.length?"[]":gap?"[\n"+gap+i.join(",\n"+gap)+"\n"+o+"]":"["+i.join(",")+"]",gap=o,s}if(rep&&"object"==typeof rep)for(a=rep.length,r=0;r<a;r+=1)"string"==typeof rep[r]&&(n=rep[r],s=str(n,c),s&&i.push(quote(n)+(gap?": ":":")+s));else for(n in c)Object.prototype.hasOwnProperty.call(c,n)&&(s=str(n,c),s&&i.push(quote(n)+(gap?": ":":")+s));return s=0===i.length?"{}":gap?"{\n"+gap+i.join(",\n"+gap)+"\n"+o+"}":"{"+i.join(",")+"}",gap=o,s}}var rx_one=/^[\],:{}\s]*$/,rx_two=/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,rx_three=/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,rx_four=/(?:^|:|,)(?:\s*\[)+/g,rx_escapable=/[\\\"\u0000-\u001f\u007f-\u009f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,rx_dangerous=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;"function"!=typeof Date.prototype.toJSON&&(Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+f(this.getUTCMonth()+1)+"-"+f(this.getUTCDate())+"T"+f(this.getUTCHours())+":"+f(this.getUTCMinutes())+":"+f(this.getUTCSeconds())+"Z":null},Boolean.prototype.toJSON=this_value,Number.prototype.toJSON=this_value,String.prototype.toJSON=this_value);var gap,indent,meta,rep;"function"!=typeof JSON.stringify&&(meta={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},JSON.stringify=function(e,t,r){var n;if(gap="",indent="","number"==typeof r)for(n=0;n<r;n+=1)indent+=" ";else"string"==typeof r&&(indent=r);if(rep=t,t&&"function"!=typeof t&&("object"!=typeof t||"number"!=typeof t.length))throw new Error("JSON.stringify");return str("",{"":e})}),"function"!=typeof JSON.parse&&(JSON.parse=function(text,reviver){function walk(e,t){var r,n,s=e[t];if(s&&"object"==typeof s)for(r in s)Object.prototype.hasOwnProperty.call(s,r)&&(n=walk(s,r),void 0!==n?s[r]=n:delete s[r]);return reviver.call(e,t,s)}var j;if(text=String(text),rx_dangerous.lastIndex=0,rx_dangerous.test(text)&&(text=text.replace(rx_dangerous,function(e){return"\\u"+("0000"+e.charCodeAt(0).toString(16)).slice(-4)})),rx_one.test(text.replace(rx_two,"@").replace(rx_three,"]").replace(rx_four,"")))return j=eval("("+text+")"),"function"==typeof reviver?walk({"":j},""):j;throw new SyntaxError("JSON.parse")})}();var _=sd._={};sd.para_default={name:"sa",max_referrer_string_length:200,max_string_length:500,cross_subdomain:!0,show_log:!0,is_debug:!1,debug_mode:!1,debug_mode_upload:!1,session_time:0,use_client_time:!1,source_channel:[],send_type:"image",vtrack_ignore:{},auto_init:!0,is_track_single_page:!1,is_single_page:!1,is_track_latest:{utm:!0,referrer:!0,referrer_host:!0,traffic_source_type:!0,search_keyword:!0,landing_page:!1},source_type:{},callback_timeout:200,datasend_timeout:3e3,queue_timeout:300,is_track_device_id:!1,use_app_track:!1,ignore_oom:!0},sd.initPara=function(e){sd.para=e||sd.para||{};var t;for(t in sd.para_default)void 0===sd.para[t]&&(sd.para[t]=sd.para_default[t]);"string"==typeof sd.para.server_url&&"://"===sd.para.server_url.slice(0,3)&&(sd.para.server_url=location.protocol+sd.para.server_url),"string"==typeof sd.para.web_url&&"://"===sd.para.web_url.slice(0,3)&&(sd.para.web_url=location.protocol+sd.para.web_url),"image"!==sd.para.send_type&&"ajax"!==sd.para.send_type&&"beacon"!==sd.para.send_type&&(sd.para.send_type="image");var r=["utm_source","utm_medium","utm_campaign","utm_content","utm_term"],n=["www.baidu.","m.baidu.","m.sm.cn","so.com","sogou.com","youdao.com","google.","yahoo.com/","bing.com/","ask.com/"],s=["weibo.com","renren.com","kaixin001.com","douban.com","qzone.qq.com","zhihu.com","tieba.baidu.com","weixin.qq.com"],a={baidu:["wd","word","kw","keyword"],google:"q",bing:"q",yahoo:"p",sogou:["query","keyword"],so:"q",sm:"q"};if("object"==typeof sd.para.source_type&&(sd.para.source_type.utm=_.isArray(sd.para.source_type.utm)?sd.para.source_type.utm.concat(r):r,sd.para.source_type.search=_.isArray(sd.para.source_type.search)?sd.para.source_type.search.concat(n):n,sd.para.source_type.social=_.isArray(sd.para.source_type.social)?sd.para.source_type.social.concat(s):s,sd.para.source_type.keyword=_.isObject(sd.para.source_type.keyword)?_.extend(a,sd.para.source_type.keyword):a),_.isObject(sd.para.heatmap)&&(sd.para.heatmap.clickmap=sd.para.heatmap.clickmap||"default",sd.para.heatmap.scroll_notice_map=sd.para.heatmap.scroll_notice_map||"default",sd.para.heatmap.scroll_delay_time=sd.para.heatmap.scroll_delay_time||4e3,sd.para.heatmap.renderRefreshTime=sd.para.heatmap.renderRefreshTime||1e3,sd.para.heatmap.loadTimeout=sd.para.heatmap.loadTimeout||1e3),"object"==typeof sd.para.server_url&&sd.para.server_url.length)for(t=0;t<sd.para.server_url.length;t++)/sa\.gif[^\/]*$/.test(sd.para.server_url[t])||(sd.para.server_url[t]=sd.para.server_url[t].replace(/\/sa$/,"/sa.gif").replace(/(\/sa)(\?[^\/]+)$/,"/sa.gif$2"));else/sa\.gif[^\/]*$/.test(sd.para.server_url)||(sd.para.server_url=sd.para.server_url.replace(/\/sa$/,"/sa.gif").replace(/(\/sa)(\?[^\/]+)$/,"/sa.gif$2"));"string"==typeof sd.para.server_url&&(sd.para.debug_mode_url=sd.para.debug_mode_url||sd.para.server_url.replace("sa.gif","debug")),sd.para.noCache===!0?sd.para.noCache="?"+(new Date).getTime():sd.para.noCache="",sd.para.callback_timeout>sd.para.datasend_timeout&&(sd.para.datasend_timeout=sd.para.callback_timeout),sd.para.callback_timeout>sd.para.queue_timeout&&(sd.para.queue_timeout=sd.para.callback_timeout),sd.para.queue_timeout>sd.para.datasend_timeout&&(sd.para.datasend_timeout=sd.para.queue_timeout),_.isObject(sd.para.is_track_latest)?sd.para.is_track_latest=_.extend(sd.para_default.is_track_latest,sd.para.is_track_latest):sd.para.is_track_latest=sd.para_default.is_track_latest};var ArrayProto=Array.prototype,FuncProto=Function.prototype,ObjProto=Object.prototype,slice=ArrayProto.slice,toString=ObjProto.toString,hasOwnProperty=ObjProto.hasOwnProperty,LIB_VERSION="1.13.14";sd.lib_version=LIB_VERSION;var error_msg=[],is_first_visitor=!1,just_test_distinctid=0,just_test_distinctid_2=0,just_test_distinctid_detail=0,just_test_distinctid_detail2=0,source_channel_standard="utm_source utm_medium utm_campaign utm_content utm_term",logger="object"==typeof logger?logger:{};logger.info=function(){if((_.sessionStorage.isSupport()&&"true"===sessionStorage.getItem("sensorsdata_jssdk_debug")||sd.para.show_log)&&(sd.para.show_log!==!0&&"string"!==sd.para.show_log&&sd.para.show_log!==!1||(arguments[0]=_.formatJsonString(arguments[0])),"object"==typeof console&&console.log))try{return console.log.apply(console,arguments)}catch(e){console.log(arguments[0])}},function(){var e=(FuncProto.bind,ArrayProto.forEach),t=(ArrayProto.indexOf,Array.isArray),r={},n=_.each=function(t,n,s){if(null==t)return!1;if(e&&t.forEach===e)t.forEach(n,s);else if(t.length===+t.length){for(var a=0,i=t.length;a<i;a++)if(a in t&&n.call(s,t[a],a,t)===r)return!1}else for(var o in t)if(hasOwnProperty.call(t,o)&&n.call(s,t[o],o,t)===r)return!1};_.logger=logger,_.extend=function(e){return n(slice.call(arguments,1),function(t){for(var r in t)void 0!==t[r]&&(e[r]=t[r])}),e},_.extend2Lev=function(e){return n(slice.call(arguments,1),function(t){for(var r in t)void 0!==t[r]&&(_.isObject(t[r])&&_.isObject(e[r])?_.extend(e[r],t[r]):e[r]=t[r])}),e},_.coverExtend=function(e){return n(slice.call(arguments,1),function(t){for(var r in t)void 0!==t[r]&&void 0===e[r]&&(e[r]=t[r])}),e},_.isArray=t||function(e){return"[object Array]"===toString.call(e)},_.isFunction=function(e){if(!e)return!1;try{return/^\s*\bfunction\b/.test(e)}catch(t){return!1}},_.isArguments=function(e){return!(!e||!hasOwnProperty.call(e,"callee"))},_.toArray=function(e){return e?e.toArray?e.toArray():_.isArray(e)?slice.call(e):_.isArguments(e)?slice.call(e):_.values(e):[]},_.values=function(e){var t=[];return null==e?t:(n(e,function(e){t[t.length]=e}),t)},_.indexOf=function(e,t){var r=e.indexOf;if(r)return r.call(e,t);for(var n=0;n<e.length;n++)if(t===e[n])return n;return-1}}(),_.filter=function(e,t,r){var n=Object.prototype.hasOwnProperty;if(e.filter)return e.filter(t);for(var s=[],a=0;a<e.length;a++)if(n.call(e,a)){var i=e[a];t.call(r,i,a,e)&&s.push(i)}return s},_.inherit=function(e,t){return e.prototype=new t,e.prototype.constructor=e,e.superclass=t.prototype,e},_.trim=function(e){return e.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,"")},_.isObject=function(e){return null!=e&&"[object Object]"==toString.call(e)},_.isEmptyObject=function(e){if(_.isObject(e)){for(var t in e)if(hasOwnProperty.call(e,t))return!1;return!0}return!1},_.isUndefined=function(e){return void 0===e},_.isString=function(e){return"[object String]"==toString.call(e)},_.isDate=function(e){return"[object Date]"==toString.call(e)},_.isBoolean=function(e){return"[object Boolean]"==toString.call(e)},_.isNumber=function(e){return"[object Number]"==toString.call(e)&&/[\d\.]+/.test(String(e))},_.isElement=function(e){return!(!e||1!==e.nodeType)},_.isJSONString=function(e){try{JSON.parse(e)}catch(t){return!1}return!0},_.decodeURIComponent=function(e){var t=e;try{t=decodeURIComponent(e)}catch(r){t=e}return t},_.encodeDates=function(e){return _.each(e,function(t,r){_.isDate(t)?e[r]=_.formatDate(t):_.isObject(t)&&(e[r]=_.encodeDates(t))}),e},_.hashCode=function(e){if("string"!=typeof e)return 0;var t=0,r=null;if(0==e.length)return t;for(var n=0;n<e.length;n++)r=e.charCodeAt(n),t=(t<<5)-t+r,t&=t;return t},_.formatDate=function(e){function t(e){return e<10?"0"+e:e}return e.getFullYear()+"-"+t(e.getMonth()+1)+"-"+t(e.getDate())+" "+t(e.getHours())+":"+t(e.getMinutes())+":"+t(e.getSeconds())+"."+t(e.getMilliseconds())},_.searchObjDate=function(e){_.isObject(e)&&_.each(e,function(t,r){_.isObject(t)?_.searchObjDate(e[r]):_.isDate(t)&&(e[r]=_.formatDate(t))})},_.searchZZAppStyle=function(e){"undefined"!=typeof e.properties.$project&&(e.project=e.properties.$project,delete e.properties.$project),"undefined"!=typeof e.properties.$token&&(e.token=e.properties.$token,delete e.properties.$token)},_.formatJsonString=function(e){try{return JSON.stringify(e,null,"  ")}catch(t){return JSON.stringify(e)}},_.formatString=function(e){return e.length>sd.para.max_string_length?(logger.info("\u5b57\u7b26\u4e32\u957f\u5ea6\u8d85\u8fc7\u9650\u5236\uff0c\u5df2\u7ecf\u505a\u622a\u53d6--"+e),e.slice(0,sd.para.max_string_length)):e},_.searchObjString=function(e){_.isObject(e)&&_.each(e,function(t,r){_.isObject(t)?_.searchObjString(e[r]):_.isString(t)&&(e[r]=_.formatString(t))})},_.searchConfigData=function(e){if("object"==typeof e&&e.$option){var t=e.$option;return delete e.$option,t}return{}},_.unique=function(e){for(var t,r=[],n={},s=0;s<e.length;s++)t=e[s],t in n||(n[t]=!0,r.push(t));return r},_.strip_sa_properties=function(e){return _.isObject(e)?(_.each(e,function(t,r){if(_.isArray(t)){var n=[];_.each(t,function(e){_.isString(e)?n.push(e):logger.info("\u60a8\u7684\u6570\u636e-",r,t,"\u7684\u6570\u7ec4\u91cc\u7684\u503c\u5fc5\u987b\u662f\u5b57\u7b26\u4e32,\u5df2\u7ecf\u5c06\u5176\u5220\u9664")}),0!==n.length?e[r]=n:(delete e[r],logger.info("\u5df2\u7ecf\u5220\u9664\u7a7a\u7684\u6570\u7ec4"))}_.isString(t)||_.isNumber(t)||_.isDate(t)||_.isBoolean(t)||_.isArray(t)||"$option"===r||(logger.info("\u60a8\u7684\u6570\u636e-",r,t,"-\u683c\u5f0f\u4e0d\u6ee1\u8db3\u8981\u6c42\uff0c\u6211\u4eec\u5df2\u7ecf\u5c06\u5176\u5220\u9664"),delete e[r])}),e):e},_.strip_empty_properties=function(e){var t={};return _.each(e,function(e,r){null!=e&&(t[r]=e)}),t},_.utf8Encode=function(e){e=(e+"").replace(/\r\n/g,"\n").replace(/\r/g,"\n");var t,r,n,s="",a=0;for(t=r=0,a=e.length,n=0;n<a;n++){var i=e.charCodeAt(n),o=null;i<128?r++:o=i>127&&i<2048?String.fromCharCode(i>>6|192,63&i|128):String.fromCharCode(i>>12|224,i>>6&63|128,63&i|128),null!==o&&(r>t&&(s+=e.substring(t,r)),s+=o,t=r=n+1)}return r>t&&(s+=e.substring(t,e.length)),s},_.base64Encode=function(e){var t,r,n,s,a,i,o,c,u="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",l=0,d=0,p="",f=[];if(!e)return e;e=_.utf8Encode(e);do t=e.charCodeAt(l++),r=e.charCodeAt(l++),n=e.charCodeAt(l++),c=t<<16|r<<8|n,s=c>>18&63,a=c>>12&63,i=c>>6&63,o=63&c,f[d++]=u.charAt(s)+u.charAt(a)+u.charAt(i)+u.charAt(o);while(l<e.length);switch(p=f.join(""),e.length%3){case 1:p=p.slice(0,-2)+"==";break;case 2:p=p.slice(0,-1)+"="}return p},_.UUID=function(){var e=function(){for(var e=1*new Date,t=0;e==1*new Date;)t++;return e.toString(16)+t.toString(16)},t=function(){return Math.random().toString(16).replace(".","")},r=function(e){function t(e,t){var r,n=0;for(r=0;r<t.length;r++)n|=a[r]<<8*r;return e^n}var r,n,s=navigator.userAgent,a=[],i=0;for(r=0;r<s.length;r++)n=s.charCodeAt(r),a.unshift(255&n),a.length>=4&&(i=t(i,a),a=[]);return a.length>0&&(i=t(i,a)),i.toString(16)};return function(){var n=String(screen.height*screen.width);n=n&&/\d{5,}/.test(n)?n.toString(16):String(31242*Math.random()).replace(".","").slice(0,8);var s=e()+"-"+t()+"-"+r()+"-"+n+"-"+e();return s?(just_test_distinctid_2=1,s):(just_test_distinctid_2=2,(String(Math.random())+String(Math.random())+String(Math.random())).slice(2,15))}}(),_.getQueryParam=function(e,t){t=t.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]"),e=_.decodeURIComponent(e);var r="[\\?&]"+t+"=([^&#]*)",n=new RegExp(r),s=n.exec(e);return null===s||s&&"string"!=typeof s[1]&&s[1].length?"":_.decodeURIComponent(s[1]).replace(/\+/g," ")},_.urlParse=function(e){var t=function(e){this._fields={Username:4,Password:5,Port:7,Protocol:2,Host:6,Path:8,URL:0,QueryString:9,Fragment:10},this._values={},this._regex=null,this._regex=/^((\w+):\/\/)?((\w+):?(\w+)?@)?([^\/\?:]+):?(\d+)?(\/?[^\?#]+)?\??([^#]+)?#?(\w*)/,"undefined"!=typeof e&&this._parse(e)};return t.prototype.setUrl=function(e){this._parse(e)},t.prototype._initValues=function(){for(var e in this._fields)this._values[e]=""},t.prototype.addQueryString=function(e){if("object"!=typeof e)return!1;var t=this._values.QueryString||"";for(var r in e)t=new RegExp(r+"[^&]+").test(t)?t.replace(new RegExp(r+"[^&]+"),r+"="+e[r]):"&"===t.slice(-1)?t+r+"="+e[r]:""===t?r+"="+e[r]:t+"&"+r+"="+e[r];this._values.QueryString=t},t.prototype.getUrl=function(){var e="";return e+=this._values.Origin,e+=this._values.Port?":"+this._values.Port:"",e+=this._values.Path,e+=this._values.QueryString?"?"+this._values.QueryString:"",e+=this._values.Fragment?"#"+this._values.Fragment:""},t.prototype.getUrl=function(){var e="";return e+=this._values.Origin,e+=this._values.Port?":"+this._values.Port:"",e+=this._values.Path,e+=this._values.QueryString?"?"+this._values.QueryString:""},t.prototype._parse=function(e){this._initValues();var t=this._regex.exec(e);if(!t)throw"DPURLParser::_parse -> Invalid URL";for(var r in this._fields)"undefined"!=typeof t[this._fields[r]]&&(this._values[r]=t[this._fields[r]]);this._values.Hostname=this._values.Host.replace(/:\d+$/,""),this._values.Origin=this._values.Protocol+"://"+this._values.Hostname},new t(e)},_.addEvent=function(){function e(t){return t&&(t.preventDefault=e.preventDefault,t.stopPropagation=e.stopPropagation,t._getPath=e._getPath),t}function t(t,r,n){var s=function(s){if(s=s||e(window.event)){s.target=s.srcElement;var a,i,o=!0;return"function"==typeof n&&(a=n(s)),i=r.call(t,s),!1!==a&&!1!==i||(o=!1),o}};return s}e._getPath=function(){var e=this,t=function(){try{var t=e.target,r=[t];if(null===t||null===t.parentElement)return[];for(;null!==t.parentElement;)t=t.parentElement,r.unshift(t);return r}catch(n){return[]}};return this.path||this.composedPath&&this.composedPath()||t()},e.preventDefault=function(){this.returnValue=!1},e.stopPropagation=function(){this.cancelBubble=!0};var r=function(r,n,s){var a=!(!_.isObject(sd.para.heatmap)||!sd.para.heatmap.useCapture);if(r&&r.addEventListener)r.addEventListener(n,function(t){t._getPath=e._getPath,s.call(this,t)},a);else{var i="on"+n,o=r[i];r[i]=t(r,s,o)}};r.apply(null,arguments)},_.addHashEvent=function(e){var t="pushState"in window.history?"popstate":"hashchange";_.addEvent(window,t,e)},_.addSinglePageEvent=function(e){var t=location.href,r=window.history.pushState,n=window.history.replaceState;window.history.pushState=function(){r.apply(window.history,arguments),e(t),t=location.href},window.history.replaceState=function(){n.apply(window.history,arguments),e(t),t=location.href};var s="pushState"in window.history?"popstate":"hashchange";_.addEvent(window,s,function(){e(t),t=location.href})},_.cookie={get:function(e){for(var t=e+"=",r=document.cookie.split(";"),n=0;n<r.length;n++){for(var s=r[n];" "==s.charAt(0);)s=s.substring(1,s.length);if(0==s.indexOf(t))return _.decodeURIComponent(s.substring(t.length,s.length))}return null},set:function(e,t,r,n,s){n="undefined"==typeof n?sd.para.cross_subdomain:n;var a="",i="",o="";if(r=null==r?73e3:r,n){var c=_.getCurrentDomain(location.href);"url\u89e3\u6790\u5931\u8d25"===c&&(c=""),a=c?"; domain="+c:""}if(0!==r){var u=new Date;"s"===String(r).slice(-1)?u.setTime(u.getTime()+1e3*Number(String(r).slice(0,-1))):u.setTime(u.getTime()+24*r*60*60*1e3),i="; expires="+u.toGMTString()}s&&(o="; secure"),document.cookie=e+"="+encodeURIComponent(t)+i+"; path=/"+a+o},remove:function(e,t){t="undefined"==typeof t?sd.para.cross_subdomain:t,_.cookie.set(e,"",-1,t)},getCookieName:function(e){var t="";return sd.para.cross_subdomain===!1?(t=_.url("sub",location.href),t="string"==typeof t&&""!==t?"sajssdk_2015_"+e+"_"+t:"sajssdk_2015_root_"+e):t="sajssdk_2015_cross_"+e,t},getNewUser:function(){var e="new_user";return null!==this.get("sensorsdata_is_new_user")||null!==this.get(this.getCookieName(e))}},_.getEleInfo=function(e){if(!e.target)return!1;var t=e.target,r=t.tagName.toLowerCase(),n={};n.$element_type=r,n.$element_name=t.getAttribute("name"),n.$element_id=t.getAttribute("id"),n.$element_class_name="string"==typeof t.className?t.className:null,n.$element_target_url=t.getAttribute("href");var s="";return t.textContent?s=_.trim(t.textContent):t.innerText&&(s=_.trim(t.innerText)),s&&(s=s.replace(/[\r\n]/g," ").replace(/[ ]+/g," ").substring(0,255)),n.$element_content=s||"","input"===r&&("button"===t.type||"submit"===t.type?n.$element_content=t.value||"":sd.para.heatmap&&"function"==typeof sd.para.heatmap.collect_input&&sd.para.heatmap.collect_input(t)&&(n.$element_content=t.value||"")),n=_.strip_empty_properties(n),n.$url=location.href,n.$url_path=location.pathname,n.$title=document.title,n.$viewport_width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0,n},_.localStorage={get:function(e){return window.localStorage.getItem(e)},parse:function(e){var t;try{t=JSON.parse(_.localStorage.get(e))||null}catch(r){}return t},set:function(e,t){window.localStorage.setItem(e,t)},remove:function(e){window.localStorage.removeItem(e)},isSupport:function(){var e=!0;try{var t="__sensorsdatasupport__",r="testIsSupportStorage";_.localStorage.set(t,r),_.localStorage.get(t)!==r&&(e=!1),_.localStorage.remove(t)}catch(n){e=!1}return e}},_.sessionStorage={isSupport:function(){var e=!0,t="__sensorsdatasupport__",r="testIsSupportStorage";try{sessionStorage&&sessionStorage.setItem?(sessionStorage.setItem(t,r),sessionStorage.removeItem(t,r),e=!0):e=!1}catch(n){e=!1}return e}},_.isSupportCors=function(){return"undefined"!=typeof window.XMLHttpRequest&&("withCredentials"in new XMLHttpRequest||"undefined"!=typeof XDomainRequest)},_.xhr=function(e){if(e)return"undefined"!=typeof window.XMLHttpRequest&&"withCredentials"in new XMLHttpRequest?new XMLHttpRequest:"undefined"!=typeof XDomainRequest?new XDomainRequest:null;if("undefined"!=typeof window.XMLHttpRequest)return new XMLHttpRequest;if(window.ActiveXObject)try{return new ActiveXObject("Msxml2.XMLHTTP")}catch(t){try{return new ActiveXObject("Microsoft.XMLHTTP")}catch(t){}}},_.ajax=function(e){function t(e){if(!e)return"";try{return JSON.parse(e)}catch(t){return{}}}e.timeout=e.timeout||2e4,e.credentials="undefined"==typeof e.credentials||e.credentials;var r=_.xhr(e.cors);if(!r)return!1;e.type||(e.type=e.data?"POST":"GET"),e=_.extend({success:function(){},error:function(){}},e);try{"object"==typeof r&&"timeout"in r?r.timeout=e.timeout:setTimeout(function(){r.abort()},e.timeout+500)}catch(n){try{setTimeout(function(){r.abort()},e.timeout+500)}catch(s){}}r.onreadystatechange=function(){try{4==r.readyState&&(r.status>=200&&r.status<300||304==r.status?e.success(t(r.responseText)):e.error(t(r.responseText),r.status),r.onreadystatechange=null,r.onload=null)}catch(n){r.onreadystatechange=null,r.onload=null}},r.open(e.type,e.url,!0);try{if(e.credentials&&(r.withCredentials=!0),_.isObject(e.header))for(var a in e.header)r.setRequestHeader(a,e.header[a]);e.data&&(e.cors||r.setRequestHeader("X-Requested-With","XMLHttpRequest"),"application/json"===e.contentType?r.setRequestHeader("Content-type","application/json; charset=UTF-8"):r.setRequestHeader("Content-type","application/x-www-form-urlencoded"))}catch(n){}r.send(e.data||null)},_.loadScript=function(e){e=_.extend({success:function(){},error:function(){},appendCall:function(e){document.getElementsByTagName("head")[0].appendChild(e)}},e);var t=null;"css"===e.type&&(t=document.createElement("link"),t.rel="stylesheet",t.href=e.url),"js"===e.type&&(t=document.createElement("script"),t.async="async",t.setAttribute("charset","UTF-8"),t.src=e.url,t.type="text/javascript"),t.onload=t.onreadystatechange=function(){this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState||(e.success(),t.onload=t.onreadystatechange=null)},t.onerror=function(){e.error(),t.onerror=null},e.appendCall(t)},_.url=function(){function e(e){return _.decodeURIComponent(e.replace(/\+/g," "))}function t(e,t){var r=e.charAt(0),n=t.split(r);return r===e?n:(e=parseInt(e.substring(1),10),n[e<0?n.length+e:e-1])}function r(t,r){for(var n=t.charAt(0),s=r.split("&"),a=[],i={},o=[],c=t.substring(1),u=0,l=s.length;u<l;u++)if(a=s[u].match(/(.*?)=(.*)/),a||(a=[s[u],s[u],""]),""!==a[1].replace(/\s/g,"")){if(a[2]=e(a[2]||""),c===a[1])return a[2];o=a[1].match(/(.*)\[([0-9]+)\]/),o?(i[o[1]]=i[o[1]]||[],i[o[1]][o[2]]=a[2]):i[a[1]]=a[2]}return n===t?i:i[c]}return function(e,n){var s,a={};if(n=n||window.location.toString(),!e)return n;if(e=e.toString(),s=n.match(/^mailto:([^\/].+)/))a.protocol="mailto",a.email=s[1];else{if((s=n.match(/(.*?)\/#\!(.*)/))&&(n=s[1]+s[2]),(s=n.match(/(.*?)#(.*)/))&&(a.hash=s[2],n=s[1]),a.hash&&e.match(/^#/))return r(e,a.hash);if((s=n.match(/(.*?)\?(.*)/))&&(a.query=s[2],n=s[1]),a.query&&e.match(/^\?/))return r(e,a.query);if((s=n.match(/(.*?)\:?\/\/(.*)/))&&(a.protocol=s[1].toLowerCase(),n=s[2]),(s=n.match(/(.*?)(\/.*)/))&&(a.path=s[2],n=s[1]),a.path=(a.path||"").replace(/^([^\/])/,"/$1").replace(/\/$/,""),e.match(/^[\-0-9]+$/)&&(e=e.replace(/^([^\/])/,"/$1")),e.match(/^\//))return t(e,a.path.substring(1));if(s=t("/-1",a.path.substring(1)),s&&(s=s.match(/(.*?)\.(.*)/))&&(a.file=s[0],a.filename=s[1],a.fileext=s[2]),(s=n.match(/(.*)\:([0-9]+)$/))&&(a.port=s[2],n=s[1]),(s=n.match(/(.*?)@(.*)/))&&(a.auth=s[1],n=s[2]),a.auth&&(s=a.auth.match(/(.*)\:(.*)/),a.user=s?s[1]:a.auth,a.pass=s?s[2]:void 0),a.hostname=n.toLowerCase(),"."===e.charAt(0))return t(e,a.hostname);a.sub=a.hostname.split(".")[0];var i=a.hostname.split(".");if(_.isArray(i)&&i.length>=2&&!/^(\d+\.)+\d+$/.test(a.hostname))for(var o="."+i.splice(i.length-1,1);i.length>0;)if(o="."+i.splice(i.length-1,1)+o,document.cookie="sensorsdata_domain_test=true; path=/; domain="+o,document.cookie.indexOf("sensorsdata_domain_test=true")!==-1){a.domain=o;var c=new Date;c.setTime(c.getTime()-1e3),document.cookie="sensorsdata_domain_test=true; expires="+c.toGMTString()+"; path=/; domain="+o,i=[]}a.port=a.port||("https"===a.protocol?"443":"80"),a.protocol=a.protocol||("443"===a.port?"https":"http")}return e in a?a[e]:"{}"===e?a:""}}(),_.getCurrentDomain=function(e){var t=sd.para.current_domain;switch(typeof t){case"function":var r=t();return""===r||""===_.trim(r)?"url\u89e3\u6790\u5931\u8d25":r.indexOf(".")!==-1?r:"url\u89e3\u6790\u5931\u8d25";case"string":return""===t||""===_.trim(t)?"url\u89e3\u6790\u5931\u8d25":t.indexOf(".")!==-1?t:"url\u89e3\u6790\u5931\u8d25";default:return""===e?"url\u89e3\u6790\u5931\u8d25":""===_.url("domain",e)?"url\u89e3\u6790\u5931\u8d25":_.url("domain",e)}},_.getReferrerDomain=function(e){var t=sd.para.referrer_domain;switch(typeof t){case"function":var r=t();return r?r.indexOf(".")!==-1?r:"referrer\u89e3\u6790\u5931\u8d25":_.url("domain",e);case"string":return""===t||""===_.trim(t)?"referrer\u89e3\u6790\u5931\u8d25":t.indexOf(".")!==-1?t:"referrer\u89e3\u6790\u5931\u8d25";default:if(""===e)return"";if(""===_.url("domain",location.href))return"referrer\u89e3\u6790\u5931\u8d25";var n=_.url("domain",location.href);return _.url("hostname",e).slice(-1*n.length)}},_.ry=function(e){return new _.ry.init(e)},_.ry.init=function(e){this.ele=e},_.ry.init.prototype={addClass:function(e){var t=" "+this.ele.className+" ";return t.indexOf(" "+e+" ")===-1&&(this.ele.className=this.ele.className+(""===this.ele.className?"":" ")+e),this},removeClass:function(e){var t=" "+this.ele.className+" ";return t.indexOf(" "+e+" ")!==-1&&(this.ele.className=t.replace(" "+e+" "," ").slice(1,-1)),this},hasClass:function(e){var t=" "+this.ele.className+" ";return t.indexOf(" "+e+" ")!==-1},attr:function(e,t){return"string"==typeof e&&_.isUndefined(t)?this.ele.getAttribute(e):("string"==typeof e&&(t=String(t),this.ele.setAttribute(e,t)),this)},offset:function(){var e=this.ele.getBoundingClientRect();if(e.width||e.height){var t=this.ele.ownerDocument,r=t.documentElement;return{top:e.top+window.pageYOffset-r.clientTop,left:e.left+window.pageXOffset-r.clientLeft}}return{top:0,left:0}},getSize:function(){if(!window.getComputedStyle)return{width:this.ele.offsetWidth,height:this.ele.offsetHeight};try{var e=this.ele.getBoundingClientRect();return{width:e.width,height:e.height}}catch(t){return{width:0,height:0}}},getStyle:function(e){return this.ele.currentStyle?this.ele.currentStyle[e]:this.ele.ownerDocument.defaultView.getComputedStyle(this.ele,null).getPropertyValue(e)},wrap:function(e){var t=document.createElement(e);return this.ele.parentNode.insertBefore(t,this.ele),t.appendChild(this.ele),_.ry(t)},getCssStyle:function(e){var t=this.ele.style.getPropertyValue(e);if(t)return t;var r=null;if("function"==typeof window.getMatchedCSSRules&&(r=getMatchedCSSRules(this.ele)),!r||!_.isArray(r))return null;for(var n=r.length-1;n>=0;n--){var s=r[n];if(t=s.style.getPropertyValue(e))return t}},sibling:function(e,t){for(;(e=e[t])&&1!==e.nodeType;);return e},next:function(){return this.sibling(this.ele,"nextSibling")},prev:function(e){return this.sibling(this.ele,"previousSibling")},siblings:function(e){return this.siblings((this.ele.parentNode||{}).firstChild,this.ele)},children:function(e){return this.siblings(this.ele.firstChild)},parent:function(){var e=this.ele.parentNode;return e=e&&11!==e.nodeType?e:null,_.ry(e)}},_.jssdkDebug=function(e,t){if(sd.para.is_debug===!0)if(_.isString(e))sd.registerPage({_jssdk_debug_info:e});else{var r=store.getCookieName(),n=document.cookie.match(new RegExp(r+"[^;]+"));r=n&&n[0]?n[0]:"",e._jssdk_debug_info="("+r+")"+navigator.userAgent}},_.strToUnicode=function(e){if("string"!=typeof e)return logger.info("\u8f6c\u6362unicode\u9519\u8bef",e),e;for(var t="",r=0;r<e.length;r++)t+="\\"+e.charCodeAt(r).toString(16);return t},_.getReferrer=function(e){var e=e||document.referrer;return"string"!=typeof e?"\u53d6\u503c\u5f02\u5e38_referrer\u5f02\u5e38_"+String(e):(0===e.indexOf("https://www.baidu.com/")&&(e=e.split("?")[0]),e=e.slice(0,sd.para.max_referrer_string_length),"string"==typeof e?e:"")},_.getKeywordFromReferrer=function(){var e=sd.para.source_type.keyword;if(document&&"string"==typeof document.referrer){if(0===document.referrer.indexOf("http")){var t=_.getReferrerDomain(document.referrer),r=_.url("?",document.referrer),n=null;for(var s in e)if(t.split&&t.split(".")[0]===s&&"object"==typeof r)if(n=e[s],_.isArray(n)){for(var s=0;s<n.length;s++)if(r[n[s]])return r[n[s]]}else if(r[n])return r[n];return"\u672a\u53d6\u5230\u503c"}return""===document.referrer?"\u672a\u53d6\u5230\u503c_\u76f4\u63a5\u6253\u5f00":"\u672a\u53d6\u5230\u503c_\u975ehttp\u7684url"}return"\u53d6\u503c\u5f02\u5e38_referrer\u5f02\u5e38_"+String(document.referrer)},_.getSourceFromReferrer=function(){function e(e,t){for(var r=0;r<e.length;r++)if(t.split("?")[0].indexOf(e[r])!==-1)return!0}var t="("+sd.para.source_type.utm.join("|")+")\\=[^&]+",r=sd.para.source_type.search,n=sd.para.source_type.social,s=document.referrer||"",a=_.info.pageProp.url;if(a){var i=a.match(new RegExp(t));return i&&i[0]?"\u4ed8\u8d39\u5e7f\u544a\u6d41\u91cf":e(r,s)?"\u81ea\u7136\u641c\u7d22\u6d41\u91cf":e(n,s)?"\u793e\u4ea4\u7f51\u7ad9\u6d41\u91cf":""===s?"\u76f4\u63a5\u6d41\u91cf":"\u5f15\u8350\u6d41\u91cf"}return"\u83b7\u53d6url\u5f02\u5e38"},_.info={initPage:function(){var e=_.getReferrer(),t=e?_.url("hostname",e):e,r=_.getReferrerDomain(e),n=location.href,s=n?_.url("hostname",n):n,a=_.getCurrentDomain(n);e&&!r&&_.jssdkDebug("referrer_domain\u5f02\u5e38_"+e+"_"+r),a||_.jssdkDebug("url_domain\u5f02\u5e38_"+n+"_"+a),this.pageProp={referrer:e,referrer_host:t,referrer_domain:r,url:n,url_host:s,url_domain:a}},pageProp:{},campaignParams:function(){var e=source_channel_standard.split(" "),t="",r={};return _.isArray(sd.para.source_channel)&&sd.para.source_channel.length>0&&(e=e.concat(sd.para.source_channel),e=_.unique(e)),_.each(e,function(e){t=_.getQueryParam(location.href,e),t.length&&(r[e]=t)}),r},campaignParamsStandard:function(e,t){e=e||"",t=t||"";var r=_.info.campaignParams(),n={},s={};for(var a in r)(" "+source_channel_standard+" ").indexOf(" "+a+" ")!==-1?n[e+a]=r[a]:s[t+a]=r[a];return{$utms:n,otherUtms:s}},properties:function(){return{$screen_height:Number(screen.height)||0,$screen_width:Number(screen.width)||0,$lib:"js",$lib_version:String(LIB_VERSION)}},currentProps:{},register:function(e){_.extend(_.info.currentProps,e)}},_.autoExeQueue=function(){var e={items:[],enqueue:function(e){this.items.push(e),this.start()},dequeue:function(){return this.items.shift()},getCurrentItem:function(){return this.items[0]},isRun:!1,start:function(){this.items.length>0&&!this.isRun&&(this.isRun=!0,this.getCurrentItem().start())},close:function(){this.dequeue(),this.isRun=!1,this.start()}};return e};var dataSend={};dataSend.getSendUrl=function(e,t){var r=_.base64Encode(t),n="crc="+_.hashCode(r);return e.indexOf("?")!==-1?e+"&data="+encodeURIComponent(r)+"&ext="+encodeURIComponent(n):e+"?data="+encodeURIComponent(r)+"&ext="+encodeURIComponent(n)},dataSend.getSendData=function(e){var t=_.base64Encode(e),r="crc="+_.hashCode(t);return"data="+encodeURIComponent(t)+"&ext="+encodeURIComponent(r)},dataSend.getInstance=function(e){var t=this.getSendType(e),r=new this[t](e),n=r.start;return r.start=function(){var e=this;n.apply(this,arguments),setTimeout(function(){e.isEnd(!0)},sd.para.callback_timeout)},r.end=function(){this.callback&&this.callback();var e=this;setTimeout(function(){e.lastClear&&e.lastClear()},sd.para.datasend_timeout-sd.para.callback_timeout)},r.isEnd=function(e){if(!this.received){this.received=!0,
+this.end();var t=this;e?sd.para.queue_timeout-sd.para.callback_timeout<=0?t.close():setTimeout(function(){t.close()},sd.para.queue_timeout-sd.para.callback_timeout):t.close()}},r},dataSend.getSendType=function(e){var t=["image","ajax","beacon"],r=t[0];return r=e.config&&_.indexOf(t,e.config.send_type)>-1?e.config.send_type:sd.para.send_type,"beacon"===r&&"function"!=typeof navigator.sendBeacon&&(r="image"),"ajax"===r&&_.isSupportCors()===!1&&(r="image"),r},dataSend.image=function(e){this.callback=e.callback,this.img=document.createElement("img"),this.img.width=1,this.img.height=1,this.data=e.data,this.server_url=dataSend.getSendUrl(e.server_url,e.data)},dataSend.image.prototype.start=function(){var e=this;sd.para.ignore_oom&&(this.img.onload=function(){this.onload=null,this.onerror=null,this.onabort=null,e.isEnd()},this.img.onerror=function(){this.onload=null,this.onerror=null,this.onabort=null,e.isEnd()},this.img.onabort=function(){this.onload=null,this.onerror=null,this.onabort=null,e.isEnd()}),this.img.src=this.server_url},dataSend.image.prototype.lastClear=function(){this.img.src=""},dataSend.ajax=function(e){this.callback=e.callback,this.server_url=e.server_url,this.data=dataSend.getSendData(e.data)},dataSend.ajax.prototype.start=function(){var e=this;_.ajax({url:this.server_url,type:"POST",data:this.data,credentials:!1,timeout:sd.para.datasend_timeout,cors:!0,success:function(){e.isEnd()},error:function(){e.isEnd()}})},dataSend.beacon=function(e){this.callback=e.callback,this.server_url=e.server_url,this.data=dataSend.getSendData(e.data)},dataSend.beacon.prototype.start=function(){var e=this;"object"==typeof navigator&&"function"==typeof navigator.sendBeacon&&navigator.sendBeacon(this.server_url,this.data),setTimeout(function(){e.isEnd()},40)},sd.debug={apph5:function(e){var t="app_h5\u6253\u901a\u5931\u8d25-",r={1:t+"use_app_track\u4e3afalse",2:t+"Android\u6216\u8005iOS\uff0c\u6ca1\u6709\u66b4\u9732\u76f8\u5e94\u65b9\u6cd5",3.1:t+"Android\u6821\u9a8cserver_url\u5931\u8d25",3.2:t+"iOS\u6821\u9a8cserver_url\u5931\u8d25"},n=e.output,s=e.step,a=e.data;"all"!==n&&"console"!==n||logger.info(r[s]),("all"===n||"code"===n)&&_.isObject(sd.para.is_debug)&&sd.para.is_debug.apph5&&(a.type&&"profile"===a.type.slice(0,7)||(a.properties._jssdk_debug_info="apph5-"+String(s)))}};var sendState={};sd.sendState=sendState,sendState.queue=_.autoExeQueue(),sendState.requestData=null,sendState.getSendCall=function(e,t,r){if(sd.is_heatmap_render_mode)return!1;e._track_id=Number(String(Math.random()).slice(2,5)+String(Math.random()).slice(2,4)+String((new Date).getTime()).slice(-4)),sd.para.use_client_time&&(e._flush_time=(new Date).getTime());var n=e;if(e=JSON.stringify(e),this.requestData={data:n,config:t,callback:r},sd.para.use_app_track===!0||"only"===sd.para.use_app_track)if("object"==typeof SensorsData_APP_JS_Bridge&&(SensorsData_APP_JS_Bridge.sensorsdata_verify||SensorsData_APP_JS_Bridge.sensorsdata_track))SensorsData_APP_JS_Bridge.sensorsdata_verify?SensorsData_APP_JS_Bridge.sensorsdata_verify(JSON.stringify(_.extend({server_url:sd.para.server_url},n)))?"function"==typeof r&&r():(sd.debug.apph5({data:n,step:"3.1",output:"all"}),this.prepareServerUrl()):(SensorsData_APP_JS_Bridge.sensorsdata_track(JSON.stringify(_.extend({server_url:sd.para.server_url},n))),"function"==typeof r&&r());else if(!/sensors-verify/.test(navigator.userAgent)&&!/sa-sdk-ios/.test(navigator.userAgent)||window.MSStream)sd.para.use_app_track===!0&&(sd.debug.apph5({data:n,step:"2",output:"all"}),this.prepareServerUrl());else{var s=null;if(/sensors-verify/.test(navigator.userAgent)){var a=navigator.userAgent.match(/sensors-verify\/([^\s]+)/);if(a&&a[0]&&"string"==typeof a[1]&&2===a[1].split("?").length){a=a[1].split("?");var i=null,o=null;try{i=_.url("hostname",sd.para.server_url),o=_.url("?project",sd.para.server_url)||"default"}catch(c){}i&&i===a[0]&&o&&o===a[1]?(s=document.createElement("iframe"),s.setAttribute("src","sensorsanalytics://trackEvent?event="+encodeURIComponent(JSON.stringify(_.extend({server_url:sd.para.server_url},n)))),document.documentElement.appendChild(s),s.parentNode.removeChild(s),s=null,"function"==typeof r&&r()):(sd.debug.apph5({data:n,step:"3.2",output:"all"}),this.prepareServerUrl())}}else s=document.createElement("iframe"),s.setAttribute("src","sensorsanalytics://trackEvent?event="+encodeURIComponent(JSON.stringify(_.extend({server_url:sd.para.server_url},n)))),document.documentElement.appendChild(s),s.parentNode.removeChild(s),s=null,"function"==typeof r&&r()}else"mui"===sd.para.use_app_track?_.isObject(window.plus)&&window.plus.SDAnalytics&&window.plus.SDAnalytics.trackH5Event&&window.plus.SDAnalytics.trackH5Event(e):(sd.debug.apph5({data:n,step:"1",output:"code"}),this.prepareServerUrl());logger.info(n)},sendState.prepareServerUrl=function(){if("object"==typeof this.requestData.config&&this.requestData.config.server_url)this.sendCall(this.requestData.config.server_url,this.requestData.callback);else if(_.isArray(sd.para.server_url))for(var e=0;e<sd.para.server_url.length;e++)this.sendCall(sd.para.server_url[e]);else this.sendCall(sd.para.server_url,this.requestData.callback)},sendState.sendCall=function(e,t){var r={server_url:e,data:JSON.stringify(this.requestData.data),callback:t,config:this.requestData.config};_.isObject(sd.para.jsapp)&&!sd.para.jsapp.isOnline&&"function"==typeof sd.para.jsapp.setData?(delete r.callback,r=JSON.stringify(r),sd.para.jsapp.setData(r)):this.pushSend(r)},sendState.pushSend=function(e){var t=dataSend.getInstance(e),r=this;t.close=function(){r.queue.close()},this.queue.enqueue(t)};var saNewUser={checkIsAddSign:function(e){"track"===e.type&&(_.cookie.getNewUser()?e.properties.$is_first_day=!0:e.properties.$is_first_day=!1)},is_first_visit_time:!1,checkIsFirstTime:function(e){"track"===e.type&&"$pageview"===e.event&&(this.is_first_visit_time?(e.properties.$is_first_time=!0,this.is_first_visit_time=!1):e.properties.$is_first_time=!1)},setDeviceId:function(e){var t=null,r=_.cookie.get("sensorsdata2015jssdkcross"),n={};null!=r&&_.isJSONString(r)&&(n=JSON.parse(r),n.$device_id&&(t=n.$device_id)),t=t||e,sd.para.cross_subdomain===!0?store.set("$device_id",t):(n.$device_id=t,_.cookie.set("sensorsdata2015jssdkcross",JSON.stringify(n),null,!0)),sd.para.is_track_device_id&&(_.info.currentProps.$device_id=t)},storeInitCheck:function(){if(is_first_visitor){var e=new Date,t={h:23-e.getHours(),m:59-e.getMinutes(),s:59-e.getSeconds()};_.cookie.set(_.cookie.getCookieName("new_user"),"1",3600*t.h+60*t.m+t.s+"s"),this.is_first_visit_time=!0}else _.cookie.getNewUser()||(this.checkIsAddSign=function(e){"track"===e.type&&(e.properties.$is_first_day=!1)}),this.checkIsFirstTime=function(e){"track"===e.type&&"$pageview"===e.event&&(e.properties.$is_first_time=!1)}},checkIsFirstLatest:function(){for(var e=_.info.pageProp.url_domain,t=_.info.pageProp.referrer_domain,r=["$utm_source","$utm_medium","$utm_campaign","$utm_content","$utm_term"],n=store.getProps(),s=0;s<r.length;s++)r[s]in n&&delete n[r[s]];store.setProps(n,!0);var a={};if(""===e&&(e="url\u89e3\u6790\u5931\u8d25"),_.each(sd.para.is_track_latest,function(r,n){if(r){if("utm"!==n&&"url\u89e3\u6790\u5931\u8d25"===e)a["$latest_"+n]="url\u7684domain\u89e3\u6790\u5931\u8d25";else if("utm"!==n&&"referrer\u89e3\u6790\u5931\u8d25"===t)a["$latest_"+n]="referrer\u7684domain\u89e3\u6790\u5931\u8d25";else if(e!==t)switch(n){case"traffic_source_type":a.$latest_traffic_source_type=_.getSourceFromReferrer();break;case"referrer":a.$latest_referrer=_.info.pageProp.referrer;break;case"referrer_host":a.$latest_referrer_host=_.info.pageProp.referrer_host;break;case"search_keyword":a.$latest_search_keyword=_.getKeywordFromReferrer();break;case"landing_page":a.$latest_landing_page=location.href}}else if("utm"===n&&sd.store._state.props)for(var s in sd.store._state.props)0===s.indexOf("$latest_utm")&&0===s.indexOf("_latest_")||delete sd.store._state.props[s];else sd.store._state.props&&"$latest_"+n in sd.store._state.props&&delete sd.store._state.props["$latest_"+n]}),sd.register(a),sd.para.is_track_latest.utm){var i=_.info.campaignParamsStandard("$latest_","_latest_"),o=i.$utms,c=i.otherUtms;_.isEmptyObject(o)||sd.register(o),_.isEmptyObject(c)||sd.register(c)}}},saEvent={};saEvent.checkOption={regChecks:{regName:/^((?!^distinct_id$|^original_id$|^time$|^properties$|^id$|^first_id$|^second_id$|^users$|^events$|^event$|^user_id$|^date$|^datetime$)[a-zA-Z_$][a-zA-Z\d_$]{0,99})$/i},checkPropertiesKey:function(e){var t=this,r=!0;return _.each(e,function(e,n){t.regChecks.regName.test(n)||(r=!1)}),r},check:function(e,t){return"string"==typeof this[e]?this[this[e]](t):this[e](t)},str:function(e){return!!_.isString(e)||(logger.info("\u8bf7\u68c0\u67e5\u53c2\u6570\u683c\u5f0f,\u5fc5\u987b\u662f\u5b57\u7b26\u4e32"),!0)},properties:function(e){return _.strip_sa_properties(e),!e||(_.isObject(e)?!!this.checkPropertiesKey(e)||(logger.info("properties \u91cc\u7684\u81ea\u5b9a\u4e49\u5c5e\u6027\u540d\u9700\u8981\u662f\u5408\u6cd5\u7684\u53d8\u91cf\u540d\uff0c\u4e0d\u80fd\u4ee5\u6570\u5b57\u5f00\u5934\uff0c\u4e14\u53ea\u5305\u542b\uff1a\u5927\u5c0f\u5199\u5b57\u6bcd、\u6570\u5b57、\u4e0b\u5212\u7ebf\uff0c\u81ea\u5b9a\u4e49\u5c5e\u6027\u4e0d\u80fd\u4ee5 $ \u5f00\u5934"),!0):(logger.info("properties\u53ef\u4ee5\u6ca1\u6709\uff0c\u4f46\u6709\u7684\u8bdd\u5fc5\u987b\u662f\u5bf9\u8c61"),!0))},propertiesMust:function(e){return _.strip_sa_properties(e),void 0===e||!_.isObject(e)||_.isEmptyObject(e)?(logger.info("properties\u5fc5\u987b\u662f\u5bf9\u8c61\u4e14\u6709\u503c"),!0):!!this.checkPropertiesKey(e)||(logger.info("properties \u91cc\u7684\u81ea\u5b9a\u4e49\u5c5e\u6027\u540d\u9700\u8981\u662f\u5408\u6cd5\u7684\u53d8\u91cf\u540d\uff0c\u4e0d\u80fd\u4ee5\u6570\u5b57\u5f00\u5934\uff0c\u4e14\u53ea\u5305\u542b\uff1a\u5927\u5c0f\u5199\u5b57\u6bcd、\u6570\u5b57、\u4e0b\u5212\u7ebf\uff0c\u81ea\u5b9a\u4e49\u5c5e\u6027\u4e0d\u80fd\u4ee5 $ \u5f00\u5934"),!0)},event:function(e){return!(!_.isString(e)||!this.regChecks.regName.test(e))||(logger.info("\u8bf7\u68c0\u67e5\u53c2\u6570\u683c\u5f0f\uff0ceventName \u5fc5\u987b\u662f\u5b57\u7b26\u4e32\uff0c\u4e14\u9700\u662f\u5408\u6cd5\u7684\u53d8\u91cf\u540d\uff0c\u5373\u4e0d\u80fd\u4ee5\u6570\u5b57\u5f00\u5934\uff0c\u4e14\u53ea\u5305\u542b\uff1a\u5927\u5c0f\u5199\u5b57\u6bcd、\u6570\u5b57、\u4e0b\u5212\u7ebf\u548c $,\u5176\u4e2d\u4ee5 $ \u5f00\u5934\u7684\u8868\u660e\u662f\u7cfb\u7edf\u7684\u4fdd\u7559\u5b57\u6bb5\uff0c\u81ea\u5b9a\u4e49\u4e8b\u4ef6\u540d\u8bf7\u4e0d\u8981\u4ee5 $ \u5f00\u5934"),!0)},test_id:"str",group_id:"str",distinct_id:function(e){return!(!_.isString(e)||!/^.{1,255}$/.test(e))||(logger.info("distinct_id\u5fc5\u987b\u662f\u4e0d\u80fd\u4e3a\u7a7a\uff0c\u4e14\u5c0f\u4e8e255\u4f4d\u7684\u5b57\u7b26\u4e32"),!1)}},saEvent.check=function(e){var t=!0;for(var r in e)if(!this.checkOption.check(r,e[r]))return!1;return t},saEvent.send=function(e,t){var r={distinct_id:store.getDistinctId(),lib:{$lib:"js",$lib_method:"code",$lib_version:String(LIB_VERSION)},properties:{}};if(_.isObject(e)&&_.isObject(e.properties)&&!_.isEmptyObject(e.properties)&&e.properties.$lib_detail&&(r.lib.$lib_detail=e.properties.$lib_detail,delete e.properties.$lib_detail),"string"!=typeof store.getDistinctId()||""==typeof store.getDistinctId()){var n="";switch(store.getDistinctId()){case null:n="null";break;case void 0:n="undefined";break;case"":n="\u7a7a";break;default:n=String(store.getDistinctId())}error_msg.push("distinct_id-"+just_test_distinctid+"-"+just_test_distinctid_2+"-"+n+"-"+just_test_distinctid_detail+"-"+just_test_distinctid_detail2)}_.extend(r,e),error_msg.length>0&&(r.jssdk_error=error_msg.join("--")),_.isObject(e.properties)&&!_.isEmptyObject(e.properties)&&_.extend(r.properties,e.properties),e.type&&"profile"===e.type.slice(0,7)||(r.properties=_.extend({},_.info.properties(),store.getProps(),store.getSessionProps(),_.info.currentProps,r.properties),sd.para.is_track_latest.referrer&&!_.isString(r.properties.$latest_referrer)&&(r.properties.$latest_referrer="\u53d6\u503c\u5f02\u5e38",_.jssdkDebug(r.properties,store.getProps())),sd.para.is_track_latest.referrer_host&&!_.isString(r.properties.$latest_referrer_host)&&(r.properties.$latest_referrer_host="\u53d6\u503c\u5f02\u5e38"),sd.para.is_track_latest.search_keyword&&!_.isString(r.properties.$latest_search_keyword)&&(r.properties.$latest_search_keyword="\u53d6\u503c\u5f02\u5e38"),sd.para.is_track_latest.traffic_source_type&&!_.isString(r.properties.$latest_traffic_source_type)&&(r.properties.$latest_traffic_source_type="\u53d6\u503c\u5f02\u5e38"),sd.para.is_track_latest.landing_page&&!_.isString(r.properties.$latest_landing_page)&&(r.properties.$latest_landing_page="\u53d6\u503c\u5f02\u5e38")),r.properties.$time&&_.isDate(r.properties.$time)?(r.time=1*r.properties.$time,delete r.properties.$time):sd.para.use_client_time&&(r.time=1*new Date),_.searchObjDate(r),_.searchObjString(r),_.searchZZAppStyle(r);var s=_.searchConfigData(r.properties);saNewUser.checkIsAddSign(r),saNewUser.checkIsFirstTime(r),sd.para.debug_mode===!0?(logger.info(r),this.debugPath(JSON.stringify(r),t)):sd.sendState.getSendCall(r,s,t)},saEvent.debugPath=function(e,t){var r=e,n="";n=sd.para.debug_mode_url.indexOf("?")!==-1?sd.para.debug_mode_url+"&data="+encodeURIComponent(_.base64Encode(e)):sd.para.debug_mode_url+"?data="+encodeURIComponent(_.base64Encode(e)),_.ajax({url:n,type:"GET",cors:!0,header:{"Dry-Run":String(sd.para.debug_mode_upload)},success:function(e){_.isEmptyObject(e)===!0?alert("debug\u6570\u636e\u53d1\u9001\u6210\u529f"+r):alert("debug\u5931\u8d25 \u9519\u8bef\u539f\u56e0"+JSON.stringify(e))}})};var store=sd.store={_sessionState:{},_state:{},getProps:function(){return this._state.props||{}},getSessionProps:function(){return this._sessionState},getDistinctId:function(){return this._state.distinct_id},getFirstId:function(){return this._state.first_id},toState:function(e){var t=null;if(null!=e&&_.isJSONString(e))if(t=JSON.parse(e),this._state=_.extend(t),t.distinct_id){if("object"==typeof t.props){for(var r in t.props)"string"==typeof t.props[r]&&(t.props[r]=t.props[r].slice(0,sd.para.max_referrer_string_length));this.save()}}else this.set("distinct_id",_.UUID()),error_msg.push("toStateParseDistinctError");else this.set("distinct_id",_.UUID()),error_msg.push("toStateParseError")},initSessionState:function(){var e=_.cookie.get("sensorsdata2015session"),t=null;null!==e&&"object"==typeof(t=JSON.parse(e))&&(this._sessionState=t||{})},setOnce:function(e,t){e in this._state||this.set(e,t)},set:function(e,t){this._state=this._state||{},this._state[e]=t,this.save()},change:function(e,t){this._state[e]=t},setSessionProps:function(e){var t=this._sessionState;_.extend(t,e),this.sessionSave(t)},setSessionPropsOnce:function(e){var t=this._sessionState;_.coverExtend(t,e),this.sessionSave(t)},setProps:function(e,t){var r={};r=t?e:_.extend(this._state.props||{},e);for(var n in r)"string"==typeof r[n]&&(r[n]=r[n].slice(0,sd.para.max_referrer_string_length));this.set("props",r)},setPropsOnce:function(e){var t=this._state.props||{};_.coverExtend(t,e),this.set("props",t)},clearAllProps:function(e){if(this._sessionState={},_.isArray(e)&&e.length>0)for(var t=0;t<e.length;t++)_.isString(e[t])&&e[t].indexOf("latest_")===-1&&e[t]in this._state.props&&delete this._state.props[e[t]];else for(var t in this._state.props)1!==t.indexOf("latest_")&&delete this._state.props[t];this.sessionSave({}),this.save()},sessionSave:function(e){this._sessionState=e,_.cookie.set("sensorsdata2015session",JSON.stringify(this._sessionState),0)},save:function(){_.cookie.set(this.getCookieName(),JSON.stringify(this._state),73e3,sd.para.cross_subdomain)},getCookieName:function(){var e="";return sd.para.cross_subdomain===!1?(e=_.url("sub",location.href),e="string"==typeof e&&""!==e?"sa_jssdk_2015_"+e:"sa_jssdk_2015_root"):e="sensorsdata2015jssdkcross",e},init:function(){navigator.cookieEnabled||(error_msg.push("cookieNotEnable"),_.localStorage.isSupport||error_msg.push("localStorageNotEnable")),this.initSessionState();var e=_.UUID(),t=_.cookie.get(this.getCookieName());null===t?(is_first_visitor=!0,just_test_distinctid=1,this.set("distinct_id",e)):(just_test_distinctid=2,just_test_distinctid_detail=JSON.stringify(t),just_test_distinctid_detail2=JSON.stringify(document.cookie.match(/2015[^;]+/g)),_.isJSONString(t)&&JSON.parse(t).distinct_id||(is_first_visitor=!0),this.toState(t)),saNewUser.setDeviceId(e),saNewUser.storeInitCheck(),saNewUser.checkIsFirstLatest()}},commonWays={setOnlineState:function(e){if(e===!0&&_.isObject(sd.para.jsapp)&&"function"==typeof sd.para.jsapp.getData){sd.para.jsapp.isOnline=!0;var t=sd.para.jsapp.getData();_.isArray(t)&&t.length>0&&_.each(t,function(e){_.isJSONString(e)&&sd.sendState.pushSend(JSON.parse(e))})}else sd.para.jsapp.isOnline=!1},autoTrackIsUsed:!1,isReady:function(e){e()},getUtm:function(){return _.info.campaignParams()},getStayTime:function(){return(new Date-sd._t)/1e3},setProfileLocal:function(e){if(!_.localStorage.isSupport())return sd.setProfile(e),!1;if(!_.isObject(e)||_.isEmptyObject(e))return!1;var t=_.localStorage.parse("sensorsdata_2015_jssdk_profile"),r=!1;if(_.isObject(t)&&!_.isEmptyObject(t)){for(var n in e)!(n in t&&t[n]!==e[n])&&n in t||(t[n]=e[n],r=!0);r&&(_.localStorage.set("sensorsdata_2015_jssdk_profile",JSON.stringify(t)),sd.setProfile(e))}else _.localStorage.set("sensorsdata_2015_jssdk_profile",JSON.stringify(e)),sd.setProfile(e)},setInitReferrer:function(){var e=_.getReferrer();sd.setOnceProfile({_init_referrer:e,_init_referrer_host:_.info.pageProp.referrer_host})},setSessionReferrer:function(){var e=_.getReferrer();store.setSessionPropsOnce({_session_referrer:e,_session_referrer_host:_.info.pageProp.referrer_host})},setDefaultAttr:function(){_.info.register({_current_url:location.href,_referrer:_.getReferrer(),_referring_host:_.info.pageProp.referrer_host})},trackHeatmap:function(){this.trackHeatMap.apply(arguments)},trackHeatMap:function(e,t,r){if("object"==typeof e&&e.tagName){var n=e.tagName.toLowerCase(),s=e.parentNode.tagName.toLowerCase();"button"!==n&&"a"!==n&&"a"!==s&&"button"!==s&&"input"!==n&&"textarea"!==n&&heatmap.start(null,e,n,t,r)}},trackAllHeatMap:function(e,t,r){if("object"==typeof e&&e.tagName){var n=e.tagName.toLowerCase();heatmap.start(null,e,n,t,r)}},autoTrackSinglePage:function(e,t){function r(){var e=_.info.campaignParams(),t={};for(var r in e)(" "+source_channel_standard+" ").indexOf(" "+r+" ")!==-1?t["$"+r]=e[r]:t[r]=e[r];return t}function n(e,t){sd.track("$pageview",_.extend({$referrer:s,$referrer_host:s?_.url("hostname",s):s,$url:location.href,$url_path:location.pathname,$title:document.title},e,r()),t),s=location.href}if(this.autoTrackIsUsed)var s=_.info.pageProp.url;else var s=_.info.pageProp.referrer;e=_.isObject(e)?e:{},e=_.isObject(e)?e:{},is_first_visitor&&!e.not_set_profile&&(sd.setOnceProfile(_.extend({$first_visit_time:new Date,$first_referrer:_.getReferrer(),$first_browser_language:navigator.language||"\u53d6\u503c\u5f02\u5e38",$first_browser_charset:"string"==typeof document.charset?document.charset.toUpperCase():"\u53d6\u503c\u5f02\u5e38",$first_referrer_host:_.info.pageProp.referrer_host,$first_traffic_source_type:_.getSourceFromReferrer(),$first_search_keyword:_.getKeywordFromReferrer()},r())),is_first_visitor=!1),e.not_set_profile&&delete e.not_set_profile,is_first_visitor&&!e.not_set_profile&&(sd.setOnceProfile(_.extend({$first_visit_time:new Date,$first_referrer:_.getReferrer(),$first_browser_language:navigator.language||"\u53d6\u503c\u5f02\u5e38",$first_browser_charset:"string"==typeof document.charset?document.charset.toUpperCase():"\u53d6\u503c\u5f02\u5e38",$first_referrer_host:_.info.pageProp.referrer_host,$first_traffic_source_type:_.getSourceFromReferrer(),$first_search_keyword:_.getKeywordFromReferrer()},r())),is_first_visitor=!1),e.not_set_profile&&delete e.not_set_profile,n(e,t),this.autoTrackSinglePage=n},autoTrackWithoutProfile:function(e,t){e=_.isObject(e)?e:{},this.autoTrack(_.extend(e,{not_set_profile:!0}),t)},autoTrack:function(e,t){e=_.isObject(e)?e:{};var r=_.info.campaignParams(),n={};for(var s in r)(" "+source_channel_standard+" ").indexOf(" "+s+" ")!==-1?n["$"+s]=r[s]:n[s]=r[s];is_first_visitor&&!e.not_set_profile&&(sd.setOnceProfile(_.extend({$first_visit_time:new Date,$first_referrer:_.getReferrer(),$first_browser_language:navigator.language||"\u53d6\u503c\u5f02\u5e38",$first_browser_charset:"string"==typeof document.charset?document.charset.toUpperCase():"\u53d6\u503c\u5f02\u5e38",$first_referrer_host:_.info.pageProp.referrer_host,$first_traffic_source_type:_.getSourceFromReferrer(),$first_search_keyword:_.getKeywordFromReferrer()},n)),is_first_visitor=!1),e.not_set_profile&&delete e.not_set_profile;var a=location.href;sd.para.is_single_page&&_.addHashEvent(function(){var r=_.getReferrer(a);sd.track("$pageview",_.extend({$referrer:r,$referrer_host:_.url("hostname",r)||"",$url:location.href,$url_path:location.pathname,$title:document.title},n,e),t),a=location.href}),sd.track("$pageview",_.extend({$referrer:_.getReferrer(),$referrer_host:_.info.pageProp.referrer_host,$url:location.href,$url_path:location.pathname,$title:document.title},n,e),t),this.autoTrackIsUsed=!0},getAnonymousID:function(){return _.isEmptyObject(sd.store._state)?"\u8bf7\u5148\u521d\u59cb\u5316SDK":sd.store._state.first_id?sd.store._state.first_id:sd.store._state.distinct_id}};sd.quick=function(){var e=slice.call(arguments),t=e[0],r=e.slice(1);return"string"==typeof t&&commonWays[t]?commonWays[t].apply(commonWays,r):void("function"==typeof t?t.apply(sd,r):logger.info("quick\u65b9\u6cd5\u4e2d\u6ca1\u6709\u8fd9\u4e2a\u529f\u80fd"+e[0]))},sd.track=function(e,t,r){saEvent.check({event:e,properties:t})&&saEvent.send({type:"track",event:e,properties:t},r)},_.trackLink=function(e,t,r){function n(e){function n(){a||(a=!0,location.href=s.href)}e.stopPropagation(),e.preventDefault();var a=!1;setTimeout(n,1e3),sd.track(t,r,n)}e=e||{};var s=null;return e.ele&&(s=e.ele),e.event&&(s=e.target?e.target:e.event.target),r=r||{},!(!s||"object"!=typeof s)&&(!s.href||/^javascript/.test(s.href)||s.target||s.download||s.onclick?(sd.track(t,r),!1):(e.event&&n(e.event),void(e.ele&&_.addEvent(e.ele,"click",function(e){n(e)}))))},sd.trackLink=function(e,t,r){"object"==typeof e&&e.tagName?_.trackLink({ele:e},t,r):"object"==typeof e&&e.target&&e.event&&_.trackLink(e,t,r)},sd.trackLinks=function(e,t,r){return r=r||{},!(!e||"object"!=typeof e)&&(!(!e.href||/^javascript/.test(e.href)||e.target)&&void _.addEvent(e,"click",function(n){function s(){a||(a=!0,location.href=e.href)}n.preventDefault();var a=!1;setTimeout(s,1e3),sd.track(t,r,s)}))},sd.setProfile=function(e,t){saEvent.check({propertiesMust:e})&&saEvent.send({type:"profile_set",properties:e},t)},sd.setOnceProfile=function(e,t){saEvent.check({propertiesMust:e})&&saEvent.send({type:"profile_set_once",properties:e},t)},sd.appendProfile=function(e,t){saEvent.check({propertiesMust:e})&&(_.each(e,function(t,r){_.isString(t)?e[r]=[t]:_.isArray(t)||(delete e[r],logger.info("appendProfile\u5c5e\u6027\u7684\u503c\u5fc5\u987b\u662f\u5b57\u7b26\u4e32\u6216\u8005\u6570\u7ec4"))}),_.isEmptyObject(e)||saEvent.send({type:"profile_append",properties:e},t))},sd.incrementProfile=function(e,t){function r(e){for(var t in e)if(!/-*\d+/.test(String(e[t])))return!1;return!0}var n=e;_.isString(e)&&(e={},e[n]=1),saEvent.check({propertiesMust:e})&&(r(e)?saEvent.send({type:"profile_increment",properties:e},t):logger.info("profile_increment\u7684\u503c\u53ea\u80fd\u662f\u6570\u5b57"))},sd.deleteProfile=function(e){saEvent.send({type:"profile_delete"},e),store.set("distinct_id",_.UUID())},sd.unsetProfile=function(e,t){var r=e,n={};_.isString(e)&&(e=[],e.push(r)),_.isArray(e)?(_.each(e,function(e){_.isString(e)?n[e]=!0:logger.info("profile_unset\u7ed9\u7684\u6570\u7ec4\u91cc\u9762\u7684\u503c\u5fc5\u987b\u65f6string,\u5df2\u7ecf\u8fc7\u6ee4\u6389",e)}),saEvent.send({type:"profile_unset",properties:n},t)):logger.info("profile_unset\u7684\u53c2\u6570\u662f\u6570\u7ec4")},sd.identify=function(e,t){"number"==typeof e&&(e=String(e));var r=store.getFirstId();"undefined"==typeof e?r?store.set("first_id",_.UUID()):store.set("distinct_id",_.UUID()):saEvent.check({distinct_id:e})?t===!0?r?store.set("first_id",e):store.set("distinct_id",e):r?store.change("first_id",e):store.change("distinct_id",e):logger.info("identify\u7684\u53c2\u6570\u5fc5\u987b\u662f\u5b57\u7b26\u4e32")},sd.trackSignup=function(e,t,r,n){saEvent.check({distinct_id:e,event:t,properties:r})&&(saEvent.send({original_id:store.getFirstId()||store.getDistinctId(),distinct_id:e,type:"track_signup",event:t,properties:r},n),store.set("distinct_id",e))},sd.trackAbtest=function(e,t){},sd.registerPage=function(e){saEvent.check({properties:e})?_.extend(_.info.currentProps,e):logger.info("register\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.clearAllRegister=function(e){store.clearAllProps(e)},sd.register=function(e){saEvent.check({properties:e})?store.setProps(e):logger.info("register\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.registerOnce=function(e){saEvent.check({properties:e})?store.setPropsOnce(e):logger.info("registerOnce\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.registerSession=function(e){saEvent.check({properties:e})?store.setSessionProps(e):logger.info("registerSession\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.registerSessionOnce=function(e){saEvent.check({properties:e})?store.setSessionPropsOnce(e):logger.info("registerSessionOnce\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.login=function(e){if("number"==typeof e&&(e=String(e)),saEvent.check({distinct_id:e})){var t=store.getFirstId(),r=store.getDistinctId();e!==r&&(t?sd.trackSignup(e,"$SignUp"):(store.set("first_id",r),sd.trackSignup(e,"$SignUp")))}else logger.info("login\u7684\u53c2\u6570\u5fc5\u987b\u662f\u5b57\u7b26\u4e32")},sd.logout=function(e){var t=store.getFirstId();t?(store.set("first_id",""),e===!0?store.set("distinct_id",_.UUID()):store.set("distinct_id",t)):logger.info("\u6ca1\u6709first_id\uff0clogout\u5931\u8d25")},sd.getPresetProperties=function(){function e(){var e=_.info.campaignParams(),t={};for(var r in e)(" "+source_channel_standard+" ").indexOf(" "+r+" ")!==-1?t["$"+r]=e[r]:t[r]=e[r];return t}var t={$referrer:"string"==typeof document.referrer?document.referrer.slice(0,100):"",$referrer_host:_.url("hostname",document.referrer)||"",$url:location.href,$url_path:location.pathname,$title:document.title||"",_distinct_id:store.getDistinctId()};return _.extend({},_.info.properties(),sd.store.getProps(),e(),t)};var heatmap={setNotice:function(e){sd.is_heatmap_render_mode=!0,sd.para.heatmap||(sd.errorMsg="\u60a8SDK\u6ca1\u6709\u914d\u7f6e\u5f00\u542f\u70b9\u51fb\u56fe\uff0c\u53ef\u80fd\u6ca1\u6709\u6570\u636e\uff01"),e&&e[0]&&e[1]&&"http:"===e[1].slice(0,5)&&"https"===location.protocol&&(sd.errorMsg="\u60a8\u7684\u5f53\u524d\u9875\u9762\u662fhttps\u7684\u5730\u5740\uff0c\u795e\u7b56\u5206\u6790\u73af\u5883\u4e5f\u5fc5\u987b\u662fhttps\uff01"),sd.para.heatmap_url||(sd.para.heatmap_url=location.protocol+"//static.sensorsdata.cn/sdk/"+LIB_VERSION+"/heatmap.min.js")},getDomIndex:function(e){if(!e.parentNode)return-1;for(var t=0,r=e.tagName,n=e.parentNode.children,s=0;s<n.length;s++)if(n[s].tagName===r){if(e===n[s])return t;t++}return-1},selector:function(e){var t=e.parentNode&&9==e.parentNode.nodeType?-1:this.getDomIndex(e);return e.getAttribute&&e.getAttribute("id")&&(!sd.para.heatmap||sd.para.heatmap&&"not_use_id"!==sd.para.heatmap.element_selector)?"#"+e.getAttribute("id"):e.tagName.toLowerCase()+(~t?":nth-of-type("+(t+1)+")":"")},getDomSelector:function(e,t){if(!e||!e.parentNode||!e.parentNode.children)return!1;t=t&&t.join?t:[];var r=e.nodeName.toLowerCase();return e&&"body"!==r&&1==e.nodeType?(t.unshift(this.selector(e)),e.getAttribute&&e.getAttribute("id")?t.join(" > "):this.getDomSelector(e.parentNode,t)):(t.unshift("body"),t.join(" > "))},na:function(){var e=document.documentElement.scrollLeft||window.pageXOffset;return parseInt(isNaN(e)?0:e,10)},i:function(){var e=0;try{e=o.documentElement&&o.documentElement.scrollTop||m.pageYOffset,e=isNaN(e)?0:e}catch(t){e=0}return parseInt(e,10)},getBrowserWidth:function(){var e=window.innerWidth||document.body.clientWidth;return isNaN(e)?0:parseInt(e,10)},getBrowserHeight:function(){var e=window.innerHeight||document.body.clientHeight;return isNaN(e)?0:parseInt(e,10)},getScrollWidth:function(){var e=parseInt(document.body.scrollWidth,10);return isNaN(e)?0:e},W:function(e){var t=parseInt(+e.clientX+ +this.na(),10),e=parseInt(+e.clientY+ +this.i(),10);return{x:isNaN(t)?0:t,y:isNaN(e)?0:e}},start:function(e,t,r,n,s){var a=_.isObject(n)?n:{},i=_.isFunction(s)?s:_.isFunction(n)?n:void 0;if(sd.para.heatmap&&sd.para.heatmap.collect_element&&!sd.para.heatmap.collect_element(t))return!1;var o=this.getDomSelector(t),c=_.getEleInfo({target:t});if(c.$element_selector=o?o:"",sd.para.heatmap&&sd.para.heatmap.custom_property){var u=sd.para.heatmap.custom_property(t);_.isObject(u)&&(c=_.extend(c,u))}c=_.extend(c,a),"a"===r&&sd.para.heatmap&&sd.para.heatmap.isTrackLink===!0?_.trackLink({event:e,target:t},"$WebClick",c):sd.track("$WebClick",c,i)},hasElement:function(e){var t=e._getPath();if(_.isArray(t)&&t.length>0)for(var r=0;r<t.length;r++)if(t[r]&&t[r].tagName&&"a"===t[r].tagName.toLowerCase())return t[r];return!1},initScrollmap:function(){if(!_.isObject(sd.para.heatmap)||"default"!==sd.para.heatmap.scroll_notice_map)return!1;if(sd.para.scrollmap&&_.isFunction(sd.para.scrollmap.collect_url)&&!sd.para.scrollmap.collect_url())return!1;var e=function(e){var t={};return t.timeout=e.timeout||1e3,t.func=e.func,t.hasInit=!1,t.inter=null,t.main=function(e,t){this.func(e,t),this.inter=null},t.go=function(e){var r={};this.inter||(r.$viewport_position=document.documentElement&&document.documentElement.scrollTop||window.pageYOffset||document.body.scrollTop||0,r.$viewport_position=Math.round(r.$viewport_position)||0,r.$viewport_height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight||0,r.$viewport_width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0,e?t.main(r,!0):this.inter=setTimeout(function(){t.main(r)},this.timeout))},t},t=e({timeout:1e3,func:function(e,t){var r=document.documentElement&&document.documentElement.scrollTop||window.pageYOffset||document.body.scrollTop||0,n=new Date,s=n-this.current_time;(s>sd.para.heatmap.scroll_delay_time&&r-e.$viewport_position!==0||t)&&(e.$url=location.href,e.$title=document.title,e.$url_path=location.pathname,e.event_duration=parseInt(s)/1e3,sd.track("$WebStay",e)),this.current_time=n}});t.current_time=new Date,_.addEvent(window,"scroll",function(){t.go()}),_.addEvent(window,"unload",function(){t.go("notime")})},initHeatmap:function(){var e=this;return!(!_.isObject(sd.para.heatmap)||"default"!==sd.para.heatmap.clickmap)&&(!(_.isFunction(sd.para.heatmap.collect_url)&&!sd.para.heatmap.collect_url())&&("all"===sd.para.heatmap.collect_elements?sd.para.heatmap.collect_elements="all":sd.para.heatmap.collect_elements="interact",void("all"===sd.para.heatmap.collect_elements?_.addEvent(document,"click",function(t){var r=t||window.event;if(!r)return!1;var n=r.target||r.srcElement;if("object"!=typeof n)return!1;if("string"!=typeof n.tagName)return!1;var s=n.tagName.toLowerCase();if("body"===s||"html"===s)return!1;if(!n||!n.parentNode||!n.parentNode.children)return!1;var a=n.parentNode.tagName.toLowerCase();"a"===a||"button"===a?e.start(r,n.parentNode,a):e.start(r,n,s)}):_.addEvent(document,"click",function(t){var r=t||window.event;if(!r)return!1;var n=r.target||r.srcElement;if("object"!=typeof n)return!1;if("string"!=typeof n.tagName)return!1;var s=n.tagName.toLowerCase();if("body"===s.toLowerCase()||"html"===s.toLowerCase())return!1;if(!n||!n.parentNode||!n.parentNode.children)return!1;var a=n.parentNode;if("a"===s||"button"===s||"input"===s||"textarea"===s)e.start(r,n,s);else if("button"===a.tagName.toLowerCase()||"a"===a.tagName.toLowerCase())e.start(r,a,n.parentNode.tagName.toLowerCase());else if("area"===s&&"map"===a.tagName.toLowerCase()&&_.ry(a).prev().tagName&&"img"===_.ry(a).prev().tagName.toLowerCase())e.start(r,_.ry(a).prev(),_.ry(a).prev().tagName.toLowerCase());else{var i=e.hasElement(t);i&&e.start(r,i,i.tagName.toLowerCase())}}))))},prepare:function(e){function t(e,t,r){sd.para.heatmap_url?_.loadScript({success:function(){setTimeout(function(){"undefined"!=typeof sa_jssdk_heatmap_render&&(sa_jssdk_heatmap_render(sd,e,t,r),"object"==typeof console&&"function"==typeof console.log&&(sd.heatmap_version&&sd.heatmap_version===sd.lib_version||console.log("heatmap.js\u4e0esensorsdata.js\u7248\u672c\u53f7\u4e0d\u4e00\u81f4\uff0c\u53ef\u80fd\u5b58\u5728\u98ce\u9669!")))},0)},error:function(){},type:"js",url:sd.para.heatmap_url}):logger.info("\u6ca1\u6709\u6307\u5b9aheatmap_url\u7684\u8def\u5f84")}var r=location.search.match(/sa-request-id=([^&#]+)/),n=location.search.match(/sa-request-type=([^&#]+)/),s=location.search.match(/sa-request-url=([^&#]+)/);r&&r[0]&&r[1]?(heatmap.setNotice(s),_.sessionStorage.isSupport()&&(s&&s[0]&&s[1]&&sessionStorage.setItem("sensors_heatmap_url",decodeURIComponent(s[1])),sessionStorage.setItem("sensors_heatmap_id",r[1]),n&&n[0]&&n[1]?"1"===n[1]||"2"===n[1]||"3"===n[1]?(n=n[1],sessionStorage.setItem("sensors_heatmap_type",n)):n=null:n=null!==sessionStorage.getItem("sensors_heatmap_type")?sessionStorage.getItem("sensors_heatmap_type"):null),t(r[1],n)):_.sessionStorage.isSupport()&&"string"==typeof sessionStorage.getItem("sensors_heatmap_id")?(heatmap.setNotice(),t(sessionStorage.getItem("sensors_heatmap_id"),sessionStorage.getItem("sensors_heatmap_type"),location.href)):(e(),_.isObject(sd.para.heatmap)&&(this.initHeatmap(),this.initScrollmap()))}};return sd.init=function(e){return!(sd.readyState&&sd.readyState>=2)&&void((!e&&has_declare||e&&!has_declare)&&(sd.readyState=2,sd.initPara(e),sd._init()))},sd._init=function(){heatmap.prepare(function(){app_js_bridge(),_.info.initPage(),sd.para.is_track_single_page&&_.addSinglePageEvent(function(e){e!==location.href&&sd.quick("autoTrack",{$url:location.href,$referrer:e})}),store.init(),sd._q&&_.isArray(sd._q)&&sd._q.length>0&&_.each(sd._q,function(e){sd[e[0]].apply(sd,slice.call(e[1]))})})},sd.init(),sd}catch(err){if("object"==typeof console&&console.log)try{console.log(err)}catch(e){}}});
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "be565dd9084bfa8e458731939dd84c84.png";
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "6b3662698101936220884d90f2a1a8eb.png";
+
+/***/ }),
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "29a33439e2f3f1efb95bb7b2053cc9ea.png";
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.buriedPointEvent = exports.pageView = exports.initAnalytics = undefined;
+
+var _assign = __webpack_require__(65);
+
+var _assign2 = _interopRequireDefault(_assign);
+
+var _qs = __webpack_require__(52);
+
+var _qs2 = _interopRequireDefault(_qs);
+
+var _store = __webpack_require__(56);
+
+var _common = __webpack_require__(57);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//初始化神策埋点 及 渠道信息
+var initAnalytics = exports.initAnalytics = function initAnalytics() {
+  window.version = "v1.1";
+  sa.init({
+    server_url: "http://10.1.1.81:8106/sa",
+    sdk_url: "https://static.sensorsdata.cn/sdk/1.7.1.1/sensorsdata.min.js",
+    show_log: true, //是否打印上报日志
+    is_single_page: true
+  });
+  var query = _qs2.default.parse(window.location.search, {
+    ignoreQueryPrefix: true
+  });
+  var ua = window.navigator.userAgent;
+  // if (!store.getH5Channel()) {
+  //   /SuiXingPay-Mpos/i.test(ua)
+  //     ? query.h5Channel
+  //       ? store.setH5Channel(query.h5Channel)
+  //       : store.setH5Channel('MPOS')
+  //     : store.setH5Channel(query.h5Channel ? query.h5Channel : 'other');
+  // }
+  // 解决banner等通过location href在mpos中跳转返回后h5Channel丢失的问题
+  var storeH5Channel = (0, _common.getH5Channel)();
+  (0, _common.setH5Channel)(storeH5Channel);
+  if (!_store.store.getVersion()) {
+    _store.store.setVersion(window.version);
+  }
+  if (/MicroMessenger/i.test(window.navigator.userAgent) && _store.store.getVersion() !== window.version) {
+    _store.store.setVersion(window.version);
+    window.location.reload();
+  }
+};
+
+// 定义固定参数
+function getStaticParams() {
+  return {
+    product_line: "还到-余额代偿",
+    project_name: document.title,
+    forward_module: document.referrer,
+    page_category: document.title,
+    channelType: (0, _common.getH5Channel)()
+  };
+}
+
+/*
+ * PV统计
+ *
+ * */
+var pageView = exports.pageView = function pageView() {
+  var params = getStaticParams();
+  sa.quick("autoTrackSinglePage", params);
+};
+
+/*
+ * 埋点事件
+ *
+ * */
+var buriedPointEvent = exports.buriedPointEvent = function buriedPointEvent(buriedKey, params) {
+  var staticParams = getStaticParams();
+  var sendParams = (0, _assign2.default)({}, staticParams, params);
+  sa.track(buriedKey, sendParams);
+};
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(209), __esModule: true };
+
+/***/ }),
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__(2);
+var $JSON = core.JSON || (core.JSON = { stringify: JSON.stringify });
+module.exports = function stringify(it) { // eslint-disable-line no-unused-vars
+  return $JSON.stringify.apply($JSON, arguments);
+};
+
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+// 本地local存储 方法名与key值对应表
+var storeTypes = exports.storeTypes = {
+	RepaymentModalData: 'RepaymentModalData', // 保存确认代还信息弹框数据
+	// HomeCardIndexData: 'HomeCardIndexData', // 保存首页信用卡信息
+	BackUrl: 'BackUrl', // 保存跳转的url
+	BackUrl2: 'BackUrl2', // 临时缓存
+	CardData: 'CardData', // 跳转路由中的银行卡信息
+	MoxieBackUrl: 'MoxieBackUrl', // 跳转魔蝎授权页 授权后返回的url
+	MoxieBackUrl2: 'MoxieBackUrl2', // 跳转魔蝎授权页 授权后返回的url
+	AuthFlag: 'AuthFlag', // 是否实名认证的flag
+	UserPhone: 'UserPhone', // 用户手机号
+	UserInfo: 'UserInfo', // 用户信息
+	ParamVip: 'ParamVip', // 会员卡参数
+	VIPInfo: 'VIPInfo', // 会员卡信息
+	VipBackUrl: 'VipBackUrl', // 会员卡入口与出口
+	Position: 'Position', // 定位信息
+	ProtocolFinancialData: 'ProtocolFinancialData',
+	OrderSuccess: 'OrderSuccess', // 付款成功信息
+	BackData: 'BackData', // 订单信息
+	BillNo: 'BillNo',
+	MsgObj: 'MsgObj', // // 消息详情
+	MsgBackData: 'MsgBackData', // 消息详情
+	HistoryRouter: 'HistoryRouter', // 历史路由
+	CheckCardRouter: 'CheckCardRouter', // 保存四项认证进入绑卡页的标识
+	BannerData: 'BannerData', // 保存 banner 信息
+	OutLinkUrl: 'OutLinkUrl', // 去外链标识
+	CouponData: 'CouponData', // 跳转路由中优惠劵的信息
+	LandingPageImgUrl: 'LandingPageImgUrl', // 落地页图片
+	HadShowModal: 'HadShowModal', // 是否开过弹框
+	BackFlag: 'BackFlag', // 是否返回的flag
+	DisableBack: 'DisableBack', // 禁止返回的标识
+	LoginBack: 'LoginBack', // 登录页协议返回
+	QueryUsrSCOpenId: 'QueryUsrSCOpenId', // 用户标识
+	FromPage: 'FromPage', // 页面来源
+	Consoleshow: 'Consoleshow', // 显示console
+	Version: 'Version', // 版本号
+	RewardCount: 'RewardCount', // 抽奖次数
+	Token: 'Token', // local-token
+	JumpUrl: 'JumpUrl', // 调整的url
+	H5Channel: 'H5Channel', // 存储h5Channel
+	Address: 'Address', // 常住地址
+	Linkman: 'Linkman', // 联系人姓名
+	Linkphone: 'Linkphone', // 联系人电话
+	RelationValue: 'RelationValue', // 亲属关系
+	Province: 'Province', // 省份
+	City: 'City', // 城市
+	ShowActivityModal: 'ShowActivityModal', // 是否显示活动弹窗
+	SaveAmt: 'SaveAmt', // 回显代还金额的数据
+	BindCardNo: 'BindCardNo', // 回显绑卡卡号
+	BindCreditCardNo: 'BindCreditCardNo', // 回显绑卡信用卡卡号
+	BindCardPhone: 'BindCardPhone', // 回显绑卡手机号
+	OrderDetailData: 'OrderDetailData', // 账单详情页数据
+	MessageTagError: 'MessageTagError', // 错误不显示
+	MessageTagStep: 'MessageTagStep', // 步骤
+	CouponActivityFlag: 'CouponActivityFlag', // 呈现不同机具页面的标识
+	MposToken: 'MposToken', // mpos token 关闭无效问题
+	NeedNextUrl: 'NeedNextUrl', // 需要调用获取下一步url方法
+	CreditExtensionNot: 'CreditExtensionNot', // 未提交授信用户
+	ToggleMoxieCard: 'ToggleMoxieCard', // 新版流程物理返回  借钱还信用卡 切换卡
+	LoanAspirationHome: 'LoanAspirationHome', // 首页弹窗 填写意愿
+	CarrierMoxie: 'CarrierMoxie', // 运营商直接返回的问题
+	BankMoxie: 'BankMoxie', // 信用卡直接返回的问题
+	GoMoxie: 'GoMoxie', // 魔蝎银行列表去魔蝎再返回的两次退出才退出的问题
+	CreditSuccessBack: 'CreditSuccessBack', // 信用卡绑卡之后立即去提交页需要提示
+	NoLoginUrl: 'NoLoginUrl', // 微信授权失败跳转到那个页面
+	LoginDownloadBtn: 'LoginDownloadBtn', // 登陆页点击立即下载按钮标识
+	MessageTagLimitDate: 'MessageTagLimitDate', // 首页的额度有效期显示标识
+	OverdueInf: 'OverdueInf', // 逾期进度数据
+	SuccessPay: 'SuccessPay', // 418 活动返回
+	IdChkPhotoBack: 'IdChkPhotoBack', // 签约页是否需要补充活体识别标示
+	ChkPhotoBackNew: 'ChkPhotoBackNew', // 活体直接返回
+	RealNameNextStep: 'RealNameNextStep', // 需要下一步
+	CashFenQiStoreData: 'CashFenQiStoreData', //现金分期反显的数据
+	CashFenQiCardArr: 'CashFenQiCardArr', //现金分期收、还卡数组
+	HomeAutId: 'HomeAutId', // 首页的autId
+	AutId: 'AutId', // 接口调用需要的AutId
+	FQActivity: 'FQActivity', // 参与现金分期活动
+	AutId2: 'AutId2', // 进度页物理返回存储的接口调用需要的AutId
+	PercentCount: 'PercentCount', //百分比次数
+	HomeConfirmAgency: 'HomeConfirmAgency', // 首页进入到签约借款页面参数
+	DepositBankName: 'DepositBankName', // 储蓄卡银行名称
+	AC20190618: 'AC20190618', //618
+	PayType: 'PayType', // 还款方式
+	WxPayEnd: 'WxPayEnd', // 微信返回不刷新
+	GotoMoxieFlag: 'GotoMoxieFlag', // 去到魔蝎第三方的标示
+	InsuranceFlag: 'InsuranceFlag', // 标识该次绑卡是否要求绑定支持收取保费的卡
+	NoLoginToken: 'NoLoginToken' // 设置 图片验证码 noLoginToken
+};
+
+/***/ }),
 /* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.other = exports.loan_fenqi = exports.loan_repay_confirm = exports.mpos_ioscontrol_page = exports.moxie_bank_list = exports.activity = exports.mpos_service_authorization = exports.bugLog = exports.membership = exports.order = exports.mine = exports.home = exports.login = undefined;
+
+var _common = __webpack_require__(57);
+
+var prefix = 'DC';
+// dc 多
+// xdc少
+
+// DC 对外
+// XDC mpos入口=>对内
+if ((0, _common.isMPOS)() || JSON.parse(sessionStorage.getItem('isMPOS'))) {
+	prefix = 'XDC';
+}
+// console.log(JSON.parse(sessionStorage.getItem('isMPOS')),'test')
+var login = {
+	getCode: prefix + '_LOGIN_GET_CODE', // 注册登录页-点击获取验证码
+	submit: prefix + '_LOGIN_SUBMIT' // 注册登录页-一键代还
+};
+
+var home = {
+	applyCreditRepayment: prefix + '_HOME_APPLY_CREDIT_REPAYMENT', // 首页-点击申请信用卡代还按钮
+	// homeContinueApply: `${prefix}_HOME_CONTINUE_APPLY`, // 还卡-继续申请  增加属性，继续页面：基本信息认证，银行列表，运营商认证
+	HomeCardRenew: prefix + '_HOME_CARD_RENEW', // 借钱换信用卡  重新更新
+	easyRepay: prefix + '_HOME_EASY_REPAYMENT', // 首页-点击一键还卡（代还）
+	repayOtherCredit: prefix + '_HOME_REPAY_OTHER_CREDIT', // 首页-点击代还其他信用卡
+	viewBill: prefix + '_HOME_VIEW_BILL', // 首页-点击查看代还账单
+	durationDay30: prefix + '_MINE_CREDIT_EXTENSION_DURATION_DAY_30', // 申请期限-30天
+	durationMonth3: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_3', // 申请期限-3个月
+	durationMonth6: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_6', // 申请期限-6个月
+	durationMonth9: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_9', // 申请期限-9个月
+	durationMonth12: prefix + '_MINE_CREDIT_EXTENSION_DURATION_MONTH_12', // 申请期限-12个月
+	moneyCreditCardConfirm: prefix + '_MONEY_CREDIT_CARD_CONFIRM', // 借钱还信用卡-提交申请成功
+	moneyCreditCardConfirmBtn: prefix + '_MONEY_CREDIT_CARD_CONFIRM_BTN', // 借钱还信用卡-提交申请按钮
+	// compensationCreditCardConfirm: `${prefix}_COMPENSATION_CREDIT_CARD_CONFIRM`, // 代偿信用卡-确认
+	userRetrieveContinue: prefix + '_USER_RETRIEVE_CONTINUE', // 用户挽回-再等等
+	userRetrieveQuit: prefix + '_USER_RETRIEVE_QUIT', // 用户挽回-放弃
+	repaymentIntentionAll: prefix + '_REPAYMENT_INTENTION_ALL', // 还款意愿-全额还款
+	repaymentIntentionLowest: prefix + '_REPAYMENT_INTENTION_LOWEST', // 还款意愿-最低还款
+	repaymentIntentionPart: prefix + '_REPAYMENT_INTENTION_PART', // 还款意愿-部分还款
+	lenders: prefix + '_HOME_LENDERS', // 放款日期-立即放款
+	lendersOrder: prefix + '_HOME_LENDERS_ORDER', // 放款日期-预约放款
+	borrowingSubmit: prefix + '_HOME_BORROWING_PRE_SUBMIT', // 代还信息确认页-点击确认按钮
+	borrowingSubmitResult: prefix + '_HOME_BORROWING_PRE_SUBMIT_RESULT', // 代还信息确认页-点击确认按钮-结果事件
+	informationMyselfFrontCard: prefix + '_HOME_BASE_INFO_FRONT_CARD', // 实名认证页-点击拍摄身份证正面
+	informationMyselfBackCard: prefix + '_HOME_BASE_INFO_BACK_CARD', // 实名认证页-点击拍摄身份证反面
+	informationTapNameInp: prefix + '_HOME_BASE_INFO_USERNAME', // 实名认证页-点击姓名输入框
+	informationTapIDInp: prefix + '_HOME_BASE_INFO_IDCARD', // 实名认证页-点击身份证号输入框
+	informationConfirm: prefix + '_HOME_BASE_INFO_CONFIRM', // 实名认证页-确定按钮
+	basicInfoBury: prefix + '_HOME_BASE_INFO_BURY', // 基本信息输入框下拉框埋点
+	basicInfoComplete: prefix + '_HOME_BASICINFO_COMPLETE', // 基本信息页-确定按钮
+	landingPage: prefix + '_HOME_LANDING_PAGE', // 落地页
+	bannerClick: prefix + '_HOME_BANNER_CLICK', // 点击banner
+	cardResult: prefix + '_HOME_CARD_RESULT', // 信用卡提交结果埋点
+	operatorResult: prefix + '_HOME_OPERATOR_RESULT', // 运营商提交结果埋点
+	faceAuthResult: prefix + '_HOME_FACEAUTH_RESULT', // 人脸提交结果埋点
+	downloadBtnClick: prefix + '_DOWNLOAD_BTN_CLICK', // 下载页点击按钮事件
+	manualAudit: prefix + '_RETURN_CARD_VIEWING_PROGRESS_MANUALAUDIT', //人工审核
+	machineAudit: prefix + '_RETURN_CARD_VIEWING_PROGRESS_MACHINE', //机器审核
+	quickLoan: prefix + '_RETURN_CARD_VIEWING_PROGRESS_LOAN', //快速放款
+	signedLoan: prefix + '_RETURN_CARD_VIEWING_PROGRESS_BORROWING', //立即签约借款
+	applyLoan: prefix + '_RETURN_CARD_VIEWING_PROGRESS_APPLY', //申请借钱还信用卡
+	billImport: prefix + '_RETURN_CARD_VIEWING_PROGRESS_IMPORT', //账单导入
+	billContinueImport: prefix + '_RETURN_CARD_VIEWING_PROGRESS_CONTINUEIMPORT', //继续导入信用卡账单
+	continueRealInfo: prefix + '_RETURN_CARD_VIEWING_PROGRESS_OPERATOR', //继续确认身份信息
+	selectCreditCardResult: prefix + '_CARD_SELECTION_CARDSELECTION', //选择信用卡_选卡结果
+	addCreditCard: prefix + '_CARD_SELECTION_NEWCARD', //新增需要还款信用卡
+	importOtherCreditCard: prefix + '_ADD_SCHEDULE_CREDIT_CARDS', //选择导入其他信用卡
+	replaceCard: prefix + '_APPLY_LOAN_CARD_REPLACEMENT', //申请借钱还-更换卡
+	gotIt: prefix + '_QUICK_PAY_GOTIT', //快速打款中-我知道了
+	manualAuditFollow: prefix + '_AWAITING_AUDIT_FOLLOW', //等待人工审核-关注
+	assessingBindCard: prefix + '_RAPID_ASSESSMENT_BINDING_CARD', //快速评估中-绑卡
+	protocolSmsFail: prefix + '_HOME_PROTOCOL_SMS_FAIL', // 签约借款页协议绑卡校验失败埋点
+	protocolBindFail: prefix + '_HOME_PROTOCOL_BIND_FAIL', // 签约借款页协议绑卡绑定失败埋点
+	protocolBindBtnClick: prefix + '_HOME_PROTOCOL_MODAL_BTN_CLICK', // 签约借款页协议绑卡短验弹框按钮点击
+
+	dialogInformation: prefix + '_QUESTION_FEEDBACK_BASIC_INFORMATION',
+	dialogInformation_wait: prefix + '_QUESTION_FEEDBACK_BASIC_INFORMATION_CONTINUE',
+	dialogInformation_close: prefix + '_QUESTION_FEEDBACK_BASIC_INFORMATION_CLOSE',
+
+	dialogMoxieBank: prefix + '_QUESTION_FEEDBACK_BANK',
+	dialogMoxieBank_wait: prefix + '_QUESTION_FEEDBACK_BANK_CONTINUE',
+	dialogMoxieBank_close: prefix + '_QUESTION_FEEDBACK_BANK_CLOSE',
+
+	dialogLoanRepay: prefix + '_QUESTION_FEEDBACK_APPLY',
+	dialogLoanRepay_wait: prefix + '_QUESTION_FEEDBACK_APPLY_CONTINUE',
+	dialogLoanRepay_close: prefix + '_QUESTION_FEEDBACK_APPLY_CLOSE',
+
+	feedModalOperator: prefix + '_TIPS_OPERATORS_RETRIEVE', //找回运营商密码
+	feedModalInterbank: prefix + '_TIPS_INTERNETBANK_RETRIEVE', //找回信用卡密码
+	feedModalSubmit: prefix + '_TIPS_OTHERISSUES', //反馈问题提交事件
+	feedModalBtnClick: prefix + '_TIPS_RISSUES' //选择问题按钮点击总事件
+};
+
+var mine = {
+	faq: prefix + '_MINE_FAQ', // 常见问题页
+	saveConfirm: prefix + '_MINE_SAVE_CONFIRM', // 绑定储蓄卡页-确定按钮
+	creditConfirm: prefix + '_MINE_CREDIT_CONFIRM', // 绑定信用卡页-确定按钮
+	creditExtension: prefix + '_MINE_CREDIT_EXTENSION', // 风控授信项页 从哪进入（首页、我的）
+	creditExtensionConfirm: prefix + '_MINE_CREDIT_EXTENSION_CONFIRM', // 风控授信项页-点击提交代还金申请按钮
+	creditExtensionBack: prefix + '_MINE_CREDIT_EXTENSION_BACK', // 风控授信项页
+	creditExtensionRealName: prefix + '_MINE_CREDIT_EXTENSION_REAL_NAME', // 风控授信项页 点击实名认证
+	creditExtensionBaseInfo: prefix + '_MINE_CREDIT_EXTENSION_BASE_INFO', // 风控授信项页 点击基本信息认证
+	creditExtensionOperator: prefix + '_MINE_CREDIT_EXTENSION_OPERATOR', // 风控授信项页 点击运营商认证
+	creditExtensionFaceAuth: prefix + '_MINE_CREDIT_EXTENSION_FACEAUTH', // 风控授信项页 点击人脸识别认证
+	creditExtensionZM: prefix + '_MINE_CREDIT_EXTENSION_ZM', // 风控授信项页 点击芝麻分认证
+	protocolSmsFail: prefix + '_MINE_PROTOCOL_SMS_FAIL', // 绑定储蓄卡页协议绑卡校验失败埋点
+	protocolBindFail: prefix + '_MINE_PROTOCOL_BIND_FAIL' // 绑定储蓄卡页协议绑卡绑定失败埋点
+};
+
+var order = {
+	repayment: prefix + '_ORDER_DETAILS_REPAYMENT', // 账单详情页-主动还款按钮
+	repaymentFirst: prefix + '_ORDER_DETAILS_REPAYMENT_FIRST', // 账单详情页-付款详情-立即还款按钮
+	returnHome: prefix + '_ORDER_BACK_HOME', // 还款完成页-返回首页按钮
+	openNow: prefix + '_ORDER_OPEN_NOW', // 还款完成页-弹框里立即开启按钮
+	closeModal: prefix + '_ORDER_CLOSE_MODAL' // 还款完成页-弹框里关闭按钮
+};
+
+var membership = {
+	confirmBuyPre: prefix + '_MEMBERSHIP_CONFIRM_BUY_PRE', // 会员卡购买页-确认购买按钮
+	bindCardCredit: prefix + '_MEMBERSHIP_BIND_CARD_CREDIT', // 会员卡购买页-绑定银行卡-信用卡页-确认绑定按钮
+	bindCardSave: prefix + '_MEMBERSHIP_BIND_CARD_SAVE', // 会员卡购买页-绑定银行卡-储蓄卡页-确认绑定按钮
+	confirmBuy: prefix + '_MEMBERSHIP_CONFIRM_BUY' // 会员卡购买-确认购买页-确认购买按钮
+};
+
+var bugLog = {
+	apiErrorLog: prefix + '_API_ERROR_LOG', // 接口异常报错日志
+	pageErrorLog: prefix + '_PAGE_ERROR_LOG' // 页面异常报错日志
+};
+
+var mpos_service_authorization = {
+	auth_btn: prefix + '_AUTH_PAGE_AUTH_BTN',
+	auth_page: prefix + '_MPOS_AUTH_PAGE'
+};
+
+var activity = {
+	newUserEntry: prefix + '_NEW_USER_ACTIVITY_ENTRY', // 拉新活动运营入口来源埋点
+	couponEntry: prefix + '_COUPON_ACTIVITY_ENTRY', // 领取优惠券活动运营
+	dazhuanpan_316_entry: prefix + '_DAZHUANPAN_316_ACTIVITY_ENTRY', // 316大转盘入口区分
+	dazhuanpan_316_draw_result: prefix + '_DAZHUANPAN_316_DRAW_RESULT', // 316大转盘中奖情况
+	jupeiEntry: prefix + '_JUPEI_ACTIVITY_ENTRY', //拒就赔活动
+	funsisongEntry: prefix + '_ACTIVITY_FUNSISONG_ENTRY', // 放肆送活动入口
+	couponBtnClick: prefix + '_ACTIVITY_COUPON_GET', // 放肆送活动领取按钮点击
+	redBagBtnClick: prefix + '_ACTIVITY_REDBAG_GET', // 放肆送活动还信用卡赚钱按钮点击
+	joinNowClick: prefix + '_ACTIVITY_CHECK_COUPON', // 放肆送活动弹框立即参与按钮点击
+	checkCouponClick: prefix + '_ACTIVITY_JOIN_NOW', // 放肆送活动弹框查看优惠劵按钮点击
+	homeModalBtnClick: prefix + '_ACTIVITY_HOME_MODAL_CLICK', // 放肆送活动中mpos 还到弹窗 点击
+	mianxi418Entry: prefix + '_ACTIVITY_MIANXI_418_ENTRY', // 最高免息30天 活动入口
+	mianxi418Btn: prefix + '_ACTIVITY_MIANXI_418_BTN', // 最高免息30天 按钮
+	wenjuanEntry: prefix + '_ACTIVITY_WENJUAN_ENTRY', // 问卷入口
+	wenjuanBtn: prefix + '_ACTIVITY_WENJUAN_BTN', // 问卷提交按钮
+	wenjuanShare: prefix + '_ACTIVITY_WENJUAN_SHARE', // 问卷提交分享
+	wenjuanHome: prefix + '_ACTIVITY_WENJUAN_Home', // 问卷去首页
+	jjpEntry: prefix + '_ACTIVITY_JUJIUPEI_ENTRY', //拒就赔活动入口
+	jjpGetBtn: prefix + '_ACTIVITY_JUJIUPEI_GET_BTN', //拒就赔领取按钮点击
+	jjpMposConfirmBtn: prefix + '_ACTIVITY_JUJIUPEI_MPOS_CONFIRM', //拒就赔mpos中弹框确定按钮点击
+	jjpWxConfirmBtn: prefix + '_ACTIVITY_JUJIUPEI_WX_CONFIRM', //拒就赔微信中弹框确定按钮点击
+	jjpHomeModalClick: prefix + '_ACTIVITY_JUJIUPEI_HOME_MODAL_CLICK', //拒就赔首页弹框按钮点击
+	brandEntry: prefix + '_ACTIVITY_BRAND_ENTRY', // 品牌活动入口
+	brandBtnClick: prefix + '_ACTIVITY_BRAND_TIYAN_BTN', // 品牌活动还到体验按钮点击
+	brandHomeModalClick: prefix + '_ACTIVITY_BRAND_HOME_MODAL_CLICK', // 品牌活动首页弹框开启生涯模式按钮点击
+	fenqiHomeModalGoBtn: prefix + '_FENQI_HOME_MODAL_GO_BTN', //现金分期活动弹窗按钮点击
+	fenqiHomeModalClose: prefix + '_FENQI_HOME_MODAL_CLOSE', //现金分期活动弹窗关闭
+	mayReceiveBtn: prefix + '_ACTIVITY_TWO_RECEIVE', // 五月狂欢活动 畅想双重豪礼 领取 按钮
+	mayExtractBtn: prefix + '_ACTIVITY_TWO_EXTRACT', // 五月狂欢活动 畅想双重豪礼 抽奖 按钮
+	mayNewRecBtn: prefix + '_ACTIVITY_NEW_ONEKEYCOLLECTION', // 五月狂欢活动 新用户专享 一键领取 按钮
+	mayNewRulesBtn: prefix + '_ACTIVITY_NEW_ACTIVITYRULES', // 五月狂欢活动 新用户专享 活动规则 按钮
+	mayNewConfirmRecBtn: prefix + '_ACTIVITY_NEW_RECEIVEIMMEDIATELY_CONFIRMRECEIPT', // 五月狂欢活动 新用户专享-马上领取 确认领取 按钮
+	mayNewUseNowBtn: prefix + '_ACTIVITY_NEW_CONGRATULATIONS_USEIMMEDIATELY', // 五月狂欢活动 新用户专享-恭喜您 马上使用 按钮
+	mayNewToOldBtn: prefix + '_ACTIVITY_NEW_SORRY_JUMP', // 五月狂欢活动 新用户专享-抱歉 跳转老用户专享 按钮
+	mayOldDrawBtn: prefix + '_ACTIVITY_OLD_STARTRAFFLE', // 五月狂欢活动 老用户专享-开始抽奖 按钮
+	mayOldToNewBtn: prefix + '_ACTIVITY_OLD_SORRY_JUMP', // 五月狂欢活动 老用户专享-跳转新用户专享 按钮
+	mayOldAuthTipsBtn: prefix + '_ACTIVITY_OLD_TIPS_AUTHENTICATION', // 五月狂欢活动 老用户专享-提示 填写认证资料 按钮
+	mayOldNoPrizeBtn: prefix + '_ACTIVITY_OLD_FRIENDSHIPTIPS_NOPRIZE', // 五月狂欢活动 老用户专享-友情提示-奖品数量-知道了 按钮
+	mayOldNoChanceBtn: prefix + '_ACTIVITY_OLD_FRIENDSHIPTIPS_NOCHANCE', // 五月狂欢活动 老用户专享-友情提示-抽奖机会-知道了 按钮
+	mayOldUseNowBtn: prefix + '_ACTIVITY_OLD_CONGRATULATIONS', // 五月狂欢活动 老用户专享-恭喜你 立即使用 按钮
+	mayOldRulesBtn: prefix + '_ACTIVITY_OLD_ACTIVITYRULES', // 五月狂欢活动 老用户专享 活动规则 按钮
+	mayOldMyPrizeBtn: prefix + '_ACTIVITY_OLD_MYPRIZE', // 五月狂欢活动 老用户专享 我的奖品 按钮
+	mayOldMyPrizeUseBtn: prefix + '_ACTIVITY_OLD_MYPRIZE_IMMEDIATEUSE', // 五月狂欢活动 老用户专享-我的奖品 立即使用 按钮
+	mayJoinSuccess: prefix + '_ACTIVITY_JOIN_SUCCESS', // 五月狂欢活动 成功参与埋点（调用后台接口）
+	koubeiEntry: prefix + '_ACTIVITY_KOUBEI_ENTRY', // 口碑活动入口来源
+	koubeiBtnClick: prefix + '_ACTIVITY_KOUBEI_TIYAN_BTN', // 口碑活动还到体验按钮点击
+	koubeiHomeOldModalClick: prefix + '_ACTIVITY_KOUBEI_HOME_OLDMODAL_CLICK', // 口碑活动首页老用户弹框
+	koubeiHomeNewModalClick: prefix + '_ACTIVITY_KOUBEI_HOME_NEWMODAL_CLICK', // 口碑活动首页新用户弹框
+	jd618Entry: prefix + '_JD618_ENTRY',
+	freebillEntry: prefix + '_FREEBILL_ENTRY',
+	jd618BtnClick: prefix + '_ACTIVITY_JD618_BTN',
+	jd618ModalBtnClick: prefix + '_ACTIVITY_JD618_MODAL_BTN',
+	freeBillBtnClick: prefix + '_ACTIVITY_FREEBILL_BTN',
+	freeBillModalBtnClick: prefix + '_ACTIVITY_FREEBILL_MODAL_BTN',
+	yhq7ModalBtnClick: prefix + '_ACTIVITY_YHQ7_MODAL_BTN',
+	yhq50ModalBtnClick: prefix + '_ACTIVITY_YHQ50_MODAL_BTN',
+	jd618ResultModalClick: prefix + '_JD618_RESULT_MODAL_CLICK',
+	jd618HomeModalClose: prefix + '_JD618HOMEMODALCLOSE',
+	freeBillHomeModalClose: prefix + '_FREEBILLHOMEMODALCLOSE'
+};
+
+var moxie_bank_list = {
+	bankChooes: prefix + '_CREDIT_BANK_CHOOES', // 拉新活动运营入口来源埋点
+	bankRefresh: prefix + '_CREDIT_BANK_REFRESH' // 领取优惠券活动运营
+};
+
+var mpos_ioscontrol_page = {
+	iosControlPageView: prefix + '_MPOS_HD_WECHAT', // mpos 管控页页面/mpos引流微信页面加载完成
+	copySuccess: prefix + '_COPY_SUCCESS' // mpos 管控页页面/mpos引流微信页面复制成功
+};
+
+var loan_repay_confirm = {
+	// back30: `${prefix}_PRODUCT_BACK_30`,
+	// sure30: `${prefix}_PRODUCT_SURE_30`,
+	// cancle30: `${prefix}_PRODUCT_CANCLE_30`,
+	// select30: `${prefix}_PRODUCT_SELECT_30`
+};
+
+var other = {
+	outerDownloadBtnClick: prefix + '_OUTER_DOWNLOAD_BUTTON_CLICK' //外部下载页按钮点击事件
+};
+
+var loan_fenqi = {
+	day30: prefix + '_FENQI_DATE_DAY_30',
+	month3: prefix + '_FENQI_DATE_MONTH_3',
+	month6: prefix + '_FENQI_DATE_MONTH_6',
+	month9: prefix + '_FENQI_DATE_MONTH_9',
+	month12: prefix + '_FENQI_DATE_MONTH_12',
+	moneyBlur: prefix + '_FENQI_MONEY_BLUR',
+	repayPlan: prefix + '_FENQI_REPAY_PLAN',
+	resaveCard: prefix + '_FENQI_RESAVECARD',
+	payCard: prefix + '_FENQI_PAYCARD',
+	contract: prefix + '_FENQI_CONTRACT',
+	clickSubmit: prefix + '_FENQI_CLICK_SUBMIT',
+	submitResult: prefix + '_FENQI_SUBMIT_RESULT',
+	fenqiGoBack: prefix + '_FENQI_GO_BACK',
+	fenqiDownload: prefix + '_FENQI_DOWNLOAD_CLICK',
+	fenqiHomeApplyBtn: prefix + '_FENQI_HOME_APPLY_BTN'
+};
+
+exports.login = login;
+exports.home = home;
+exports.mine = mine;
+exports.order = order;
+exports.membership = membership;
+exports.bugLog = bugLog;
+exports.mpos_service_authorization = mpos_service_authorization;
+exports.activity = activity;
+exports.moxie_bank_list = moxie_bank_list;
+exports.mpos_ioscontrol_page = mpos_ioscontrol_page;
+exports.loan_repay_confirm = loan_repay_confirm;
+exports.loan_fenqi = loan_fenqi;
+exports.other = other;
+
+/***/ }),
+/* 212 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * JavaScript Cookie v2.2.0
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader = false;
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		registeredInModuleLoader = true;
+	}
+	if (true) {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function init (converter) {
+		function api (key, value, attributes) {
+			var result;
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			// Write
+
+			if (arguments.length > 1) {
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+
+				if (typeof attributes.expires === 'number') {
+					var expires = new Date();
+					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+					attributes.expires = expires;
+				}
+
+				// We're using "expires" because "max-age" is not supported by IE
+				attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+				try {
+					result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+
+				if (!converter.write) {
+					value = encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				} else {
+					value = converter.write(value, key);
+				}
+
+				key = encodeURIComponent(String(key));
+				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+				key = key.replace(/[\(\)]/g, escape);
+
+				var stringifiedAttributes = '';
+
+				for (var attributeName in attributes) {
+					if (!attributes[attributeName]) {
+						continue;
+					}
+					stringifiedAttributes += '; ' + attributeName;
+					if (attributes[attributeName] === true) {
+						continue;
+					}
+					stringifiedAttributes += '=' + attributes[attributeName];
+				}
+				return (document.cookie = key + '=' + value + stringifiedAttributes);
+			}
+
+			// Read
+
+			if (!key) {
+				result = {};
+			}
+
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all. Also prevents odd result when
+			// calling "get()"
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var rdecode = /(%[0-9A-Z]{2})+/g;
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!this.json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = parts[0].replace(rdecode, decodeURIComponent);
+					cookie = converter.read ?
+						converter.read(cookie, name) : converter(cookie, name) ||
+						cookie.replace(rdecode, decodeURIComponent);
+
+					if (this.json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					if (key === name) {
+						result = cookie;
+						break;
+					}
+
+					if (!key) {
+						result[name] = cookie;
+					}
+				} catch (e) {}
+			}
+
+			return result;
+		}
+
+		api.set = api;
+		api.get = function (key) {
+			return api.call(api, key);
+		};
+		api.getJSON = function () {
+			return api.apply({
+				json: true
+			}, [].slice.call(arguments));
+		};
+		api.defaults = {};
+
+		api.remove = function (key, attributes) {
+			api(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
+
+
+/***/ }),
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15627,29 +15685,29 @@ var _defineProperty = __webpack_require__(22);
 
 var _defineProperty2 = _interopRequireDefault(_defineProperty);
 
-var _setPrototypeOf = __webpack_require__(32);
+var _setPrototypeOf = __webpack_require__(24);
 
 var _setPrototypeOf2 = _interopRequireDefault(_setPrototypeOf);
 
-var _create = __webpack_require__(34);
+var _create = __webpack_require__(26);
 
 var _create2 = _interopRequireDefault(_create);
 
-var _getPrototypeOf = __webpack_require__(72);
+var _getPrototypeOf = __webpack_require__(51);
 
 var _getPrototypeOf2 = _interopRequireDefault(_getPrototypeOf);
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; (0, _defineProperty2.default)(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(19);
+var _react = __webpack_require__(15);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _invariant = __webpack_require__(212);
+var _invariant = __webpack_require__(214);
 
 var _invariant2 = _interopRequireDefault(_invariant);
 
-var _ExecutionEnvironment = __webpack_require__(213);
+var _ExecutionEnvironment = __webpack_require__(215);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15742,7 +15800,7 @@ function withStyles(styles) {
 exports.default = withStyles;
 
 /***/ }),
-/* 212 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15801,7 +15859,7 @@ module.exports = invariant;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 213 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15831,13 +15889,6 @@ var ExecutionEnvironment = {
 
 };
 module.exports = ExecutionEnvironment;
-
-/***/ }),
-/* 214 */
-/***/ (function(module, exports, __webpack_require__) {
-
-!function(e){ true?module.exports=e():e()}(function(){function app_js_bridge(){function e(e){n=e,_.isJSONString(n)&&(n=JSON.parse(n)),s&&(s(n),s=null,n=null)}function t(){"object"==typeof window.SensorsData_APP_JS_Bridge&&window.SensorsData_APP_JS_Bridge.sensorsdata_call_app&&(n=SensorsData_APP_JS_Bridge.sensorsdata_call_app(),_.isJSONString(n)&&(n=JSON.parse(n)))}function r(){if(/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream){var e=document.createElement("iframe");e.setAttribute("src","sensorsanalytics://getAppInfo"),document.documentElement.appendChild(e),e.parentNode.removeChild(e),e=null}}var n=null,s=null;window.sensorsdata_app_js_bridge_call_js=function(t){e(t)},sd.getAppStatus=function(e){return r(),t(),e?void(null===n?s=e:(e(n),n=null)):n}}try{var sd=window.sensorsDataAnalytic201505,has_declare;if(sd?(sd=window[sd],has_declare=!0):(sd={},has_declare=!1),"function"!=typeof sd&&"object"!=typeof sd||sd.has_load_sdk)return!1;sd._t=sd._t||1*new Date,sd.has_load_sdk=!0,"object"!=typeof JSON&&(JSON={}),function(){"use strict";function f(e){return e<10?"0"+e:e}function this_value(){return this.valueOf()}function quote(e){return rx_escapable.lastIndex=0,rx_escapable.test(e)?'"'+e.replace(rx_escapable,function(e){var t=meta[e];return"string"==typeof t?t:"\\u"+("0000"+e.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+e+'"'}function str(e,t){var r,n,s,a,i,o=gap,c=t[e];switch(c&&"object"==typeof c&&"function"==typeof c.toJSON&&(c=c.toJSON(e)),"function"==typeof rep&&(c=rep.call(t,e,c)),typeof c){case"string":return quote(c);case"number":return isFinite(c)?String(c):"null";case"boolean":case"null":return String(c);case"object":if(!c)return"null";if(gap+=indent,i=[],"[object Array]"===Object.prototype.toString.apply(c)){for(a=c.length,r=0;r<a;r+=1)i[r]=str(r,c)||"null";return s=0===i.length?"[]":gap?"[\n"+gap+i.join(",\n"+gap)+"\n"+o+"]":"["+i.join(",")+"]",gap=o,s}if(rep&&"object"==typeof rep)for(a=rep.length,r=0;r<a;r+=1)"string"==typeof rep[r]&&(n=rep[r],s=str(n,c),s&&i.push(quote(n)+(gap?": ":":")+s));else for(n in c)Object.prototype.hasOwnProperty.call(c,n)&&(s=str(n,c),s&&i.push(quote(n)+(gap?": ":":")+s));return s=0===i.length?"{}":gap?"{\n"+gap+i.join(",\n"+gap)+"\n"+o+"}":"{"+i.join(",")+"}",gap=o,s}}var rx_one=/^[\],:{}\s]*$/,rx_two=/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,rx_three=/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,rx_four=/(?:^|:|,)(?:\s*\[)+/g,rx_escapable=/[\\\"\u0000-\u001f\u007f-\u009f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,rx_dangerous=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;"function"!=typeof Date.prototype.toJSON&&(Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+f(this.getUTCMonth()+1)+"-"+f(this.getUTCDate())+"T"+f(this.getUTCHours())+":"+f(this.getUTCMinutes())+":"+f(this.getUTCSeconds())+"Z":null},Boolean.prototype.toJSON=this_value,Number.prototype.toJSON=this_value,String.prototype.toJSON=this_value);var gap,indent,meta,rep;"function"!=typeof JSON.stringify&&(meta={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},JSON.stringify=function(e,t,r){var n;if(gap="",indent="","number"==typeof r)for(n=0;n<r;n+=1)indent+=" ";else"string"==typeof r&&(indent=r);if(rep=t,t&&"function"!=typeof t&&("object"!=typeof t||"number"!=typeof t.length))throw new Error("JSON.stringify");return str("",{"":e})}),"function"!=typeof JSON.parse&&(JSON.parse=function(text,reviver){function walk(e,t){var r,n,s=e[t];if(s&&"object"==typeof s)for(r in s)Object.prototype.hasOwnProperty.call(s,r)&&(n=walk(s,r),void 0!==n?s[r]=n:delete s[r]);return reviver.call(e,t,s)}var j;if(text=String(text),rx_dangerous.lastIndex=0,rx_dangerous.test(text)&&(text=text.replace(rx_dangerous,function(e){return"\\u"+("0000"+e.charCodeAt(0).toString(16)).slice(-4)})),rx_one.test(text.replace(rx_two,"@").replace(rx_three,"]").replace(rx_four,"")))return j=eval("("+text+")"),"function"==typeof reviver?walk({"":j},""):j;throw new SyntaxError("JSON.parse")})}();var _=sd._={};sd.para_default={name:"sa",max_referrer_string_length:200,max_string_length:500,cross_subdomain:!0,show_log:!0,is_debug:!1,debug_mode:!1,debug_mode_upload:!1,session_time:0,use_client_time:!1,source_channel:[],send_type:"image",vtrack_ignore:{},auto_init:!0,is_track_single_page:!1,is_single_page:!1,is_track_latest:{utm:!0,referrer:!0,referrer_host:!0,traffic_source_type:!0,search_keyword:!0,landing_page:!1},source_type:{},callback_timeout:200,datasend_timeout:3e3,queue_timeout:300,is_track_device_id:!1,use_app_track:!1,ignore_oom:!0},sd.initPara=function(e){sd.para=e||sd.para||{};var t;for(t in sd.para_default)void 0===sd.para[t]&&(sd.para[t]=sd.para_default[t]);"string"==typeof sd.para.server_url&&"://"===sd.para.server_url.slice(0,3)&&(sd.para.server_url=location.protocol+sd.para.server_url),"string"==typeof sd.para.web_url&&"://"===sd.para.web_url.slice(0,3)&&(sd.para.web_url=location.protocol+sd.para.web_url),"image"!==sd.para.send_type&&"ajax"!==sd.para.send_type&&"beacon"!==sd.para.send_type&&(sd.para.send_type="image");var r=["utm_source","utm_medium","utm_campaign","utm_content","utm_term"],n=["www.baidu.","m.baidu.","m.sm.cn","so.com","sogou.com","youdao.com","google.","yahoo.com/","bing.com/","ask.com/"],s=["weibo.com","renren.com","kaixin001.com","douban.com","qzone.qq.com","zhihu.com","tieba.baidu.com","weixin.qq.com"],a={baidu:["wd","word","kw","keyword"],google:"q",bing:"q",yahoo:"p",sogou:["query","keyword"],so:"q",sm:"q"};if("object"==typeof sd.para.source_type&&(sd.para.source_type.utm=_.isArray(sd.para.source_type.utm)?sd.para.source_type.utm.concat(r):r,sd.para.source_type.search=_.isArray(sd.para.source_type.search)?sd.para.source_type.search.concat(n):n,sd.para.source_type.social=_.isArray(sd.para.source_type.social)?sd.para.source_type.social.concat(s):s,sd.para.source_type.keyword=_.isObject(sd.para.source_type.keyword)?_.extend(a,sd.para.source_type.keyword):a),_.isObject(sd.para.heatmap)&&(sd.para.heatmap.clickmap=sd.para.heatmap.clickmap||"default",sd.para.heatmap.scroll_notice_map=sd.para.heatmap.scroll_notice_map||"default",sd.para.heatmap.scroll_delay_time=sd.para.heatmap.scroll_delay_time||4e3,sd.para.heatmap.renderRefreshTime=sd.para.heatmap.renderRefreshTime||1e3,sd.para.heatmap.loadTimeout=sd.para.heatmap.loadTimeout||1e3),"object"==typeof sd.para.server_url&&sd.para.server_url.length)for(t=0;t<sd.para.server_url.length;t++)/sa\.gif[^\/]*$/.test(sd.para.server_url[t])||(sd.para.server_url[t]=sd.para.server_url[t].replace(/\/sa$/,"/sa.gif").replace(/(\/sa)(\?[^\/]+)$/,"/sa.gif$2"));else/sa\.gif[^\/]*$/.test(sd.para.server_url)||(sd.para.server_url=sd.para.server_url.replace(/\/sa$/,"/sa.gif").replace(/(\/sa)(\?[^\/]+)$/,"/sa.gif$2"));"string"==typeof sd.para.server_url&&(sd.para.debug_mode_url=sd.para.debug_mode_url||sd.para.server_url.replace("sa.gif","debug")),sd.para.noCache===!0?sd.para.noCache="?"+(new Date).getTime():sd.para.noCache="",sd.para.callback_timeout>sd.para.datasend_timeout&&(sd.para.datasend_timeout=sd.para.callback_timeout),sd.para.callback_timeout>sd.para.queue_timeout&&(sd.para.queue_timeout=sd.para.callback_timeout),sd.para.queue_timeout>sd.para.datasend_timeout&&(sd.para.datasend_timeout=sd.para.queue_timeout),_.isObject(sd.para.is_track_latest)?sd.para.is_track_latest=_.extend(sd.para_default.is_track_latest,sd.para.is_track_latest):sd.para.is_track_latest=sd.para_default.is_track_latest};var ArrayProto=Array.prototype,FuncProto=Function.prototype,ObjProto=Object.prototype,slice=ArrayProto.slice,toString=ObjProto.toString,hasOwnProperty=ObjProto.hasOwnProperty,LIB_VERSION="1.13.14";sd.lib_version=LIB_VERSION;var error_msg=[],is_first_visitor=!1,just_test_distinctid=0,just_test_distinctid_2=0,just_test_distinctid_detail=0,just_test_distinctid_detail2=0,source_channel_standard="utm_source utm_medium utm_campaign utm_content utm_term",logger="object"==typeof logger?logger:{};logger.info=function(){if((_.sessionStorage.isSupport()&&"true"===sessionStorage.getItem("sensorsdata_jssdk_debug")||sd.para.show_log)&&(sd.para.show_log!==!0&&"string"!==sd.para.show_log&&sd.para.show_log!==!1||(arguments[0]=_.formatJsonString(arguments[0])),"object"==typeof console&&console.log))try{return console.log.apply(console,arguments)}catch(e){console.log(arguments[0])}},function(){var e=(FuncProto.bind,ArrayProto.forEach),t=(ArrayProto.indexOf,Array.isArray),r={},n=_.each=function(t,n,s){if(null==t)return!1;if(e&&t.forEach===e)t.forEach(n,s);else if(t.length===+t.length){for(var a=0,i=t.length;a<i;a++)if(a in t&&n.call(s,t[a],a,t)===r)return!1}else for(var o in t)if(hasOwnProperty.call(t,o)&&n.call(s,t[o],o,t)===r)return!1};_.logger=logger,_.extend=function(e){return n(slice.call(arguments,1),function(t){for(var r in t)void 0!==t[r]&&(e[r]=t[r])}),e},_.extend2Lev=function(e){return n(slice.call(arguments,1),function(t){for(var r in t)void 0!==t[r]&&(_.isObject(t[r])&&_.isObject(e[r])?_.extend(e[r],t[r]):e[r]=t[r])}),e},_.coverExtend=function(e){return n(slice.call(arguments,1),function(t){for(var r in t)void 0!==t[r]&&void 0===e[r]&&(e[r]=t[r])}),e},_.isArray=t||function(e){return"[object Array]"===toString.call(e)},_.isFunction=function(e){if(!e)return!1;try{return/^\s*\bfunction\b/.test(e)}catch(t){return!1}},_.isArguments=function(e){return!(!e||!hasOwnProperty.call(e,"callee"))},_.toArray=function(e){return e?e.toArray?e.toArray():_.isArray(e)?slice.call(e):_.isArguments(e)?slice.call(e):_.values(e):[]},_.values=function(e){var t=[];return null==e?t:(n(e,function(e){t[t.length]=e}),t)},_.indexOf=function(e,t){var r=e.indexOf;if(r)return r.call(e,t);for(var n=0;n<e.length;n++)if(t===e[n])return n;return-1}}(),_.filter=function(e,t,r){var n=Object.prototype.hasOwnProperty;if(e.filter)return e.filter(t);for(var s=[],a=0;a<e.length;a++)if(n.call(e,a)){var i=e[a];t.call(r,i,a,e)&&s.push(i)}return s},_.inherit=function(e,t){return e.prototype=new t,e.prototype.constructor=e,e.superclass=t.prototype,e},_.trim=function(e){return e.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,"")},_.isObject=function(e){return null!=e&&"[object Object]"==toString.call(e)},_.isEmptyObject=function(e){if(_.isObject(e)){for(var t in e)if(hasOwnProperty.call(e,t))return!1;return!0}return!1},_.isUndefined=function(e){return void 0===e},_.isString=function(e){return"[object String]"==toString.call(e)},_.isDate=function(e){return"[object Date]"==toString.call(e)},_.isBoolean=function(e){return"[object Boolean]"==toString.call(e)},_.isNumber=function(e){return"[object Number]"==toString.call(e)&&/[\d\.]+/.test(String(e))},_.isElement=function(e){return!(!e||1!==e.nodeType)},_.isJSONString=function(e){try{JSON.parse(e)}catch(t){return!1}return!0},_.decodeURIComponent=function(e){var t=e;try{t=decodeURIComponent(e)}catch(r){t=e}return t},_.encodeDates=function(e){return _.each(e,function(t,r){_.isDate(t)?e[r]=_.formatDate(t):_.isObject(t)&&(e[r]=_.encodeDates(t))}),e},_.hashCode=function(e){if("string"!=typeof e)return 0;var t=0,r=null;if(0==e.length)return t;for(var n=0;n<e.length;n++)r=e.charCodeAt(n),t=(t<<5)-t+r,t&=t;return t},_.formatDate=function(e){function t(e){return e<10?"0"+e:e}return e.getFullYear()+"-"+t(e.getMonth()+1)+"-"+t(e.getDate())+" "+t(e.getHours())+":"+t(e.getMinutes())+":"+t(e.getSeconds())+"."+t(e.getMilliseconds())},_.searchObjDate=function(e){_.isObject(e)&&_.each(e,function(t,r){_.isObject(t)?_.searchObjDate(e[r]):_.isDate(t)&&(e[r]=_.formatDate(t))})},_.searchZZAppStyle=function(e){"undefined"!=typeof e.properties.$project&&(e.project=e.properties.$project,delete e.properties.$project),"undefined"!=typeof e.properties.$token&&(e.token=e.properties.$token,delete e.properties.$token)},_.formatJsonString=function(e){try{return JSON.stringify(e,null,"  ")}catch(t){return JSON.stringify(e)}},_.formatString=function(e){return e.length>sd.para.max_string_length?(logger.info("\u5b57\u7b26\u4e32\u957f\u5ea6\u8d85\u8fc7\u9650\u5236\uff0c\u5df2\u7ecf\u505a\u622a\u53d6--"+e),e.slice(0,sd.para.max_string_length)):e},_.searchObjString=function(e){_.isObject(e)&&_.each(e,function(t,r){_.isObject(t)?_.searchObjString(e[r]):_.isString(t)&&(e[r]=_.formatString(t))})},_.searchConfigData=function(e){if("object"==typeof e&&e.$option){var t=e.$option;return delete e.$option,t}return{}},_.unique=function(e){for(var t,r=[],n={},s=0;s<e.length;s++)t=e[s],t in n||(n[t]=!0,r.push(t));return r},_.strip_sa_properties=function(e){return _.isObject(e)?(_.each(e,function(t,r){if(_.isArray(t)){var n=[];_.each(t,function(e){_.isString(e)?n.push(e):logger.info("\u60a8\u7684\u6570\u636e-",r,t,"\u7684\u6570\u7ec4\u91cc\u7684\u503c\u5fc5\u987b\u662f\u5b57\u7b26\u4e32,\u5df2\u7ecf\u5c06\u5176\u5220\u9664")}),0!==n.length?e[r]=n:(delete e[r],logger.info("\u5df2\u7ecf\u5220\u9664\u7a7a\u7684\u6570\u7ec4"))}_.isString(t)||_.isNumber(t)||_.isDate(t)||_.isBoolean(t)||_.isArray(t)||"$option"===r||(logger.info("\u60a8\u7684\u6570\u636e-",r,t,"-\u683c\u5f0f\u4e0d\u6ee1\u8db3\u8981\u6c42\uff0c\u6211\u4eec\u5df2\u7ecf\u5c06\u5176\u5220\u9664"),delete e[r])}),e):e},_.strip_empty_properties=function(e){var t={};return _.each(e,function(e,r){null!=e&&(t[r]=e)}),t},_.utf8Encode=function(e){e=(e+"").replace(/\r\n/g,"\n").replace(/\r/g,"\n");var t,r,n,s="",a=0;for(t=r=0,a=e.length,n=0;n<a;n++){var i=e.charCodeAt(n),o=null;i<128?r++:o=i>127&&i<2048?String.fromCharCode(i>>6|192,63&i|128):String.fromCharCode(i>>12|224,i>>6&63|128,63&i|128),null!==o&&(r>t&&(s+=e.substring(t,r)),s+=o,t=r=n+1)}return r>t&&(s+=e.substring(t,e.length)),s},_.base64Encode=function(e){var t,r,n,s,a,i,o,c,u="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",l=0,d=0,p="",f=[];if(!e)return e;e=_.utf8Encode(e);do t=e.charCodeAt(l++),r=e.charCodeAt(l++),n=e.charCodeAt(l++),c=t<<16|r<<8|n,s=c>>18&63,a=c>>12&63,i=c>>6&63,o=63&c,f[d++]=u.charAt(s)+u.charAt(a)+u.charAt(i)+u.charAt(o);while(l<e.length);switch(p=f.join(""),e.length%3){case 1:p=p.slice(0,-2)+"==";break;case 2:p=p.slice(0,-1)+"="}return p},_.UUID=function(){var e=function(){for(var e=1*new Date,t=0;e==1*new Date;)t++;return e.toString(16)+t.toString(16)},t=function(){return Math.random().toString(16).replace(".","")},r=function(e){function t(e,t){var r,n=0;for(r=0;r<t.length;r++)n|=a[r]<<8*r;return e^n}var r,n,s=navigator.userAgent,a=[],i=0;for(r=0;r<s.length;r++)n=s.charCodeAt(r),a.unshift(255&n),a.length>=4&&(i=t(i,a),a=[]);return a.length>0&&(i=t(i,a)),i.toString(16)};return function(){var n=String(screen.height*screen.width);n=n&&/\d{5,}/.test(n)?n.toString(16):String(31242*Math.random()).replace(".","").slice(0,8);var s=e()+"-"+t()+"-"+r()+"-"+n+"-"+e();return s?(just_test_distinctid_2=1,s):(just_test_distinctid_2=2,(String(Math.random())+String(Math.random())+String(Math.random())).slice(2,15))}}(),_.getQueryParam=function(e,t){t=t.replace(/[\[]/,"\\[").replace(/[\]]/,"\\]"),e=_.decodeURIComponent(e);var r="[\\?&]"+t+"=([^&#]*)",n=new RegExp(r),s=n.exec(e);return null===s||s&&"string"!=typeof s[1]&&s[1].length?"":_.decodeURIComponent(s[1]).replace(/\+/g," ")},_.urlParse=function(e){var t=function(e){this._fields={Username:4,Password:5,Port:7,Protocol:2,Host:6,Path:8,URL:0,QueryString:9,Fragment:10},this._values={},this._regex=null,this._regex=/^((\w+):\/\/)?((\w+):?(\w+)?@)?([^\/\?:]+):?(\d+)?(\/?[^\?#]+)?\??([^#]+)?#?(\w*)/,"undefined"!=typeof e&&this._parse(e)};return t.prototype.setUrl=function(e){this._parse(e)},t.prototype._initValues=function(){for(var e in this._fields)this._values[e]=""},t.prototype.addQueryString=function(e){if("object"!=typeof e)return!1;var t=this._values.QueryString||"";for(var r in e)t=new RegExp(r+"[^&]+").test(t)?t.replace(new RegExp(r+"[^&]+"),r+"="+e[r]):"&"===t.slice(-1)?t+r+"="+e[r]:""===t?r+"="+e[r]:t+"&"+r+"="+e[r];this._values.QueryString=t},t.prototype.getUrl=function(){var e="";return e+=this._values.Origin,e+=this._values.Port?":"+this._values.Port:"",e+=this._values.Path,e+=this._values.QueryString?"?"+this._values.QueryString:"",e+=this._values.Fragment?"#"+this._values.Fragment:""},t.prototype.getUrl=function(){var e="";return e+=this._values.Origin,e+=this._values.Port?":"+this._values.Port:"",e+=this._values.Path,e+=this._values.QueryString?"?"+this._values.QueryString:""},t.prototype._parse=function(e){this._initValues();var t=this._regex.exec(e);if(!t)throw"DPURLParser::_parse -> Invalid URL";for(var r in this._fields)"undefined"!=typeof t[this._fields[r]]&&(this._values[r]=t[this._fields[r]]);this._values.Hostname=this._values.Host.replace(/:\d+$/,""),this._values.Origin=this._values.Protocol+"://"+this._values.Hostname},new t(e)},_.addEvent=function(){function e(t){return t&&(t.preventDefault=e.preventDefault,t.stopPropagation=e.stopPropagation,t._getPath=e._getPath),t}function t(t,r,n){var s=function(s){if(s=s||e(window.event)){s.target=s.srcElement;var a,i,o=!0;return"function"==typeof n&&(a=n(s)),i=r.call(t,s),!1!==a&&!1!==i||(o=!1),o}};return s}e._getPath=function(){var e=this,t=function(){try{var t=e.target,r=[t];if(null===t||null===t.parentElement)return[];for(;null!==t.parentElement;)t=t.parentElement,r.unshift(t);return r}catch(n){return[]}};return this.path||this.composedPath&&this.composedPath()||t()},e.preventDefault=function(){this.returnValue=!1},e.stopPropagation=function(){this.cancelBubble=!0};var r=function(r,n,s){var a=!(!_.isObject(sd.para.heatmap)||!sd.para.heatmap.useCapture);if(r&&r.addEventListener)r.addEventListener(n,function(t){t._getPath=e._getPath,s.call(this,t)},a);else{var i="on"+n,o=r[i];r[i]=t(r,s,o)}};r.apply(null,arguments)},_.addHashEvent=function(e){var t="pushState"in window.history?"popstate":"hashchange";_.addEvent(window,t,e)},_.addSinglePageEvent=function(e){var t=location.href,r=window.history.pushState,n=window.history.replaceState;window.history.pushState=function(){r.apply(window.history,arguments),e(t),t=location.href},window.history.replaceState=function(){n.apply(window.history,arguments),e(t),t=location.href};var s="pushState"in window.history?"popstate":"hashchange";_.addEvent(window,s,function(){e(t),t=location.href})},_.cookie={get:function(e){for(var t=e+"=",r=document.cookie.split(";"),n=0;n<r.length;n++){for(var s=r[n];" "==s.charAt(0);)s=s.substring(1,s.length);if(0==s.indexOf(t))return _.decodeURIComponent(s.substring(t.length,s.length))}return null},set:function(e,t,r,n,s){n="undefined"==typeof n?sd.para.cross_subdomain:n;var a="",i="",o="";if(r=null==r?73e3:r,n){var c=_.getCurrentDomain(location.href);"url\u89e3\u6790\u5931\u8d25"===c&&(c=""),a=c?"; domain="+c:""}if(0!==r){var u=new Date;"s"===String(r).slice(-1)?u.setTime(u.getTime()+1e3*Number(String(r).slice(0,-1))):u.setTime(u.getTime()+24*r*60*60*1e3),i="; expires="+u.toGMTString()}s&&(o="; secure"),document.cookie=e+"="+encodeURIComponent(t)+i+"; path=/"+a+o},remove:function(e,t){t="undefined"==typeof t?sd.para.cross_subdomain:t,_.cookie.set(e,"",-1,t)},getCookieName:function(e){var t="";return sd.para.cross_subdomain===!1?(t=_.url("sub",location.href),t="string"==typeof t&&""!==t?"sajssdk_2015_"+e+"_"+t:"sajssdk_2015_root_"+e):t="sajssdk_2015_cross_"+e,t},getNewUser:function(){var e="new_user";return null!==this.get("sensorsdata_is_new_user")||null!==this.get(this.getCookieName(e))}},_.getEleInfo=function(e){if(!e.target)return!1;var t=e.target,r=t.tagName.toLowerCase(),n={};n.$element_type=r,n.$element_name=t.getAttribute("name"),n.$element_id=t.getAttribute("id"),n.$element_class_name="string"==typeof t.className?t.className:null,n.$element_target_url=t.getAttribute("href");var s="";return t.textContent?s=_.trim(t.textContent):t.innerText&&(s=_.trim(t.innerText)),s&&(s=s.replace(/[\r\n]/g," ").replace(/[ ]+/g," ").substring(0,255)),n.$element_content=s||"","input"===r&&("button"===t.type||"submit"===t.type?n.$element_content=t.value||"":sd.para.heatmap&&"function"==typeof sd.para.heatmap.collect_input&&sd.para.heatmap.collect_input(t)&&(n.$element_content=t.value||"")),n=_.strip_empty_properties(n),n.$url=location.href,n.$url_path=location.pathname,n.$title=document.title,n.$viewport_width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0,n},_.localStorage={get:function(e){return window.localStorage.getItem(e)},parse:function(e){var t;try{t=JSON.parse(_.localStorage.get(e))||null}catch(r){}return t},set:function(e,t){window.localStorage.setItem(e,t)},remove:function(e){window.localStorage.removeItem(e)},isSupport:function(){var e=!0;try{var t="__sensorsdatasupport__",r="testIsSupportStorage";_.localStorage.set(t,r),_.localStorage.get(t)!==r&&(e=!1),_.localStorage.remove(t)}catch(n){e=!1}return e}},_.sessionStorage={isSupport:function(){var e=!0,t="__sensorsdatasupport__",r="testIsSupportStorage";try{sessionStorage&&sessionStorage.setItem?(sessionStorage.setItem(t,r),sessionStorage.removeItem(t,r),e=!0):e=!1}catch(n){e=!1}return e}},_.isSupportCors=function(){return"undefined"!=typeof window.XMLHttpRequest&&("withCredentials"in new XMLHttpRequest||"undefined"!=typeof XDomainRequest)},_.xhr=function(e){if(e)return"undefined"!=typeof window.XMLHttpRequest&&"withCredentials"in new XMLHttpRequest?new XMLHttpRequest:"undefined"!=typeof XDomainRequest?new XDomainRequest:null;if("undefined"!=typeof window.XMLHttpRequest)return new XMLHttpRequest;if(window.ActiveXObject)try{return new ActiveXObject("Msxml2.XMLHTTP")}catch(t){try{return new ActiveXObject("Microsoft.XMLHTTP")}catch(t){}}},_.ajax=function(e){function t(e){if(!e)return"";try{return JSON.parse(e)}catch(t){return{}}}e.timeout=e.timeout||2e4,e.credentials="undefined"==typeof e.credentials||e.credentials;var r=_.xhr(e.cors);if(!r)return!1;e.type||(e.type=e.data?"POST":"GET"),e=_.extend({success:function(){},error:function(){}},e);try{"object"==typeof r&&"timeout"in r?r.timeout=e.timeout:setTimeout(function(){r.abort()},e.timeout+500)}catch(n){try{setTimeout(function(){r.abort()},e.timeout+500)}catch(s){}}r.onreadystatechange=function(){try{4==r.readyState&&(r.status>=200&&r.status<300||304==r.status?e.success(t(r.responseText)):e.error(t(r.responseText),r.status),r.onreadystatechange=null,r.onload=null)}catch(n){r.onreadystatechange=null,r.onload=null}},r.open(e.type,e.url,!0);try{if(e.credentials&&(r.withCredentials=!0),_.isObject(e.header))for(var a in e.header)r.setRequestHeader(a,e.header[a]);e.data&&(e.cors||r.setRequestHeader("X-Requested-With","XMLHttpRequest"),"application/json"===e.contentType?r.setRequestHeader("Content-type","application/json; charset=UTF-8"):r.setRequestHeader("Content-type","application/x-www-form-urlencoded"))}catch(n){}r.send(e.data||null)},_.loadScript=function(e){e=_.extend({success:function(){},error:function(){},appendCall:function(e){document.getElementsByTagName("head")[0].appendChild(e)}},e);var t=null;"css"===e.type&&(t=document.createElement("link"),t.rel="stylesheet",t.href=e.url),"js"===e.type&&(t=document.createElement("script"),t.async="async",t.setAttribute("charset","UTF-8"),t.src=e.url,t.type="text/javascript"),t.onload=t.onreadystatechange=function(){this.readyState&&"loaded"!==this.readyState&&"complete"!==this.readyState||(e.success(),t.onload=t.onreadystatechange=null)},t.onerror=function(){e.error(),t.onerror=null},e.appendCall(t)},_.url=function(){function e(e){return _.decodeURIComponent(e.replace(/\+/g," "))}function t(e,t){var r=e.charAt(0),n=t.split(r);return r===e?n:(e=parseInt(e.substring(1),10),n[e<0?n.length+e:e-1])}function r(t,r){for(var n=t.charAt(0),s=r.split("&"),a=[],i={},o=[],c=t.substring(1),u=0,l=s.length;u<l;u++)if(a=s[u].match(/(.*?)=(.*)/),a||(a=[s[u],s[u],""]),""!==a[1].replace(/\s/g,"")){if(a[2]=e(a[2]||""),c===a[1])return a[2];o=a[1].match(/(.*)\[([0-9]+)\]/),o?(i[o[1]]=i[o[1]]||[],i[o[1]][o[2]]=a[2]):i[a[1]]=a[2]}return n===t?i:i[c]}return function(e,n){var s,a={};if(n=n||window.location.toString(),!e)return n;if(e=e.toString(),s=n.match(/^mailto:([^\/].+)/))a.protocol="mailto",a.email=s[1];else{if((s=n.match(/(.*?)\/#\!(.*)/))&&(n=s[1]+s[2]),(s=n.match(/(.*?)#(.*)/))&&(a.hash=s[2],n=s[1]),a.hash&&e.match(/^#/))return r(e,a.hash);if((s=n.match(/(.*?)\?(.*)/))&&(a.query=s[2],n=s[1]),a.query&&e.match(/^\?/))return r(e,a.query);if((s=n.match(/(.*?)\:?\/\/(.*)/))&&(a.protocol=s[1].toLowerCase(),n=s[2]),(s=n.match(/(.*?)(\/.*)/))&&(a.path=s[2],n=s[1]),a.path=(a.path||"").replace(/^([^\/])/,"/$1").replace(/\/$/,""),e.match(/^[\-0-9]+$/)&&(e=e.replace(/^([^\/])/,"/$1")),e.match(/^\//))return t(e,a.path.substring(1));if(s=t("/-1",a.path.substring(1)),s&&(s=s.match(/(.*?)\.(.*)/))&&(a.file=s[0],a.filename=s[1],a.fileext=s[2]),(s=n.match(/(.*)\:([0-9]+)$/))&&(a.port=s[2],n=s[1]),(s=n.match(/(.*?)@(.*)/))&&(a.auth=s[1],n=s[2]),a.auth&&(s=a.auth.match(/(.*)\:(.*)/),a.user=s?s[1]:a.auth,a.pass=s?s[2]:void 0),a.hostname=n.toLowerCase(),"."===e.charAt(0))return t(e,a.hostname);a.sub=a.hostname.split(".")[0];var i=a.hostname.split(".");if(_.isArray(i)&&i.length>=2&&!/^(\d+\.)+\d+$/.test(a.hostname))for(var o="."+i.splice(i.length-1,1);i.length>0;)if(o="."+i.splice(i.length-1,1)+o,document.cookie="sensorsdata_domain_test=true; path=/; domain="+o,document.cookie.indexOf("sensorsdata_domain_test=true")!==-1){a.domain=o;var c=new Date;c.setTime(c.getTime()-1e3),document.cookie="sensorsdata_domain_test=true; expires="+c.toGMTString()+"; path=/; domain="+o,i=[]}a.port=a.port||("https"===a.protocol?"443":"80"),a.protocol=a.protocol||("443"===a.port?"https":"http")}return e in a?a[e]:"{}"===e?a:""}}(),_.getCurrentDomain=function(e){var t=sd.para.current_domain;switch(typeof t){case"function":var r=t();return""===r||""===_.trim(r)?"url\u89e3\u6790\u5931\u8d25":r.indexOf(".")!==-1?r:"url\u89e3\u6790\u5931\u8d25";case"string":return""===t||""===_.trim(t)?"url\u89e3\u6790\u5931\u8d25":t.indexOf(".")!==-1?t:"url\u89e3\u6790\u5931\u8d25";default:return""===e?"url\u89e3\u6790\u5931\u8d25":""===_.url("domain",e)?"url\u89e3\u6790\u5931\u8d25":_.url("domain",e)}},_.getReferrerDomain=function(e){var t=sd.para.referrer_domain;switch(typeof t){case"function":var r=t();return r?r.indexOf(".")!==-1?r:"referrer\u89e3\u6790\u5931\u8d25":_.url("domain",e);case"string":return""===t||""===_.trim(t)?"referrer\u89e3\u6790\u5931\u8d25":t.indexOf(".")!==-1?t:"referrer\u89e3\u6790\u5931\u8d25";default:if(""===e)return"";if(""===_.url("domain",location.href))return"referrer\u89e3\u6790\u5931\u8d25";var n=_.url("domain",location.href);return _.url("hostname",e).slice(-1*n.length)}},_.ry=function(e){return new _.ry.init(e)},_.ry.init=function(e){this.ele=e},_.ry.init.prototype={addClass:function(e){var t=" "+this.ele.className+" ";return t.indexOf(" "+e+" ")===-1&&(this.ele.className=this.ele.className+(""===this.ele.className?"":" ")+e),this},removeClass:function(e){var t=" "+this.ele.className+" ";return t.indexOf(" "+e+" ")!==-1&&(this.ele.className=t.replace(" "+e+" "," ").slice(1,-1)),this},hasClass:function(e){var t=" "+this.ele.className+" ";return t.indexOf(" "+e+" ")!==-1},attr:function(e,t){return"string"==typeof e&&_.isUndefined(t)?this.ele.getAttribute(e):("string"==typeof e&&(t=String(t),this.ele.setAttribute(e,t)),this)},offset:function(){var e=this.ele.getBoundingClientRect();if(e.width||e.height){var t=this.ele.ownerDocument,r=t.documentElement;return{top:e.top+window.pageYOffset-r.clientTop,left:e.left+window.pageXOffset-r.clientLeft}}return{top:0,left:0}},getSize:function(){if(!window.getComputedStyle)return{width:this.ele.offsetWidth,height:this.ele.offsetHeight};try{var e=this.ele.getBoundingClientRect();return{width:e.width,height:e.height}}catch(t){return{width:0,height:0}}},getStyle:function(e){return this.ele.currentStyle?this.ele.currentStyle[e]:this.ele.ownerDocument.defaultView.getComputedStyle(this.ele,null).getPropertyValue(e)},wrap:function(e){var t=document.createElement(e);return this.ele.parentNode.insertBefore(t,this.ele),t.appendChild(this.ele),_.ry(t)},getCssStyle:function(e){var t=this.ele.style.getPropertyValue(e);if(t)return t;var r=null;if("function"==typeof window.getMatchedCSSRules&&(r=getMatchedCSSRules(this.ele)),!r||!_.isArray(r))return null;for(var n=r.length-1;n>=0;n--){var s=r[n];if(t=s.style.getPropertyValue(e))return t}},sibling:function(e,t){for(;(e=e[t])&&1!==e.nodeType;);return e},next:function(){return this.sibling(this.ele,"nextSibling")},prev:function(e){return this.sibling(this.ele,"previousSibling")},siblings:function(e){return this.siblings((this.ele.parentNode||{}).firstChild,this.ele)},children:function(e){return this.siblings(this.ele.firstChild)},parent:function(){var e=this.ele.parentNode;return e=e&&11!==e.nodeType?e:null,_.ry(e)}},_.jssdkDebug=function(e,t){if(sd.para.is_debug===!0)if(_.isString(e))sd.registerPage({_jssdk_debug_info:e});else{var r=store.getCookieName(),n=document.cookie.match(new RegExp(r+"[^;]+"));r=n&&n[0]?n[0]:"",e._jssdk_debug_info="("+r+")"+navigator.userAgent}},_.strToUnicode=function(e){if("string"!=typeof e)return logger.info("\u8f6c\u6362unicode\u9519\u8bef",e),e;for(var t="",r=0;r<e.length;r++)t+="\\"+e.charCodeAt(r).toString(16);return t},_.getReferrer=function(e){var e=e||document.referrer;return"string"!=typeof e?"\u53d6\u503c\u5f02\u5e38_referrer\u5f02\u5e38_"+String(e):(0===e.indexOf("https://www.baidu.com/")&&(e=e.split("?")[0]),e=e.slice(0,sd.para.max_referrer_string_length),"string"==typeof e?e:"")},_.getKeywordFromReferrer=function(){var e=sd.para.source_type.keyword;if(document&&"string"==typeof document.referrer){if(0===document.referrer.indexOf("http")){var t=_.getReferrerDomain(document.referrer),r=_.url("?",document.referrer),n=null;for(var s in e)if(t.split&&t.split(".")[0]===s&&"object"==typeof r)if(n=e[s],_.isArray(n)){for(var s=0;s<n.length;s++)if(r[n[s]])return r[n[s]]}else if(r[n])return r[n];return"\u672a\u53d6\u5230\u503c"}return""===document.referrer?"\u672a\u53d6\u5230\u503c_\u76f4\u63a5\u6253\u5f00":"\u672a\u53d6\u5230\u503c_\u975ehttp\u7684url"}return"\u53d6\u503c\u5f02\u5e38_referrer\u5f02\u5e38_"+String(document.referrer)},_.getSourceFromReferrer=function(){function e(e,t){for(var r=0;r<e.length;r++)if(t.split("?")[0].indexOf(e[r])!==-1)return!0}var t="("+sd.para.source_type.utm.join("|")+")\\=[^&]+",r=sd.para.source_type.search,n=sd.para.source_type.social,s=document.referrer||"",a=_.info.pageProp.url;if(a){var i=a.match(new RegExp(t));return i&&i[0]?"\u4ed8\u8d39\u5e7f\u544a\u6d41\u91cf":e(r,s)?"\u81ea\u7136\u641c\u7d22\u6d41\u91cf":e(n,s)?"\u793e\u4ea4\u7f51\u7ad9\u6d41\u91cf":""===s?"\u76f4\u63a5\u6d41\u91cf":"\u5f15\u8350\u6d41\u91cf"}return"\u83b7\u53d6url\u5f02\u5e38"},_.info={initPage:function(){var e=_.getReferrer(),t=e?_.url("hostname",e):e,r=_.getReferrerDomain(e),n=location.href,s=n?_.url("hostname",n):n,a=_.getCurrentDomain(n);e&&!r&&_.jssdkDebug("referrer_domain\u5f02\u5e38_"+e+"_"+r),a||_.jssdkDebug("url_domain\u5f02\u5e38_"+n+"_"+a),this.pageProp={referrer:e,referrer_host:t,referrer_domain:r,url:n,url_host:s,url_domain:a}},pageProp:{},campaignParams:function(){var e=source_channel_standard.split(" "),t="",r={};return _.isArray(sd.para.source_channel)&&sd.para.source_channel.length>0&&(e=e.concat(sd.para.source_channel),e=_.unique(e)),_.each(e,function(e){t=_.getQueryParam(location.href,e),t.length&&(r[e]=t)}),r},campaignParamsStandard:function(e,t){e=e||"",t=t||"";var r=_.info.campaignParams(),n={},s={};for(var a in r)(" "+source_channel_standard+" ").indexOf(" "+a+" ")!==-1?n[e+a]=r[a]:s[t+a]=r[a];return{$utms:n,otherUtms:s}},properties:function(){return{$screen_height:Number(screen.height)||0,$screen_width:Number(screen.width)||0,$lib:"js",$lib_version:String(LIB_VERSION)}},currentProps:{},register:function(e){_.extend(_.info.currentProps,e)}},_.autoExeQueue=function(){var e={items:[],enqueue:function(e){this.items.push(e),this.start()},dequeue:function(){return this.items.shift()},getCurrentItem:function(){return this.items[0]},isRun:!1,start:function(){this.items.length>0&&!this.isRun&&(this.isRun=!0,this.getCurrentItem().start())},close:function(){this.dequeue(),this.isRun=!1,this.start()}};return e};var dataSend={};dataSend.getSendUrl=function(e,t){var r=_.base64Encode(t),n="crc="+_.hashCode(r);return e.indexOf("?")!==-1?e+"&data="+encodeURIComponent(r)+"&ext="+encodeURIComponent(n):e+"?data="+encodeURIComponent(r)+"&ext="+encodeURIComponent(n)},dataSend.getSendData=function(e){var t=_.base64Encode(e),r="crc="+_.hashCode(t);return"data="+encodeURIComponent(t)+"&ext="+encodeURIComponent(r)},dataSend.getInstance=function(e){var t=this.getSendType(e),r=new this[t](e),n=r.start;return r.start=function(){var e=this;n.apply(this,arguments),setTimeout(function(){e.isEnd(!0)},sd.para.callback_timeout)},r.end=function(){this.callback&&this.callback();var e=this;setTimeout(function(){e.lastClear&&e.lastClear()},sd.para.datasend_timeout-sd.para.callback_timeout)},r.isEnd=function(e){if(!this.received){this.received=!0,
-this.end();var t=this;e?sd.para.queue_timeout-sd.para.callback_timeout<=0?t.close():setTimeout(function(){t.close()},sd.para.queue_timeout-sd.para.callback_timeout):t.close()}},r},dataSend.getSendType=function(e){var t=["image","ajax","beacon"],r=t[0];return r=e.config&&_.indexOf(t,e.config.send_type)>-1?e.config.send_type:sd.para.send_type,"beacon"===r&&"function"!=typeof navigator.sendBeacon&&(r="image"),"ajax"===r&&_.isSupportCors()===!1&&(r="image"),r},dataSend.image=function(e){this.callback=e.callback,this.img=document.createElement("img"),this.img.width=1,this.img.height=1,this.data=e.data,this.server_url=dataSend.getSendUrl(e.server_url,e.data)},dataSend.image.prototype.start=function(){var e=this;sd.para.ignore_oom&&(this.img.onload=function(){this.onload=null,this.onerror=null,this.onabort=null,e.isEnd()},this.img.onerror=function(){this.onload=null,this.onerror=null,this.onabort=null,e.isEnd()},this.img.onabort=function(){this.onload=null,this.onerror=null,this.onabort=null,e.isEnd()}),this.img.src=this.server_url},dataSend.image.prototype.lastClear=function(){this.img.src=""},dataSend.ajax=function(e){this.callback=e.callback,this.server_url=e.server_url,this.data=dataSend.getSendData(e.data)},dataSend.ajax.prototype.start=function(){var e=this;_.ajax({url:this.server_url,type:"POST",data:this.data,credentials:!1,timeout:sd.para.datasend_timeout,cors:!0,success:function(){e.isEnd()},error:function(){e.isEnd()}})},dataSend.beacon=function(e){this.callback=e.callback,this.server_url=e.server_url,this.data=dataSend.getSendData(e.data)},dataSend.beacon.prototype.start=function(){var e=this;"object"==typeof navigator&&"function"==typeof navigator.sendBeacon&&navigator.sendBeacon(this.server_url,this.data),setTimeout(function(){e.isEnd()},40)},sd.debug={apph5:function(e){var t="app_h5\u6253\u901a\u5931\u8d25-",r={1:t+"use_app_track\u4e3afalse",2:t+"Android\u6216\u8005iOS\uff0c\u6ca1\u6709\u66b4\u9732\u76f8\u5e94\u65b9\u6cd5",3.1:t+"Android\u6821\u9a8cserver_url\u5931\u8d25",3.2:t+"iOS\u6821\u9a8cserver_url\u5931\u8d25"},n=e.output,s=e.step,a=e.data;"all"!==n&&"console"!==n||logger.info(r[s]),("all"===n||"code"===n)&&_.isObject(sd.para.is_debug)&&sd.para.is_debug.apph5&&(a.type&&"profile"===a.type.slice(0,7)||(a.properties._jssdk_debug_info="apph5-"+String(s)))}};var sendState={};sd.sendState=sendState,sendState.queue=_.autoExeQueue(),sendState.requestData=null,sendState.getSendCall=function(e,t,r){if(sd.is_heatmap_render_mode)return!1;e._track_id=Number(String(Math.random()).slice(2,5)+String(Math.random()).slice(2,4)+String((new Date).getTime()).slice(-4)),sd.para.use_client_time&&(e._flush_time=(new Date).getTime());var n=e;if(e=JSON.stringify(e),this.requestData={data:n,config:t,callback:r},sd.para.use_app_track===!0||"only"===sd.para.use_app_track)if("object"==typeof SensorsData_APP_JS_Bridge&&(SensorsData_APP_JS_Bridge.sensorsdata_verify||SensorsData_APP_JS_Bridge.sensorsdata_track))SensorsData_APP_JS_Bridge.sensorsdata_verify?SensorsData_APP_JS_Bridge.sensorsdata_verify(JSON.stringify(_.extend({server_url:sd.para.server_url},n)))?"function"==typeof r&&r():(sd.debug.apph5({data:n,step:"3.1",output:"all"}),this.prepareServerUrl()):(SensorsData_APP_JS_Bridge.sensorsdata_track(JSON.stringify(_.extend({server_url:sd.para.server_url},n))),"function"==typeof r&&r());else if(!/sensors-verify/.test(navigator.userAgent)&&!/sa-sdk-ios/.test(navigator.userAgent)||window.MSStream)sd.para.use_app_track===!0&&(sd.debug.apph5({data:n,step:"2",output:"all"}),this.prepareServerUrl());else{var s=null;if(/sensors-verify/.test(navigator.userAgent)){var a=navigator.userAgent.match(/sensors-verify\/([^\s]+)/);if(a&&a[0]&&"string"==typeof a[1]&&2===a[1].split("?").length){a=a[1].split("?");var i=null,o=null;try{i=_.url("hostname",sd.para.server_url),o=_.url("?project",sd.para.server_url)||"default"}catch(c){}i&&i===a[0]&&o&&o===a[1]?(s=document.createElement("iframe"),s.setAttribute("src","sensorsanalytics://trackEvent?event="+encodeURIComponent(JSON.stringify(_.extend({server_url:sd.para.server_url},n)))),document.documentElement.appendChild(s),s.parentNode.removeChild(s),s=null,"function"==typeof r&&r()):(sd.debug.apph5({data:n,step:"3.2",output:"all"}),this.prepareServerUrl())}}else s=document.createElement("iframe"),s.setAttribute("src","sensorsanalytics://trackEvent?event="+encodeURIComponent(JSON.stringify(_.extend({server_url:sd.para.server_url},n)))),document.documentElement.appendChild(s),s.parentNode.removeChild(s),s=null,"function"==typeof r&&r()}else"mui"===sd.para.use_app_track?_.isObject(window.plus)&&window.plus.SDAnalytics&&window.plus.SDAnalytics.trackH5Event&&window.plus.SDAnalytics.trackH5Event(e):(sd.debug.apph5({data:n,step:"1",output:"code"}),this.prepareServerUrl());logger.info(n)},sendState.prepareServerUrl=function(){if("object"==typeof this.requestData.config&&this.requestData.config.server_url)this.sendCall(this.requestData.config.server_url,this.requestData.callback);else if(_.isArray(sd.para.server_url))for(var e=0;e<sd.para.server_url.length;e++)this.sendCall(sd.para.server_url[e]);else this.sendCall(sd.para.server_url,this.requestData.callback)},sendState.sendCall=function(e,t){var r={server_url:e,data:JSON.stringify(this.requestData.data),callback:t,config:this.requestData.config};_.isObject(sd.para.jsapp)&&!sd.para.jsapp.isOnline&&"function"==typeof sd.para.jsapp.setData?(delete r.callback,r=JSON.stringify(r),sd.para.jsapp.setData(r)):this.pushSend(r)},sendState.pushSend=function(e){var t=dataSend.getInstance(e),r=this;t.close=function(){r.queue.close()},this.queue.enqueue(t)};var saNewUser={checkIsAddSign:function(e){"track"===e.type&&(_.cookie.getNewUser()?e.properties.$is_first_day=!0:e.properties.$is_first_day=!1)},is_first_visit_time:!1,checkIsFirstTime:function(e){"track"===e.type&&"$pageview"===e.event&&(this.is_first_visit_time?(e.properties.$is_first_time=!0,this.is_first_visit_time=!1):e.properties.$is_first_time=!1)},setDeviceId:function(e){var t=null,r=_.cookie.get("sensorsdata2015jssdkcross"),n={};null!=r&&_.isJSONString(r)&&(n=JSON.parse(r),n.$device_id&&(t=n.$device_id)),t=t||e,sd.para.cross_subdomain===!0?store.set("$device_id",t):(n.$device_id=t,_.cookie.set("sensorsdata2015jssdkcross",JSON.stringify(n),null,!0)),sd.para.is_track_device_id&&(_.info.currentProps.$device_id=t)},storeInitCheck:function(){if(is_first_visitor){var e=new Date,t={h:23-e.getHours(),m:59-e.getMinutes(),s:59-e.getSeconds()};_.cookie.set(_.cookie.getCookieName("new_user"),"1",3600*t.h+60*t.m+t.s+"s"),this.is_first_visit_time=!0}else _.cookie.getNewUser()||(this.checkIsAddSign=function(e){"track"===e.type&&(e.properties.$is_first_day=!1)}),this.checkIsFirstTime=function(e){"track"===e.type&&"$pageview"===e.event&&(e.properties.$is_first_time=!1)}},checkIsFirstLatest:function(){for(var e=_.info.pageProp.url_domain,t=_.info.pageProp.referrer_domain,r=["$utm_source","$utm_medium","$utm_campaign","$utm_content","$utm_term"],n=store.getProps(),s=0;s<r.length;s++)r[s]in n&&delete n[r[s]];store.setProps(n,!0);var a={};if(""===e&&(e="url\u89e3\u6790\u5931\u8d25"),_.each(sd.para.is_track_latest,function(r,n){if(r){if("utm"!==n&&"url\u89e3\u6790\u5931\u8d25"===e)a["$latest_"+n]="url\u7684domain\u89e3\u6790\u5931\u8d25";else if("utm"!==n&&"referrer\u89e3\u6790\u5931\u8d25"===t)a["$latest_"+n]="referrer\u7684domain\u89e3\u6790\u5931\u8d25";else if(e!==t)switch(n){case"traffic_source_type":a.$latest_traffic_source_type=_.getSourceFromReferrer();break;case"referrer":a.$latest_referrer=_.info.pageProp.referrer;break;case"referrer_host":a.$latest_referrer_host=_.info.pageProp.referrer_host;break;case"search_keyword":a.$latest_search_keyword=_.getKeywordFromReferrer();break;case"landing_page":a.$latest_landing_page=location.href}}else if("utm"===n&&sd.store._state.props)for(var s in sd.store._state.props)0===s.indexOf("$latest_utm")&&0===s.indexOf("_latest_")||delete sd.store._state.props[s];else sd.store._state.props&&"$latest_"+n in sd.store._state.props&&delete sd.store._state.props["$latest_"+n]}),sd.register(a),sd.para.is_track_latest.utm){var i=_.info.campaignParamsStandard("$latest_","_latest_"),o=i.$utms,c=i.otherUtms;_.isEmptyObject(o)||sd.register(o),_.isEmptyObject(c)||sd.register(c)}}},saEvent={};saEvent.checkOption={regChecks:{regName:/^((?!^distinct_id$|^original_id$|^time$|^properties$|^id$|^first_id$|^second_id$|^users$|^events$|^event$|^user_id$|^date$|^datetime$)[a-zA-Z_$][a-zA-Z\d_$]{0,99})$/i},checkPropertiesKey:function(e){var t=this,r=!0;return _.each(e,function(e,n){t.regChecks.regName.test(n)||(r=!1)}),r},check:function(e,t){return"string"==typeof this[e]?this[this[e]](t):this[e](t)},str:function(e){return!!_.isString(e)||(logger.info("\u8bf7\u68c0\u67e5\u53c2\u6570\u683c\u5f0f,\u5fc5\u987b\u662f\u5b57\u7b26\u4e32"),!0)},properties:function(e){return _.strip_sa_properties(e),!e||(_.isObject(e)?!!this.checkPropertiesKey(e)||(logger.info("properties \u91cc\u7684\u81ea\u5b9a\u4e49\u5c5e\u6027\u540d\u9700\u8981\u662f\u5408\u6cd5\u7684\u53d8\u91cf\u540d\uff0c\u4e0d\u80fd\u4ee5\u6570\u5b57\u5f00\u5934\uff0c\u4e14\u53ea\u5305\u542b\uff1a\u5927\u5c0f\u5199\u5b57\u6bcd、\u6570\u5b57、\u4e0b\u5212\u7ebf\uff0c\u81ea\u5b9a\u4e49\u5c5e\u6027\u4e0d\u80fd\u4ee5 $ \u5f00\u5934"),!0):(logger.info("properties\u53ef\u4ee5\u6ca1\u6709\uff0c\u4f46\u6709\u7684\u8bdd\u5fc5\u987b\u662f\u5bf9\u8c61"),!0))},propertiesMust:function(e){return _.strip_sa_properties(e),void 0===e||!_.isObject(e)||_.isEmptyObject(e)?(logger.info("properties\u5fc5\u987b\u662f\u5bf9\u8c61\u4e14\u6709\u503c"),!0):!!this.checkPropertiesKey(e)||(logger.info("properties \u91cc\u7684\u81ea\u5b9a\u4e49\u5c5e\u6027\u540d\u9700\u8981\u662f\u5408\u6cd5\u7684\u53d8\u91cf\u540d\uff0c\u4e0d\u80fd\u4ee5\u6570\u5b57\u5f00\u5934\uff0c\u4e14\u53ea\u5305\u542b\uff1a\u5927\u5c0f\u5199\u5b57\u6bcd、\u6570\u5b57、\u4e0b\u5212\u7ebf\uff0c\u81ea\u5b9a\u4e49\u5c5e\u6027\u4e0d\u80fd\u4ee5 $ \u5f00\u5934"),!0)},event:function(e){return!(!_.isString(e)||!this.regChecks.regName.test(e))||(logger.info("\u8bf7\u68c0\u67e5\u53c2\u6570\u683c\u5f0f\uff0ceventName \u5fc5\u987b\u662f\u5b57\u7b26\u4e32\uff0c\u4e14\u9700\u662f\u5408\u6cd5\u7684\u53d8\u91cf\u540d\uff0c\u5373\u4e0d\u80fd\u4ee5\u6570\u5b57\u5f00\u5934\uff0c\u4e14\u53ea\u5305\u542b\uff1a\u5927\u5c0f\u5199\u5b57\u6bcd、\u6570\u5b57、\u4e0b\u5212\u7ebf\u548c $,\u5176\u4e2d\u4ee5 $ \u5f00\u5934\u7684\u8868\u660e\u662f\u7cfb\u7edf\u7684\u4fdd\u7559\u5b57\u6bb5\uff0c\u81ea\u5b9a\u4e49\u4e8b\u4ef6\u540d\u8bf7\u4e0d\u8981\u4ee5 $ \u5f00\u5934"),!0)},test_id:"str",group_id:"str",distinct_id:function(e){return!(!_.isString(e)||!/^.{1,255}$/.test(e))||(logger.info("distinct_id\u5fc5\u987b\u662f\u4e0d\u80fd\u4e3a\u7a7a\uff0c\u4e14\u5c0f\u4e8e255\u4f4d\u7684\u5b57\u7b26\u4e32"),!1)}},saEvent.check=function(e){var t=!0;for(var r in e)if(!this.checkOption.check(r,e[r]))return!1;return t},saEvent.send=function(e,t){var r={distinct_id:store.getDistinctId(),lib:{$lib:"js",$lib_method:"code",$lib_version:String(LIB_VERSION)},properties:{}};if(_.isObject(e)&&_.isObject(e.properties)&&!_.isEmptyObject(e.properties)&&e.properties.$lib_detail&&(r.lib.$lib_detail=e.properties.$lib_detail,delete e.properties.$lib_detail),"string"!=typeof store.getDistinctId()||""==typeof store.getDistinctId()){var n="";switch(store.getDistinctId()){case null:n="null";break;case void 0:n="undefined";break;case"":n="\u7a7a";break;default:n=String(store.getDistinctId())}error_msg.push("distinct_id-"+just_test_distinctid+"-"+just_test_distinctid_2+"-"+n+"-"+just_test_distinctid_detail+"-"+just_test_distinctid_detail2)}_.extend(r,e),error_msg.length>0&&(r.jssdk_error=error_msg.join("--")),_.isObject(e.properties)&&!_.isEmptyObject(e.properties)&&_.extend(r.properties,e.properties),e.type&&"profile"===e.type.slice(0,7)||(r.properties=_.extend({},_.info.properties(),store.getProps(),store.getSessionProps(),_.info.currentProps,r.properties),sd.para.is_track_latest.referrer&&!_.isString(r.properties.$latest_referrer)&&(r.properties.$latest_referrer="\u53d6\u503c\u5f02\u5e38",_.jssdkDebug(r.properties,store.getProps())),sd.para.is_track_latest.referrer_host&&!_.isString(r.properties.$latest_referrer_host)&&(r.properties.$latest_referrer_host="\u53d6\u503c\u5f02\u5e38"),sd.para.is_track_latest.search_keyword&&!_.isString(r.properties.$latest_search_keyword)&&(r.properties.$latest_search_keyword="\u53d6\u503c\u5f02\u5e38"),sd.para.is_track_latest.traffic_source_type&&!_.isString(r.properties.$latest_traffic_source_type)&&(r.properties.$latest_traffic_source_type="\u53d6\u503c\u5f02\u5e38"),sd.para.is_track_latest.landing_page&&!_.isString(r.properties.$latest_landing_page)&&(r.properties.$latest_landing_page="\u53d6\u503c\u5f02\u5e38")),r.properties.$time&&_.isDate(r.properties.$time)?(r.time=1*r.properties.$time,delete r.properties.$time):sd.para.use_client_time&&(r.time=1*new Date),_.searchObjDate(r),_.searchObjString(r),_.searchZZAppStyle(r);var s=_.searchConfigData(r.properties);saNewUser.checkIsAddSign(r),saNewUser.checkIsFirstTime(r),sd.para.debug_mode===!0?(logger.info(r),this.debugPath(JSON.stringify(r),t)):sd.sendState.getSendCall(r,s,t)},saEvent.debugPath=function(e,t){var r=e,n="";n=sd.para.debug_mode_url.indexOf("?")!==-1?sd.para.debug_mode_url+"&data="+encodeURIComponent(_.base64Encode(e)):sd.para.debug_mode_url+"?data="+encodeURIComponent(_.base64Encode(e)),_.ajax({url:n,type:"GET",cors:!0,header:{"Dry-Run":String(sd.para.debug_mode_upload)},success:function(e){_.isEmptyObject(e)===!0?alert("debug\u6570\u636e\u53d1\u9001\u6210\u529f"+r):alert("debug\u5931\u8d25 \u9519\u8bef\u539f\u56e0"+JSON.stringify(e))}})};var store=sd.store={_sessionState:{},_state:{},getProps:function(){return this._state.props||{}},getSessionProps:function(){return this._sessionState},getDistinctId:function(){return this._state.distinct_id},getFirstId:function(){return this._state.first_id},toState:function(e){var t=null;if(null!=e&&_.isJSONString(e))if(t=JSON.parse(e),this._state=_.extend(t),t.distinct_id){if("object"==typeof t.props){for(var r in t.props)"string"==typeof t.props[r]&&(t.props[r]=t.props[r].slice(0,sd.para.max_referrer_string_length));this.save()}}else this.set("distinct_id",_.UUID()),error_msg.push("toStateParseDistinctError");else this.set("distinct_id",_.UUID()),error_msg.push("toStateParseError")},initSessionState:function(){var e=_.cookie.get("sensorsdata2015session"),t=null;null!==e&&"object"==typeof(t=JSON.parse(e))&&(this._sessionState=t||{})},setOnce:function(e,t){e in this._state||this.set(e,t)},set:function(e,t){this._state=this._state||{},this._state[e]=t,this.save()},change:function(e,t){this._state[e]=t},setSessionProps:function(e){var t=this._sessionState;_.extend(t,e),this.sessionSave(t)},setSessionPropsOnce:function(e){var t=this._sessionState;_.coverExtend(t,e),this.sessionSave(t)},setProps:function(e,t){var r={};r=t?e:_.extend(this._state.props||{},e);for(var n in r)"string"==typeof r[n]&&(r[n]=r[n].slice(0,sd.para.max_referrer_string_length));this.set("props",r)},setPropsOnce:function(e){var t=this._state.props||{};_.coverExtend(t,e),this.set("props",t)},clearAllProps:function(e){if(this._sessionState={},_.isArray(e)&&e.length>0)for(var t=0;t<e.length;t++)_.isString(e[t])&&e[t].indexOf("latest_")===-1&&e[t]in this._state.props&&delete this._state.props[e[t]];else for(var t in this._state.props)1!==t.indexOf("latest_")&&delete this._state.props[t];this.sessionSave({}),this.save()},sessionSave:function(e){this._sessionState=e,_.cookie.set("sensorsdata2015session",JSON.stringify(this._sessionState),0)},save:function(){_.cookie.set(this.getCookieName(),JSON.stringify(this._state),73e3,sd.para.cross_subdomain)},getCookieName:function(){var e="";return sd.para.cross_subdomain===!1?(e=_.url("sub",location.href),e="string"==typeof e&&""!==e?"sa_jssdk_2015_"+e:"sa_jssdk_2015_root"):e="sensorsdata2015jssdkcross",e},init:function(){navigator.cookieEnabled||(error_msg.push("cookieNotEnable"),_.localStorage.isSupport||error_msg.push("localStorageNotEnable")),this.initSessionState();var e=_.UUID(),t=_.cookie.get(this.getCookieName());null===t?(is_first_visitor=!0,just_test_distinctid=1,this.set("distinct_id",e)):(just_test_distinctid=2,just_test_distinctid_detail=JSON.stringify(t),just_test_distinctid_detail2=JSON.stringify(document.cookie.match(/2015[^;]+/g)),_.isJSONString(t)&&JSON.parse(t).distinct_id||(is_first_visitor=!0),this.toState(t)),saNewUser.setDeviceId(e),saNewUser.storeInitCheck(),saNewUser.checkIsFirstLatest()}},commonWays={setOnlineState:function(e){if(e===!0&&_.isObject(sd.para.jsapp)&&"function"==typeof sd.para.jsapp.getData){sd.para.jsapp.isOnline=!0;var t=sd.para.jsapp.getData();_.isArray(t)&&t.length>0&&_.each(t,function(e){_.isJSONString(e)&&sd.sendState.pushSend(JSON.parse(e))})}else sd.para.jsapp.isOnline=!1},autoTrackIsUsed:!1,isReady:function(e){e()},getUtm:function(){return _.info.campaignParams()},getStayTime:function(){return(new Date-sd._t)/1e3},setProfileLocal:function(e){if(!_.localStorage.isSupport())return sd.setProfile(e),!1;if(!_.isObject(e)||_.isEmptyObject(e))return!1;var t=_.localStorage.parse("sensorsdata_2015_jssdk_profile"),r=!1;if(_.isObject(t)&&!_.isEmptyObject(t)){for(var n in e)!(n in t&&t[n]!==e[n])&&n in t||(t[n]=e[n],r=!0);r&&(_.localStorage.set("sensorsdata_2015_jssdk_profile",JSON.stringify(t)),sd.setProfile(e))}else _.localStorage.set("sensorsdata_2015_jssdk_profile",JSON.stringify(e)),sd.setProfile(e)},setInitReferrer:function(){var e=_.getReferrer();sd.setOnceProfile({_init_referrer:e,_init_referrer_host:_.info.pageProp.referrer_host})},setSessionReferrer:function(){var e=_.getReferrer();store.setSessionPropsOnce({_session_referrer:e,_session_referrer_host:_.info.pageProp.referrer_host})},setDefaultAttr:function(){_.info.register({_current_url:location.href,_referrer:_.getReferrer(),_referring_host:_.info.pageProp.referrer_host})},trackHeatmap:function(){this.trackHeatMap.apply(arguments)},trackHeatMap:function(e,t,r){if("object"==typeof e&&e.tagName){var n=e.tagName.toLowerCase(),s=e.parentNode.tagName.toLowerCase();"button"!==n&&"a"!==n&&"a"!==s&&"button"!==s&&"input"!==n&&"textarea"!==n&&heatmap.start(null,e,n,t,r)}},trackAllHeatMap:function(e,t,r){if("object"==typeof e&&e.tagName){var n=e.tagName.toLowerCase();heatmap.start(null,e,n,t,r)}},autoTrackSinglePage:function(e,t){function r(){var e=_.info.campaignParams(),t={};for(var r in e)(" "+source_channel_standard+" ").indexOf(" "+r+" ")!==-1?t["$"+r]=e[r]:t[r]=e[r];return t}function n(e,t){sd.track("$pageview",_.extend({$referrer:s,$referrer_host:s?_.url("hostname",s):s,$url:location.href,$url_path:location.pathname,$title:document.title},e,r()),t),s=location.href}if(this.autoTrackIsUsed)var s=_.info.pageProp.url;else var s=_.info.pageProp.referrer;e=_.isObject(e)?e:{},e=_.isObject(e)?e:{},is_first_visitor&&!e.not_set_profile&&(sd.setOnceProfile(_.extend({$first_visit_time:new Date,$first_referrer:_.getReferrer(),$first_browser_language:navigator.language||"\u53d6\u503c\u5f02\u5e38",$first_browser_charset:"string"==typeof document.charset?document.charset.toUpperCase():"\u53d6\u503c\u5f02\u5e38",$first_referrer_host:_.info.pageProp.referrer_host,$first_traffic_source_type:_.getSourceFromReferrer(),$first_search_keyword:_.getKeywordFromReferrer()},r())),is_first_visitor=!1),e.not_set_profile&&delete e.not_set_profile,is_first_visitor&&!e.not_set_profile&&(sd.setOnceProfile(_.extend({$first_visit_time:new Date,$first_referrer:_.getReferrer(),$first_browser_language:navigator.language||"\u53d6\u503c\u5f02\u5e38",$first_browser_charset:"string"==typeof document.charset?document.charset.toUpperCase():"\u53d6\u503c\u5f02\u5e38",$first_referrer_host:_.info.pageProp.referrer_host,$first_traffic_source_type:_.getSourceFromReferrer(),$first_search_keyword:_.getKeywordFromReferrer()},r())),is_first_visitor=!1),e.not_set_profile&&delete e.not_set_profile,n(e,t),this.autoTrackSinglePage=n},autoTrackWithoutProfile:function(e,t){e=_.isObject(e)?e:{},this.autoTrack(_.extend(e,{not_set_profile:!0}),t)},autoTrack:function(e,t){e=_.isObject(e)?e:{};var r=_.info.campaignParams(),n={};for(var s in r)(" "+source_channel_standard+" ").indexOf(" "+s+" ")!==-1?n["$"+s]=r[s]:n[s]=r[s];is_first_visitor&&!e.not_set_profile&&(sd.setOnceProfile(_.extend({$first_visit_time:new Date,$first_referrer:_.getReferrer(),$first_browser_language:navigator.language||"\u53d6\u503c\u5f02\u5e38",$first_browser_charset:"string"==typeof document.charset?document.charset.toUpperCase():"\u53d6\u503c\u5f02\u5e38",$first_referrer_host:_.info.pageProp.referrer_host,$first_traffic_source_type:_.getSourceFromReferrer(),$first_search_keyword:_.getKeywordFromReferrer()},n)),is_first_visitor=!1),e.not_set_profile&&delete e.not_set_profile;var a=location.href;sd.para.is_single_page&&_.addHashEvent(function(){var r=_.getReferrer(a);sd.track("$pageview",_.extend({$referrer:r,$referrer_host:_.url("hostname",r)||"",$url:location.href,$url_path:location.pathname,$title:document.title},n,e),t),a=location.href}),sd.track("$pageview",_.extend({$referrer:_.getReferrer(),$referrer_host:_.info.pageProp.referrer_host,$url:location.href,$url_path:location.pathname,$title:document.title},n,e),t),this.autoTrackIsUsed=!0},getAnonymousID:function(){return _.isEmptyObject(sd.store._state)?"\u8bf7\u5148\u521d\u59cb\u5316SDK":sd.store._state.first_id?sd.store._state.first_id:sd.store._state.distinct_id}};sd.quick=function(){var e=slice.call(arguments),t=e[0],r=e.slice(1);return"string"==typeof t&&commonWays[t]?commonWays[t].apply(commonWays,r):void("function"==typeof t?t.apply(sd,r):logger.info("quick\u65b9\u6cd5\u4e2d\u6ca1\u6709\u8fd9\u4e2a\u529f\u80fd"+e[0]))},sd.track=function(e,t,r){saEvent.check({event:e,properties:t})&&saEvent.send({type:"track",event:e,properties:t},r)},_.trackLink=function(e,t,r){function n(e){function n(){a||(a=!0,location.href=s.href)}e.stopPropagation(),e.preventDefault();var a=!1;setTimeout(n,1e3),sd.track(t,r,n)}e=e||{};var s=null;return e.ele&&(s=e.ele),e.event&&(s=e.target?e.target:e.event.target),r=r||{},!(!s||"object"!=typeof s)&&(!s.href||/^javascript/.test(s.href)||s.target||s.download||s.onclick?(sd.track(t,r),!1):(e.event&&n(e.event),void(e.ele&&_.addEvent(e.ele,"click",function(e){n(e)}))))},sd.trackLink=function(e,t,r){"object"==typeof e&&e.tagName?_.trackLink({ele:e},t,r):"object"==typeof e&&e.target&&e.event&&_.trackLink(e,t,r)},sd.trackLinks=function(e,t,r){return r=r||{},!(!e||"object"!=typeof e)&&(!(!e.href||/^javascript/.test(e.href)||e.target)&&void _.addEvent(e,"click",function(n){function s(){a||(a=!0,location.href=e.href)}n.preventDefault();var a=!1;setTimeout(s,1e3),sd.track(t,r,s)}))},sd.setProfile=function(e,t){saEvent.check({propertiesMust:e})&&saEvent.send({type:"profile_set",properties:e},t)},sd.setOnceProfile=function(e,t){saEvent.check({propertiesMust:e})&&saEvent.send({type:"profile_set_once",properties:e},t)},sd.appendProfile=function(e,t){saEvent.check({propertiesMust:e})&&(_.each(e,function(t,r){_.isString(t)?e[r]=[t]:_.isArray(t)||(delete e[r],logger.info("appendProfile\u5c5e\u6027\u7684\u503c\u5fc5\u987b\u662f\u5b57\u7b26\u4e32\u6216\u8005\u6570\u7ec4"))}),_.isEmptyObject(e)||saEvent.send({type:"profile_append",properties:e},t))},sd.incrementProfile=function(e,t){function r(e){for(var t in e)if(!/-*\d+/.test(String(e[t])))return!1;return!0}var n=e;_.isString(e)&&(e={},e[n]=1),saEvent.check({propertiesMust:e})&&(r(e)?saEvent.send({type:"profile_increment",properties:e},t):logger.info("profile_increment\u7684\u503c\u53ea\u80fd\u662f\u6570\u5b57"))},sd.deleteProfile=function(e){saEvent.send({type:"profile_delete"},e),store.set("distinct_id",_.UUID())},sd.unsetProfile=function(e,t){var r=e,n={};_.isString(e)&&(e=[],e.push(r)),_.isArray(e)?(_.each(e,function(e){_.isString(e)?n[e]=!0:logger.info("profile_unset\u7ed9\u7684\u6570\u7ec4\u91cc\u9762\u7684\u503c\u5fc5\u987b\u65f6string,\u5df2\u7ecf\u8fc7\u6ee4\u6389",e)}),saEvent.send({type:"profile_unset",properties:n},t)):logger.info("profile_unset\u7684\u53c2\u6570\u662f\u6570\u7ec4")},sd.identify=function(e,t){"number"==typeof e&&(e=String(e));var r=store.getFirstId();"undefined"==typeof e?r?store.set("first_id",_.UUID()):store.set("distinct_id",_.UUID()):saEvent.check({distinct_id:e})?t===!0?r?store.set("first_id",e):store.set("distinct_id",e):r?store.change("first_id",e):store.change("distinct_id",e):logger.info("identify\u7684\u53c2\u6570\u5fc5\u987b\u662f\u5b57\u7b26\u4e32")},sd.trackSignup=function(e,t,r,n){saEvent.check({distinct_id:e,event:t,properties:r})&&(saEvent.send({original_id:store.getFirstId()||store.getDistinctId(),distinct_id:e,type:"track_signup",event:t,properties:r},n),store.set("distinct_id",e))},sd.trackAbtest=function(e,t){},sd.registerPage=function(e){saEvent.check({properties:e})?_.extend(_.info.currentProps,e):logger.info("register\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.clearAllRegister=function(e){store.clearAllProps(e)},sd.register=function(e){saEvent.check({properties:e})?store.setProps(e):logger.info("register\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.registerOnce=function(e){saEvent.check({properties:e})?store.setPropsOnce(e):logger.info("registerOnce\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.registerSession=function(e){saEvent.check({properties:e})?store.setSessionProps(e):logger.info("registerSession\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.registerSessionOnce=function(e){saEvent.check({properties:e})?store.setSessionPropsOnce(e):logger.info("registerSessionOnce\u8f93\u5165\u7684\u53c2\u6570\u6709\u8bef")},sd.login=function(e){if("number"==typeof e&&(e=String(e)),saEvent.check({distinct_id:e})){var t=store.getFirstId(),r=store.getDistinctId();e!==r&&(t?sd.trackSignup(e,"$SignUp"):(store.set("first_id",r),sd.trackSignup(e,"$SignUp")))}else logger.info("login\u7684\u53c2\u6570\u5fc5\u987b\u662f\u5b57\u7b26\u4e32")},sd.logout=function(e){var t=store.getFirstId();t?(store.set("first_id",""),e===!0?store.set("distinct_id",_.UUID()):store.set("distinct_id",t)):logger.info("\u6ca1\u6709first_id\uff0clogout\u5931\u8d25")},sd.getPresetProperties=function(){function e(){var e=_.info.campaignParams(),t={};for(var r in e)(" "+source_channel_standard+" ").indexOf(" "+r+" ")!==-1?t["$"+r]=e[r]:t[r]=e[r];return t}var t={$referrer:"string"==typeof document.referrer?document.referrer.slice(0,100):"",$referrer_host:_.url("hostname",document.referrer)||"",$url:location.href,$url_path:location.pathname,$title:document.title||"",_distinct_id:store.getDistinctId()};return _.extend({},_.info.properties(),sd.store.getProps(),e(),t)};var heatmap={setNotice:function(e){sd.is_heatmap_render_mode=!0,sd.para.heatmap||(sd.errorMsg="\u60a8SDK\u6ca1\u6709\u914d\u7f6e\u5f00\u542f\u70b9\u51fb\u56fe\uff0c\u53ef\u80fd\u6ca1\u6709\u6570\u636e\uff01"),e&&e[0]&&e[1]&&"http:"===e[1].slice(0,5)&&"https"===location.protocol&&(sd.errorMsg="\u60a8\u7684\u5f53\u524d\u9875\u9762\u662fhttps\u7684\u5730\u5740\uff0c\u795e\u7b56\u5206\u6790\u73af\u5883\u4e5f\u5fc5\u987b\u662fhttps\uff01"),sd.para.heatmap_url||(sd.para.heatmap_url=location.protocol+"//static.sensorsdata.cn/sdk/"+LIB_VERSION+"/heatmap.min.js")},getDomIndex:function(e){if(!e.parentNode)return-1;for(var t=0,r=e.tagName,n=e.parentNode.children,s=0;s<n.length;s++)if(n[s].tagName===r){if(e===n[s])return t;t++}return-1},selector:function(e){var t=e.parentNode&&9==e.parentNode.nodeType?-1:this.getDomIndex(e);return e.getAttribute&&e.getAttribute("id")&&(!sd.para.heatmap||sd.para.heatmap&&"not_use_id"!==sd.para.heatmap.element_selector)?"#"+e.getAttribute("id"):e.tagName.toLowerCase()+(~t?":nth-of-type("+(t+1)+")":"")},getDomSelector:function(e,t){if(!e||!e.parentNode||!e.parentNode.children)return!1;t=t&&t.join?t:[];var r=e.nodeName.toLowerCase();return e&&"body"!==r&&1==e.nodeType?(t.unshift(this.selector(e)),e.getAttribute&&e.getAttribute("id")?t.join(" > "):this.getDomSelector(e.parentNode,t)):(t.unshift("body"),t.join(" > "))},na:function(){var e=document.documentElement.scrollLeft||window.pageXOffset;return parseInt(isNaN(e)?0:e,10)},i:function(){var e=0;try{e=o.documentElement&&o.documentElement.scrollTop||m.pageYOffset,e=isNaN(e)?0:e}catch(t){e=0}return parseInt(e,10)},getBrowserWidth:function(){var e=window.innerWidth||document.body.clientWidth;return isNaN(e)?0:parseInt(e,10)},getBrowserHeight:function(){var e=window.innerHeight||document.body.clientHeight;return isNaN(e)?0:parseInt(e,10)},getScrollWidth:function(){var e=parseInt(document.body.scrollWidth,10);return isNaN(e)?0:e},W:function(e){var t=parseInt(+e.clientX+ +this.na(),10),e=parseInt(+e.clientY+ +this.i(),10);return{x:isNaN(t)?0:t,y:isNaN(e)?0:e}},start:function(e,t,r,n,s){var a=_.isObject(n)?n:{},i=_.isFunction(s)?s:_.isFunction(n)?n:void 0;if(sd.para.heatmap&&sd.para.heatmap.collect_element&&!sd.para.heatmap.collect_element(t))return!1;var o=this.getDomSelector(t),c=_.getEleInfo({target:t});if(c.$element_selector=o?o:"",sd.para.heatmap&&sd.para.heatmap.custom_property){var u=sd.para.heatmap.custom_property(t);_.isObject(u)&&(c=_.extend(c,u))}c=_.extend(c,a),"a"===r&&sd.para.heatmap&&sd.para.heatmap.isTrackLink===!0?_.trackLink({event:e,target:t},"$WebClick",c):sd.track("$WebClick",c,i)},hasElement:function(e){var t=e._getPath();if(_.isArray(t)&&t.length>0)for(var r=0;r<t.length;r++)if(t[r]&&t[r].tagName&&"a"===t[r].tagName.toLowerCase())return t[r];return!1},initScrollmap:function(){if(!_.isObject(sd.para.heatmap)||"default"!==sd.para.heatmap.scroll_notice_map)return!1;if(sd.para.scrollmap&&_.isFunction(sd.para.scrollmap.collect_url)&&!sd.para.scrollmap.collect_url())return!1;var e=function(e){var t={};return t.timeout=e.timeout||1e3,t.func=e.func,t.hasInit=!1,t.inter=null,t.main=function(e,t){this.func(e,t),this.inter=null},t.go=function(e){var r={};this.inter||(r.$viewport_position=document.documentElement&&document.documentElement.scrollTop||window.pageYOffset||document.body.scrollTop||0,r.$viewport_position=Math.round(r.$viewport_position)||0,r.$viewport_height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight||0,r.$viewport_width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0,e?t.main(r,!0):this.inter=setTimeout(function(){t.main(r)},this.timeout))},t},t=e({timeout:1e3,func:function(e,t){var r=document.documentElement&&document.documentElement.scrollTop||window.pageYOffset||document.body.scrollTop||0,n=new Date,s=n-this.current_time;(s>sd.para.heatmap.scroll_delay_time&&r-e.$viewport_position!==0||t)&&(e.$url=location.href,e.$title=document.title,e.$url_path=location.pathname,e.event_duration=parseInt(s)/1e3,sd.track("$WebStay",e)),this.current_time=n}});t.current_time=new Date,_.addEvent(window,"scroll",function(){t.go()}),_.addEvent(window,"unload",function(){t.go("notime")})},initHeatmap:function(){var e=this;return!(!_.isObject(sd.para.heatmap)||"default"!==sd.para.heatmap.clickmap)&&(!(_.isFunction(sd.para.heatmap.collect_url)&&!sd.para.heatmap.collect_url())&&("all"===sd.para.heatmap.collect_elements?sd.para.heatmap.collect_elements="all":sd.para.heatmap.collect_elements="interact",void("all"===sd.para.heatmap.collect_elements?_.addEvent(document,"click",function(t){var r=t||window.event;if(!r)return!1;var n=r.target||r.srcElement;if("object"!=typeof n)return!1;if("string"!=typeof n.tagName)return!1;var s=n.tagName.toLowerCase();if("body"===s||"html"===s)return!1;if(!n||!n.parentNode||!n.parentNode.children)return!1;var a=n.parentNode.tagName.toLowerCase();"a"===a||"button"===a?e.start(r,n.parentNode,a):e.start(r,n,s)}):_.addEvent(document,"click",function(t){var r=t||window.event;if(!r)return!1;var n=r.target||r.srcElement;if("object"!=typeof n)return!1;if("string"!=typeof n.tagName)return!1;var s=n.tagName.toLowerCase();if("body"===s.toLowerCase()||"html"===s.toLowerCase())return!1;if(!n||!n.parentNode||!n.parentNode.children)return!1;var a=n.parentNode;if("a"===s||"button"===s||"input"===s||"textarea"===s)e.start(r,n,s);else if("button"===a.tagName.toLowerCase()||"a"===a.tagName.toLowerCase())e.start(r,a,n.parentNode.tagName.toLowerCase());else if("area"===s&&"map"===a.tagName.toLowerCase()&&_.ry(a).prev().tagName&&"img"===_.ry(a).prev().tagName.toLowerCase())e.start(r,_.ry(a).prev(),_.ry(a).prev().tagName.toLowerCase());else{var i=e.hasElement(t);i&&e.start(r,i,i.tagName.toLowerCase())}}))))},prepare:function(e){function t(e,t,r){sd.para.heatmap_url?_.loadScript({success:function(){setTimeout(function(){"undefined"!=typeof sa_jssdk_heatmap_render&&(sa_jssdk_heatmap_render(sd,e,t,r),"object"==typeof console&&"function"==typeof console.log&&(sd.heatmap_version&&sd.heatmap_version===sd.lib_version||console.log("heatmap.js\u4e0esensorsdata.js\u7248\u672c\u53f7\u4e0d\u4e00\u81f4\uff0c\u53ef\u80fd\u5b58\u5728\u98ce\u9669!")))},0)},error:function(){},type:"js",url:sd.para.heatmap_url}):logger.info("\u6ca1\u6709\u6307\u5b9aheatmap_url\u7684\u8def\u5f84")}var r=location.search.match(/sa-request-id=([^&#]+)/),n=location.search.match(/sa-request-type=([^&#]+)/),s=location.search.match(/sa-request-url=([^&#]+)/);r&&r[0]&&r[1]?(heatmap.setNotice(s),_.sessionStorage.isSupport()&&(s&&s[0]&&s[1]&&sessionStorage.setItem("sensors_heatmap_url",decodeURIComponent(s[1])),sessionStorage.setItem("sensors_heatmap_id",r[1]),n&&n[0]&&n[1]?"1"===n[1]||"2"===n[1]||"3"===n[1]?(n=n[1],sessionStorage.setItem("sensors_heatmap_type",n)):n=null:n=null!==sessionStorage.getItem("sensors_heatmap_type")?sessionStorage.getItem("sensors_heatmap_type"):null),t(r[1],n)):_.sessionStorage.isSupport()&&"string"==typeof sessionStorage.getItem("sensors_heatmap_id")?(heatmap.setNotice(),t(sessionStorage.getItem("sensors_heatmap_id"),sessionStorage.getItem("sensors_heatmap_type"),location.href)):(e(),_.isObject(sd.para.heatmap)&&(this.initHeatmap(),this.initScrollmap()))}};return sd.init=function(e){return!(sd.readyState&&sd.readyState>=2)&&void((!e&&has_declare||e&&!has_declare)&&(sd.readyState=2,sd.initPara(e),sd._init()))},sd._init=function(){heatmap.prepare(function(){app_js_bridge(),_.info.initPage(),sd.para.is_track_single_page&&_.addSinglePageEvent(function(e){e!==location.href&&sd.quick("autoTrack",{$url:location.href,$referrer:e})}),store.init(),sd._q&&_.isArray(sd._q)&&sd._q.length>0&&_.each(sd._q,function(e){sd[e[0]].apply(sd,slice.call(e[1]))})})},sd.init(),sd}catch(err){if("object"==typeof console&&console.log)try{console.log(err)}catch(e){}}});
 
 /***/ })
 /******/ ]);

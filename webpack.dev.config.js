@@ -44,7 +44,6 @@ module.exports = {
         include: path.join(__dirname, "./src"),
         options: {
           plugins: [
-            ["import", { style: true, libraryName: "antd-mobile" }],
             [
               "react-transform",
               {

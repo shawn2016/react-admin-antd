@@ -1,35 +1,22 @@
 import React, { PureComponent } from "react";
 import qs from "qs";
 import styles from "./index.scss";
+import Activity_temp from "../../../../a_component/Activity_temp";
 import activity_bg from "./img/activity_bg.png";
 import card_50000 from "./img/50000.png";
 import liyou from "./img/liyou.png";
 import { buriedPointEvent } from "../../../../util/analytins";
 import { activity } from "../../../../util/analytinsType";
-// import SmsAlert from '../components/SmsAlert';
-// import Alert_mpos from 'pages/mpos/mpos_no_realname_alert_page';
 import Cookie from "js-cookie";
-import "../../../../util/flexible_css.js";
-import "../../../../util/flexible.min.js";
-import fetch from "sx-fetch";
-import fastClick from "fastclick";
 import { store } from "../../../../util/store";
 import withStyles from "../../../../decorators/withStyles";
-var sa = require("sa-sdk-javascript/sensorsdata.min.js");
 import { Button } from "antd-mobile";
-if (!window.sa) {
-  window.sa = sa;
-}
-fastClick.prototype.focus = function(targetElement) {
-  targetElement.focus();
-};
-fastClick.attach(document.body);
+
 const API = {
   saveUserInfoEngaged: "/activeConfig/saveUserInfoEngaged/AC001" // 用户是否参与过免息
 };
 @withStyles(styles)
-@fetch.inject()
-class mianxi418_page extends PureComponent {
+class mianxi418_page extends Activity_temp {
   constructor(props) {
     super(props);
     this.state = {
