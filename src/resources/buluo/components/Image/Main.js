@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import ReactDOM, { render } from 'react-dom';
+// import styles from './style.scss';
 
-import styles from './style.scss';
+// import withStyles from '../../../../decorators/withStyles';
 
-import withStyles from '../../../../decorators/withStyles';
-
-@withStyles(styles)
+// @withStyles(styles)
 class Com extends Component {
   constructor (props) {
     super(props);
@@ -13,17 +13,10 @@ class Com extends Component {
     const imgs = this.props.imgs;
     return (
       <div className="buluo-Image">
-        {
-          imgs.map(item => {
-            return (
-              <a key={window.performance.now()} href={item.link}>
-                <img src={item.src}/>
-              </a>);
-          })
-        }
+       000000000000
       </div>
     );
   }
 }
 
-module.exports = Com;
+render(<Com/>, document.getElementById('app-root'));

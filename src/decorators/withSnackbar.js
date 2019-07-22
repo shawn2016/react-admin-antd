@@ -1,4 +1,4 @@
-import React, { PropTypes, Component } from 'react'; // eslint-disable-line no-unused-vars
+import React, {  Component } from 'react'; // eslint-disable-line no-unused-vars
 import emptyFunction from 'fbjs/lib/emptyFunction';
 import { Snackbar} from 'material-ui';
 import _ from 'lodash';

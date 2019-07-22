@@ -15891,10 +15891,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //初始化神策埋点 及 渠道信息
 var initAnalytics = exports.initAnalytics = function initAnalytics() {
-  window.version = 'v1.1';
+  window.version = "v1.1";
   sa.init({
-    server_url: 'http://10.1.1.81:8106/sa',
-    sdk_url: 'https://static.sensorsdata.cn/sdk/1.7.1.1/sensorsdata.min.js',
+    server_url: "http://10.1.1.81:8106/sa",
+    sdk_url: "https://static.sensorsdata.cn/sdk/1.7.1.1/sensorsdata.min.js",
     show_log: true, //是否打印上报日志
     is_single_page: true
   });
@@ -15924,7 +15924,7 @@ var initAnalytics = exports.initAnalytics = function initAnalytics() {
 // 定义固定参数
 function getStaticParams() {
   return {
-    product_line: '还到-余额代偿',
+    product_line: "还到-余额代偿",
     project_name: document.title,
     forward_module: document.referrer,
     page_category: document.title,
@@ -15938,7 +15938,7 @@ function getStaticParams() {
  * */
 var pageView = exports.pageView = function pageView() {
   var params = getStaticParams();
-  sa.quick('autoTrackSinglePage', params);
+  sa.quick("autoTrackSinglePage", params);
 };
 
 /*
@@ -16573,7 +16573,8 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 !function () {
   var a = "@charset \"utf-8\";html{color:#000;overflow-y:scroll;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}html *{outline:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body{font-family:sans-serif}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{margin:0;padding:0}input,select,textarea{font-size:100%}table{border-collapse:collapse;border-spacing:0}fieldset,img{border:0}abbr,acronym{border:0;font-variant:normal}del{text-decoration:line-through}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500}ol,ul{list-style:none}caption,th{text-align:left}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500}q:before,q:after{content:''}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-.5em}sub{bottom:-.25em}a:hover{text-decoration:underline}ins,a{text-decoration:none}",
-      b = document.createElement("style");if (document.getElementsByTagName("head")[0].appendChild(b), b.styleSheet) b.styleSheet.disabled || (b.styleSheet.cssText = a);else try {
+      b = document.createElement("style");
+  if (document.getElementsByTagName("head")[0].appendChild(b), b.styleSheet) b.styleSheet.disabled || (b.styleSheet.cssText = a);else try {
     b.innerHTML = a;
   } catch (c) {
     b.innerText = a;
@@ -16593,14 +16594,21 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 //这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750)
 !function (e, t) {
   function n() {
-    var n = l.getBoundingClientRect().width;t = t || 540, n > t && (n = t);var i = 100 * n / e;r.innerHTML = "html{font-size:" + i + "px;}";
-  }var i,
+    var n = l.getBoundingClientRect().width;
+    t = t || 540, n > t && (n = t);
+    var i = 100 * n / e;
+    r.innerHTML = "html{font-size:" + i + "px;}";
+  }
+  var i,
       d = document,
       o = window,
       l = d.documentElement,
-      r = document.createElement("style");if (l.firstElementChild) l.firstElementChild.appendChild(r);else {
-    var a = d.createElement("div");a.appendChild(r), d.write(a.innerHTML), a = null;
-  }n(), o.addEventListener("resize", function () {
+      r = document.createElement("style");
+  if (l.firstElementChild) l.firstElementChild.appendChild(r);else {
+    var a = d.createElement("div");
+    a.appendChild(r), d.write(a.innerHTML), a = null;
+  }
+  n(), o.addEventListener("resize", function () {
     clearTimeout(i), i = setTimeout(n, 300);
   }, !1), o.addEventListener("pageshow", function (e) {
     e.persisted && (clearTimeout(i), i = setTimeout(n, 300));

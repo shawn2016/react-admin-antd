@@ -1,24 +1,24 @@
-import React, { PropTypes, Component } from 'react'; // eslint-disable-line no-unused-vars
+import React, {  Component } from 'react'; // eslint-disable-line no-unused-vars
 import emptyFunction from 'fbjs/lib/emptyFunction';
 
 function withContext(ComposedComponent) {
   return class WithContext extends Component {
 
-    static propTypes = {
-      context: PropTypes.shape({
-        onInsertCss: PropTypes.func,
-        onSetTitle: PropTypes.func,
-        onSetMeta: PropTypes.func,
-        onPageNotFound: PropTypes.func,
-      }),
-    };
+    // static propTypes = {
+    //   context: PropTypes.shape({
+    //     onInsertCss: PropTypes.func,
+    //     onSetTitle: PropTypes.func,
+    //     onSetMeta: PropTypes.func,
+    //     onPageNotFound: PropTypes.func,
+    //   }),
+    // };
 
-    static childContextTypes = {
-      onInsertCss: PropTypes.func.isRequired,
-      onSetTitle: PropTypes.func.isRequired,
-      onSetMeta: PropTypes.func.isRequired,
-      onPageNotFound: PropTypes.func.isRequired,
-    };
+    // static childContextTypes = {
+    //   onInsertCss: PropTypes.func.isRequired,
+    //   onSetTitle: PropTypes.func.isRequired,
+    //   onSetMeta: PropTypes.func.isRequired,
+    //   onPageNotFound: PropTypes.func.isRequired,
+    // };
 
     getChildContext() {
       const context = this.props.context;
