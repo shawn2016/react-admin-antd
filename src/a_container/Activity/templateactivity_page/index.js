@@ -199,6 +199,11 @@ export default class RoleAdminContainer extends React.Component {
     ];
     return columns;
   };
+  developLocalComponent = component => {
+    window.location.href = `/#/activity/editcomponent_page?projectName=${
+      component.project
+    }&componentName=${component.name}`;
+  };
   syncLocalComponent = index => {
     this.props.actions
       .syncLocalComponent(this.state.localComponents[index])
@@ -248,6 +253,18 @@ export default class RoleAdminContainer extends React.Component {
                 </Tooltip>
               </span>
             </Popconfirm>
+          );
+          controls.push(
+            <span
+              onClick={() => {
+                this.developLocalComponent(record);
+              }}
+              className="control-btn blue"
+            >
+              <Tooltip placement="top" title="调试组件">
+                <Icon type="edit" />
+              </Tooltip>
+            </span>
           );
 
           const result = [];

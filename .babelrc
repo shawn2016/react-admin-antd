@@ -11,12 +11,12 @@
         [
           "import",
           [
-            // {
-            //   "style": true,
-            //   "libraryName": "antd-mobile",
-            //   "libraryDirectory": "lib"
-            // },
-            { "style": true, "libraryName": "antd", "libraryDirectory": "lib" }
+            {
+              "style": true,
+              "libraryName": "antd-mobile",
+              "libraryDirectory": "lib"
+            },
+            { "style": true, "libraryName": "antd" }
           ]
         ],
         "transform-decorators-legacy",

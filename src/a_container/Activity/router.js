@@ -25,5 +25,17 @@ export default [
     title: "活动预览",
     hideMenu: true,
     component: () => import("./previewactivity_page")
+  },
+  {
+    path: "/activity/editcomponent_page",
+    title: "调试组件",
+    hideMenu: true,
+    component: () => import("./editcomponent_page")
+  },
+  {
+    path: "/activity/previewcomponent_page",
+    title: "预览组件",
+    hideMenu: true,
+    component: () => import("./previewcomponent_page")
   }
 ];

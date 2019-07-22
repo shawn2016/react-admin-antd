@@ -340,8 +340,8 @@ export default class PageAdminContainer extends React.Component {
   };
   handleChangeDevice = value => {
     this.setState({
-      deviceWidth: value.split("*")[0],
-      deviceHeight: value.split("*")[1]
+      deviceWidth: Number(value.split("*")[0]),
+      deviceHeight: Number(value.split("*")[1])
     });
   };
   handleResize = (event, { element, size }) => {
@@ -542,7 +542,7 @@ export default class PageAdminContainer extends React.Component {
           </div>
         </Drawer>
         <Layout className={css.page}>
-          <Sider
+          {/* <Sider
             theme="light"
             width={120}
             className={css.sider}
@@ -550,16 +550,7 @@ export default class PageAdminContainer extends React.Component {
             collapsible
             collapsed={this.state.collapsed}
           >
-            {/* <div
-          className={
-            this.props.collapsed ? c(css.menuLogo, css.hide) : css.menuLogo
-          }
-        >
-          <Link to="/">
-            <img src={ImgLogo} />
-            <div>React-Admin</div>
-          </Link>
-        </div> */}
+       
             <Menu
               theme="light"
               mode="inline"
@@ -571,98 +562,11 @@ export default class PageAdminContainer extends React.Component {
             >
               {this.state.treeDom}
             </Menu>
-          </Sider>
+          </Sider> */}
           <Layout>
-            <Header className={classNames(css.header)}>
-              <Tooltip
-                placement="bottom"
-                title={this.state.collapsed ? "展开菜单" : "收起菜单"}
-              >
-                <Icon
-                  className={classNames(
-                    css.trigger,
-                    { [css.fold]: !this.state.collapsed },
-                    "flex-none"
-                  )}
-                  type={"menu-unfold"}
-                  onClick={this.onToggle}
-                />
-              </Tooltip>
-              <div
-                className={classNames(
-                  css.rightBox,
-                  "flex-auto flex-row flex-je flex-ac"
-                )}
-              >
-                <Tooltip
-                  placement="bottom"
-                  title={this.state.fullScreen ? "退出全屏" : "全屏"}
-                >
-                  <div className={css.full}>
-                    <Icon
-                      className={classNames(css.icon, "flex-none")}
-                      type={this.state.fullScreen ? "shrink" : "arrows-alt"}
-                      onClick={
-                        this.state.fullScreen
-                          ? this.exitFullScreen
-                          : this.requestFullScreen
-                      }
-                    />
-                  </div>
-                </Tooltip>
-                <Tooltip placement="bottom" title="预览并保存">
-                  <Button
-                    onClick={this.previewPage}
-                    className={classNames(css.editButton, "flex-none")}
-                    type="primary"
-                  >
-                    预览
-                  </Button>
-                </Tooltip>
-                <Button
-                  onClick={this.showDrawer}
-                  className={classNames(css.editButton, "flex-none")}
-                  type="primary"
-                >
-                  添加组件
-                </Button>
-                <Button
-                  onClick={this.updatePage}
-                  className={classNames(css.editButton, "flex-none")}
-                  type="primary"
-                >
-                  保存
-                </Button>
-                <Tooltip placement="bottom" title="退出编辑">
-                  <Button
-                    onClick={this.exit}
-                    className={classNames(css.editButton, "flex-none")}
-                    type="primary"
-                    icon="poweroff"
-                  />
-                </Tooltip>
-              </div>
-            </Header>
             <Content className={css.content}>
               <div className={classNames(css.home)}>
                 <div className={classNames(css.leftActivity)}>
-                  <Row>
-                    <Col span={8}>
-                      <Select
-                        defaultValue="320*568"
-                        style={{ width: 120 }}
-                        onChange={this.handleChangeDevice}
-                      >
-                        <Option value="320*480">iPhone4</Option>
-                        <Option value="320*568">iPhone5</Option>
-                        <Option value="375*627">iPhone6</Option>
-                        <Option value="414*736">iPhone6S</Option>
-                      </Select>
-                    </Col>
-                    <Col span={8} style={{ lineHeight: 2.4 }}>
-                      {deviceWidth}*{deviceHeight}
-                    </Col>
-                  </Row>
                   <Resizable
                     onResize={this.handleResize}
                     height={deviceHeight}
@@ -670,10 +574,15 @@ export default class PageAdminContainer extends React.Component {
                   >
                     <div
                       style={{
+                        textAlign: "center",
+                        color: "#fff",
                         height: deviceHeight,
                         width: deviceWidth
                       }}
                     >
+                      <div style={{ position: "relative", top: "25px" }}>
+                        {deviceWidth}*{deviceHeight}
+                      </div>
                       <iframe
                         id="pagePreviewIframe"
                         className={css.previewIframe}
@@ -690,6 +599,79 @@ export default class PageAdminContainer extends React.Component {
                   </Resizable>
                 </div>
                 <div className={classNames(css.rightActivity)}>
+                  <Header className={classNames(css.header)}>
+                    <Row>
+                      <Col span={8}>
+                        <Select
+                          defaultValue="320*568"
+                          style={{ width: 120 }}
+                          onChange={this.handleChangeDevice}
+                        >
+                          <Option value="320*480">iPhone4</Option>
+                          <Option value="320*568">iPhone5</Option>
+                          <Option value="375*627">iPhone6</Option>
+                          <Option value="414*736">iPhone6S</Option>
+                          <Option value="375*812">iPhoneX</Option>
+                        </Select>
+                      </Col>
+                    </Row>
+                    <div
+                      className={classNames(
+                        css.rightBox,
+                        "flex-auto flex-row flex-je flex-ac"
+                      )}
+                    >
+                      <Tooltip
+                        placement="bottom"
+                        title={this.state.fullScreen ? "退出全屏" : "全屏"}
+                      >
+                        <div className={css.full}>
+                          <Icon
+                            className={classNames(css.icon, "flex-none")}
+                            type={
+                              this.state.fullScreen ? "shrink" : "arrows-alt"
+                            }
+                            onClick={
+                              this.state.fullScreen
+                                ? this.exitFullScreen
+                                : this.requestFullScreen
+                            }
+                          />
+                        </div>
+                      </Tooltip>
+                      <Tooltip placement="bottom" title="预览并保存">
+                        <Button
+                          onClick={this.previewPage}
+                          className={classNames(css.editButton, "flex-none")}
+                          type="primary"
+                        >
+                          预览
+                        </Button>
+                      </Tooltip>
+                      <Button
+                        onClick={this.showDrawer}
+                        className={classNames(css.editButton, "flex-none")}
+                        type="primary"
+                      >
+                        添加组件
+                      </Button>
+                      <Button
+                        onClick={this.updatePage}
+                        className={classNames(css.editButton, "flex-none")}
+                        type="primary"
+                      >
+                        保存
+                      </Button>
+                      <Tooltip placement="bottom" title="退出编辑">
+                        <Button
+                          onClick={this.exit}
+                          className={classNames(css.editButton, "flex-none")}
+                          type="primary"
+                          icon="poweroff"
+                        />
+                      </Tooltip>
+                    </div>
+                  </Header>
                   <Tabs tabBarGutter={3} onChange={this.callback}>
                     <TabPane tab="基础设置" key="1">
                       <div className={classNames(css.TabPaneItem)}>

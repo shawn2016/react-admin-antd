@@ -215,6 +215,28 @@ const menus = [
     desc: "系统管理/菜单管理",
     sorts: 3,
     conditions: 1
+  },
+  {
+    id: 13,
+    title: "调试组件",
+    icon: "edit",
+    hideMenu: true,
+    url: "/activity/editcomponent_page",
+    parent: null,
+    desc: "活动管理/调试组件",
+    sorts: 3,
+    conditions: 1
+  },
+  {
+    id: 14,
+    title: "预览组件",
+    icon: "edit",
+    hideMenu: true,
+    url: "/activity/previewcomponent_page",
+    parent: null,
+    desc: "活动管理/预览组件",
+    sorts: 3,
+    conditions: 1
   }
 ];
 
@@ -480,7 +502,9 @@ const roles = [
       { menuId: 11, powers: [] },
       { menuId: 8, powers: [] },
       { menuId: 10, powers: [] },
-      { menuId: 12, powers: [] }
+      { menuId: 12, powers: [] },
+      { menuId: 13, powers: [] },
+      { menuId: 14, powers: [] }
     ]
   },
   {

@@ -70,6 +70,7 @@ app.use("/api/components", require("./src/api/components"));
 app.use("/api/sync", require("./src/api/sync"));
 app.use("/api/pages", require("./src/api/pages"));
 app.use("/api/preview", require("./src/api/pages"));
+server.use('/api/localComponents', require('./src/api/localComponents'));
 app.use(
   proxy("/wap", {
     target: "https://lns-wap-test.vbillbank.com/wap", //跨域地址

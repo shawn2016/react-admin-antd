@@ -118,6 +118,26 @@ export const getComponents = (params = {}, options) => async dispatch => {
   }
 };
 
+
+/**
+ * 获取当前组件信息
+ * **/
+export const getComponent = (params = {}, options) => async dispatch => {
+    try {
+      const res = await Fetchapi.newFetch(
+       `api/localComponents/${params.project}/${params.component}`,
+        params,
+        {
+          method: "get"
+        }
+      );
+      return res.data;
+    } catch (err) {
+      message.error("网络错误，请重试");
+    }
+  };
+
+
 /**
  * 获取本地组件
  * **/
