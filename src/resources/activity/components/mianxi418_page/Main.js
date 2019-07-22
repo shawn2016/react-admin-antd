@@ -185,7 +185,7 @@ class mianxi418_page extends PureComponent {
             <img src={card_50000} />
           </div>
           <div className="btn_box">
-            <a onClick={this.goTo}>免费申请</a>
+            <a onClick={this.goTo}>免费申请11</a>
           </div>
           <div className="btn_bottom_text">每人1次参与机会，限前1000名</div>
           <div className="card_box">

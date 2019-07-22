@@ -170,6 +170,19 @@ export default class RoleAdminContainer extends React.Component {
         render: (text, record) => {
           const controls = [];
           const p = this.props.powers;
+         
+          controls.push(
+            <span
+              onClick={() => {
+                this.developLocalComponent(record);
+              }}
+              className="control-btn blue"
+            >
+              <Tooltip placement="top" title="调试组件">
+                <Icon type="edit" />
+              </Tooltip>
+            </span>
+          );
           controls.push(
             <Popconfirm
               key="1"

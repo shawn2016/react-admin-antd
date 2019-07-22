@@ -73,13 +73,20 @@ import css from "./index.scss";
 // 本页面所需action
 // ==================
 
-import { getPages, getComponent, putPages } from "../../../a_action/act-action";
+import {
+  getPages,
+  getComponent,
+  syncLocalComponent
+} from "../../../a_action/act-action";
 import withViewport from "../../../decorators/withViewport";
 @createForm()
 @connect(
   state => ({}),
   dispatch => ({
-    actions: bindActionCreators({ getPages, getComponent, putPages }, dispatch)
+    actions: bindActionCreators(
+      { getPages, getComponent, syncLocalComponent },
+      dispatch
+    )
   })
 )
 @withViewport
@@ -185,7 +192,27 @@ export default class PageAdminContainer extends React.Component {
     console.log(component);
     postComponentMessage(this.state.componentIndex, component);
   };
-
+  syncLocalComponent = index => {
+    let component = this.state.component;
+    delete component.fileContent;
+    this.props.actions
+      .syncLocalComponent(component)
+      .then(res => {
+        if (res.status === 200) {
+          message.success("同步成功");
+          this.setState({
+            visible: false
+          });
+          setTimeout(() => {
+            this.getComponents();
+          }, 2000);
+        }
+      })
+      .catch(() => {});
+  };
+  exit = () => {
+    this.props.history.goBack();
+  };
   render() {
     const { deviceHeight, deviceWidth, config } = this.state;
     return (
@@ -266,6 +293,15 @@ export default class PageAdminContainer extends React.Component {
                         />
                       </div>
                     </Tooltip>
+                    <Tooltip placement="bottom" title="同步到数据库">
+                      <Button
+                        onClick={this.syncLocalComponent}
+                        className={classNames(css.editButton, "flex-none")}
+                        type="primary"
+                      >
+                        同步到数据库
+                      </Button>
+                    </Tooltip>
                     <Button
                       onClick={this.refreshComponent}
                       className={classNames(css.editButton, "flex-none")}
@@ -273,6 +309,14 @@ export default class PageAdminContainer extends React.Component {
                     >
                       刷新页面
                     </Button>
+                    <Tooltip placement="bottom" title="退出编辑">
+                      <Button
+                        onClick={this.exit}
+                        className={classNames(css.editButton, "flex-none")}
+                        type="primary"
+                        icon="poweroff"
+                      />
+                    </Tooltip>
                   </div>
                 </Header>
                 <Tabs tabBarGutter={3} onChange={this.callback}>
