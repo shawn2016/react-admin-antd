@@ -165,6 +165,6 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin() // 在编译出现错误时，自动跳过输出阶段。这样可以确保编译出的资源中不会包含错误。
   ],
   resolve: {
-    extensions: [".js", ".jsx", ".less", ".css", ".scss"] //后缀名自动补全
+    extensions: [".js", ".jsx", ".less", ".css", ".scss"], //后缀名自动补全
   }
 };

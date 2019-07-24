@@ -2,7 +2,7 @@ import fetch from "sx-fetch";
 const fetchInit = () => {
   fetch.init({
     timeout: 10000, // 默认超时
-    baseURL: `/wap`, // baseurl
+    baseURL: `/`, // baseurl
     onShowErrorTip: (err, errorTip) => {
       console.log(err);
       setTimeout(() => {

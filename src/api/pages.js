@@ -16,6 +16,7 @@ router.get("/", async (req, res, next) => {
 });
 
 router.post("/", async (req, res, next) => {
+    console.log(req.body.project)
   try {
     const exists = await Page.checkExistsByProjectAndName(
       req.body.project,

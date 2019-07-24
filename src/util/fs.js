@@ -26,15 +26,16 @@ const access = filename => new Promise((resolve, reject) => {
   });
 });
 
+
 const readFile = filename => new Promise((resolve, reject) => {
-  fs.readFile(filename, 'utf8', (err, data) => {
-    if (err) {
-      reject(err);
-    } else {
-      resolve(data);
-    }
+    fs.readFile(filename, 'utf8', (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
   });
-});
 
 const writeFile = (filename, content) => new Promise((resolve, reject) => {
   fs.writeFile(filename, content, (err) => {

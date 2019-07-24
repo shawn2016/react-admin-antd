@@ -1,11 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/server";
 import { Router } from "express";
+import path from "path";
 import Page from "../models/page";
 import Html from "../PublishPage/html";
 import fs from "../util/fs";
 import PageData from "../../mock/pages.json";
 import compile from "../util/compile";
+import dataFifter from "../util/dataFifter";
+import zip from "zipfolder";
+import request from "request";
+
 const router = new Router();
 
 // const findOnePage = pageId =>
@@ -23,33 +28,51 @@ const findOnePage = pageId =>
 
 router.post("/", async (req, res, next) => {
   try {
+   
     const pageId = req.body.pageId;
     const page = await findOnePage(pageId);
+    const pageName = page.name;
+    const project = page.project;
     const props = {
       props: page.config.props
     };
-
-    // for (let i in page.components) {
-    //   let component = page.components[i];
-    //   if (component.project && component.name) {
-    //     let filePath = path.join(__dirname, '../publish', component.project, 'components', component.name, 'Main.js');
-    //     component.fileContent = await fs.readFile(filePath);
-    //   }
-    // }
-
-    // todo felix
-    // props.body = ReactDOM.renderToStaticMarkup(<Body page={page} serverRendering={true} />);
 
     const data = await compile.compileTemplate(page);
     props.script = data.fileContent.toString();
 
     const htmlString = ReactDOM.renderToStaticMarkup(<Html {...props} />);
     const destHtml = data.outputPath + "/index.html";
+    const folderPath = path.join(
+        __dirname,
+        "../../publish",
+        project,
+        "pages",
+        pageName
+      );
+      var options = {
+             url: '/wap/zip/upload',
+             headers:{
+                'Content-Type': 'multipart/form-data',
+                 device:"asdfasdfaadfasdf"
+             },//req.headers
+             form: {
+                 name:"fileName",
+                 filepath:folderPath
+             }  //req.body
+         };
+     
+         request.post(options, function(error, response, body) {
+             console.log('error:'+JSON.stringify(error))
+             console.info('response:' + JSON.stringify(response));
+         });
+
     await fs.writeFile(destHtml, htmlString);
-    res.status(200).send({
-      retcode: 0,
-      page
-    });
+    const access = await fs.access(folderPath);
+    if (access) {
+     await zip.zipFolder({ folderPath: folderPath })
+}
+res.status(200).send(dataFifter.success(page));
+
   } catch (err) {
     next(err);
   }

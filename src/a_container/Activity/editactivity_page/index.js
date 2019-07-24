@@ -35,6 +35,7 @@ import {
   List,
   Tag,
   Spin,
+  Upload,
   Table,
   message
 } from "antd";
@@ -60,6 +61,25 @@ const emptyComponent = {
     props: null
   }
 };
+const props = {
+    name: 'file',
+    data:{
+
+    },
+    accept:'file',
+    name:"fileName",
+    action: '/wap/zip/upload',
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
 // ==================
 // 所需的所有组件
 // ==================
@@ -73,14 +93,19 @@ import css from "./index.scss";
 import {
   getPages,
   getComponents,
-  putPages
+  putPages,
+  postGenerate,
+  downloadZip
 } from "../../../a_action/act-action";
 import withViewport from "../../../decorators/withViewport";
 @createForm()
 @connect(
   state => ({}),
   dispatch => ({
-    actions: bindActionCreators({ getPages, getComponents, putPages }, dispatch)
+    actions: bindActionCreators(
+      { getPages, getComponents, putPages, downloadZip, postGenerate },
+      dispatch
+    )
   })
 )
 @withViewport
@@ -404,7 +429,7 @@ export default class PageAdminContainer extends React.Component {
       });
   };
 
-  generatePage = async () => {
+  generatePage = () => {
     const page = this.state.page;
     const _id = page._id;
     const data = {
@@ -413,29 +438,19 @@ export default class PageAdminContainer extends React.Component {
     this.setState({
       pageGenerating: true
     });
-    try {
-      const res = await fetch(`/api/generate/`, {
-        method: "post",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-      });
-      this.setState({
-        pageGenerating: false
-      });
-      const json = await res.json();
-      if (json.retcode === 0) {
+    this.props.actions.postGenerate(data).then(res => {
+      if (res.msgCode === "PTM0000") {
+        this.setState({
+            pageGenerating: false
+          });
         message.success("生成成功");
-        // window.open(`/${page.project}/pages/${page.name}/`);
       } else {
-        message.error("生成失败");
+        this.setState({
+            pageGenerating: false
+          });
+        message.error(res.message);
       }
-    } catch (error) {
-      console.error(error);
-      message.error("生成失败");
-    }
+    });
   };
 
   downloadPage = () => {
@@ -447,6 +462,20 @@ export default class PageAdminContainer extends React.Component {
     this.generatePage();
     // const page = this.state.page;
     // window.open(`${page.project}/pages/${page.name}`);
+  };
+  downloadZip = () => {
+    const { _id } = this.state.page;
+    this.props.actions
+      .downloadZip({
+        _id
+      })
+      .then(res => {
+        if (res.status === 200) {
+          message.success("保存成功");
+        } else {
+          message.error(res.message);
+        }
+      });
   };
   /**
    * 退出全屏
@@ -646,6 +675,20 @@ export default class PageAdminContainer extends React.Component {
                           type="primary"
                         >
                           预览
+                        </Button>
+                      </Tooltip>
+                      <Upload {...props}>
+    <Button>
+      <Icon type="upload" /> Click to Upload
+    </Button>
+  </Upload>,
+                      <Tooltip placement="bottom" title="发布">
+                        <Button
+                          onClick={this.downloadZip}
+                          className={classNames(css.editButton, "flex-none")}
+                          type="primary"
+                        >
+                          发布
                         </Button>
                       </Tooltip>
                       <Button

@@ -137,6 +137,42 @@ export const getComponent = (params = {}, options) => async dispatch => {
     }
   };
 
+  /**
+ * 生成页面
+ * **/
+export const postGenerate = (params = {}, options) => async dispatch => {
+    try {
+      const res = await Fetchapi.newFetch(
+       `api/generate`,
+        params,
+        {
+          method: "post"
+        }
+      );
+      return res.data;
+    } catch (err) {
+      message.error("网络错误，请重试");
+    }
+  };
+
+    /**
+ * 生成zip文件
+ * **/
+export const downloadZip = (params = {}, options) => async dispatch => {
+    try {
+      const res = await Fetchapi.newFetch(
+       `api/download/${params._id}`,
+        params,
+        {
+          method: "get"
+        }
+      );
+      return res.data;
+    } catch (err) {
+      message.error("网络错误，请重试");
+    }
+  };
+
 
 /**
  * 获取本地组件

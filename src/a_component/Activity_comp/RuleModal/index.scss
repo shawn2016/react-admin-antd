@@ -1,0 +1,77 @@
+@import '../../../../assets//styles/scss/base/fn.scss';
+.rule_modal {
+	.mask {
+		position: fixed;
+		background-color: rgba(0, 0, 0, 0.5);
+		margin: 0;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 999;
+	}
+	.modalWrapper {
+		position: fixed;
+		width: 620px;
+		border-radius: 10px;
+		padding: 26px 30px 45px;
+		left: 50%;
+		top: 45%;
+		transform: translate(-50%, -50%);
+		z-index: 1000;
+		background-color: #fff;
+		box-sizing: border-box;
+
+		.modal_body {
+			overflow-y: scroll;
+			-webkit-overflow-scrolling: touch;
+			max-height: 800px;
+		}
+
+		.item {
+			margin-bottom: 18px;
+		}
+
+		h2 {
+			text-align: center;
+			font-size: 36px;
+			color: #333;
+			margin-bottom: 25px;
+		}
+
+		h3 {
+			font-size: 36px;
+			color: #121c32;
+		}
+
+		.desc {
+			font-size: 30px;
+			color: #868e9e;
+			padding-left: 20px;
+			font-weight: normal;
+		}
+
+		.bottom_desc {
+			font-size: 30px;
+			color: #868e9e;
+			font-weight: normal;
+			text-align: center;
+			margin-top: 45px;
+		}
+
+		li {
+			font-size: 30px;
+			color: #6c6c6c;
+		}
+
+		.closeBtn {
+			width: 68px;
+			height: 68px;
+			position: absolute;
+			bottom: -100px;
+			left: 50%;
+			transform: translate(-50%, 0%);
+			@include spriteIcon('../../../../assets/images/common/sprite_icon.png', 0, 0);
+		}
+	}
+}
