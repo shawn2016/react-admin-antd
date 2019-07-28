@@ -1,0 +1,13 @@
+:global {
+	.breathe {
+		animation-name: breathe;
+	}
+	.breathe1 {
+		animation-name: breathe1;
+	}
+	.fadeInRight {
+		animation-duration: 1s;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: 1;
+	}
+}

@@ -1,0 +1,64 @@
+@import 'fn';
+
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.6;
+  font-family: $weuiFontDefault;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+a img {
+  border: 0;
+}
+
+a {
+  text-decoration: none;
+  @include setTapColor();
+}
+input,
+textarea {
+  outline: none;
+  border: 0;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  content: '.';
+  clear: both;
+  height: 0;
+}
+em,
+i {
+  font-style: normal;
+}
+li,
+ul,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dd,
+dl {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+html {
+  touch-action: manipulation;
+}

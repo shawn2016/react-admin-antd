@@ -1,0 +1,30 @@
+.sxf_mask_transparent {
+	position: fixed;
+	z-index: 1499;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+}
+.sxf_toast {
+	position: fixed;
+	z-index: 1500;
+	width: 1.5rem;
+	padding: 10px;
+	top: 50%;
+	left: 50%;
+	background: #fff;
+	text-align: center;
+	border-radius: 15px;
+	color: #fff;
+	transform: translate(-50%, -50%);
+	img {
+		width: 70%;
+		display: block;
+		margin: 15px auto 15px;
+	}
+	.text {
+		color: #333;
+		font-size: 12px;
+	}
+}

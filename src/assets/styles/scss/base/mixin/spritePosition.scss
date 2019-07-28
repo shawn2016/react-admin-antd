@@ -1,0 +1,34 @@
+//$spriteWidth 雪碧图的宽度px
+//$spriteHeight 雪碧图的高度px
+//$iconWidth 需要显示icon的宽度px
+//$iconHeight 需要显示icon的高度px
+//$iconX icon的原始x坐标
+//$iconY icon的原始y坐标
+@mixin bgPosition($spriteWidth, $spriteHeight, $iconWidth, $iconHeight, $iconX, $iconY){
+  background-position: (($iconX / ($spriteWidth - $iconWidth)) * 100% ($iconY / ($spriteHeight - $iconHeight)) * 100%);
+}
+
+//同一张sprite图并且每个icon的大小相同
+@mixin spritePosition($iconX, $iconY){
+  $spriteWidth : 81;
+  $spriteHeight : 2800;
+  $iconWidth : 80;
+  $iconHeight : 80;
+  @include bgPosition($spriteWidth, $spriteHeight, $iconWidth, $iconHeight, $iconX, $iconY);
+}
+
+//通用的雪碧图icon
+@mixin spriteIcon($url, $posX, $posY){
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 375px 667px;
+  background-position: $posX $posY;
+}
+
+//菜单项、底部icon雪碧图（换肤）
+@mixin spriteSkinIcon($url, $posX, $posY){
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 375px 667px;
+  background-position: $posX $posY;
+}

@@ -237,6 +237,27 @@ const menus = [
     desc: "活动管理/预览组件",
     sorts: 3,
     conditions: 1
+  },
+  {
+    id: 15,
+    title: "开发组件",
+    icon: "edit",
+    url: "/activity/devactivity_page",
+    parent: null,
+    desc: "活动管理/开发组件",
+    sorts: 3,
+    conditions: 1
+  },
+  {
+    id: 16,
+    title: "编写组件",
+    icon: "edit",
+    hideMenu: true,
+    url: "/activity/devcomponent_page",
+    parent: null,
+    desc: "活动管理/编写组件",
+    sorts: 3,
+    conditions: 1
   }
 ];
 
@@ -504,7 +525,9 @@ const roles = [
       { menuId: 10, powers: [] },
       { menuId: 12, powers: [] },
       { menuId: 13, powers: [] },
-      { menuId: 14, powers: [] }
+      { menuId: 14, powers: [] },
+      { menuId: 15, powers: [] },
+      { menuId: 16, powers: [] }
     ]
   },
   {

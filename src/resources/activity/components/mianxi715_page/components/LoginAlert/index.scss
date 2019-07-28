@@ -1,0 +1,68 @@
+.logo_box {
+  margin: 0.35rem 0.1rem 0.4rem;
+  .logo {
+    width: 1rem;
+    height: 1rem;
+  }
+  .text {
+    letter-spacing: 0.1rem;
+    color: #333;
+  }
+  .close_icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0.1rem;
+  }
+}
+.get_sms_box {
+  position: relative;
+  color: #4da6ff;
+  cursor: pointer;
+  input {
+    padding-right: 1.8rem !important;
+  }
+  .sms_text {
+    min-width: 1.8rem;
+    position: absolute;
+    text-align: center;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    .sms_text_dis {
+      color: #999;
+      opacity: 0.8;
+    }
+  }
+}
+
+// 图片验证码
+.imgCodeBox {
+  position: relative;
+}
+.imgCode {
+  position: absolute;
+  top: 50%;
+  right: 0.3rem;
+  height: 0.5rem;
+  margin-top: -0.25rem;
+  .getCode {
+    width: 1.52rem;
+    height: 0.5rem;
+    transform: scale(1.2);
+  }
+}
+
+.btn_box {
+  margin: 0.72rem 0.5rem 0.1rem;
+  .btn_primary {
+    background-color: #4da6ff;
+  }
+}
+:global {
+  .alert_sms.am-modal {
+    &.am-modal-transparent {
+      width: 90%;
+    }
+  }
+}

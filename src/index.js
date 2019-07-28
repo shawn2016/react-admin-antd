@@ -2,8 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import Router from "./routers";
-import fetchInit from './util/fetchinit';
-fetchInit()
+
 // babel本身只能转换ES6语法，但ES6新增的MAP、SET、Generator等新功能不会转换，所以需要此垫片库
 // import 'babel-polyfill';
 

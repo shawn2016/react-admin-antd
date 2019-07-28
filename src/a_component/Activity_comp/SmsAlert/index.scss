@@ -1,51 +1,51 @@
 .logo_box {
-	margin: 35px 10px 40px;
-	.logo {
-		width: 100px;
-		height: 100px;
-	}
-	.text {
-		letter-spacing: 10px;
-		color: #333;
-	}
-	.close_icon {
-		position: absolute;
-		right: 0;
-		top: 0;
-		padding: 10px;
-	}
+  margin: 0.35rem 0.1rem 0.4rem;
+  .logo {
+    width: 1rem;
+    height: 1rem;
+  }
+  .text {
+    letter-spacing: 0.1rem;
+    color: #333;
+  }
+  .close_icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0.1rem;
+  }
 }
 .get_sms_box {
-	position: relative;
-	color: #4da6ff;
-	cursor: pointer;
-	input {
-		padding-right: 180px !important;
-	}
-	.sms_text {
-		min-width: 180px;
-		position: absolute;
-		text-align: center;
-		right: 0;
-		top: 50%;
-		transform: translate(0, -50%);
-		.sms_text_dis {
-			color: #999;
-			opacity: 0.8;
-		}
-	}
+  position: relative;
+  color: #4da6ff;
+  cursor: pointer;
+  input {
+    padding-right: 1.8rem !important;
+  }
+  .sms_text {
+    min-width: 1.8rem;
+    position: absolute;
+    text-align: center;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    .sms_text_dis {
+      color: #999;
+      opacity: 0.8;
+    }
+  }
 }
 
 .btn_box {
-	margin: 72px 50px 10px;
-	.btn_primary {
-		background-color: #4da6ff;
-	}
+  margin: 0.72rem 0.5rem 0.1rem;
+  .btn_primary {
+    background-color: #4da6ff;
+  }
 }
 :global {
-	.alert_sms.am-modal {
-		&.am-modal-transparent {
-			width: 90%;
-		}
-	}
+  .alert_sms.am-modal {
+    &.am-modal-transparent {
+      width: 90%;
+    }
+  }
 }

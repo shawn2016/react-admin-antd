@@ -1,0 +1,115 @@
+@import '../base/fn';
+
+:global(.bank_moxie_ico) {
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+// 邮政
+:global(.bank_moxie_PSBC) {
+	@include bg-image('../../../assets/images/mine/moxieBank/PSBC');
+}
+// 广发
+:global(.bank_moxie_CGB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CGB');
+}
+// 交通银行
+:global(.bank_moxie_COMM) {
+	@include bg-image('../../../assets/images/mine/moxieBank/COMM');
+}
+// 民生银行
+:global(.bank_moxie_CMBC) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CMBC');
+}
+// 建设银行
+:global(.bank_moxie_CCB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CCB');
+}
+// 招商银行
+:global(.bank_moxie_CMB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CMB');
+}
+// 中国银行
+:global(.bank_moxie_BOC) {
+	@include bg-image('../../../assets/images/mine/moxieBank/BOC');
+}
+// 中信银行
+:global(.bank_moxie_CITIC) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CITIC');
+}
+// 工商银行
+:global(.bank_moxie_ICBC) {
+	@include bg-image('../../../assets/images/mine/moxieBank/ICBC');
+}
+// 农业银行
+:global(.bank_moxie_ABC) {
+	@include bg-image('../../../assets/images/mine/moxieBank/ABC');
+}
+// 兴业银行
+:global(.bank_moxie_CIB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CIB');
+}
+// 平安银行
+:global(.bank_moxie_PINGAN) {
+	@include bg-image('../../../assets/images/mine/moxieBank/PINGAN');
+}
+// 浦发银行
+:global(.bank_moxie_SPD) {
+	@include bg-image('../../../assets/images/mine/moxieBank/SPD');
+}
+// 光大银行
+:global(.bank_moxie_CEB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CEB');
+}
+// 华夏银行
+:global(.bank_moxie_HXB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/HXB');
+}
+// 宁波银行
+:global(.bank_moxie_NINGBO) {
+	@include bg-image('../../../assets/images/mine/moxieBank/NINGBO');
+}
+// 北京银行
+:global(.bank_moxie_BEIJING) {
+	@include bg-image('../../../assets/images/mine/moxieBank/BEIJING');
+}
+// 杭州银行
+:global(.bank_moxie_HANGZHOU) {
+	@include bg-image('../../../assets/images/mine/moxieBank/HANGZHOU');
+}
+// 花旗银行
+:global(.bank_moxie_CITI) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CITI');
+}
+// 江苏银行
+:global(.bank_moxie_JIANGSU) {
+	@include bg-image('../../../assets/images/mine/moxieBank/JIANGSU');
+}
+// 广州农商
+:global(.bank_moxie_GZNS) {
+	@include bg-image('../../../assets/images/mine/moxieBank/GZNS');
+}
+// 上海银行
+:global(.bank_moxie_SHANGHAI) {
+	@include bg-image('../../../assets/images/mine/moxieBank/SHANGHAI');
+}
+// 杭州联合
+:global(.bank_moxie_URCB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/URCB');
+}
+// 南京银行
+:global(.bank_moxie_NANJING) {
+	@include bg-image('../../../assets/images/mine/moxieBank/NANJING');
+}
+// 浙商银行
+:global(.bank_moxie_CZB) {
+	@include bg-image('../../../assets/images/mine/moxieBank/CZB');
+}
+// 浙商银行
+:global(.bank_moxie_ALL) {
+	@include bg-image('../../../assets/images/mine/moxieBank/ALL');
+}
+

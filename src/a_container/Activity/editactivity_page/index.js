@@ -677,11 +677,11 @@ export default class PageAdminContainer extends React.Component {
                           预览
                         </Button>
                       </Tooltip>
-                      <Upload {...props}>
+                      {/* <Upload {...props}>
     <Button>
       <Icon type="upload" /> Click to Upload
     </Button>
-  </Upload>,
+  </Upload>, */}
                       <Tooltip placement="bottom" title="发布">
                         <Button
                           onClick={this.downloadZip}

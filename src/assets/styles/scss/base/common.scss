@@ -1,0 +1,109 @@
+:global {
+	.protocol_tip {
+		margin-top: 0.3rem;
+		color: #282828;
+		font-size: 0.24rem;
+		margin-right: auto;
+		margin-left: auto;
+		.protocol_link {
+			color: #4da6ff;
+		}
+	}
+	.blod {
+		font-weight: 700;
+	}
+	.bottomTip {
+		text-align: center;
+		color: #c7c6cc;
+		font-size: 30px;
+		margin-top: 80px;
+		margin-bottom: 20px;
+	}
+}
+
+// 覆盖 antd mobile picke和modal样式
+:global {
+	.am-picker-popup-header .am-picker-popup-header-right.am-picker-popup-item,
+	.am-modal-button-group-h a.am-modal-button {
+		color: #ffc601;
+	}
+	.am-picker-popup-header .am-picker-popup-item,
+	.am-modal-button-group-h a.am-modal-button:first-child {
+		color: #666;
+	}
+}
+//  去掉数字键盘的点
+:global {
+	#am-number-keyboard-container {
+		tr:last-child {
+			td:first-child {
+				display: none;
+			}
+		}
+		.am-number-keyboard-wrapper table tr .am-number-keyboard-item.keyboard-confirm {
+			background-color: #ebdd74;
+		}
+	}
+	// .am-pull-to-refresh-down .am-pull-to-refresh-indicator {
+	// 	margin-top: -0.8rem !important;
+	// }
+	// .am-pull-to-refresh-indicator {
+	// 	height: 0.8rem !important;
+	// }
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+		html:not([data-scale]) .am-number-keyboard-wrapper table tr .am-number-keyboard-item.keyboard-confirm {
+			border-bottom: none;
+		}
+		html:not([data-scale]) .am-list-body::after,
+		html:not([data-scale]) .am-list-item:not(:last-child) .am-list-line::after,
+		html:not([data-scale]) .am-list-body::before,
+		html:not([data-scale]) .am-list-body div:not(:last-child) .am-list-line::after {
+			background-color: #f0f1f5 !important;
+		}
+	}
+}
+:global {
+	.mins {
+		color: #ff5c50;
+		background-color: #fff;
+		border-radius: 6px;
+		font-size: 28px;
+		height: 34px;
+		width: 29px;
+		display: inline-block;
+		text-align: center;
+		font-family: 'PingFangSC-Semibold';
+		font-weight: 600;
+		line-height: 1.4;
+		margin: 5px;
+	}
+	.jg {
+		font-size: 30px;
+		font-family: 'PingFangSC-Semibold';
+		font-weight: 300;
+		margin: 0 10px;
+		display: inline-block;
+	}
+	.credit_list_pagePopover {
+		left: 105px !important;
+		border-radius: 6px;
+		.am-popover-arrow {
+			right: 0.25rem !important;
+			background-color: #121c32;
+		}
+		width: 80%;
+		p {
+			background: #121c32;
+			color: #fff;
+			font-size: 28px;
+			font-family: 'PingFangSC-Regular';
+			font-weight: 400;
+			padding: 20px;
+		}
+	}
+	.list-extra {
+		.am-list-item .am-list-line .am-list-extra {
+			flex-basis: 50%;
+		}
+	}
+}

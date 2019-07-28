@@ -37,5 +37,16 @@ export default [
     title: "预览组件",
     hideMenu: true,
     component: () => import("./previewcomponent_page")
+  },
+  {
+    path: "/activity/devactivity_page",
+    title: "开发组件",
+    component: () => import("./devactivity_page")
+  },
+  {
+    path: "/activity/devcomponent_page",
+    title: "编写组件",
+    hideMenu: true,
+    component: () => import("./devcomponent_page")
   }
 ];

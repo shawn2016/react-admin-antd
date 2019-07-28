@@ -1,0 +1,135 @@
+.wuyuekh_page {
+	position: relative;
+	// height: 100%;
+	height: 100vh;
+	background: #ffa348;
+	.activity_bg {
+		width: 100%;
+		position: absolute;
+	}
+	.bg_bottom {
+		position: absolute;
+		top: 3.84rem;
+		width: 100%;
+	}
+	.new_entry_box,
+	.old_entry_box {
+		position: absolute;
+		top: 6.01rem;
+		left: .60rem;
+		width: 6.30rem;
+	}
+	.old_entry_box {
+		top: 8.61rem;
+	}
+	.entry_bg {
+		width: 100%;
+	}
+	.btn_style {
+		position: absolute;
+		right: .25rem;
+		top: .53rem;
+		width: 1.34rem;
+		height: 1.34rem;
+		animation: bounce 1s infinite;
+	}
+}
+.wuyuekh_page2 {
+	height: calc(100vh - 0.88rem);
+}
+.rule {
+	position: absolute;
+	top: .20rem;
+	right: 0;
+	img {
+		display: block;
+		width: 1.45rem;
+		height: .48rem;
+	}
+}
+
+.modal {
+	.mask {
+		position: fixed;
+		background-color: rgba(0, 0, 0, 0.3);
+		margin: 0;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 999;
+	}
+	.modalWrapper {
+		position: fixed;
+		width: 6.20rem;
+		border-radius: .10rem;
+		padding: .26rem .30rem .50rem;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 1000;
+		background-color: #fff;
+		box-sizing: border-box;
+		.rulesCont {
+			// height: 760rem;
+			// overflow-y: scroll;
+			// -webkit-overflow-scrolling: touch;
+		}
+
+		h2 {
+			text-align: center;
+			font-size: .36rem;
+			color: #121c32;
+			margin-bottom: .26rem;
+		}
+
+		h3 {
+			font-size: .36rem;
+			color: #121c32;
+			margin-bottom: .10rem;
+		}
+
+		p {
+			color: #6c6c6c;
+			font-size: .30rem;
+			// text-indent: 0.8em;
+			margin-bottom: .10rem;
+			margin-left: .20rem;
+		}
+
+		.closeBtn {
+			width: .50rem;
+			height: .50rem;
+			position: absolute;
+			right: .24rem;
+			top: .14rem;
+		}
+	}
+	.tipText {
+		text-align: center;
+		margin: .20rem .20rem 0;
+	}
+	.closeBtnStyle {
+		width: .50rem;
+		height: .50rem;
+		background-image: url(./img/close_btn.png);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		position: absolute;
+		bottom: -.80rem;
+		left: 50%;
+		transform: translate(-50%, 0%);
+	}
+}
+
+@keyframes bounce {
+	0% {
+		transform: scale(1.1);
+	}
+	50% {
+		transform: scale(1.3);
+	}
+	100% {
+		transform: scale(1.1);
+	}
+}

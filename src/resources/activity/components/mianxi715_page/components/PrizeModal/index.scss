@@ -1,0 +1,57 @@
+.win_prize_cont {
+	img {
+		vertical-align: top;
+	}
+	.win_prize_bg {
+		width: 100%;
+	}
+	.win_prize_btn {
+		position: absolute;
+		bottom: 159px;
+		left: 170px;
+		width: 410px;
+	}
+	.win_tit_cont {
+		position: absolute;
+		top: 425px;
+		left: 0;
+		width: 100%;
+		font-size: 24px;
+		color: #fff;
+		.win_prize_tit {
+			font-size: 40px;
+			margin-bottom: 22px;
+		}
+	}
+}
+
+i.closeBtn {
+	position: absolute;
+	bottom: -30px;
+	left: 50%;
+	text-align: center;
+	width: 68px;
+	height: 68px;
+	background-image: url(../../img/close_btn.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin-left: -34px;
+}
+i.closeBtn2 {
+	bottom: -149px;
+}
+
+:global {
+	.win_prize_modal.am-modal {
+		&.am-modal-transparent {
+			width: 100%;
+		}
+		.am-modal-content {
+			background: transparent;
+			overflow: initial;
+			.am-modal-body {
+				padding: 0;
+			}
+		}
+	}
+}

@@ -1,0 +1,232 @@
+@import '../base/fn';
+$iconWidth: 80;	// 单个icon的宽度（正方形）
+
+:global(.bank_ico) {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 60px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	top: 18px;
+	background-image: url('../../../assets/images/common/bank_icon@80.png');
+}
+
+:global(.bank_moxie_ico) {
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-image: url('../../../assets/images/common/bank_icon@80.png');
+}
+
+:global(.important_bank_moxie_ico) {
+	position: relative;
+	display: inline-block;
+	width: 80px;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-image: url('../../../assets/images/common/bank_icon@80.png') !important;
+}
+
+// 黑色logo的ico
+:global(.logo_ico) {
+	background-image: url('../../../assets/images/common/round_black_logo.png');
+}
+
+// 雪碧图icon位置不能换，只能从后追加
+// 渤海银行
+:global(.bank_ico_CBHB) {
+	@include spritePosition(0, 0);
+}
+
+// 中国工商银行
+:global(.bank_ico_ICBC) {
+	@include spritePosition(0, $iconWidth*2);
+}
+
+// 中国光大银行
+:global(.bank_ico_CEBB) {
+	@include spritePosition(0, $iconWidth*3);
+}
+
+:global(.bank_ico_CEB) {
+	@include spritePosition(0, $iconWidth*3);
+}
+
+// 广东发展银行
+:global(.bank_ico_GDB) {
+	@include spritePosition(0, $iconWidth*4);
+}
+
+:global(.bank_ico_CGB) {
+	@include spritePosition(0, $iconWidth*4);
+}
+
+// 广州农商
+:global(.bank_ico_GZNS) {
+	@include spritePosition(0, $iconWidth*6);
+}
+
+// 杭州联合
+:global(.bank_ico_URCB) {
+	@include spritePosition(0, $iconWidth*7);
+}
+
+// 杭州银行
+:global(.bank_ico_HANGZHOU) {
+	@include spritePosition(0, $iconWidth*8);
+}
+
+// 花旗银行
+:global(.bank_ico_CITI) {
+	@include spritePosition(0, $iconWidth*11);
+}
+
+// 华夏银行
+:global(.bank_ico_HXB) {
+	@include spritePosition(0, $iconWidth*12);
+}
+
+// 中国建设银行
+:global(.bank_ico_CCB) {
+	@include spritePosition(0, $iconWidth*14);
+}
+
+// 江苏银行
+:global(.bank_ico_JSB) {
+	@include spritePosition(0, $iconWidth*15);
+}
+
+:global(.bank_ico_JIANGSU) {
+	@include spritePosition(0, $iconWidth*15);
+}
+
+// 交通银行
+:global(.bank_ico_BCOM) {
+	@include spritePosition(0, $iconWidth*16);
+}
+
+:global(.bank_ico_COMM) {
+	@include spritePosition(0, $iconWidth*16);
+}
+
+// 中国民生银行
+:global(.bank_ico_CMBC) {
+	@include spritePosition(0, $iconWidth*17);
+}
+
+// 南京银行
+:global(.bank_ico_NJB) {
+	@include spritePosition(0, $iconWidth*18);
+}
+
+:global(.bank_ico_NANJING) {
+	@include spritePosition(0, $iconWidth*18);
+}
+
+// 宁波银行
+:global(.bank_ico_NBB) {
+	@include spritePosition(0, $iconWidth*19);
+}
+
+:global(.bank_ico_NINGBO) {
+	@include spritePosition(0, $iconWidth*19);
+}
+
+// 中国农业银行
+:global(.bank_ico_ABC) {
+	@include spritePosition(0, $iconWidth*20);
+}
+
+// 平安银行
+:global(.bank_ico_PAB) {
+	@include spritePosition(0, $iconWidth*21);
+}
+
+:global(.bank_ico_PINGAN) {
+	@include spritePosition(0, $iconWidth*21);
+}
+
+// 中国浦东发展银行
+:global(.bank_ico_SPDB) {
+	@include spritePosition(0, $iconWidth*22);
+}
+
+:global(.bank_ico_SPD) {
+	@include spritePosition(0, $iconWidth*22);
+}
+
+// 上海银行
+:global(.bank_ico_BOS) {
+	@include spritePosition(0, $iconWidth*23);
+}
+
+:global(.bank_ico_SHANGHAI) {
+	@include spritePosition(0, $iconWidth*23);
+}
+
+// 兴业银行
+:global(.bank_ico_CIB) {
+	@include spritePosition(0, $iconWidth*24);
+}
+
+// 中国邮政储蓄银行
+:global(.bank_ico_PSBC) {
+	@include spritePosition(0, $iconWidth*25);
+}
+
+// 中国招商银行
+:global(.bank_ico_CMB) {
+	@include spritePosition(0, $iconWidth*26);
+}
+
+// 浙商银行
+:global(.bank_ico_ZJCCB) {
+	@include spritePosition(0, $iconWidth*28);
+}
+
+:global(.bank_ico_CZB) {
+	@include spritePosition(0, $iconWidth*28);
+}
+
+// 中国银行
+:global(.bank_ico_BOC) {
+	@include spritePosition(0, $iconWidth*29);
+}
+
+// 中信银行
+:global(.bank_ico_ECITIC) {
+	@include spritePosition(0, $iconWidth*30);
+}
+
+:global(.bank_ico_CITIC) {
+	@include spritePosition(0, $iconWidth*30);
+}
+
+// 北京银行
+:global(.bank_ico_BOB) {
+	@include spritePosition(0, $iconWidth*31);
+}
+
+:global(.bank_ico_BEIJING) {
+	@include spritePosition(0, $iconWidth*31);
+}
+
+// 农业发展银行
+:global(.bank_ico_) {
+	@include spritePosition(0, $iconWidth*32);
+}
+
+// 广州银行
+:global(.bank_ico_GZB) {
+	@include spritePosition(0, $iconWidth*33);
+}
+
+// 汇丰银行
+:global(.bank_ico_) {
+	@include spritePosition(0, $iconWidth*34);
+}

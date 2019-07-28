@@ -1,0 +1,100 @@
+:global {
+	.circle {
+		overflow: hidden;
+		position: relative;
+		transform-style: preserve-3d;
+	}
+	.left-wrap {
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+	}
+	.right-wrap {
+		overflow: hidden;
+		position: absolute;
+		top: 0;
+	}
+
+	.loader {
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform-origin: 0% 50%;
+	}
+
+	.loader2 {
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform-origin: 100% 50%;
+	}
+
+	.inner-circle {
+		position: relative;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	.svgcirproOut {
+		overflow: hidden;
+		position: relative;
+	}
+	.circle_border {
+		background-color: #eaeaee;
+		position: absolute;
+		border-radius: 50%;
+		z-index: -1;
+		transform: scale(.94);
+	}
+	.circle_bg {
+		background-color: #fff;
+		position: absolute;
+		border-radius: 50%;
+		z-index: -1;
+		transform: scale(.85);
+	}
+
+	// .homePrecent {
+	// 	font-family: 'DINCondensed-Bold';
+	// }
+	.circle_text {
+    color: #121C32;
+		background-color: #fff;
+		position: absolute;
+		border-radius: 50%;
+		z-index: -1;
+		font-size: 90px;
+		font-family: 'DINMitAlt';
+		border: 1PX solid #eaeaee;
+		text-align: center;
+		transform: scale(.7);
+	}
+	.svgcirproContent {
+		display: flex;
+		display: -webkit-flex;
+		justify-content: center;
+		-webkit-justify-content: center;
+		align-items: center;
+		-webkit-align-items: center;
+	}
+	.cancirproOut {
+		overflow: hidden;
+	}
+	.cancirproContent {
+		display: flex;
+		display: -webkit-flex;
+		justify-content: center;
+		-webkit-justify-content: center;
+		align-items: center;
+		-webkit-align-items: center;
+	}
+}
+// @font-face {
+// 	font-family: 'DINMittbek';
+// 	src: url('/assets/fonts/DINMitAlt.eot');
+// 	font-weight: bold;
+// 	font-style: normal;
+// }
+/* stylelint-disable */

@@ -78,23 +78,7 @@ module.exports = {
           "postcss-loader"
         ]
       },
-      {
-        // .less 解析
-        test: /\.less$/,
-        loaders: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              localIdentName: "[local]_[hash:base64:5]"
-            }
-          },
-          "postcss-loader",
-          "less-loader"
-        ],
-        include: path.resolve(__dirname, "src")
-      },
+      
       {
         // .less 解析 (用于解析antd的LESS文件)
         test: /\.less$/,
@@ -129,10 +113,28 @@ module.exports = {
         loader: "file-loader?name=assets/[name].[ext]"
       },
       {
-        // 图片解析
-        test: /\.(png|jpg|gif)$/,
-        include: path.resolve(__dirname, "src"),
-        loader: "url-loader?limit=8192&name=assets/[name].[ext]"
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: "url-loader",
+        query: {
+          limit: 1,
+          name: "img/[name]-[hash:8].[ext]"
+        }
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: "url-loader",
+        options: {
+          limit: 8000,
+          name: "media/[name].[hash:7].[ext]"
+        }
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: "url-loader",
+        options: {
+          limit: 0,
+          name: "fonts/[name].[hash:7].[ext]"
+        }
       }
     ]
   },
@@ -165,6 +167,6 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin() // 在编译出现错误时，自动跳过输出阶段。这样可以确保编译出的资源中不会包含错误。
   ],
   resolve: {
-    extensions: [".js", ".jsx", ".less", ".css", ".scss"], //后缀名自动补全
+    extensions: [".js", ".jsx", ".less", ".css", ".scss"] //后缀名自动补全
   }
 };

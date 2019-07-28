@@ -20,7 +20,7 @@ const API = {
 let timmer;
 @fetch.inject()
 @createForm()
-export default class SmsAlert extends Component {
+ class SmsAlert extends Component {
 	// static propTypes = {
 	// 	goSubmitCb: PropTypes.object,
 	// 	validateMposCb: PropTypes.object,
@@ -455,7 +455,7 @@ export default class SmsAlert extends Component {
 					<div className={style.logo_box}>
 						<Icon type="cross" onClick={this.closeCb} className={style.close_icon} />
 						<img className={style.logo} src={logo} />
-						<div className={style.text}>怕逾期，用还到</div>
+						<div className={style.text}>怕逾期，用还到12</div>
 					</div>
 					{
 						isShowMobile ?
@@ -552,3 +552,4 @@ export default class SmsAlert extends Component {
 		);
 	}
 }
+export default SmsAlert

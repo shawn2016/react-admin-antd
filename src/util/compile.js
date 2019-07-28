@@ -2,6 +2,7 @@ import path from "path";
 import webpack from "webpack";
 import fs from "fs";
 import ncp from "ncp";
+var ExtractTextPlugin = require("extract-text-webpack-plugin"); // 为了单独打包css
 
 const AUTOPREFIXER_BROWSERS = [
   "Android 2.3",
@@ -21,6 +22,21 @@ const loaders = [
     loader: "babel-loader",
     options: {
       plugins: [
+        [
+          "transform-runtime",
+          { helpers: false, polyfill: true, regenerator: true }
+        ],
+        [
+          "import",
+          [
+            { style: true, libraryName: "antd" },
+            {
+              style: true,
+              libraryName: "antd-mobile",
+              libraryDirectory: "lib"
+            }
+          ]
+        ],
         "transform-decorators-legacy",
         "transform-class-properties"
       ]
@@ -29,24 +45,76 @@ const loaders = [
   { test: /\.json$/, loader: "json-loader" },
   //   { test: /\.txt$/, loader: "raw-loader" },
   {
-    test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
-    loader: "url-loader?limit=1024"
+    test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+    loader: "url-loader",
+    query: {
+      limit: 1,
+      name: "img/[name]-[hash:8].[ext]"
+    }
   },
-  { test: /\.(eot|ttf|wav|mp3)$/, loader: "file-loader" },
   {
-    test: /\.scss$/,
-    loader: "style-loader/useable!css-loader!sass-loader!postcss-loader"
+    test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+    loader: "url-loader",
+    options: {
+      limit: 8000,
+      name: "media/[name].[hash:7].[ext]"
+    }
   },
   {
+    test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+    loader: "url-loader",
+    options: {
+      limit: 0,
+      name: "fonts/[name].[hash:7].[ext]"
+    }
+  },
+  {
+    // .less 解析 (用于解析antd的LESS文件)
     test: /\.less$/,
-
-    use: ["style-loader", "css-loader", "postcss-loader", "less-loader"]
+    loaders: ["style-loader", "css-loader", "postcss-loader", `less-loader`],
   },
-  { test: /\.css$/, loader: "style-loader/useable!css-loader!postcss-loader" }
+  {
+    // .scss 解析
+    test: /\.scss$/,
+    loaders: [
+      "style-loader",
+      {
+        loader: "css-loader",
+        options: {
+          modules: true,
+          localIdentName: "[local]_[hash:base64:5]"
+        }
+      },
+      "postcss-loader",
+      "sass-loader"
+    ]
+  },
+  {
+    // .css 解析
+    test: /\.css$/,
+    loaders: [
+      "style-loader",
+      {
+        loader: "css-loader",
+        options: {
+          modules: true,
+          localIdentName: "[local]_[hash:base64:5]"
+        }
+      },
+      "postcss-loader"
+    ]
+  }
 ];
 
-const plugins = [new webpack.optimize.UglifyJsPlugin({})];
+const plugins = [
+  // 配置了这个插件，再配合上面loader中的配置，将所有样式文件打包为一个单独的css文件
+  new ExtractTextPlugin({
+    filename: "[name].[hash:6].css", // 生成的文件名
+    allChunks: true // 从所有chunk中提取
+  })
+];
 async function compileComponent(project, name, optimize) {
+  debugger;
   console.log("start to compile component: ", project, name);
   const projectPrefix = project + "/components";
   const outputFileName = "Main.js";
@@ -72,7 +140,7 @@ async function compileComponent(project, name, optimize) {
     module: {
       loaders: loaders
     },
-    plugins: optimize ? plugins : []
+    plugins: plugins
   };
 
   var compiler = webpack(config);
@@ -137,6 +205,7 @@ const compileTemplate = async page => {
       component.name +
       "/Main.js";
     Coms.push('require("' + componentPath + '")');
+    // Coms.push('require("' + componentPath + '")');
     // delete pre compiled content
     delete component.fileContent;
   });
