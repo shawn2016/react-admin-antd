@@ -73,7 +73,7 @@ app.use("/api/preview", require("./src/api/pages"));
 server.use('/api/localComponents', require('./src/api/localComponents'));
 app.use(
   proxy("/wap", {
-    target: "https://lns-wap-test.vbillbank.com/wap", //跨域地址
+    target: "http://172.16.154.47:8080/wap", //跨域地址
     pathRewrite: { "^/wap": "" }, //重写接口
     changeOrigin: true
   })

@@ -175,7 +175,7 @@ class mianxi418_page extends Activity_temp {
             <img src={card_50000} />
           </div>
           <div className={styles.btn_box}>
-            <a onClick={this.goTo}>免费申请</a>
+            <a onClick={this.goTo}>免费申请1</a>
           </div>
           <div className={styles.btn_bottom_text}>
             每人1次参与机会，限前1000名

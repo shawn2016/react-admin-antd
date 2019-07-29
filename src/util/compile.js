@@ -1,6 +1,7 @@
 import path from "path";
 import webpack from "webpack";
 import fs from "fs";
+const antdTheme = require('../../antd-theme.json');
 import ncp from "ncp";
 var ExtractTextPlugin = require("extract-text-webpack-plugin"); // 为了单独打包css
 
@@ -71,7 +72,18 @@ const loaders = [
   {
     // .less 解析 (用于解析antd的LESS文件)
     test: /\.less$/,
-    loaders: ["style-loader", "css-loader", "postcss-loader", `less-loader`],
+    loaders: [
+      "style-loader",
+      "css-loader",
+      "postcss-loader",
+      {
+        loader: "less-loader",
+        options: {
+          javascriptEnabled: true,
+          modifyVars: antdTheme
+        }
+      }
+    ]
   },
   {
     // .scss 解析

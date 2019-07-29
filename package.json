@@ -46,6 +46,7 @@
     "lodash": "^4.17.5",
     "ncp": "^2.0.0",
     "nodemon": "^1.19.1",
+    "postcss-plugin-px2rem": "^0.8.1",
     "prop-types": "^15.6.0",
     "qrcode.react": "^0.9.3",
     "qs": "^6.7.0",
