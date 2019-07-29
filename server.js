@@ -36,7 +36,13 @@ dbConnection.on("error", error => {
 dbConnection.once("open", () => {
   console.log("database connected: ", dbUri);
 });
-
+app.use(
+    proxy("/wap", {
+      target: "http://172.16.154.47:8080/wap", //跨域地址
+      pathRewrite: { "^/wap": "" }, //重写接口
+      changeOrigin: true
+    })
+  );
 //
 // Register Node.js middleware
 // -----------------------------------------------------------------------------
@@ -71,13 +77,6 @@ app.use("/api/sync", require("./src/api/sync"));
 app.use("/api/pages", require("./src/api/pages"));
 app.use("/api/preview", require("./src/api/pages"));
 server.use('/api/localComponents', require('./src/api/localComponents'));
-app.use(
-  proxy("/wap", {
-    target: "http://172.16.154.47:8080/wap", //跨域地址
-    pathRewrite: { "^/wap": "" }, //重写接口
-    changeOrigin: true
-  })
-);
 app.get("*", (req, res, next) => {
   // 所有GET请求都返回index.html
   const filename = path.join(DIST_DIR, "index.html");
