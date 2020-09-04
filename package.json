@@ -99,7 +99,7 @@
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "mockjs": "^1.0.1-beta3",
-    "node-sass": "^4.7.2",
+    "node-sass": "^4.13.1",
     "postcss-loader": "^2.1.0",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
