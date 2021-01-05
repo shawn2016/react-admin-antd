@@ -24,7 +24,7 @@
     "@sentry/webpack-plugin": "^1.7.0",
     "antd": "^3.20.1",
     "antd-mobile": "^2.2.14",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel": "^6.23.0",
     "babel-cli": "^6.26.0",
     "babel-plugin-react-transform": "^3.0.0",
